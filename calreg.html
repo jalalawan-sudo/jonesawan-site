@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalReg — Jalal Awan, Ph.D.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .cr-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 24px; }
+    .section-divider { border: none; border-top: 2.5px solid #1e293b; margin: 0; }
+    .cr-pill {
+      font-size: 0.78rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 20px;
+      border: 1.5px solid var(--border);
+      color: var(--text-mid); background: transparent;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .cr-pill.active, .cr-pill:hover {
+      border-color: var(--teal); color: var(--teal);
+      background: var(--teal-light);
+    }
+    .ai-box { margin-top: 14px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .ai-hdr {
+      padding: 8px 14px; font-size: 0.8rem; font-weight: 600;
+      color: #4338ca; cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      background: #eef2ff; transition: background 0.15s; user-select: none;
+    }
+    .ai-hdr:hover { background: #e0e7ff; }
+    .ai-arr { display: inline-block; transition: transform 0.2s; }
+    .ai-body {
+      display: none; padding: 12px 14px;
+      font-size: 0.84rem; color: var(--text-mid);
+      line-height: 1.65; border-top: 1px solid var(--border);
+    }
+    .news-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .news-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; transition: box-shadow 0.2s;
+    }
+    .news-card:hover { box-shadow: var(--shadow); }
+    .news-type { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .news-title { font-size: 0.92rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; line-height: 1.4; }
+    .news-desc  { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+    .news-date  { font-size: 0.75rem; color: var(--text-light); margin-top: 8px; }
+    .proc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media(max-width:768px) { .proc-grid { grid-template-columns: 1fr; } .news-row { grid-template-columns: 1fr; } }
+    .proc-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .proc-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+    .proc-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .proc-card-docket {
+      font-family: monospace; font-size: 0.78rem; font-weight: 700;
+      color: var(--teal); background: var(--teal-light); padding: 2px 8px; border-radius: 4px;
+    }
+    .proc-card-date { font-size: 0.73rem; color: var(--text-light); }
+    .proc-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+    .proc-card p  { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; }
+    .proc-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .proc-card-links a {
+      font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 4px;
+      border: 1.5px solid var(--teal); color: var(--teal); transition: all 0.15s;
+    }
+    .proc-card-links a:hover { background: var(--teal); color: white; }
+    .proc-card-links a.sec { border-color: var(--border); color: var(--text-mid); }
+    .proc-card-links a.sec:hover { border-color: var(--text-mid); color: var(--text-dark); background: transparent; }
+    .source-bar {
+      margin-top: 32px; padding: 12px 20px;
+      background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius);
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+      font-size: 0.75rem; color: var(--text-light);
+    }
+    .source-bar a { color: var(--teal); }
+    .source-bar a:hover { text-decoration: underline; }
+    .section-label-inline {
+      display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal); background: var(--teal-light);
+      border-radius: 4px; padding: 3px 10px; margin-bottom: 14px;
+    }
+    .week-label-current {
+      display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #0f766e; background: #ccfbf1;
+      border-radius: 4px; padding: 3px 10px; margin-bottom: 14px;
+      border: 1px solid #5eead4;
+    }
+    .week-label-prior {
+      display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #475569; background: #f1f5f9;
+      border-radius: 4px; padding: 3px 10px;
+      border: 1px solid #cbd5e1;
+    }
+    /* ── Period collapsible toggle ─────────────────────────────────────── */
+    .period-collapse-toggle {
+      display: flex; align-items: center; gap: 12px; cursor: pointer;
+      padding: 13px 16px; grid-column: 1/-1; margin-top: 8px;
+      background: #f8fafc; border: 1.5px solid #e2e8f0;
+      border-radius: 8px; user-select: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .period-collapse-toggle:hover { background: #f1f5f9; border-color: #94a3b8; }
+    .pct-arr  { font-size: 1rem; color: #64748b; transition: transform 0.22s ease; flex-shrink: 0; }
+    .pct-arr.open { transform: rotate(90deg); }
+    .pct-title { font-size: 0.82rem; font-weight: 700; color: #334155; line-height: 1.3; }
+    .pct-sub   { font-size: 0.72rem; color: #64748b; margin-top: 1px; }
+    .pct-count { font-size: 0.72rem; color: #94a3b8; margin-left: auto; font-weight: 600; }
+    /* ── Week label row header ──────────────────────────────────────────── */
+    .week-header-row { grid-column: 1/-1; padding: 6px 0 2px; }
+    .week-collapse-toggle {
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
+      padding: 10px 0 4px; border-top: 1px solid var(--border); margin-top: 10px;
+      user-select: none;
+    }
+    .week-collapse-toggle:hover .week-label-prior { background: #e2e8f0; }
+    .week-collapse-arr { font-size: 0.75rem; color: #64748b; transition: transform 0.2s; }
+    .week-collapse-arr.open { transform: rotate(90deg); }
+    /* ── Prominent biweekly period headers ─────────────────────────────── */
+    .period-hdr {
+      grid-column: 1/-1;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 20px; border-radius: 8px; margin-bottom: 6px;
+    }
+    .period-hdr.current {
+      background: #f0fdf4; border: 2px solid #86efac; border-left: 5px solid #16a34a;
+    }
+    .period-hdr.prior-toggle {
+      background: #f8fafc; border: 1.5px solid #e2e8f0; border-left: 5px solid #94a3b8;
+      cursor: pointer; user-select: none; transition: background 0.15s, border-color 0.15s;
+    }
+    .period-hdr.prior-toggle:hover { background: #f1f5f9; border-color: #94a3b8; }
+    .period-hdr-left { display: flex; flex-direction: column; gap: 2px; }
+    .period-hdr-eyebrow {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .period-hdr.current .period-hdr-eyebrow { color: #15803d; }
+    .period-hdr.prior-toggle .period-hdr-eyebrow { color: #64748b; }
+    .period-hdr-date {
+      font-size: 1.0rem; font-weight: 800; color: #1e293b; line-height: 1.2;
+    }
+    .period-hdr-right {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .period-hdr.current .period-hdr-right { color: #15803d; }
+    .period-hdr.prior-toggle .period-hdr-right { color: #64748b; }
+    .period-hdr-arr { font-size: 0.9rem; transition: transform 0.22s ease; }
+    .period-hdr-arr.open { transform: rotate(90deg); }
+    .filter-empty {
+      display: none; text-align: center; padding: 32px 20px;
+      color: #94a3b8; font-size: 0.88rem; font-style: italic;
+      border: 1.5px dashed #e2e8f0; border-radius: var(--radius);
+    }
+    .vote-note {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;
+      padding: 2px 8px; border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Announcement Banner (auto-dismisses after 30s) ── -->
+  <style>
+    @keyframes pulseSimpler {
+      0%,100% { text-shadow: 0 0 0px #fff; }
+      50%      { text-shadow: 0 0 18px rgba(255,255,255,0.6); }
+    }
+    @keyframes pulseTransparent {
+      0%,100% { text-shadow: 0 0 0px #5DC8C0; }
+      50%      { text-shadow: 0 0 22px rgba(93,200,192,0.9); }
+    }
+    .banner-word-simpler {
+      color: #ffffff;
+      font-size: 1.65em;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      background: rgba(255,255,255,0.12);
+      padding: 2px 10px;
+      border-radius: 4px;
+      animation: pulseSimpler 2s ease-in-out infinite;
+    }
+    .banner-word-transparent {
+      color: #5DC8C0;
+      font-size: 1.65em;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      background: rgba(93,200,192,0.15);
+      padding: 2px 10px;
+      border-radius: 4px;
+      animation: pulseTransparent 2s ease-in-out infinite 0.3s;
+    }
+  </style>
+  <div id="calreg-banner" style="
+    margin-top: 64px;
+    background: linear-gradient(135deg, #0a1628 0%, #0d3b35 100%);
+    border-bottom: 4px solid #5DC8C0;
+    border-top: 4px solid #5DC8C0;
+    padding: 28px 40px;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    color: rgba(255,255,255,0.65);
+    font-size: 1.1rem;
+    line-height: 2;
+    letter-spacing: 0.01em;
+  ">
+    CalReg aims to make regulatory proceedings affecting rates more
+    <span class="banner-word-simpler">simpler</span>
+    and
+    <span class="banner-word-transparent">transparent</span>.
+  </div>
+  <script>
+    setTimeout(function(){
+      var b = document.getElementById('calreg-banner');
+      b.style.transition = 'opacity 1.2s ease';
+      b.style.opacity = '0';
+      setTimeout(function(){ b.style.display = 'none'; }, 1200);
+    }, 30000);
+  </script>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="label">California Regulatory Analytics</div>
+      <h1>CalReg <span style="font-weight:400; opacity:0.85;">CPUC Docket Monitor</span></h1>
+
+      <style>
+        @keyframes twblink  { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeOut  { from{opacity:1} to{opacity:0} }
+        .iou-badge-wrap { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+        .iou-logo { padding:7px 20px; border-radius:6px; font-size:1.55rem; font-weight:900;
+                    letter-spacing:-0.03em; font-family:Inter,sans-serif; border:2px solid; }
+      </style>
+
+      <!-- Animated stat callout -->
+      <div style="margin:14px 0 10px; background:rgba(255,255,255,0.07); border-left:4px solid #fcd34d; border-radius:4px; padding:16px 22px; max-width:860px; min-height:72px; display:flex; align-items:center; overflow:visible;">
+
+        <!-- Phase 1: typewriter -->
+        <div id="ph1" style="width:100%;">
+          <span id="tw-inner" style="font-size:1.38rem; font-weight:700; color:#fff; line-height:1.5;"></span><span style="display:inline-block;width:2px;height:1.4em;background:#fcd34d;vertical-align:middle;margin-left:3px;animation:twblink 0.85s step-end infinite;" id="tw-cur"></span>
+        </div>
+
+        <!-- Phase 2: IOU stat — all one line -->
+        <div id="ph2" style="display:none; width:100%;">
+          <div id="iou-row" style="display:flex; align-items:center; gap:20px; flex-wrap:nowrap; opacity:0; transform:translateY(8px); transition:opacity 0.45s ease, transform 0.45s ease;">
+            <div id="iou-logo-el" class="iou-logo"></div>
+            <span style="color:rgba(255,255,255,0.6); font-size:1rem; font-weight:500; white-space:nowrap;">rates increased</span>
+            <div id="iou-pct-el" style="font-size:2.6rem; font-weight:900; color:#fcd34d; line-height:1; white-space:nowrap;"></div>
+            <span style="color:rgba(255,255,255,0.45); font-size:0.85rem; white-space:nowrap;">2020 – 2024</span>
+          </div>
+        </div>
+
+        <!-- Phase 3: styled typewriter -->
+        <div id="ph3" style="display:none; width:100%; opacity:0; transform:translateY(12px); transition:opacity 0.55s ease, transform 0.55s ease;">
+          <span id="ph3-inner" style="font-size:1.38rem; font-weight:700; color:#fff; line-height:1.5;"></span><span style="display:inline-block;width:2px;height:1.4em;background:#fcd34d;vertical-align:middle;margin-left:3px;animation:twblink 0.85s step-end infinite;" id="ph3-cur"></span>
+        </div>
+      </div>
+
+      <p style="font-size:0.78rem; opacity:0.45; margin:8px 0 16px;">Updated March 12, 2026</p>
+
+      <script>
+      (function(){
+        const IOUS = [
+          { name:'PG&E',   color:'#60a5fa', border:'#1d4ed8', bg:'rgba(29,78,216,0.2)',   pct:'+70%' },
+          { name:'SCE',    color:'#fcd34d', border:'#b45309', bg:'rgba(180,83,9,0.2)',    pct:'+64%' },
+          { name:'SDG&E',  color:'#34d399', border:'#0d9488', bg:'rgba(13,148,136,0.2)',  pct:'+31%' },
+        ];
+        const ph1    = document.getElementById('ph1');
+        const ph2    = document.getElementById('ph2');
+        const ph3    = document.getElementById('ph3');
+        const twEl   = document.getElementById('tw-inner');
+        const twCur  = document.getElementById('tw-cur');
+        const ph3El  = document.getElementById('ph3-inner');
+        const ph3Cur = document.getElementById('ph3-cur');
+        const logoEl = document.getElementById('iou-logo-el');
+        const pctEl  = document.getElementById('iou-pct-el');
+        const LINE   = 'California electricity bills have surged roughly 39% over the last six years \u2014 the highest increase in the nation.';
+        // Phase 3 segments: style '' = plain, 'i' = italic+underline, 'ib' = italic+bold+underline
+        const SEGS = [
+          { t:'CalReg aims to make regulatory proceedings affecting rates more ', s:'' },
+          { t:'simpler',      s:'i'  },
+          { t:' and ',        s:''   },
+          { t:'transparent',  s:'ib' },
+          { t:'.',            s:''   },
+        ];
+        function segHTML(segs, totalChars) {
+          let html = ''; let remaining = totalChars;
+          for (const seg of segs) {
+            if (remaining <= 0) break;
+            const slice = seg.t.slice(0, remaining);
+            remaining -= seg.t.length;
+            if (seg.s === 'i')  html += `<em style="text-decoration:underline 2px;">${slice}</em>`;
+            else if (seg.s === 'ib') html += `<strong><em style="text-decoration:underline 2px;">${slice}</em></strong>`;
+            else html += slice;
+          }
+          return html;
+        }
+
+        // ── Phase 1: fast typewriter ──────────────────────────────────────────
+        function startTypewriter() {
+          ph2.style.display = 'none';
+          ph1.style.display = 'block'; ph1.style.opacity = '1';
+          twCur.style.display = 'inline-block';
+          twEl.textContent = '';
+          let ci = 0;
+          function type() {
+            twEl.textContent = LINE.slice(0, ++ci);
+            if (ci < LINE.length) { setTimeout(type, 21); }
+            else { setTimeout(toPhase2, 1400); }
+          }
+          setTimeout(type, 500);
+        }
+
+        // ── Phase 2: IOU logo + % carousel ───────────────────────────────────
+        function toPhase2() {
+          ph1.style.transition = 'opacity 0.35s';
+          ph1.style.opacity = '0';
+          twCur.style.display = 'none';
+          setTimeout(() => {
+            ph1.style.display = 'none';
+            ph2.style.display = 'flex';
+            showIou(0);
+          }, 350);
+        }
+
+        function showIou(idx) {
+          const d = IOUS[idx];
+          logoEl.textContent = d.name;
+          logoEl.style.color = d.color;
+          logoEl.style.borderColor = d.border;
+          logoEl.style.background = d.bg;
+          pctEl.textContent = d.pct;
+          const rowEl = document.getElementById('iou-row');
+          rowEl.style.opacity = '0'; rowEl.style.transform = 'translateY(8px)';
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            rowEl.style.opacity = '1'; rowEl.style.transform = 'translateY(0)';
+          }));
+          setTimeout(() => {
+            rowEl.style.opacity = '0'; rowEl.style.transform = 'translateY(8px)';
+            setTimeout(() => {
+              const next = idx + 1;
+              if (next < IOUS.length) { showIou(next); }
+              else { setTimeout(startPhase3, 300); }
+            }, 450);
+          }, 2400);
+        }
+
+        // ── Phase 3: fade-in-from-below + styled typewriter ──────────────────
+        function startPhase3() {
+          ph2.style.display = 'none';
+          ph3El.innerHTML = ''; ph3Cur.style.display = 'none';
+          // Show block but keep invisible (for transition)
+          ph3.style.display = 'block';
+          ph3.style.opacity = '0';
+          ph3.style.transform = 'translateY(12px)';
+          // Fade in from below
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            ph3.style.opacity = '1';
+            ph3.style.transform = 'translateY(0)';
+          }));
+          // Start typing after fade-in completes
+          setTimeout(() => {
+            ph3Cur.style.display = 'inline-block';
+            const total = SEGS.reduce((s, g) => s + g.t.length, 0);
+            let ci = 0;
+            function type3() {
+              ci++;
+              ph3El.innerHTML = segHTML(SEGS, ci);
+              if (ci < total) { setTimeout(type3, 20); }
+              else {
+                // Hold 3.5s then fade out
+                ph3Cur.style.animation = 'none'; ph3Cur.style.opacity = '1';
+                setTimeout(() => {
+                  ph3.style.opacity = '0';
+                  ph3.style.transform = 'translateY(-8px)';
+                  setTimeout(() => {
+                    ph3.style.display = 'none';
+                    ph3.style.transform = 'translateY(12px)';
+                    startTypewriter();
+                  }, 580);
+                }, 3500);
+              }
+            }
+            type3();
+          }, 600);
+        }
+
+        startTypewriter();
+      })();
+      </script>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="#applications"       class="btn btn-white"   style="padding:7px 18px;font-size:0.82rem;">Applications</a>
+        <a href="#proposed-decisions"  class="btn btn-outline" style="padding:7px 18px;font-size:0.82rem;border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);">Proposed Decisions &amp; Rulings</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       DUAL CHART SECTION — Retail Rates + Distribution Rate Base
+       ============================================================ -->
+  <style>
+    .rb-dot  { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; vertical-align:middle; }
+    .rb-dots { display:inline-flex; gap:2px; margin-right:5px; vertical-align:middle; }
+    .rb-dots span { display:inline-block; width:7px; height:9px; border-radius:1px; }
+    .chart-panel { flex:1 1 0; min-width:0; }
+    .chart-panel-title { font-size:0.95rem; font-weight:800; color:#1e293b; margin:0 0 2px; }
+    .chart-panel-sub   { font-size:0.78rem; color:#64748b; margin:0 0 12px; }
+    @media(max-width:768px) { .dual-chart-grid { flex-direction:column !important; } }
+  </style>
+
+  <section class="section" id="rbSection" style="background:#f8fafc; border-bottom:2px solid #e2e8f0; padding:40px 0 36px;">
+    <div class="container">
+
+      <!-- Shared filter -->
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:22px; align-items:center;" id="rbIouFilters">
+        <button class="cr-pill active" onclick="rbSetIou(this,'all')">
+          <span class="rb-dots"><span style="background:#1d4ed8"></span><span style="background:#b45309"></span><span style="background:#0d9488"></span></span>All IOUs
+        </button>
+        <button class="cr-pill" onclick="rbSetIou(this,'pge')"><span class="rb-dot" style="background:#1d4ed8"></span>PG&amp;E</button>
+        <button class="cr-pill" onclick="rbSetIou(this,'sce')"><span class="rb-dot" style="background:#b45309"></span>SCE</button>
+        <button class="cr-pill" onclick="rbSetIou(this,'sdge')"><span class="rb-dot" style="background:#0d9488"></span>SDG&amp;E</button>
+      </div>
+
+      <!-- Two-panel chart grid -->
+      <div class="dual-chart-grid" style="display:flex; gap:28px;">
+
+        <!-- LEFT — Retail Rates -->
+        <div class="chart-panel">
+          <p class="chart-panel-title">Bundled Average Retail Rate</p>
+          <p class="chart-panel-sub">¢/kWh, January 1 each year · bundled utility customers</p>
+          <div style="border-top:4px solid #e03131; background:#fff; padding:18px 8px 10px; box-sizing:border-box;">
+            <div style="position:relative; width:100%; height:380px;">
+              <canvas id="rateChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT — Distribution Rate Base -->
+        <div class="chart-panel">
+          <p class="chart-panel-title">CPUC Distribution Rate Base</p>
+          <p class="chart-panel-sub">$B · CPUC-jurisdictional distribution · dashed = pending proceedings</p>
+          <div style="border-top:4px solid #e03131; background:#fff; padding:18px 8px 10px; box-sizing:border-box;">
+            <div style="position:relative; width:100%; height:380px;">
+              <canvas id="rbChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dual-chart-grid -->
+
+      <!-- Footnotes -->
+      <p style="font-size:0.72rem; color:#94a3b8; margin-top:12px; line-height:1.8;">
+        Source: CPUC
+        <a href="https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/electric-costs/historical-electric-cost-data" target="_blank" style="color:var(--teal);">Historical Electric Cost Data</a>,
+        pursuant to SB 695. Projected = cumulative Distribution RRQ from pending CPUC applications.
+      </p>
+    </div>
+  </section>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- ── RETAIL RATES CHART ───────────────────────────────────────────────── -->
+  <script>
+  (function () {
+    const YEARS_R = ['2006','','2008','','2010','','2012','','2014','','2016','','2018','','2020','','2022','','2024'];
+    const RATES = {
+      pge:  [13.8,14.0,13.7,14.4,15.4,15.1,15.3,15.7,16.3,17.2,17.8,18.8,19.2,19.6,21.5,22.6,25.1,28.6,36.6],
+      sce:  [14.7,13.9,13.7,14.2,14.2,14.1,14.3,15.5,15.7,16.2,15.0,15.8,16.2,16.0,16.4,18.5,22.3,25.2,26.9],
+      sdge: [13.9,14.5,13.6,16.7,16.1,16.0,15.4,16.3,18.1,20.9,20.4,21.8,24.0,23.7,24.1,24.0,31.1,38.5,31.5],
+    };
+    const C   = { pge:'#1d4ed8', sce:'#b45309', sdge:'#0d9488' };
+    const LBL = { pge:'PG&E',    sce:'SCE',      sdge:'SDG&E'   };
+
+    const datasets = ['pge','sce','sdge'].map(iou => ({
+      id: iou, iou,
+      label: LBL[iou],
+      data: RATES[iou].map((v,i) => ({x:i, y:v})),
+      borderColor: C[iou], backgroundColor:'transparent',
+      borderWidth: 2.5, pointRadius: 3, pointHoverRadius: 6,
+      tension: 0.32, type:'line', parsing:false,
+    }));
+
+    const rateChart = new Chart(document.getElementById('rateChart').getContext('2d'), {
+      type: 'line',
+      data: { datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        animation: { duration:700, easing:'easeOutQuart' },
+        interaction: { mode:'nearest', intersect:true },
+        layout: { padding: { right:12 } },
+        scales: {
+          x: {
+            type:'linear', min:0, max:18,
+            border: { display:false },
+            ticks: {
+              stepSize:1,
+              callback: v => YEARS_R[v] ?? '',
+              font:{ size:13, weight:'600', family:'Inter, sans-serif' },
+              color:'#1e293b', maxRotation:0, padding:6,
+            },
+            grid: { display:false },
+          },
+          y: {
+            border: { display:false },
+            ticks: {
+              callback: v => v + '¢',
+              font:{ size:13, weight:'600', family:'Inter, sans-serif' },
+              color:'#1e293b', padding:8, maxTicksLimit:7,
+            },
+            grid: { color:'#e2e8f0', lineWidth:1 },
+          },
+        },
+        plugins: {
+          legend: { display:false },
+          tooltip: {
+            backgroundColor:'#1e293b', titleColor:'#7dd3fc',
+            bodyColor:'#e2e8f0', padding:12, cornerRadius:6,
+            titleFont:{ size:13, weight:'700' }, bodyFont:{ size:12 },
+            callbacks: {
+              title: items => YEARS_R[Math.round(items[0].parsed.x)] || '',
+              label: item  => item.dataset.label + ': ' + item.parsed.y.toFixed(1) + '¢/kWh',
+            },
+          },
+        },
+      },
+    });
+
+    // expose for shared filter
+    window._rateChart = rateChart;
+  })();
+  </script>
+
+  <!-- ── RATE BASE CHART ──────────────────────────────────────────────────── -->
+  <script>
+  (function () {
+
+    // ── LABELS (x indices 0-17 = 2006-2023, 18-22 = projected periods) ────────
+    const XLABELS = ['2006','','2008','','2010','','2012','','2014','','2016','','2018','','2020','','2022','2023','2024','','','',''];
+
+    // ── CPUC Gen+Dist historical ($M) ─────────────────────────────────────────
+    const CPUC_TOT = {
+      pge:  [9321,10354,10354,10354,10354,14174,14174,14174,16823,17844,19325,18854,18854,19159,22219,23138,24333,24333],
+      sce:  [9113, 9758,10398,12194,13572,14250,14479,17638,18654,17552,18713,20176,20176,24206,26105,27982,29950,32021],
+      sdge: [2433, 2684, 2803, 2865, 3076, 3307, 3651, 3872, 4035, 3864, 3957, 4157, 4376, 4769, 5023, 5505, 6358, 7003],
+    };
+    // Distribution fraction (approx. from GRC testimony ratios)
+    const DF = { pge:0.68, sce:0.78, sdge:0.92 };
+    const DIST_HIST = {
+      pge:  CPUC_TOT.pge.map(v  => Math.round(v  * DF.pge)),
+      sce:  CPUC_TOT.sce.map(v  => Math.round(v  * DF.sce)),
+      sdge: CPUC_TOT.sdge.map(v => Math.round(v  * DF.sdge)),
+    };
+
+    // ── PROJECTED CPUC total ($M), index 17 = 2023 anchor ────────────────────
+    const PROJ_TOT = {
+      pge:  [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,24333,24363,26674,27804,29227,29227],
+      sce:  [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,32021,32397,33739,36792,36792,36792],
+      sdge: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, 7003, 7003, 7292, 8280, 8280, 8280],
+    };
+    // Projected Distribution = Dist_2023 + (total additions from proceedings)
+    // Additions are all Distribution proceedings, so Dist grows by the full RRQ delta
+    const BASE = { pge:24333, sce:32021, sdge:7003 }; // 2023 CPUC total
+    const PROJ_DIST = {
+      pge:  PROJ_TOT.pge.map(v  => v !== null ? Math.round(BASE.pge  * DF.pge  + (v  - BASE.pge))  : null),
+      sce:  PROJ_TOT.sce.map(v  => v !== null ? Math.round(BASE.sce  * DF.sce  + (v  - BASE.sce))  : null),
+      sdge: PROJ_TOT.sdge.map(v => v !== null ? Math.round(BASE.sdge * DF.sdge + (v  - BASE.sdge)) : null),
+    };
+
+    // ── PROCEEDINGS ───────────────────────────────────────────────────────────
+    const PROCS = [
+      {iou:'pge', docket:'A.24-06-008', desc:'Plainfield Substation Upgrade',            rrq:   30.82, pi:18},
+      {iou:'pge', docket:'A.24-03-011', desc:'Gas AMI Replacement',                       rrq:  557.82, pi:19},
+      {iou:'pge', docket:'A.24-07-020', desc:'Peak Day Supply Standard',                  rrq:  138.00, pi:19},
+      {iou:'pge', docket:'A.24-10-014', desc:'Billing Modernization Initiative',           rrq:  769.35, pi:20},
+      {iou:'pge', docket:'A.24-11-005', desc:'Moraga-Oakland 115kV Rebuild',              rrq:  318.32, pi:19},
+      {iou:'pge', docket:'A.24-11-009', desc:'Wildfire/Catastrophic Events Recovery',     rrq:  412.00, pi:19},
+      {iou:'pge', docket:'A.25-03-010', desc:'Cost of Capital 2026',                      rrq:  481.00, pi:19},
+      {iou:'pge', docket:'A.25-04-004', desc:'Hinkley Compressor Station',                rrq:  107.00, pi:19},
+      {iou:'pge', docket:'A.25-03-015', desc:'Diablo Canyon Extended Operation',          rrq:  296.00, pi:19},
+      {iou:'pge', docket:'A.25-05-009', desc:'2027 GRC (8% rate increase)',               rrq: 1423.00, pi:21},
+      {iou:'pge', docket:'A.25-11-001', desc:'Kincade & Dixie Fire Recovery',             rrq:  361.10, pi:20},
+      {iou:'sce', docket:'A.24-04-005', desc:'Wildfire Mitigation & Vegetation',          rrq:  326.34, pi:18},
+      {iou:'sce', docket:'A.24-08-003', desc:'GO Building #5 Sale (after-tax loss)',      rrq:   45.00, pi:18},
+      {iou:'sce', docket:'A.24-10-002', desc:'Woolsey Fire Recovery',                     rrq: 1300.00, pi:19},
+      {iou:'sce', docket:'A.25-03-009', desc:'NextGen ERP SAP S/4HANA',                  rrq: 1213.25, pi:20},
+      {iou:'sce', docket:'A.25-04-001', desc:'ERRA 2024 Compliance',                      rrq:    4.49, pi:18},
+      {iou:'sce', docket:'A.26-01-007', desc:'Woolsey Fire Bond Securitization',          rrq: 1840.00, pi:20},
+      {iou:'sce', docket:'A.25-12-002', desc:'2022 Wildfire Mitigation Capital',          rrq:   41.79, pi:19},
+      {iou:'sdge',docket:'A.25-09-014', desc:'Cost Allocation / Gas Rate Revision 2027', rrq:   19.55, pi:20},
+      {iou:'sdge',docket:'A.25-06-002', desc:'ERRA/Procurement Compliance 2024',         rrq:    7.60, pi:19},
+      {iou:'sdge',docket:'A.25-05-012', desc:'2026 Electric Procurement RR',             rrq:  170.43, pi:19},
+      {iou:'sdge',docket:'A.25-03-013', desc:'Cost of Capital 2026',                     rrq:  111.02, pi:19},
+      {iou:'sdge',docket:'A.25-12-012', desc:'Smart Meter 2.0',                           rrq:  948.75, pi:20},
+      {iou:'sdge',docket:'A.25-12-009', desc:'Palomar Decarbonization Demo',              rrq:   20.01, pi:20},
+    ];
+
+    // ── COLORS / LABELS ───────────────────────────────────────────────────────
+    const C   = { pge:'#1d4ed8', sce:'#b45309', sdge:'#0d9488' };
+    const LBL = { pge:'PG&E',    sce:'SCE',      sdge:'SDG&E'   };
+
+    // ── STAGGERED SCATTER x-POSITIONS ─────────────────────────────────────────
+    function hashOff(str) {
+      let h = 0;
+      for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
+      return ((h & 0xffff) / 0xffff - 0.5) * 0.76;
+    }
+    function makeScatter(iou) {
+      const base23 = BASE[iou], df = DF[iou];
+      return PROCS.filter(p => p.iou === iou).map(p => ({
+        x: p.pi + hashOff(p.docket),
+        y: (base23 * df + (PROJ_TOT[iou][p.pi] - base23)) / 1000,
+        proc: p,
+      }));
+    }
+
+    // ── DATASETS ──────────────────────────────────────────────────────────────
+    const datasets = [];
+    ['pge','sce','sdge'].forEach(iou => {
+      const c = C[iou], name = LBL[iou];
+
+      // Historical Distribution line
+      datasets.push({
+        id:`${iou}_hist`, iou, label:`${name} Distribution`,
+        data: DIST_HIST[iou].map((v,i) => ({x:i, y:v/1000})),
+        borderColor:c, backgroundColor:'transparent',
+        borderWidth:2.5, pointRadius:3, pointHoverRadius:6,
+        tension:0.32, type:'line', parsing:false, order:2,
+      });
+
+      // Projected Distribution line (dashed)
+      datasets.push({
+        id:`${iou}_proj`, iou, label:`${name} Projected`,
+        data: PROJ_DIST[iou].map((v,i) => v !== null ? {x:i, y:v/1000} : null).filter(Boolean),
+        borderColor:c, backgroundColor:'transparent',
+        borderWidth:2, borderDash:[7,4], pointRadius:0,
+        tension:0.3, type:'line', parsing:false, order:2,
+      });
+
+      // Proceeding scatter bubbles
+      datasets.push({
+        id:`${iou}_scatter`, iou, label:`${name} Proceedings`,
+        data: makeScatter(iou),
+        type:'scatter', parsing:false, order:1,
+        backgroundColor:c + 'bb', borderColor:c, borderWidth:1.5,
+        pointStyle:'circle',
+        pointRadius:     ctx => { const d = ctx.dataset.data[ctx.dataIndex]; return d ? Math.max(4, Math.sqrt(d.proc.rrq)*0.28) : 0; },
+        pointHoverRadius:ctx => { const d = ctx.dataset.data[ctx.dataIndex]; return d ? Math.max(6, Math.sqrt(d.proc.rrq)*0.36) : 0; },
+      });
+    });
+
+    // ── CHART ─────────────────────────────────────────────────────────────────
+    const ctx = document.getElementById('rbChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 700, easing: 'easeOutQuart' },
+        interaction: { mode: 'nearest', intersect: true },
+        layout: { padding: { right: 12 } },
+        scales: {
+          x: {
+            type: 'linear', min: 0, max: 22,
+            border: { display: false },
+            ticks: {
+              stepSize: 1,
+              callback: v => XLABELS[v] ?? '',
+              font: { size: 13, weight: '600', family: 'Inter, sans-serif' },
+              color: '#1e293b',
+              maxRotation: 0,
+              padding: 6,
+            },
+            grid: { display: false },
+          },
+          y: {
+            position: 'left',
+            border: { display: false, dash: [4,4] },
+            ticks: {
+              callback: v => '$' + v.toFixed(0) + 'B',
+              font: { size: 13, weight: '600', family: 'Inter, sans-serif' },
+              color: '#1e293b',
+              padding: 8,
+              maxTicksLimit: 7,
+            },
+            grid: { color: '#e2e8f0', lineWidth: 1 },
+          },
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1e293b',
+            titleColor: '#7dd3fc',
+            bodyColor: '#e2e8f0',
+            padding: 12,
+            cornerRadius: 6,
+            titleFont: { size: 13, weight: '700' },
+            bodyFont: { size: 12 },
+            callbacks: {
+              title(items) {
+                const ds = chart.data.datasets[items[0].datasetIndex];
+                if (ds.id.endsWith('_scatter')) return ds.data[items[0].dataIndex]?.proc?.docket ?? '';
+                const xi = Math.round(items[0].parsed.x);
+                return XLABELS[xi] || ('~' + (2024 + (xi - 18)));
+              },
+              label(item) {
+                const ds = chart.data.datasets[item.datasetIndex];
+                if (ds.id.endsWith('_scatter')) {
+                  const p = ds.data[item.dataIndex]?.proc;
+                  return p ? [p.desc, 'RRQ: $' + p.rrq.toLocaleString() + 'M'] : '';
+                }
+                return ds.label + ': $' + item.parsed.y.toFixed(2) + 'B';
+              },
+            },
+          },
+        },
+      },
+    });
+
+    // ── IOU FILTER — drives both charts ──────────────────────────────────────
+    let activeIou = 'all';
+    function updateVis() {
+      const hide = ds => activeIou !== 'all' && ds.iou !== activeIou;
+      chart.data.datasets.forEach(ds => { ds.hidden = hide(ds); });
+      chart.update();
+      if (window._rateChart) {
+        window._rateChart.data.datasets.forEach(ds => { ds.hidden = hide(ds); });
+        window._rateChart.update();
+      }
+    }
+    window.rbSetIou = function (btn, iou) {
+      document.querySelectorAll('#rbIouFilters .cr-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeIou = iou;
+      updateVis();
+    };
+
+  })();
+  </script>
+
+  <hr class="section-divider">
+  <!-- ── APPLICATIONS FILED ────────────────────────────────── -->
+  <section class="section section-alt" id="applications">
+    <div class="container">
+      <h2>Applications Filed</h2>
+      <div class="divider"></div>
+      <div class="cr-filters">
+        <button class="cr-pill active" onclick="filterSection(this,'all','apps-grid')">All IOUs</button>
+        <button class="cr-pill" onclick="filterSection(this,'pge','apps-grid')">PG&amp;E</button>
+        <button class="cr-pill" onclick="filterSection(this,'sce','apps-grid')">SCE</button>
+        <button class="cr-pill" onclick="filterSection(this,'sdge_scg','apps-grid')">SDG&amp;E · SoCalGas</button>
+        <button class="cr-pill" onclick="filterSection(this,'swg','apps-grid')">Southwest Gas</button>
+        <button class="cr-pill" onclick="filterSection(this,'others','apps-grid')" style="border-color:#94a3b8; color:#64748b;">Others</button>
+      </div>
+      <div class="proc-grid" id="apps-grid">
+
+        <div class="calreg-loading" style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-style:italic;">Loading proceedings…</div>
+        <div class="filter-empty" id="apps-empty">No matches for selected IOU.</div>
+      </div><!-- /proc-grid -->
+    </div>
+  </section>
+
+  <hr class="section-divider">
+  <!-- ── PROPOSED DECISIONS & RULINGS ─── -->
+  <section class="section section-alt" id="proposed-decisions">
+    <div class="container">
+      <h2>Proposed Decisions &amp; Rulings</h2>
+      <div class="divider"></div>
+      <div class="cr-filters">
+        <button class="cr-pill active" onclick="filterSection(this,'all','pd-cards')">All IOUs</button>
+        <button class="cr-pill" onclick="filterSection(this,'pge','pd-cards')">PG&amp;E</button>
+        <button class="cr-pill" onclick="filterSection(this,'sce','pd-cards')">SCE</button>
+        <button class="cr-pill" onclick="filterSection(this,'sdge_scg','pd-cards')">SDG&amp;E · SoCalGas</button>
+        <button class="cr-pill" onclick="filterSection(this,'swg','pd-cards')">Southwest Gas</button>
+        <button class="cr-pill" onclick="filterSection(this,'others','pd-cards')" style="border-color:#94a3b8; color:#64748b;">Others</button>
+      </div>
+      <div class="proc-grid" id="pd-cards" style="align-items:start;">
+
+        <div class="calreg-loading" style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-style:italic;">Loading proceedings…</div>
+        <div class="filter-empty" id="pd-empty">No matches for selected IOU.</div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+  <!-- ── POLICY SPOTLIGHT ──────────────────────────────────── -->
+  <section class="section" id="policy-spotlight">
+    <div class="container">
+      <div class="label">Policy Spotlight</div>
+      <h2>Ongoing Proceedings &amp; Upcoming</h2>
+      <div class="divider"></div>
+      <div class="proc-grid">
+
+        <!-- D.20-04-004 — Mobile Home Park Program -->
+        <div class="proc-card" data-util="pge sce sdge scg swg">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">D.20-04-004</span>
+            <span class="proc-card-date">Program Update Feb 24, 2026</span>
+            <span class="status-badge s-aligned" style="margin-left:auto;">Program Update</span>
+          </div>
+          <h3>Mobile Home Park Utility Upgrade Program — Progress Report</h3>
+          <p>As of Oct 2025: 44,673 electric and 51,643 gas spaces converted since 2015. $1.57 billion invested. 1,525 parks on 2025 priority list (~168,400 home spaces). All five IOUs participating. Target: 50% of all mobile home spaces converted by end of 2030.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/modernizing-safety-and-service---advancing-utility-infrastructure-in-mobile-home-park-communities" target="_blank" class="sec">CPUC Release</a>
+          </div>
+        </div>
+
+        <!-- Mar 19 Voting Meeting Preview -->
+        <div class="proc-card" data-util="pge sce sdge scg">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">Mar 19 Agenda Preview</span>
+            <span class="proc-card-date">Voting Meeting Mar 19, 2026</span>
+            <span class="status-badge s-ongoing" style="margin-left:auto;">Upcoming</span>
+          </div>
+          <h3>March 19 Voting Meeting — Key Items on Deck</h3>
+          <p>Anticipated items: SCE Alberhill Transmission CPCN (A.09-09-022) · LS Power San Jose Data Center CPCNs ($1.6B and $813M) · California Climate Credit pause (R.25-07-013) · DG Statistics Platform funding (Res. E-5436, deferred from Feb 26) · PG&amp;E RAMP closure · ICA Remediation compliance.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings" target="_blank" class="sec">2026 Meeting Schedule</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="source-bar">
+        <span>Sources:</span>
+        <a href="https://www.cpuc.ca.gov/news-and-updates/all-news" target="_blank">CPUC News</a> ·
+        <a href="https://apps.cpuc.ca.gov" target="_blank">CPUC Docket Search</a> ·
+        <a href="https://docs.cpuc.ca.gov" target="_blank">Document Portal</a> ·
+        <a href="https://www.calregulatory.com" target="_blank">CalRegulatory</a> ·
+        <a href="https://www.utilitydive.com" target="_blank">Utility Dive</a>
+        <span style="margin-left:auto;">Updated Mar 12, 2026</span>
+      </div>
+
+      <!--
+        WEEKLY UPDATE GUIDE — run /update-calreg for step-by-step
+        ─────────────────────────────────────────────────────────
+        SECTIONS:
+          1. Applications Filed (#applications)  — A. format, energy/electric only
+          2. Proceedings (#proceedings)          — R. and I. format only, final decisions
+          3. Proposed Decisions (#proposed-decisions) — PDs and rulings, week of Mar 2–6
+          4. Policy Spotlight (#policy-spotlight) — ongoing and upcoming
+        ─────────────────────────────────────────────────────────
+        data-util values: pge / sce / sdge / scg / swg / others
+        - Single-utility proceedings: tag with that utility only
+        - Multi-utility (IRP, RNG, Climate Credit): tag all relevant utilities
+        - Non-IOU filers (PacifiCorp, Crimson, CCA, etc.): use "others"
+        ─────────────────────────────────────────────────────────
+        EXCLUSIONS:
+        - Intervenor compensation proceedings: DO NOT include
+        - Water proceedings (Keene, Havasu, etc.): DO NOT include
+        - Telecom proceedings: DO NOT include
+        - Resolutions (Res. E-xxxx): include only if they are significant
+        - Duplicate dockets: each docket number appears exactly once
+      -->
+    </div>
+  </section>
+
+  <script>
+// ── Supabase CalReg loader ───────────────────────────────────────────────────
+const _supa = supabase.createClient(
+  'https://hivsflsevksddjuhijwu.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpdnNmbHNldmtzZGRqdWhpand1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NjMxNTIsImV4cCI6MjA4OTQzOTE1Mn0.3uEqHtX0gb7uz3fAecK-2T6zVRQr7VPLhOOOIMo6qdc'
+);
+
+const CURRENT_PERIOD_APPS = 'Mar 2 \u2013 Mar 13, 2026';
+const CURRENT_PERIOD_PDS  = 'Mar 2 \u2013 Mar 13, 2026';
+
+document.addEventListener('DOMContentLoaded', async function () {
+  try {
+    const { data, error } = await _supa
+      .from('proceedings')
+      .select('*')
+      .order('period_sort', { ascending: true })
+      .order('date_label',  { ascending: false });
+    if (error) throw error;
+
+    const apps = data.filter(p => p.section_type === 'application');
+    const pds  = data.filter(p => p.section_type === 'proposed_decision');
+
+    _renderSection(apps, 'apps-grid', true,  CURRENT_PERIOD_APPS);
+    _renderSection(pds,  'pd-cards',  false, CURRENT_PERIOD_PDS);
+
+    // Apply default All-IOUs filter
+    ['apps-grid','pd-cards'].forEach(function(cid) {
+      var btn = document.querySelector('.cr-filters button[onclick*="' + cid + '"][onclick*="\'all\'"]');
+      if (btn && typeof filterSection === 'function') filterSection(btn, 'all', cid);
+    });
+  } catch (e) {
+    console.error('CalReg Supabase load error:', e);
+    ['apps-grid','pd-cards'].forEach(function(cid) {
+      var el = document.getElementById(cid);
+      if (el) {
+        var loading = el.querySelector('.calreg-loading');
+        if (loading) loading.textContent = 'Failed to load proceedings. Please refresh.';
+      }
+    });
+  }
+});
+
+function _renderSection(proceedings, containerId, isApps, currentPeriodLabel) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Remove loading indicator
+  var loading = container.querySelector('.calreg-loading');
+  if (loading) loading.remove();
+
+  // Group by period_sort
+  var groups = {};
+  proceedings.forEach(function(p) {
+    var k = p.period_sort;
+    if (!groups[k]) groups[k] = { label: p.period_label, type: p.period_type, id: p.period_id, items: [] };
+    groups[k].items.push(p);
+  });
+
+  // Always render current period header (sort=1), even if 0 items
+  var hasCurrent = !!groups[1];
+  var currentItems = hasCurrent ? groups[1].items : [];
+  var currentLabel = hasCurrent ? groups[1].label : currentPeriodLabel;
+  var noun = isApps ? 'filing' : 'item';
+
+  var hdr = document.createElement('div');
+  hdr.className = 'period-hdr current';
+  hdr.style.gridColumn = '1/-1';
+  hdr.innerHTML =
+    '<div class="period-hdr-left">' +
+      '<div class="period-hdr-eyebrow">Current Period</div>' +
+      '<div class="period-hdr-date">' + currentLabel + '</div>' +
+    '</div>' +
+    '<div class="period-hdr-right">' +
+      (currentItems.length === 0 ? 'No new ' + (isApps ? 'filings' : 'items') + ' this period'
+        : currentItems.length + ' ' + noun + (currentItems.length !== 1 ? 's' : '')) +
+    '</div>';
+
+  // Insert current header before filter-empty div
+  var emptyDiv = container.querySelector('.filter-empty');
+  container.insertBefore(hdr, emptyDiv);
+  currentItems.forEach(function(p) { container.insertBefore(_renderCard(p), emptyDiv); });
+
+  // Render older/prior periods (sort >= 2)
+  var sortKeys = Object.keys(groups).map(Number).filter(function(k){ return k >= 2; }).sort(function(a,b){return a-b;});
+  sortKeys.forEach(function(k) {
+    var g = groups[k];
+    var count = g.items.length;
+    var pid = g.id || ('period-' + containerId + '-' + k);
+    var eyebrow = g.type === 'prior' ? 'Prior Period' : 'Older Period';
+
+    var phdr = document.createElement('div');
+    phdr.className = 'period-hdr prior-toggle';
+    phdr.style.gridColumn = '1/-1';
+    phdr.id = 'toggle-' + pid;
+    phdr.setAttribute('onclick', "togglePeriod('" + pid + "')");
+    phdr.innerHTML =
+      '<div class="period-hdr-left">' +
+        '<div class="period-hdr-eyebrow">' + eyebrow + '</div>' +
+        '<div class="period-hdr-date">' + g.label + '</div>' +
+      '</div>' +
+      '<div class="period-hdr-right">' +
+        '<span class="period-count">' + count + ' ' + noun + (count !== 1 ? 's' : '') + '</span>' +
+        '<span class="period-hdr-arr" id="parr-' + pid + '">&#9658;</span>' +
+      '</div>';
+    container.insertBefore(phdr, emptyDiv);
+
+    var collapse = document.createElement('div');
+    collapse.id = pid;
+    collapse.className = 'collapsible-period';
+    collapse.style.cssText = 'display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:20px;align-items:start;';
+    g.items.forEach(function(p) { collapse.appendChild(_renderCard(p)); });
+    container.insertBefore(collapse, emptyDiv);
+  });
+}
+
+function _renderCard(p) {
+  var card = document.createElement('div');
+  card.className = 'proc-card';
+  if (p.anchor_id) card.id = p.anchor_id;
+  card.dataset.util = (p.utilities || []).join(' ');
+
+  var voteNote = p.vote_note
+    ? '<span class="vote-note">' + _esc(p.vote_note) + '</span>' : '';
+  var meta =
+    '<div class="proc-card-meta">' +
+      '<span class="proc-card-docket">' + _esc(p.docket) + '</span>' +
+      '<span class="proc-card-date">'   + _esc(p.date_label) + '</span>' +
+      '<span class="status-badge ' + _esc(p.status_class) + '" style="margin-left:auto;">' + _esc(p.status_text) + '</span>' +
+      voteNote +
+    '</div>';
+
+  var links = '';
+  if (p.primary_link_url) {
+    links += '<a href="' + _esc(p.primary_link_url) + '" target="_blank">' + _esc(p.primary_link_text || 'View') + '</a>';
+  }
+  if (p.docket_card_url) {
+    links += '<a href="' + _esc(p.docket_card_url) + '" target="_blank" class="sec">Docket Card</a>';
+  }
+
+  var aiBox = '';
+  if (p.ai_details_html) {
+    aiBox =
+      '<div class="ai-box">' +
+        '<div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>' +
+        '<div class="ai-body">' + p.ai_details_html + '</div>' +
+      '</div>';
+  }
+
+  card.innerHTML =
+    meta +
+    '<h3>' + _esc(p.title) + '</h3>' +
+    '<p>'  + _esc(p.summary) + '</p>' +
+    '<div class="proc-card-links">' + links + '</div>' +
+    aiBox;
+
+  return card;
+}
+
+function _esc(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+</script>
+  <script src="js/main.js"></script>
+  <script>
+    function toggleAI(hdr) {
+      const body = hdr.nextElementSibling;
+      const arr  = hdr.querySelector('.ai-arr');
+      const open = body.style.display === 'block';
+      body.style.display = open ? 'none' : 'block';
+      arr.style.transform = open ? 'rotate(0)' : 'rotate(90deg)';
+    }
+
+    const IOU_TAGS = ['pge','sce','sdge','scg','swg'];
+    const _curFilter = {};   // { containerId → util }
+
+    function _matchUtil(tags, util) {
+      if (util === 'all')      return IOU_TAGS.some(t => tags.includes(t));
+      if (util === 'others')   return tags.includes('others');
+      if (util === 'sdge_scg') return tags.includes('sdge') || tags.includes('scg');
+      return tags.includes(util);
+    }
+
+    function _applyCards(container, util) {
+      container.querySelectorAll('.proc-card').forEach(card => {
+        const tags = (card.dataset.util || '').split(' ');
+        card.style.display = _matchUtil(tags, util) ? '' : 'none';
+      });
+    }
+
+    function _updateCounts(container) {
+      container.querySelectorAll('.period-hdr.prior-toggle').forEach(hdr => {
+        const m = (hdr.getAttribute('onclick') || '').match(/togglePeriod\('([^']+)'\)/);
+        if (!m) return;
+        const sec = document.getElementById(m[1]);
+        if (!sec) return;
+        const countEl = hdr.querySelector('.period-count');
+        if (!countEl) return;
+        const visible = [...sec.querySelectorAll('.proc-card')].filter(c => c.style.display !== 'none').length;
+        const isApps = m[1].startsWith('apps');
+        const noun = isApps ? 'filing' : 'item';
+        countEl.textContent = visible === 0 ? 'No matches' : `${visible} ${noun}${visible !== 1 ? 's' : ''}`;
+      });
+    }
+
+    function togglePeriod(id) {
+      const el  = document.getElementById(id);
+      const arr = document.getElementById('parr-' + id);
+      const open = el.style.display !== 'none';
+      el.style.display = open ? 'none' : 'grid';
+      if (arr) arr.classList.toggle('open', !open);
+      // Re-apply active filter to newly-opened section
+      if (!open) {
+        const containerId = Object.keys(_curFilter).find(cid => {
+          const c = document.getElementById(cid);
+          return c && c.contains(el);
+        });
+        if (containerId) {
+          el.querySelectorAll('.proc-card').forEach(card => {
+            const tags = (card.dataset.util || '').split(' ');
+            card.style.display = _matchUtil(tags, _curFilter[containerId]) ? '' : 'none';
+          });
+        }
+      }
+    }
+    function toggleWeek(id) { togglePeriod(id); }
+
+    function filterSection(btn, util, containerId) {
+      _curFilter[containerId] = util;
+      btn.closest('.cr-filters').querySelectorAll('.cr-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      // Expand all collapsible periods so filter reaches all cards
+      container.querySelectorAll('.collapsible-period').forEach(w => {
+        w.style.display = 'grid';
+        const a = document.getElementById('parr-' + w.id);
+        if (a) a.classList.add('open');
+      });
+
+      _applyCards(container, util);
+      _updateCounts(container);
+
+      // Empty state
+      const emptyMap = { 'apps-grid': 'apps-empty', 'proceedings-cards': 'proceedings-empty', 'pd-cards': 'pd-empty' };
+      const emptyEl = document.getElementById(emptyMap[containerId]) || container.querySelector('.filter-empty');
+      if (emptyEl) {
+        const visible = [...container.querySelectorAll('.proc-card')].filter(c => c.style.display !== 'none').length;
+        emptyEl.style.display = visible === 0 ? 'block' : 'none';
+        if (visible === 0) emptyEl.textContent = `No ${btn.textContent.trim()} data for this period.`;
+      }
+    }
+
+    // Apply "All IOUs" filter on load so only IOU-tagged cards show by default
+    document.addEventListener('DOMContentLoaded', function() {
+      ['apps-grid', 'pd-cards'].forEach(function(containerId) {
+        var btn = document.querySelector('.cr-filters button[onclick*="' + containerId + '"][onclick*="\'all\'"]');
+        if (btn) filterSection(btn, 'all', containerId);
+      });
+    });
+  </script>
+</body>
+</html>

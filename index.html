@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jones-Awan Consulting, LLC — Energy & Climate Policy</title>
+  <meta name="description" content="Energy and climate policy consulting. Expert witness, regulatory analysis, and quantitative modeling for California's energy transition.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Logo block ── */
+    .hero-brand {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+    }
+    .logo-mark {
+      width: 50px; height: 50px; background: #fff; border-radius: 10px;
+      border: 1.5px solid rgba(93,200,192,0.5);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(93,200,192,0.18);
+    }
+    .logo-text-block { line-height: 1; }
+    .logo-name {
+      font-family: 'Raleway', 'Inter', sans-serif;
+      font-size: 1.45rem; font-weight: 800; color: var(--white); letter-spacing: -0.01em;
+    }
+    .logo-name span { color: var(--teal); }
+    .logo-sub {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(255,255,255,0.38); margin-top: 4px;
+    }
+
+    /* ── Principal badge ── */
+    .principal-badge {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 22px; flex-wrap: wrap;
+    }
+    .principal-badge img {
+      width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal);
+    }
+    .principal-info { line-height: 1.3; }
+    .principal-name { font-size: 0.95rem; font-weight: 700; color: var(--white); }
+    .principal-title { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .principal-tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--teal); background: rgba(93,200,192,0.15); border: 1px solid rgba(93,200,192,0.3);
+      border-radius: 20px; padding: 3px 10px; white-space: nowrap;
+    }
+
+    /* ── Service cards — dark header + white body ── */
+    .service-row {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+    }
+    .svc {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+      text-decoration: none; color: inherit;
+    }
+    .svc:hover { box-shadow: 0 14px 44px rgba(0,0,0,0.10); transform: translateY(-3px); }
+    .svc-top {
+      background: #0f172a; padding: 26px 24px 22px;
+      border-bottom: 3px solid var(--teal); position: relative;
+    }
+    .svc-icon { font-size: 2rem; display: block; margin-bottom: 14px; line-height: 1; }
+    .svc h3 {
+      font-size: 1.05rem; font-weight: 800; color: #fff;
+      letter-spacing: -0.01em; line-height: 1.35; min-height: 1.4em;
+    }
+    .svc-body { padding: 20px 24px; flex: 1; }
+    .svc-body p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.68; margin: 0; }
+
+    /* Typewriter cursor inside headings */
+    @keyframes twblink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .tw-cur {
+      display: inline-block; width: 2px; height: 0.9em; background: var(--teal);
+      vertical-align: middle; margin-left: 2px; animation: twblink 0.9s step-end infinite;
+      border-radius: 1px;
+    }
+
+    /* ── Toolkit grid ── */
+    .toolkit-cols {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px;
+    }
+    .tk-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .tk-card-title {
+      font-size: 0.8rem; font-weight: 700; color: var(--text-dark);
+      margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .tk-dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tk-card-items {
+      font-size: 0.76rem; color: var(--text-light); line-height: 1.6;
+    }
+
+    /* ── Section eyebrow ── */
+    .section-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+    }
+
+    @media(max-width:768px){
+      .service-row { grid-template-columns: 1fr; }
+      .toolkit-cols { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:480px){
+      .toolkit-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container-center">
+      <div class="hero-content">
+
+        <div class="hero-brand">
+          <div class="logo-mark">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <polygon points="15,3 25,8.5 25,21.5 15,27 5,21.5 5,8.5"
+                stroke="#5DC8C0" stroke-width="1.6" fill="rgba(93,200,192,0.07)" stroke-linejoin="round"/>
+              <path d="M17 7.5l-5 9h5.5l-5 6" stroke="#5DC8C0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="logo-text-block">
+            <div class="logo-name">Jones-<span>Awan</span></div>
+            <div class="logo-sub">Consulting, LLC</div>
+          </div>
+        </div>
+
+        <div class="principal-badge">
+          <img src="images/jalal-awan.jpeg" alt="Jalal Awan">
+          <div class="principal-info">
+            <div class="principal-name">Jalal Awan, Ph.D.</div>
+            <div class="principal-title">Principal / Founder</div>
+          </div>
+        </div>
+        <div class="principal-tag" style="position:absolute; right:0; top:8px;">Energy · Climate · Regulation</div>
+
+        <h1 id="hero-h1" style="opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;">Expert Analysis,<br><span id="hero-h1-span" style="display:inline-block;"></span></h1>
+        <p id="hero-sub" style="opacity:0; transform:translateY(12px); transition:opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;">CPUC expert witness &amp; policy researcher. $780M+ in ratepayer protections secured.</p>
+
+        <div class="hero-btns" style="margin-top:28px;">
+          <a href="#cpuc-proceedings" class="btn btn-primary">View My Work</a>
+          <a href="mailto:jalalawan@gmail.com" class="btn btn-outline">Get in Touch</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num" data-target="780" data-prefix="$" data-suffix="M+" data-step="100">$0M+</div>
+            <div class="hero-stat-label">ratepayer savings</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" data-target="20" data-suffix="+">0+</div>
+            <div class="hero-stat-label">publications</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" data-target="10" data-suffix="+">0+</div>
+            <div class="hero-stat-label">CPUC proceedings</div>
+          </div>
+          <div>
+            <div class="hero-stat-num" data-target="15" data-suffix=" yrs">0 yrs</div>
+            <div class="hero-stat-label">experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────────────────────── -->
+  <section class="section" id="services">
+    <div class="container">
+      <p class="section-eyebrow">Services</p>
+      <h2>What We Do</h2>
+      <div class="divider"></div>
+
+      <div class="service-row mt-md">
+
+        <a href="#cpuc-proceedings" class="svc">
+          <div class="svc-top">
+            <span class="svc-icon">⚖️</span>
+            <h3 id="svc-h0"></h3>
+          </div>
+          <div class="svc-body">
+            <p>GRCs, RAMP Applications, Cost Allocation &amp; CoC Proceedings, and long-term gas planning. $780M+ in measurable ratepayer outcomes across eleven CPUC proceedings.</p>
+          </div>
+        </a>
+
+        <a href="#rand-publications" class="svc">
+          <div class="svc-top">
+            <span class="svc-icon">📊</span>
+            <h3 id="svc-h1"></h3>
+          </div>
+          <div class="svc-body">
+            <p>Regression modeling, benefit-cost assessments, and probabilistic risk analysis for energy, infrastructure, and public health policy.</p>
+          </div>
+        </a>
+
+        <a href="calreg.html" class="svc">
+          <div class="svc-top">
+            <span class="svc-icon">⚡</span>
+            <h3 id="svc-h2"></h3>
+          </div>
+          <div class="svc-body">
+            <p>Purpose-built tools for regulatory document analysis and workflow automation — for analysts, attorneys, and decision makers.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOOLKIT ────────────────────────────────────────────── -->
+  <section class="section-sm section-alt">
+    <div class="container">
+      <p class="section-eyebrow">Technical Toolkit</p>
+      <h2>Tools &amp; Methods</h2>
+      <div class="toolkit-cols">
+        <div class="tk-card">
+          <div class="tk-card-title">
+            <span class="tk-dot" style="background:#3b82f6;"></span>Python
+          </div>
+          <div class="tk-card-items">pandas · numpy · statsmodels · langchain<br>scikit-learn · matplotlib · seaborn</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card-title">
+            <span class="tk-dot" style="background:#059669;"></span>R / RStudio
+          </div>
+          <div class="tk-card-items">tidyverse · ggplot2 · lme4<br>raster · terra · rvest</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card-title">
+            <span class="tk-dot" style="background:#d97706;"></span>Regulatory Databases
+          </div>
+          <div class="tk-card-items">CPUC E-Docket · PUDL · gridstatus.io<br>FERC eLibrary · EIA APIs</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card-title">
+            <span class="tk-dot" style="background:#7c3aed;"></span>Quantitative Methods
+          </div>
+          <div class="tk-card-items">Benefit-cost analysis · Risk modeling<br>Probabilistic forecasting · Regression</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card-title">
+            <span class="tk-dot" style="background:#dc2626;"></span>AI &amp; Automation
+          </div>
+          <div class="tk-card-items">LLM pipelines · Document QA<br>Workflow automation · Claude API</div>
+        </div>
+        <div class="tk-card">
+          <div class="tk-card-title">
+            <span class="tk-dot" style="background:#0891b2;"></span>Simulation &amp; Modeling
+          </div>
+          <div class="tk-card-items">Power system models · Scenario analysis<br>Regression-based load forecasting<br>Interruption Cost Estimation (ICE)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CPUC PROCEEDINGS ──────────────────────────────────── -->
+  <section class="section" id="cpuc-proceedings">
+    <div class="container">
+      <p class="section-eyebrow">CPUC Expert Witness</p>
+      <h2>Regulatory Proceedings</h2>
+      <div class="divider"></div>
+      <p style="margin-bottom:28px; max-width:680px;">Since November 2023, I have sponsored or co-sponsored testimony in the following California Public Utilities Commission proceedings on behalf of TURN and California ratepayers.</p>
+
+      <div style="overflow-x:auto;">
+        <table class="proc-table">
+          <thead>
+            <tr>
+              <th>Docket</th>
+              <th>Proceeding</th>
+              <th>Outcome / Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proc-docket">A.25-03-009</td>
+              <td><strong>Edison NextGen ERP — $1.3B Cloud Transformation</strong><br><small>Sponsored testimony recommending Performance Based Regulation for on-prem to cloud transition</small></td>
+              <td><span class="status-badge s-ongoing">Ongoing</span><br><small>PBR framework recommended</small></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://docs.cpuc.ca.gov/PublishedDocs/SupDoc/A2505009/8954/599152735.pdf" target="_blank" rel="noopener">A.24-10-014 ↗</a></td>
+              <td><strong>PG&E Updated Peak Day Supply Standard</strong><br><small>Sponsored testimony on multivariate regression modeling issues in gas demand forecasting</small></td>
+              <td><span class="status-badge s-settled">Settlement</span><br><small>4% gas demand reduction</small></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2407020" target="_blank" rel="noopener">A.24-07-020 ↗</a></td>
+              <td><strong>PG&E Gas Distribution Integrity (DIMP/RiskFinder)</strong><br><small>Quantitative risk framework analysis — methodology, risk valuation, mitigation cost-effectiveness</small></td>
+              <td><span class="status-badge s-ongoing">Ongoing</span></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008" target="_blank" rel="noopener">A.24-05-008 ↗</a></td>
+              <td><strong>PG&E 2024 RAMP Application</strong><br><small>Review of risk assessment methodology, safety/reliability attribute valuation, mitigation cost-effectiveness</small></td>
+              <td><span class="status-badge s-aligned">Aligned with SPD</span></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403011" target="_blank" rel="noopener">A.24-03-011 ↗</a></td>
+              <td><strong>PG&E Gas AMI Application — $761M Request</strong><br><small>Sponsored testimony against advanced metering infrastructure capital request</small></td>
+              <td><span class="status-badge s-settled">Settlement</span><br><small>$65M reduction adopted</small></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2305010" target="_blank" rel="noopener">A.23-05-010 ↗</a></td>
+              <td><strong>Southern California Edison's 2025 GRC Application</strong><br><small>Sponsored testimony on distribution infrastructure replacement capital request</small></td>
+              <td><span class="status-badge s-settled">Settled</span><br><small>$40M capital cost reduction in PD</small></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2208003" target="_blank" rel="noopener">A.22-08-003 ↗</a></td>
+              <td><strong>PG&E's CSUMB Electrification Application</strong><br><small>Benefit-cost assessment of campus electrification application</small></td>
+              <td><span class="status-badge s-withdrawn">Withdrawn</span><br><small>Application withdrawn by PG&amp;E</small></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2112009" target="_blank" rel="noopener">A.21-12-009 ↗</a></td>
+              <td><strong>SCE's Building Electrification Application — $677M Request</strong><br><small>Co-sponsored testimony challenging Edison's building electrification funding request</small></td>
+              <td><span class="status-badge s-denied">Denied</span><br><small>Decision denying full $677M request</small></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2409012" target="_blank" rel="noopener">R.24-09-012 ↗</a></td>
+              <td><strong>Long-Term Gas Planning OIR</strong><br><small>Active participation in rulemaking on California's gas distribution system future</small></td>
+              <td><span class="status-badge s-ongoing">Ongoing</span></td>
+            </tr>
+            <tr>
+              <td class="proc-docket"><a href="https://docs.cpuc.ca.gov/PublishedDocs/SupDoc/A2505009/8954/599152735.pdf" target="_blank" rel="noopener">A.25-05-009 ↗</a></td>
+              <td><strong>PG&E 2027 General Rate Case</strong><br><small>Active discovery and testimony preparation on behalf of TURN/CA ratepayers</small></td>
+              <td><span class="status-badge s-ongoing">Ongoing</span></td>
+            </tr>
+            <tr>
+              <td class="proc-docket">TBD</td>
+              <td><strong>Sempra Cost Allocation Proceeding</strong><br><small>Active participation on cost allocation methodology</small></td>
+              <td><span class="status-badge s-ongoing">Ongoing</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── RAND PUBLICATIONS ────────────────────────────────── -->
+  <section class="section" id="rand-publications">
+    <div class="container">
+      <p class="section-eyebrow">RAND Corporation · 2020–2025</p>
+      <h2>Selected Publications</h2>
+      <div class="divider"></div>
+      <div class="grid-2 mt-md">
+
+        <div class="card">
+          <small class="proc-docket">RAND · 2025</small>
+          <h3 style="margin-top:6px;">The Incident Management Measurement Tool (IMMT)</h3>
+          <p style="font-size:0.88rem;">Measurement tool and scoring framework for assessing public health incident management capabilities during and after emergency events.</p>
+          <a href="https://www.rand.org/pubs/authors/a/awan_jalal.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">J. Critical Infrastructure Policy · 2024</small>
+          <h3 style="margin-top:6px;">Evaluating Cryptographic Vulnerabilities Created by Quantum Computing in Industrial Control Systems</h3>
+          <p style="font-size:0.88rem;">Evaluated post-quantum cryptographic vulnerabilities in industrial control systems for the National Risk Management Center (DHS/NRMC).</p>
+          <a href="https://www.rand.org/pubs/external_publications/EP70733.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">RAND · 2024</small>
+          <h3 style="margin-top:6px;">Incident Management Measurement Toolkit</h3>
+          <p style="font-size:0.88rem;">Companion toolkit to the IMMT — operational instruments and scoring guides for measuring incident management performance in public health emergencies.</p>
+          <a href="https://www.rand.org/pubs/authors/a/awan_jalal.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">Health Security · 2024</small>
+          <h3 style="margin-top:6px;">Navigating Uncertainty in Public Health Decisionmaking: The Role of a Value of Information Framework in Threat Agnostic Biosurveillance</h3>
+          <p style="font-size:0.88rem;">Value-of-information framework for threat-agnostic biosurveillance, applied to pandemic preparedness decision contexts.</p>
+          <a href="https://www.rand.org/pubs/external_publications/EP70329.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">Nature · Scientific Reports · 2024</small>
+          <h3 style="margin-top:6px;">The Value of Environmental Surveillance for Pandemic Response</h3>
+          <p style="font-size:0.88rem;">Value-of-information framework quantifying the public health benefit of environmental surveillance systems for pandemic preparedness.</p>
+          <a href="https://www.rand.org/pubs/external_publications/EP70762.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">RAND · 2023</small>
+          <h3 style="margin-top:6px;">Evaluating Cryptographic Vulnerabilities Created by Quantum Computing in Industrial Control Systems</h3>
+          <p style="font-size:0.88rem;">RAND research report analyzing post-quantum cryptographic risks in industrial control systems and critical infrastructure protection frameworks.</p>
+          <a href="https://www.rand.org/pubs/external_publications/EP70733.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">Pardee RAND · 2023</small>
+          <h3 style="margin-top:6px;">Evaluating Performance of Socio-Technical Systems for Improved Reliability: Evidence from Sensor and Human Networks</h3>
+          <p style="font-size:0.88rem;">PhD dissertation — reliability evidence from sensor and human networks, with applications to air quality sensing and public health emergency management.</p>
+          <a href="https://www.rand.org/pubs/rgs_dissertations/RGSDA3127-1.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Dissertation ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">CDC / RAND · 2022</small>
+          <h3 style="margin-top:6px;">Conceptual Framework for Understanding Incident Management Systems During Public Health Emergencies</h3>
+          <p style="font-size:0.88rem;">Framework for understanding incident management systems during public health emergencies, with application to multi-jurisdiction response coordination.</p>
+          <a href="https://www.rand.org/pubs/external_publications/EP68935.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">RAND · 2021</small>
+          <h3 style="margin-top:6px;">Addressing Emerging Technology Adoption in Food Production through Digital Games</h3>
+          <p style="font-size:0.88rem;">Examines digital game-based approaches to accelerating technology adoption among food producers — applied behavioral economics in agricultural extension.</p>
+          <a href="https://www.rand.org/pubs/authors/a/awan_jalal.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+        <div class="card">
+          <small class="proc-docket">RAND · 2020</small>
+          <h3 style="margin-top:6px;">How to Analyze the Cyber Threat from Drones: Background, Analysis Frameworks, and Analysis Tools</h3>
+          <p style="font-size:0.88rem;">Background analysis and frameworks for evaluating unmanned aircraft system (UAS) cyber threats — analytical tools for practitioners and policymakers.</p>
+          <a href="https://www.rand.org/pubs/authors/a/awan_jalal.html" target="_blank" class="btn btn-outline" style="margin-top:12px; padding:5px 14px; font-size:0.8rem; display:inline-flex;">View Publication ↗</a>
+        </div>
+
+      </div>
+      <div style="margin-top:28px; text-align:center;">
+        <a href="https://www.rand.org/pubs/authors/a/awan_jalal.html" target="_blank" class="btn btn-outline" style="padding:8px 24px; font-size:0.85rem;">View All Publications on RAND.org ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PUBLIC WRITING ────────────────────────────────────── -->
+  <section class="section section-alt" id="publications">
+    <div class="container">
+      <p class="section-eyebrow">Op-Eds &amp; Commentary</p>
+      <h2>Public Writing</h2>
+      <div class="divider"></div>
+
+      <div class="pub-item">
+        <div class="pub-title">California Should Help Neighborhoods 'Decarbonize,' Leave Natural Gas</div>
+        <div class="pub-meta"><span class="pub-journal">CalMatters</span> · March 3, 2026</div>
+        <p style="font-size:0.88rem; margin-bottom:10px;">Argues that SB 1221's neighborhood decarbonization pilot program risks perpetuating energy inequity unless the CPUC adopts transparent, community-driven zone selection that prioritizes high-burden communities over well-resourced coastal neighborhoods.</p>
+        <a href="https://calmatters.org/commentary/2026/03/decarbonize-neighborhoods-natural-gas-california/" target="_blank" class="btn btn-outline" style="margin-top:4px; padding:6px 16px; font-size:0.82rem; display:inline-flex;">Read Op-Ed ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-title">How We Might Better Live With Oil in California</div>
+        <div class="pub-meta">Awan, J. &amp; Clark-Ginsberg, A. · <span class="pub-journal">CalMatters</span> · March 31, 2022</div>
+        <p style="font-size:0.88rem; margin-bottom:10px;">Co-authored with RAND colleague Aaron Clark-Ginsberg. Examines California's "petro-state" contradiction and proposes community-inclusive governance reforms for oil and gas operations, citing disproportionate health impacts on Hispanic and Black communities near wells.</p>
+        <a href="https://calmatters.org/commentary/2022/03/how-we-might-better-live-with-oil-in-california/" target="_blank" class="btn btn-outline" style="margin-top:4px; padding:6px 16px; font-size:0.82rem; display:inline-flex;">Read Op-Ed ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-title">Lessening Leakages: How Water Systems Can Learn From Smart Electric Grids</div>
+        <div class="pub-meta">Awan, J., Miro, M.E., &amp; Marlier, M.E. · <span class="pub-journal">RAND Commentary</span> · March 2019</div>
+        <p style="font-size:0.88rem; margin-bottom:10px;">Applies smart grid sensing and data analytics principles to water distribution loss reduction — an early cross-sector analysis of sensor-driven infrastructure management.</p>
+        <a href="https://www.rand.org/pubs/commentary/2019/03/lessening-leakages-how-water-systems-can-learn-from.html" target="_blank" class="btn btn-outline" style="margin-top:4px; padding:6px 16px; font-size:0.82rem; display:inline-flex;">Read Commentary ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────── -->
+  <section class="section section-dark text-center">
+    <div class="container-center" style="max-width:560px; margin:0 auto;">
+      <p class="section-eyebrow" style="color:var(--teal);">Work Together</p>
+      <h2 style="color:var(--white);">Let's discuss your project</h2>
+      <p style="margin:16px 0 32px;">Serving ratepayer advocates, nonprofits, law firms, and public agencies.</p>
+      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ── AFFILIATIONS ──────────────────────────────────────── -->
+  <section class="section-sm" style="border-top:1px solid var(--border);">
+    <div class="container text-center">
+      <small style="letter-spacing:0.1em; text-transform:uppercase; font-weight:600; color:var(--text-light);">Published &amp; Affiliated With</small>
+      <div class="flex flex-center gap-md mt-md" style="flex-wrap:wrap; color:var(--text-light); font-weight:600; font-size:0.88rem;">
+        <span>TURN</span><span style="color:var(--border)">·</span>
+        <span>RAND Corporation</span><span style="color:var(--border)">·</span>
+        <span>CalMatters</span><span style="color:var(--border)">·</span>
+        <span>CPUC</span><span style="color:var(--border)">·</span>
+        <span>IIASA</span><span style="color:var(--border)">·</span>
+        <span>USC · Pardee RAND</span>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script>
+  // ── Hero h1: fade-in from below, then typewrite "Actionable Outcomes." ────
+  (function () {
+    const h1   = document.getElementById('hero-h1');
+    const span = document.getElementById('hero-h1-span');
+    const sub  = document.getElementById('hero-sub');
+    const TEXT = 'Actionable Outcomes.';
+
+    if (!h1 || !span) return;
+
+    // Fade h1 and sub in from below
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      h1.style.opacity  = '1'; h1.style.transform  = 'translateY(0)';
+      sub.style.opacity = '1'; sub.style.transform = 'translateY(0)';
+    }));
+
+    // After fade-in completes, typewrite the teal span
+    setTimeout(() => {
+      const cur = document.createElement('span');
+      cur.className = 'tw-cur';
+      span.appendChild(cur);
+      let i = 0;
+      (function tick() {
+        if (i < TEXT.length) {
+          span.insertBefore(document.createTextNode(TEXT[i++]), cur);
+          setTimeout(tick, 45);
+        } else {
+          setTimeout(() => cur.remove(), 1800);
+        }
+      })();
+    }, 800);
+  })();
+
+  // ── Service card typewriter headings ─────────────────────────────────────
+  (function () {
+    const CARDS = [
+      { id: 'svc-h0', text: 'Expert Witness Testimony' },
+      { id: 'svc-h1', text: 'Quantitative Analysis' },
+      { id: 'svc-h2', text: 'AI-Assisted Workflow Automation' },
+    ];
+
+    function typeHeading(el, text, speed) {
+      el.innerHTML = '';
+      const cursor = document.createElement('span');
+      cursor.className = 'tw-cur';
+      el.appendChild(cursor);
+      let i = 0;
+      (function tick() {
+        if (i < text.length) {
+          el.insertBefore(document.createTextNode(text[i++]), cursor);
+          setTimeout(tick, speed);
+        } else {
+          setTimeout(() => cursor.remove(), 1400);
+        }
+      })();
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          typeHeading(el, el.dataset.text, 38);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    CARDS.forEach(({ id, text }) => {
+      const el = document.getElementById(id);
+      if (el) { el.dataset.text = text; obs.observe(el); }
+    });
+  })();
+  </script>
+</body>
+</html>

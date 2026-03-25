@@ -1,0 +1,44 @@
+[
+  {
+    "category": "CPUC",
+    "title": "CPUC Opens Rulemaking on Long-Term Gas Planning",
+    "summary": "R.24-09-012 initiates a comprehensive review of California's gas distribution system future under decarbonization mandates.",
+    "url": "https://www.cpuc.ca.gov",
+    "date": "2024"
+  },
+  {
+    "category": "Policy",
+    "title": "SB 1221 Neighborhood Decarbonization Zones — CPUC Implementation",
+    "summary": "Commission designates 151 priority zones for gas-to-electric transition pilots under SB 1221 framework.",
+    "url": "https://calmatters.org/commentary/2026/03/decarbonize-neighborhoods-natural-gas-california/",
+    "date": "2026"
+  },
+  {
+    "category": "Regulation",
+    "title": "PG&E 2027 GRC — Phase I Discovery Underway",
+    "summary": "TURN engaged in active discovery on distribution capital expenditure proposals exceeding $10B over the rate cycle.",
+    "url": "https://www.cpuc.ca.gov",
+    "date": "2025"
+  },
+  {
+    "category": "Research",
+    "title": "Value of Environmental Surveillance for Pandemic Response",
+    "summary": "New RAND study (co-authored) quantifies the benefit-cost case for wastewater and environmental biosurveillance networks.",
+    "url": "https://www.nature.com/articles/s41598-024-79952-5",
+    "date": "2024"
+  },
+  {
+    "category": "Grid",
+    "title": "California Heat Pump Adoption Accelerates as Gas Costs Rise",
+    "summary": "CEC data shows heat pump water heater installations up 42% YoY as gas utility rates hit record highs for residential customers.",
+    "url": "https://www.energy.ca.gov",
+    "date": "2025"
+  },
+  {
+    "category": "FERC",
+    "title": "FERC Order 1920 — Long-Term Transmission Planning",
+    "summary": "Final rule requires transmission providers to conduct long-term scenario planning, with significant implications for Western grid buildout.",
+    "url": "https://www.ferc.gov",
+    "date": "2024"
+  }
+]

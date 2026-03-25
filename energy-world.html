@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy World — Jalal Awan, Ph.D.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="label">Energy World</div>
+      <h1>Curated Regulatory &<br>Policy Updates</h1>
+      <p>Hand-picked developments in California energy regulation, climate policy, and grid transition — updated periodically</p>
+    </div>
+  </div>
+
+  <!-- ── CARDS (loaded from JSON) ─────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="label">Latest Updates</div>
+      <h2>What I'm Watching</h2>
+      <div class="divider"></div>
+      <!-- Cards injected by energy-world.js -->
+      <div id="ew-grid" class="grid-3 mt-md"></div>
+    </div>
+  </section>
+
+  <!-- ── HOW TO UPDATE ─────────────────────────────────────── -->
+  <section class="section section-alt">
+    <div class="container" style="max-width:680px;">
+      <div class="label">Editing Guide</div>
+      <h2>How to Add New Items</h2>
+      <div class="divider"></div>
+      <p style="margin-bottom:16px;">Open <code style="background:var(--off-white); padding:2px 6px; border-radius:4px; font-size:0.88rem;">data/energy-world.json</code> and add a new object to the array:</p>
+      <pre style="background:var(--navy); color:#e2e8f0; padding:20px; border-radius:6px; font-size:0.82rem; overflow-x:auto; line-height:1.8;">{
+  "category": "CPUC",
+  "title": "Your headline here",
+  "summary": "One or two sentence description.",
+  "url": "https://link-to-source.com",
+  "date": "2026"
+}</pre>
+      <p style="margin-top:16px; font-size:0.88rem;">Categories: <code>CPUC</code> · <code>Policy</code> · <code>Regulation</code> · <code>Research</code> · <code>Grid</code> · <code>FERC</code> · <code>Op-Ed</code></p>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/energy-world.js"></script>
+</body>
+</html>
