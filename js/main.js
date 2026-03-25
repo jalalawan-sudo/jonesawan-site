@@ -5,7 +5,7 @@
 const NAV_HTML = `
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html"><span>Jones-Awan</span> Consulting, LLC</a>
+    <a class="nav-logo" href="index.html"><span>Jones-Awan</span> Consulting</a>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
