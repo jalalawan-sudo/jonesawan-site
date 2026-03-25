@@ -62,7 +62,7 @@
     .proc-card-date { font-size: 0.73rem; color: var(--text-light); }
     .proc-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
     .proc-card p  { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; flex: 1; }
-    .proc-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .proc-card-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
     .proc-card-links a {
       font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 4px;
       border: 1.5px solid var(--teal); color: var(--teal); transition: all 0.15s;
@@ -782,6 +782,10 @@
           <div class="proc-card-links">
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603010" target="_blank" class="sec">Docket Card</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">California IOUs file coordinated Energy Efficiency Business Plans covering strategic direction and a Portfolio Plan specifying programs, budgets, and customer targets. The CPUC approves both through an application proceeding, then each utility implements programs funded by the <em>Energy Efficiency Program Charge</em> on customer bills. The 2028–2031 cycle is the next multi-year authorization following the current 2025–2027 plans.<br><em>SCE</em>'s application covers electric EE programs across its 15 million customer accounts in Southern and Central California. Typical annual EE budgets for SCE run approximately <strong>$400–$500 million</strong> per year, with programs targeting residential retrofits, commercial lighting, HVAC efficiency, and industrial process improvements. The Commission will hold workshops and formal hearings before issuing a decision, likely in 2027.</div>
+          </div>
         </div>
 
         <!-- A.26-03-012 -->
@@ -795,6 +799,10 @@
           <p><em>SDG&amp;E</em> files its <strong>2028–2035 Energy Efficiency rolling portfolio business plan</strong>, setting program budgets, customer targets, and delivery strategies for the next multi-year EE cycle. Filed concurrently with IOU companions.</p>
           <div class="proc-card-links">
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603012" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><em>SDG&amp;E</em>'s combined Business Plan and Portfolio Plan cover electric and natural gas efficiency programs for its San Diego and southern Orange County service territory — approximately 3.6 million customer accounts. The filing coordinates with SoCalGas which serves overlapping gas customers in the same region.<br>EE spending is funded through customer surcharges and is subject to CPUC oversight via annual compliance filings. <em>SDG&amp;E</em>'s annual EE budget has historically ranged from <strong>$80–$120 million</strong>. The Commission will evaluate cost-effectiveness using Total Resource Cost (TRC) and Program Administrator Cost (PAC) tests before approving program portfolios.</div>
           </div>
         </div>
 
@@ -810,6 +818,10 @@
           <div class="proc-card-links">
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603017" target="_blank" class="sec">Docket Card</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><em>PG&amp;E</em> is the largest EE program administrator in California, serving approximately 5.5 million electric and 4.5 million gas accounts across Northern and Central California. Its application covers both electric efficiency (HVAC, lighting, data centers, agriculture) and natural gas efficiency (water heating, building envelope, industrial processes).<br>Annual EE budgets for <em>PG&amp;E</em> have historically approached <strong>$700–$800 million</strong> combined electric and gas. The Commission evaluates portfolio cost-effectiveness through the TRC test and sets minimum savings targets before adoption. Decisions on these applications are typically issued 12–18 months after filing.</div>
+          </div>
         </div>
 
         <!-- A.26-03-018 -->
@@ -824,6 +836,10 @@
           <div class="proc-card-links">
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603018" target="_blank" class="sec">Docket Card</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><em>SoCalGas</em> is California's primary natural gas EE program administrator, serving approximately 21 million people across Southern California. Its EE portfolio focuses on gas end-uses: space heating, water heating, appliances, and industrial thermal processes. The application must also address how programs fit within California's long-term gas transition strategy under the 2022 Climate Action Plan.<br>Annual gas EE budgets for <em>SoCalGas</em> typically range from <strong>$150–$200 million</strong>. The Commission scrutinizes cost-effectiveness of gas programs given California's broader decarbonization goals — some gas EE investments face questions about stranded cost risk as electrification accelerates.</div>
+          </div>
         </div>
 
         <!-- ── Prior Period: Mar 2 – Mar 13, 2026 ── -->
@@ -837,7 +853,7 @@
             <span class="period-hdr-arr" id="parr-apps-mar0213">&#9658;</span>
           </div>
         </div>
-        <div id="apps-mar0213" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px; align-items:start;">
+        <div id="apps-mar0213" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
 
           <!-- A.26-03-008 -->
           <div class="proc-card" data-util="sdge">
@@ -1155,6 +1171,10 @@
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M602/K998/602998920.PDF" target="_blank">View PD</a>
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403019" target="_blank" class="sec">Docket Card</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">GRC Phase 2 is the rate design component of <em>SCE</em>'s General Rate Case, separate from the Phase 1 revenue requirement determination. Phase 2 establishes marginal costs — the cost of serving an incremental unit of load — and uses them to allocate the approved revenue requirement across customer classes (residential, commercial, industrial) and to design the rate structures customers actually pay.<br>Key Phase 2 issues include the slope and structure of tiered residential rates, time-of-use rate design, demand charges for large commercial customers, and allocation of fixed versus volumetric cost components. Decisions on GRC Phase 2 typically lag Phase 1 by 12–18 months and directly affect what individual customers see on their bills. This PD follows the Phase 1 decision (D.24-11-018) already in effect.</div>
+          </div>
         </div>
 
         <!-- C2: A.24-12-011 SoCalGas Angeles Link Phase 2 -->
@@ -1169,6 +1189,10 @@
           <div class="proc-card-links">
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M602/K997/602997613.PDF" target="_blank">View PD</a>
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2412011" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The <em>Angeles Link</em> is a proposed ~260-mile green hydrogen pipeline connecting renewable-powered electrolysis facilities in the Mojave Desert to end users in the Los Angeles Basin. <em>SoCalGas</em> proposed the project as a pathway to decarbonize hard-to-electrify industrial and commercial sectors. Phase 2 activities include preliminary engineering, environmental review, and supply chain development.<br>ALJ Perez-Green's PD finds that <em>SoCalGas</em> failed to demonstrate that the <strong>$266 million</strong> in Phase 2 development spending would yield sufficient ratepayer benefit to justify recovery — citing uncertain demand, unproven cost competitiveness of green hydrogen at scale, and lack of committed offtakers. If the Commission adopts the PD, <em>SoCalGas</em> must bear Phase 2 costs at shareholder risk. Ratepayer and environmental intervenors support the denial; SoCalGas and some labor groups oppose.</div>
           </div>
         </div>
 
@@ -1185,6 +1209,10 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405014" target="_blank">View Docket</a>
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405014" target="_blank" class="sec">Docket Card</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">A CPUC CPCN is required before a developer can construct a new electric generating facility of 50 MW or more in California. The CPCN process reviews need, site suitability, environmental impacts, and consistency with California's resource adequacy and IRP planning requirements.<br>The <em>South Bay Clean Energy Center</em> is a standalone battery energy storage system (BESS) project in the greater Los Angeles area — a region with acute local RA needs following the retirement of the Aliso Canyon peakers. LS Power is a major independent power developer; its South Bay project competes with SCE-contracted resources to fill the South Bay local RA need. CPUC approval does not guarantee cost recovery — the project must secure resource adequacy contracts with load-serving entities to recover capital costs.</div>
+          </div>
         </div>
 
         <!-- C5: Res E-5440 ICA Remediation -->
@@ -1200,6 +1228,10 @@
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M603/K306/603306235.PDF" target="_blank">View Draft Resolution</a>
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5440" target="_blank" class="sec">Docket</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The <em>Integration Capacity Analysis</em> (ICA) is a map-based tool that shows how much distributed energy resource (DER) capacity — rooftop solar, battery storage, EV chargers — each segment of the grid can accommodate without requiring costly upgrades. IOUs are required to publish accurate, up-to-date ICA data under CPUC mandate.<br>CPUC staff found that <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> had ICA data deficiencies that could mislead DER applicants about available interconnection capacity. Res. E-5440 would require the utilities to correct methodology errors and data gaps within a specified timeline. Inaccurate ICA data can cause applicants to invest in pre-development for projects that will ultimately face prohibitive upgrade costs — a key complaint from the solar and storage development community.</div>
+          </div>
         </div>
 
         <!-- ── Prior Period: Mar 2–13, 2026 ── -->
@@ -1213,7 +1245,7 @@
             <span class="period-hdr-arr" id="parr-pd-mar0213">&#9658;</span>
           </div>
         </div>
-        <div id="pd-mar0213" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px; align-items:start;">
+        <div id="pd-mar0213" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
 
           <!-- R.13-02-008 -->
           <div class="proc-card" data-util="pge scg sdge swg">
@@ -1342,6 +1374,10 @@
               <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M601/K760/601760260.PDF" target="_blank">View Decision (D-26-02-035)</a>
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2106021" target="_blank" class="sec">Docket Card</a>
             </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>PG&amp;E</em>'s 2023 GRC was split into three phases: Phase I set the revenue requirement (adopted in D.23-12-037); Phase II addressed nuclear operations and wildfire-related capital; Phase III resolved remaining contested issues including vegetation management cost recovery and outstanding intervenor claims.<br>D.26-02-035 formally closes Phase III after resolving all remaining issues, allowing the proceeding record to be finalized. Closure of Phase III does not reset or alter currently effective rates — all rate changes from this GRC were set at Phase I adoption effective January 1, 2023. The next GRC cycle (2027 GRC, A.25-06-016) will set rates effective January 1, 2027.</div>
+            </div>
           </div>
 
           <!-- P5: NEM 3.0 Court Upheld Mar 9 -->
@@ -1355,6 +1391,10 @@
             <p>California Court of Appeal upholds NEM 3.0 (D.23-02-015), which reduced solar export compensation for new residential solar customers to ~<strong>$0.05–$0.08/kWh</strong> — down from ~$0.30/kWh under prior NEM 2.0. Proceeding closed.</p>
             <div class="proc-card-links">
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2008020" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">NEM 3.0 (D.23-02-015), adopted April 2023, replaced California's highly compensatory NEM 2.0 tariff for new rooftop solar customers. Under NEM 2.0, utilities credited solar exports at the full retail rate (~$0.30/kWh). Under NEM 3.0's Net Billing Tariff, new customers receive <em>Avoided Cost Calculator</em>-based rates averaging <strong>$0.05–$0.08/kWh</strong> — an ~80% reduction. Existing NEM 2.0 customers are grandfathered for 20 years.<br>Solar industry groups and several municipalities challenged the decision in court, arguing the CPUC failed to meet public notice requirements and violated the renewable energy mandate. California's First District Court of Appeal upheld the CPUC's decision on March 9, 2026 — rejecting all procedural and substantive challenges. NEM 3.0 remains binding law; the rooftop solar compensation question is now definitively resolved for the foreseeable future.</div>
             </div>
           </div>
 
@@ -1424,6 +1464,10 @@
               <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K056/599056564.PDF" target="_blank">View PD</a>
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2404017" target="_blank" class="sec">Docket Card</a>
             </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">LS Power Grid California proposed a new high-voltage transmission line to deliver power to the Santa Clara Valley in response to surging data center electricity demand in the San José metro area. PG&amp;E's Ringwood Substation interconnection queue had grown to over <strong>15,000 MW</strong> of pending requests — far exceeding available capacity under the existing grid.<br>The CPCN approved at the March 19, 2026 voting meeting authorizes construction with a capital cost cap of <strong>$1,593,000,000</strong>. As a merchant transmission project, LS Power will recover costs through bilateral contracts with data center customers and LSEs — not through PG&amp;E's regulated rate base. This approach shields ratepayers from direct cost recovery risk while enabling faster permitting than CAISO-driven transmission planning processes.</div>
+            </div>
           </div>
 
           <!-- A.24-06-001 -->
@@ -1476,6 +1520,10 @@
             <div class="proc-card-links">
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2401018" target="_blank" class="sec">Docket Card</a>
             </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">Standard Offer contracts are the mandatory tariff-based agreements under which California IOUs must accept new service requests — a key mechanism governing how quickly new customers and distributed energy resources get connected. Energization timeline requirements set maximum days within which a utility must complete interconnection and begin service after all customer prerequisites are met.<br>D.26-02-025 standardizes terms across all five IOUs (<em>PG&amp;E</em>, <em>SCE</em>, <em>SDG&amp;E</em>, <em>SoCalGas</em>, <em>Southwest Gas</em>) and establishes enforceable milestones. Utilities that miss timelines may face penalties. The decision responds to widespread complaints from developers, businesses, and homeowners about excessive interconnection delays — which have emerged as a top bottleneck to California's clean energy buildout.</div>
+            </div>
           </div>
 
           <!-- B6: A.25-08-008 SoCalGas DIMP $35.5M -->
@@ -1489,6 +1537,10 @@
             <p>D.26-02-006 grants <em>SoCalGas</em> a <strong>$35.5 million</strong> interim authorization (60% of $59.1M requested) for DIMP costs 2019–2023. 12-month authority; overage refunded with interest if final amount differs.</p>
             <div class="proc-card-links">
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2508008" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Distribution Integrity Management Program</em> (DIMP) is a federally-mandated natural gas pipeline safety program requiring operators to assess and remediate risks across their distribution systems. <em>SoCalGas</em> operates one of the largest gas distribution networks in North America — approximately 100,000 miles of pipeline serving 21 million customers.<br>Interim rate authority allows <em>SoCalGas</em> to recover <strong>$35,500,000</strong> of the <strong>$59,100,000</strong> claimed for DIMP costs incurred 2019–2023 while the full rate case proceeds. The interim amount represents a 60% grant — a common Commission approach to balance utility cash flow needs against unresolved prudency questions. Any amount recovered under the interim authorization that exceeds the final approved amount must be refunded to ratepayers with interest. The 12-month authorization expires in early 2027.</div>
             </div>
           </div>
 
@@ -1520,6 +1572,10 @@
               <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M596/K902/596902581.PDF" target="_blank">View PD</a>
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008" target="_blank" class="sec">Docket Card</a>
             </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Risk Assessment Mitigation Phase</em> (RAMP) is a CPUC-mandated pre-GRC safety proceeding. Before filing a GRC, each large IOU must conduct a structured safety risk assessment across its assets — using a defined risk model — and file the RAMP report for Commission review. The RAMP record informs the Commission's evaluation of GRC safety spending requests but does not itself set rates.<br>Closing the RAMP proceeding formally incorporates the RAMP record into the GRC proceeding record and ends the standalone RAMP docket. The adopted RAMP report for <em>PG&amp;E</em>'s 2027 GRC cycle was already submitted; this closure is procedural. No direct rate impact — RAMP outcomes influence but do not directly determine approved GRC safety spending levels.</div>
+            </div>
           </div>
 
           <!-- R.19-10-005 -->
@@ -1535,6 +1591,10 @@
               <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K495/595495688.PDF" target="_blank">View PD</a>
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1910005" target="_blank" class="sec">Docket Card</a>
             </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Electric Program Investment Charge</em> (EPIC) is a customer-funded clean energy R&D program managed by the California Energy Commission (CEC) and the three large electric IOUs — <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em>. Customers pay the EPIC charge (~$130–$170 million per year statewide) to fund applied research, technology demonstrations, and market facilitation for renewable energy, grid integration, and demand response.<br>Phase 4 covers 2026–2028. The PD updates investment priorities to align with California's evolving clean energy goals — including offshore wind integration, long-duration storage, building electrification, and grid modernization. IOU-administered funds focus on projects with near-term deployment potential in IOU territories; CEC-administered funds cover longer-horizon R&D. The EPIC charge is a small surcharge on all electric bills — ratepayers fund this program indirectly through their electricity rates.</div>
+            </div>
           </div>
 
           <!-- R.10-05-004 -->
@@ -1549,6 +1609,10 @@
             <div class="proc-card-links">
               <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K495/595495666.PDF" target="_blank">View PD</a>
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1005004" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Self-Generation Incentive Program</em> (SGIP) provides rebates to customers who install behind-the-meter energy storage, fuel cells, or other clean generation resources. The <em>California Solar Initiative</em> (CSI) funded incentives for rooftop solar installations — its funding is largely exhausted, but the program framework remains in CPUC rulemaking. Petitions for modification (PFMs) allow stakeholders to formally request changes to prior Commission decisions.<br>This PD denies the petition, maintaining the existing SGIP incentive tiers and CSI framework without modification. The petitioner's proposed changes — not specified in the card — were found insufficient to warrant reopening the rulemaking. SGIP is funded by a surcharge on electric bills for <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> customers; denial of this PFM preserves current incentive structures and budget allocations.</div>
             </div>
           </div>
 
@@ -1581,6 +1645,10 @@
           <div class="proc-card-links">
             <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/modernizing-safety-and-service---advancing-utility-infrastructure-in-mobile-home-park-communities" target="_blank" class="sec">CPUC Release</a>
           </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">California has approximately 5,000 mobile home parks housing over 500,000 low-income and senior residents. Many parks have outdated master-meter utility systems where the park owner is the utility customer — residents pay the owner, not the IOU directly, and do not benefit from low-income programs (CARE, FERA, REACH). The MHP Upgrade Program, authorized by D.20-04-004, requires all five large IOUs to convert park utility systems to direct metering at IOU expense.<br>Total program investment: <strong>$1.57 billion</strong> since 2015. The 2025 priority list covers 1,525 parks with approximately <strong>168,400 home spaces</strong>. Costs are recovered through IOU rate bases, spread across all ratepayers. Once converted, park residents gain direct utility accounts — making them eligible for CARE (~20–35% rate discount), FERA, medical baseline, and other low-income protections. The 50% conversion target by 2030 represents a significant equity milestone for utility access in California.</div>
+          </div>
         </div>
 
         <!-- Mar 19 Voting Meeting Preview -->
@@ -1594,6 +1662,10 @@
           <p>Anticipated items: SCE Alberhill Transmission CPCN (A.09-09-022) · LS Power San Jose Data Center CPCNs ($1.6B and $813M) · California Climate Credit pause (R.25-07-013) · DG Statistics Platform funding (Res. E-5436, deferred from Feb 26) · PG&amp;E RAMP closure · ICA Remediation compliance.</p>
           <div class="proc-card-links">
             <a href="https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings" target="_blank" class="sec">2026 Meeting Schedule</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The March 19 voting meeting was the first under new CPUC President <em>Karen Douglas</em> (appointed March 2026). Key outcomes: SCE's <strong>Alberhill Transmission CPCN</strong> adopted; LS Power's <strong>Santa Clara Valley Transmission CPCN</strong> ($1.593B) adopted; California Climate Credit pause (<strong>R.25-07-013</strong>, D.26-02-057) adopted 5-0 — pausing 2026 credits to fund the new 6,000 MW clean energy procurement order; PG&amp;E RAMP closure approved.<br>ICA Remediation (Res. E-5440) was held to the <strong>April 9, 2026</strong> voting meeting for additional review. DG Statistics Platform (Res. E-5436) remained deferred. The LS Power San José data center CPCN items may have been voted on separately as individual agenda items — see specific card entries for confirmed status.</div>
           </div>
         </div>
 
