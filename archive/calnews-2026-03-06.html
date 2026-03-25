@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews Archive — Week of Mar 9–13, 2026</title>
+  <title>CalNews Archive — Week of Mar 2–6, 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -14,7 +14,6 @@
       font-size: 0.82rem; color: #64748b;
     }
     .archive-banner a { color: var(--teal); font-weight: 600; }
-    /* ── Recent Developments strip ── */
     .rd-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -52,7 +51,6 @@
     }
     .rd-more:hover { text-decoration: underline; }
 
-    /* ── CalNews layout ── */
     .cn-wrap {
       display: grid;
       grid-template-columns: 1fr 220px;
@@ -64,7 +62,6 @@
       .cn-sidebar { order: -1; }
     }
 
-    /* ── Featured story ── */
     .cn-featured {
       border-bottom: 2px solid var(--navy);
       padding-bottom: 28px;
@@ -105,7 +102,6 @@
     }
     .cn-feat-related a { color: var(--teal); font-weight: 600; }
 
-    /* ── Secondary stories list ── */
     .cn-section-label {
       font-size: 0.68rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
@@ -150,7 +146,6 @@
     }
     .cn-story-related a { color: var(--teal); font-weight: 600; }
 
-    /* ── Sidebar ── */
     .cn-sidebar {
       position: sticky; top: 80px;
     }
@@ -200,7 +195,7 @@
     <div class="container">
       <div class="label">California Energy &amp; Regulatory News — Archive</div>
       <h1>CalNews</h1>
-      <p>Week of Mar 9–13, 2026 · Curated policy &amp; regulatory coverage</p>
+      <p>Week of Mar 2–6, 2026 · Curated policy &amp; regulatory coverage</p>
     </div>
   </div>
 
@@ -226,7 +221,7 @@
         <!-- ── MAIN COLUMN ── -->
         <main>
           <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Mar 9–13, 2026 &nbsp;·&nbsp; 5 stories &nbsp;·&nbsp; Updated March 13, 2026
+            Week of Mar 2–6, 2026 &nbsp;·&nbsp; 1 story &nbsp;·&nbsp; Updated March 6, 2026
           </div>
 
           <!-- Featured Story -->
@@ -249,8 +244,8 @@
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Archive</div>
-            <a href="calnews-2026-03-13.html" class="cn-sidebar-link active">Week of Mar 9–13, 2026</a>
-            <a href="calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
+            <a href="calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
+            <a href="calnews-2026-03-06.html" class="cn-sidebar-link active">Week of Mar 2–6, 2026</a>
             <a href="calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
             <a href="calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
           </div>
@@ -273,60 +268,16 @@
   <script>
     const STORIES = [
       {
-        id: 27,
-        title: "Trump Orders Restart of Santa Barbara Oil Pipeline — California Vows to Fight",
-        url: "https://calmatters.org/environment/2026/03/trump-emergency-sable-santa-barbara/",
-        date: "March 13, 2026",
+        id: 12,
+        title: "California Is Testing 30 Neighborhood Decarbonization Pilots — Here's What They're Learning",
+        url: "https://calmatters.org/commentary/2026/03/decarbonize-neighborhoods-natural-gas-california/",
+        date: "March 3, 2026",
         source: "CalMatters",
-        author: "Alejandro Lazo",
-        category: "Pipeline · Federal Policy",
-        summary: "President Trump invoked the Defense Production Act to order an emergency restart of the Sable Offshore pipeline off Santa Barbara — inactive since the <strong>2015 Refugio oil spill</strong> that discharged thousands of barrels into the ocean. Energy Secretary Chris Wright justified the order as a national security measure. Gov. Gavin Newsom immediately pledged legal action; a Santa Barbara County Superior Court judge subsequently ordered the pipeline to remain closed, setting up a federal-state confrontation.",
-        relatedCalreg: null
-      },
-      {
-        id: 15,
-        title: "California's Energy Price Surge Fuels Political War Over Carbon Pricing",
-        url: "https://calmatters.org/commentary/2026/03/gas-prices-california-carbon-emission/",
-        date: "March 12, 2026",
-        source: "CalMatters",
-        author: "Dan Walters",
-        category: "Energy Prices · Commentary",
-        summary: "California residential electricity rates have risen approximately <strong>160%</strong> since 2010, while natural gas rates have climbed roughly <strong>80%</strong> — reigniting a political battle over the state's cap-and-trade carbon pricing regime. Critics argue the carbon auction adds hidden costs to every utility bill; supporters counter that it has channeled <strong>over $16 billion</strong> in climate investments since 2013. The CPUC and CARB are coordinating a joint inquiry on carbon cost pass-through transparency in utility rate filings.",
-        relatedCalreg: { label: "R.25-07-013 — California Climate Credit", anchor: "proc-r2507013" }
-      },
-      {
-        id: 14,
-        title: "Data Centers Have Requested 18.7 GW of California Grid Capacity — Regulators Are Scrambling",
-        url: "https://calmatters.org/commentary/2026/03/data-centers-electricity-california/",
-        date: "March 11, 2026",
-        source: "CalMatters",
-        author: "Sam Uden &amp; Matthew Freedman",
-        category: "Grid · AI Infrastructure · Commentary",
-        summary: "California's major investor-owned utilities have received interconnection requests from data centers totaling <strong>18.7 gigawatts</strong> — more than half the state's current peak electricity demand — as AI infrastructure buildout accelerates. Fully meeting the queue would require an estimated <strong>$50+ billion</strong> in new transmission and distribution infrastructure. CPUC staff are preparing a new demand forecasting and load-shaping proceeding expected to open in Q2 2026.",
-        relatedCalreg: { label: "A.24-04-017 — LS Power CPCN", anchor: "proc-a2404017" }
-      },
-      {
-        id: 2,
-        title: "California Court Upholds NEM 3.0 — Rooftop Solar Export Rates Cut ~75%",
-        url: "https://calmatters.org/economy/2026/03/net-metering-defeat-for-rootftop-solar-in-california-courts/",
-        date: "March 10, 2026",
-        source: "CalMatters",
-        author: "Malena Carollo",
-        category: "Solar · CPUC Decision",
-        summary: "A California Court of Appeal affirmed the CPUC's Net Energy Metering 3.0 decision, which reduced compensation for rooftop solar exports by approximately <strong>75%</strong> on average. Under the superseded NEM 2.0, customers received near-retail rates — roughly <strong>$0.30/kWh</strong> — for exported electricity; under NEM 3.0, compensation averages just <strong>$0.05–0.08/kWh</strong> during most daytime hours. New residential solar installations in California have declined sharply since NEM 3.0 took effect in April 2023.",
-        relatedCalreg: null
-      },
-      {
-        id: 5,
-        title: "PG&E's Smart Grid Pilot Has Deferred $420M in Infrastructure — Can It Scale?",
-        url: "https://www.canarymedia.com/articles/utilities/as-californians-electrify-tech-prevent-grid-overload",
-        date: "March 10, 2026",
-        source: "Canary Media",
-        author: "Jeff St. John",
-        category: "Grid Modernization · PG&E",
-        summary: "PG&E is running a smart grid pilot across <strong>12 distribution circuits</strong> using real-time demand forecasting, automated feeder switching, and residential load management incentives to defer traditional infrastructure upgrades. Early results show the pilot has deferred an estimated <strong>$420 million</strong> in planned equipment investments across test circuits. If scaled statewide, PG&E projects it could reduce distribution capital spending by <strong>10–15% annually</strong>.",
-        relatedCalreg: null
-      },
+        author: null,
+        category: "Decarbonization · Gas Transition · Commentary",
+        summary: "California is advancing <strong>30 neighborhood-scale decarbonization pilots</strong> across the state, testing how to transition residential blocks off natural gas without stranding the millions of households that still depend on gas appliances. Whole-home electrification in many communities costs <strong>$15,000–$25,000 per household</strong> — a barrier that falls hardest on lower-income residents. The CPUC is simultaneously reviewing the future of the gas distribution system, with a proposed transition framework expected in Q3 2026.",
+        relatedCalreg: { label: "R.25-06-019 — IRP Procurement Order", anchor: "proc-r2506019" }
+      }
     ];
 
     const RECENT = [
@@ -335,7 +286,7 @@
         typeColor: "#00b4a6",
         title: "Alice Reynolds Exits; John Reynolds Named CPUC President",
         desc: "Gov. Newsom appointed outgoing President Alice Reynolds to the CAISO Governing Board and elevated Commissioner John Reynolds to CPUC President. Christine Harada was simultaneously appointed as a new Commissioner.",
-        date: "February 18–26, 2026",
+        date: "February 26, 2026",
         url: "https://www.calregulatory.com/february-26-2026-cpuc-voting-meeting-results-president-alice-reynolds-final-meeting/"
       },
       {
@@ -347,24 +298,24 @@
         url: "https://www.utilitydive.com/news/cpuc-california-lses-procure-6-gw-2032/813357/"
       },
       {
-        type: "Court Decision",
-        typeColor: "#7c3aed",
-        title: "CA Appeals Court Upholds NEM 3.0 Rooftop Solar Net Billing Tariff",
-        desc: "California appeals court denied challenges from environmental groups, affirming Commission authority to restructure export compensation for rooftop solar customers under the Net Billing Tariff.",
-        date: "March 10, 2026",
-        url: "https://calmatters.org/economy/2026/03/net-metering-defeat-for-rootftop-solar-in-california-courts/"
+        type: "Gas Rates",
+        typeColor: "#0369a1",
+        title: "PG&E Files Advice Letter 5184-G: Noncore Gas Rate Adjustment Effective March 1",
+        desc: "PG&E filed Advice Letter 5184-G proposing a rate adjustment for noncore natural gas customers effective March 1, 2026. The filing increases the noncore storage reservation charge by approximately $0.02 per dekatherm per day.",
+        date: "February 25, 2026",
+        url: "https://www.calregulatory.com/march-1-2026-pg-e-noncore-natural-gas-rate-increase/"
       },
       {
-        type: "Ratepayer Win",
-        typeColor: "#b45309",
-        title: "CPUC Cites $5B+ Saved at FERC on Transmission Rates",
-        desc: "CPUC highlighted its FERC intervention record, saving California ratepayers over $5 billion in transmission costs over the past decade across PG&E TO21 and SCE TO2026 dockets.",
-        date: "March 3, 2026",
-        url: "https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-ferc-proceedings"
+        type: "Litigation",
+        typeColor: "#dc2626",
+        title: "California Sues Trump Administration Over $1.2B Energy Fund Terminations",
+        desc: "California filed suit challenging the federal rescission of $1.2 billion in energy and infrastructure funds under the Bipartisan Infrastructure Law and IRA. Among programs cut: $380M for utility bill assistance and building electrification.",
+        date: "February 18, 2026",
+        url: "https://www.gov.ca.gov/2026/02/18/california-files-lawsuit-against-trump-for-illegally-terminating-1-2-billion-in-energy-and-infrastructure-programs/"
       }
     ];
 
-    // Render Recent Developments
+    // ── Render Recent Developments ─────────────────────────────
     const rdEl = document.getElementById('recent-dev');
     RECENT.forEach(r => {
       rdEl.innerHTML += `
@@ -379,12 +330,11 @@
         </div>`;
     });
 
-    // Pick random featured story
+    // ── Render Featured + Secondary Stories ───────────────────
     const featIdx = Math.floor(Math.random() * STORIES.length);
     const feat = STORIES[featIdx];
     const rest = STORIES.filter((_, i) => i !== featIdx);
 
-    // Render featured
     const bylineStr = feat.author
       ? `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a> (Author: ${feat.author})`
       : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a>`;
@@ -401,7 +351,6 @@
       <a href="${feat.url}" target="_blank" class="cn-feat-readmore">Read full story &#8594;</a>
       ${relatedStr}`;
 
-    // Render secondary stories
     const secEl = document.getElementById('cn-secondary');
     rest.forEach(s => {
       const metaStr = s.author
