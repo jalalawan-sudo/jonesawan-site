@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalNews Archive — Week of Mar 9–13, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .archive-banner {
+      background: #f1f5f9; border-bottom: 2px solid #cbd5e1;
+      padding: 10px 0; text-align: center;
+      font-size: 0.82rem; color: #64748b;
+    }
+    .archive-banner a { color: var(--teal); font-weight: 600; }
+    /* ── Recent Developments strip ── */
+    .rd-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media(max-width:640px) { .rd-grid { grid-template-columns: 1fr; } }
+    .rd-card {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .rd-type {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .rd-title {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text-dark); line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .rd-desc {
+      font-size: 0.8rem; color: var(--text-mid);
+      line-height: 1.55; margin-bottom: 8px;
+    }
+    .rd-footer {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .rd-date { font-size: 0.72rem; color: var(--text-light); }
+    .rd-more {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--teal); white-space: nowrap;
+    }
+    .rd-more:hover { text-decoration: underline; }
+
+    /* ── CalNews layout ── */
+    .cn-wrap {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media(max-width: 768px) {
+      .cn-wrap { grid-template-columns: 1fr; }
+      .cn-sidebar { order: -1; }
+    }
+
+    /* ── Featured story ── */
+    .cn-featured {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+    }
+    .cn-feat-category {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .cn-feat-headline {
+      font-size: 1.45rem; font-weight: 800;
+      line-height: 1.25; color: var(--text-dark);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .cn-feat-headline a { color: inherit; }
+    .cn-feat-headline a:hover { color: var(--teal); }
+    .cn-feat-byline {
+      font-size: 0.75rem; color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .cn-feat-byline strong { color: var(--text-mid); }
+    .cn-feat-summary {
+      font-size: 0.94rem; color: var(--text-mid);
+      line-height: 1.72; margin-bottom: 14px;
+    }
+    .cn-feat-readmore {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--teal); display: inline-flex;
+      align-items: center; gap: 4px;
+    }
+    .cn-feat-readmore:hover { text-decoration: underline; }
+    .cn-feat-related {
+      margin-top: 12px;
+      font-size: 0.75rem; color: var(--text-light);
+      border-left: 3px solid var(--teal);
+      padding-left: 10px;
+    }
+    .cn-feat-related a { color: var(--teal); font-weight: 600; }
+
+    /* ── Secondary stories list ── */
+    .cn-section-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-bottom: 14px;
+    }
+    .cn-story-list {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .cn-story-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cn-story-category {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 4px;
+    }
+    .cn-story-title {
+      font-size: 1.05rem; font-weight: 700;
+      line-height: 1.3; margin-bottom: 4px;
+    }
+    .cn-story-title a { color: var(--text-dark); }
+    .cn-story-title a:hover { color: var(--teal); }
+    .cn-story-meta {
+      font-size: 0.72rem; color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .cn-story-summary {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.68; margin-bottom: 10px;
+    }
+    .cn-story-readmore {
+      font-size: 0.78rem; font-weight: 700; color: var(--teal);
+    }
+    .cn-story-readmore:hover { text-decoration: underline; }
+    .cn-story-related {
+      margin-top: 8px; font-size: 0.72rem; color: var(--text-light);
+      border-left: 2px solid var(--teal); padding-left: 8px;
+    }
+    .cn-story-related a { color: var(--teal); font-weight: 600; }
+
+    /* ── Sidebar ── */
+    .cn-sidebar {
+      position: sticky; top: 80px;
+    }
+    .cn-sidebar-block {
+      margin-bottom: 28px;
+    }
+    .cn-sidebar-hdg {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 10px;
+      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .cn-sidebar-link {
+      display: block; font-size: 0.82rem;
+      color: var(--text-mid); padding: 5px 0;
+      border-bottom: 1px solid #f1f5f9;
+      transition: color 0.15s;
+    }
+    .cn-sidebar-link:hover { color: var(--teal); }
+    .cn-sidebar-link.active { color: var(--teal); font-weight: 600; }
+    .cn-sidebar-calreg {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--teal); padding: 9px 12px;
+      border: 1.5px solid var(--teal);
+      border-radius: var(--radius);
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+    .cn-sidebar-calreg:hover { background: var(--teal-light); }
+    .cn-sidebar-note {
+      font-size: 0.75rem; color: var(--text-light);
+      line-height: 1.6; padding: 12px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="archive-banner">
+    &#128194; Archived Issue &nbsp;·&nbsp; <a href="../calnews.html">View Current Issue &rarr;</a>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="label">California Energy &amp; Regulatory News — Archive</div>
+      <h1>CalNews</h1>
+      <p>Week of Mar 9–13, 2026 · Curated policy &amp; regulatory coverage</p>
+    </div>
+  </div>
+
+  <!-- ── RECENT DEVELOPMENTS ──────────────────────────────── -->
+  <section class="section-sm section-alt" style="border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="label">Hot Off The Press</div>
+      <h2 style="margin-bottom:6px;">Recent Developments</h2>
+      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions and news from the past two weeks</p>
+      <div class="rd-grid" id="recent-dev">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none; border-top: 2.5px solid #1e293b; margin:0;">
+
+  <!-- ── MAIN NEWS ─────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="cn-wrap">
+
+        <!-- ── MAIN COLUMN ── -->
+        <main>
+          <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
+            Week of Mar 9–13, 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Updated March 12, 2026
+          </div>
+
+          <!-- Featured Story -->
+          <div class="cn-featured" id="cn-featured">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- More Stories -->
+          <div class="cn-section-label">More Stories</div>
+          <div class="cn-story-list" id="cn-secondary">
+            <!-- populated by JS -->
+          </div>
+        </main>
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="cn-sidebar">
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Current Issue</div>
+            <a href="../calnews.html" class="cn-sidebar-link">Week of Mar 16–24, 2026</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Archive</div>
+            <a href="calnews-2026-03-13.html" class="cn-sidebar-link active">Week of Mar 9–13, 2026</a>
+            <a href="calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
+            <a href="calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
+            <a href="calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Docket Tracker</div>
+            <a href="../calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-note">
+              Stories adapted from original reporting. All headlines link to source publications. Coverage spans CPUC proceedings, clean energy policy, and California utility regulation.
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script>
+    const STORIES = [
+      {
+        id: 15,
+        title: "California's Energy Price Surge Fuels Political War Over Carbon Pricing",
+        url: "https://calmatters.org/commentary/2026/03/gas-prices-california-carbon-emission/",
+        date: "March 12, 2026",
+        source: "CalMatters",
+        author: "Dan Walters",
+        category: "Energy Prices · Commentary",
+        summary: "California residential electricity rates have risen approximately <strong>160%</strong> since 2010, while natural gas rates have climbed roughly <strong>80%</strong> — reigniting a political battle over the state's cap-and-trade carbon pricing regime. Critics argue the carbon auction adds hidden costs to every utility bill; supporters counter that it has channeled <strong>over $16 billion</strong> in climate investments since 2013. The CPUC and CARB are coordinating a joint inquiry on carbon cost pass-through transparency in utility rate filings.",
+        relatedCalreg: { label: "R.25-07-013 — California Climate Credit", anchor: "proc-r2507013" }
+      },
+      {
+        id: 14,
+        title: "Data Centers Have Requested 18.7 GW of California Grid Capacity — Regulators Are Scrambling",
+        url: "https://calmatters.org/commentary/2026/03/data-centers-electricity-california/",
+        date: "March 11, 2026",
+        source: "CalMatters",
+        author: "Sam Uden &amp; Matthew Freedman",
+        category: "Grid · AI Infrastructure · Commentary",
+        summary: "California's major investor-owned utilities have received interconnection requests from data centers totaling <strong>18.7 gigawatts</strong> — more than half the state's current peak electricity demand — as AI infrastructure buildout accelerates. Fully meeting the queue would require an estimated <strong>$50+ billion</strong> in new transmission and distribution infrastructure. CPUC staff are preparing a new demand forecasting and load-shaping proceeding expected to open in Q2 2026.",
+        relatedCalreg: { label: "A.24-04-017 — LS Power CPCN", anchor: "proc-a2404017" }
+      },
+      {
+        id: 2,
+        title: "California Court Upholds NEM 3.0 — Rooftop Solar Export Rates Cut ~75%",
+        url: "https://calmatters.org/economy/2026/03/net-metering-defeat-for-rootftop-solar-in-california-courts/",
+        date: "March 10, 2026",
+        source: "CalMatters",
+        author: "Malena Carollo",
+        category: "Solar · CPUC Decision",
+        summary: "A California Court of Appeal affirmed the CPUC's Net Energy Metering 3.0 decision, which reduced compensation for rooftop solar exports by approximately <strong>75%</strong> on average. Under the superseded NEM 2.0, customers received near-retail rates — roughly <strong>$0.30/kWh</strong> — for exported electricity; under NEM 3.0, compensation averages just <strong>$0.05–0.08/kWh</strong> during most daytime hours. New residential solar installations in California have declined sharply since NEM 3.0 took effect in April 2023.",
+        relatedCalreg: null
+      },
+      {
+        id: 5,
+        title: "PG&E's Smart Grid Pilot Has Deferred $420M in Infrastructure — Can It Scale?",
+        url: "https://www.canarymedia.com/articles/utilities/as-californians-electrify-tech-prevent-grid-overload",
+        date: "March 10, 2026",
+        source: "Canary Media",
+        author: "Jeff St. John",
+        category: "Grid Modernization · PG&E",
+        summary: "PG&E is running a smart grid pilot across <strong>12 distribution circuits</strong> using real-time demand forecasting, automated feeder switching, and residential load management incentives to defer traditional infrastructure upgrades. Early results show the pilot has deferred an estimated <strong>$420 million</strong> in planned equipment investments across test circuits. If scaled statewide, PG&E projects it could reduce distribution capital spending by <strong>10–15% annually</strong>.",
+        relatedCalreg: null
+      },
+      {
+        id: 12,
+        title: "California Is Testing 30 Neighborhood Decarbonization Pilots — Here's What They're Learning",
+        url: "https://calmatters.org/commentary/2026/03/decarbonize-neighborhoods-natural-gas-california/",
+        date: "March 3, 2026",
+        source: "CalMatters",
+        author: "Jalal Awan",
+        category: "Decarbonization · Gas Transition · Commentary",
+        summary: "California is advancing <strong>30 neighborhood-scale decarbonization pilots</strong> across the state, testing how to transition residential blocks off natural gas without stranding the millions of households that still depend on gas appliances. Whole-home electrification in many communities costs <strong>$15,000–$25,000 per household</strong> — a barrier that falls hardest on lower-income residents. The CPUC is simultaneously reviewing the future of the gas distribution system, with a proposed transition framework expected in Q3 2026.",
+        relatedCalreg: { label: "R.25-06-019 — IRP Procurement Order", anchor: "proc-r2506019" }
+      },
+      {
+        id: 1,
+        title: "CPUC Orders 6,000 MW of New Clean Energy and Storage — A Final Act for President Reynolds",
+        url: "https://www.utilitydive.com/news/cpuc-california-lses-procure-6-gw-2032/813357/",
+        date: "February 27, 2026",
+        source: "Utility Dive",
+        author: "Diana DiGangi",
+        category: "Procurement · IRP · CPUC Decision",
+        summary: "The CPUC unanimously ordered all California load-serving entities to procure <strong>6,000 MW</strong> of new clean energy and storage in three tranches by 2030–2032, assigning SCE 2,088 MW and PG&E 1,077 MW. At least <strong>25%</strong> of resources must qualify as long-duration storage (8+ hours) or clean firm generation. Total capital investment is estimated at <strong>$8–12 billion</strong>.",
+        relatedCalreg: { label: "R.25-06-019 — IRP Rulemaking", anchor: "proc-r2506019" }
+      },
+      {
+        id: 3,
+        title: "Alice Reynolds's Final CPUC Meeting: $3.9B Controversy, a 6 GW Decision, and a Leadership Transition",
+        url: "https://www.calregulatory.com/february-26-2026-cpuc-voting-meeting-results-president-alice-reynolds-final-meeting/",
+        date: "February 26, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "CPUC Leadership · Policy",
+        summary: "President Alice Reynolds presided over her final CPUC voting meeting — a session that adopted the landmark 6,000 MW procurement order and closed the winter gas spike investigation. Consumer advocates estimated capital programs approved during her tenure contributed to <strong>$3.9 billion in excess costs</strong> relative to least-cost alternatives. Gov. Newsom appointed Reynolds to the CAISO Governing Board and elevated Commissioner John Reynolds to CPUC President.",
+        relatedCalreg: null
+      },
+      {
+        id: 13,
+        title: "PG&E Files Advice Letter 5184-G: Noncore Gas Rate Adjustment Effective March 1",
+        url: "https://www.calregulatory.com/march-1-2026-pg-e-noncore-natural-gas-rate-increase/",
+        date: "February 25, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Gas Rates · PG&E",
+        summary: "PG&E filed <strong>Advice Letter 5184-G</strong> on February 25 proposing a rate adjustment for noncore natural gas customers — primarily large commercial and industrial users — effective March 1, 2026. The filing increases the noncore storage reservation charge by approximately <strong>$0.02 per dekatherm per day</strong>. Industrial customer advocates have flagged the cumulative rate trajectory as a competitiveness concern for California's manufacturing base.",
+        relatedCalreg: null
+      },
+      {
+        id: 4,
+        title: "California Sues Trump Administration Over Termination of $1.2B in Energy and Infrastructure Funds",
+        url: "https://www.gov.ca.gov/2026/02/18/california-files-lawsuit-against-trump-for-illegally-terminating-1-2-billion-in-energy-and-infrastructure-programs/",
+        date: "February 18, 2026",
+        source: "Office of the Governor",
+        author: null,
+        category: "Federal Policy · Litigation",
+        summary: "California filed suit against the Trump administration challenging the federal rescission of <strong>$1.2 billion</strong> in energy and infrastructure program funds committed under the Bipartisan Infrastructure Law and Inflation Reduction Act. Among the terminated programs: <strong>$380 million</strong> for utility bill assistance and building electrification for low-income households. The CPUC initiated an emergency inquiry to assess the cascading impact on ratepayer programs.",
+        relatedCalreg: null
+      }
+    ];
+
+    const RECENT = [
+      {
+        type: "Leadership",
+        typeColor: "#00b4a6",
+        title: "Alice Reynolds Exits; John Reynolds Named CPUC President",
+        desc: "Gov. Newsom appointed outgoing President Alice Reynolds to the CAISO Governing Board and elevated Commissioner John Reynolds to CPUC President. Christine Harada was simultaneously appointed as a new Commissioner.",
+        date: "February 18–26, 2026",
+        url: "https://www.calregulatory.com/february-26-2026-cpuc-voting-meeting-results-president-alice-reynolds-final-meeting/"
+      },
+      {
+        type: "Major Decision",
+        typeColor: "#0369a1",
+        title: "CPUC Orders 6,000 MW of New Clean Energy and Storage Procurement",
+        desc: "Adopted unanimously at Alice Reynolds' final meeting. Orders all California LSEs to procure 6,000 MW in three tranches by 2030–2032; at least 25% must be long-duration or clean firm resources.",
+        date: "February 26, 2026 · R.25-06-019",
+        url: "https://www.utilitydive.com/news/cpuc-california-lses-procure-6-gw-2032/813357/"
+      },
+      {
+        type: "Court Decision",
+        typeColor: "#7c3aed",
+        title: "CA Appeals Court Upholds NEM 3.0 Rooftop Solar Net Billing Tariff",
+        desc: "California appeals court denied challenges from environmental groups, affirming Commission authority to restructure export compensation for rooftop solar customers under the Net Billing Tariff.",
+        date: "March 10, 2026",
+        url: "https://calmatters.org/economy/2026/03/net-metering-defeat-for-rootftop-solar-in-california-courts/"
+      },
+      {
+        type: "Ratepayer Win",
+        typeColor: "#b45309",
+        title: "CPUC Cites $5B+ Saved at FERC on Transmission Rates",
+        desc: "CPUC highlighted its FERC intervention record, saving California ratepayers over $5 billion in transmission costs over the past decade across PG&E TO21 and SCE TO2026 dockets.",
+        date: "March 3, 2026",
+        url: "https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-ferc-proceedings"
+      }
+    ];
+
+    // Render Recent Developments
+    const rdEl = document.getElementById('recent-dev');
+    RECENT.forEach(r => {
+      rdEl.innerHTML += `
+        <div class="rd-card">
+          <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
+          <div class="rd-title">${r.title}</div>
+          <div class="rd-desc">${r.desc}</div>
+          <div class="rd-footer">
+            <span class="rd-date">${r.date}</span>
+            <a href="${r.url}" target="_blank" class="rd-more">Read More &#8594;</a>
+          </div>
+        </div>`;
+    });
+
+    // Pick random featured story
+    const featIdx = Math.floor(Math.random() * STORIES.length);
+    const feat = STORIES[featIdx];
+    const rest = STORIES.filter((_, i) => i !== featIdx);
+
+    // Render featured
+    const bylineStr = feat.author
+      ? `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a> (Author: ${feat.author})`
+      : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a>`;
+
+    const relatedStr = feat.relatedCalreg
+      ? `<div class="cn-feat-related">Related CalReg: <a href="../calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
+      : '';
+
+    document.getElementById('cn-featured').innerHTML = `
+      <div class="cn-feat-category">${feat.category}</div>
+      <div class="cn-feat-headline"><a href="${feat.url}" target="_blank">${feat.title}</a></div>
+      <div class="cn-feat-byline">${bylineStr}</div>
+      <div class="cn-feat-summary">${feat.summary}</div>
+      <a href="${feat.url}" target="_blank" class="cn-feat-readmore">Read full story &#8594;</a>
+      ${relatedStr}`;
+
+    // Render secondary stories
+    const secEl = document.getElementById('cn-secondary');
+    rest.forEach(s => {
+      const metaStr = s.author
+        ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank">${s.source}</a> (Author: ${s.author})`
+        : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank">${s.source}</a>`;
+      const relStr = s.relatedCalreg
+        ? `<div class="cn-story-related">Related CalReg: <a href="../calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
+        : '';
+      secEl.innerHTML += `
+        <div class="cn-story-item">
+          <div class="cn-story-category">${s.category}</div>
+          <div class="cn-story-title"><a href="${s.url}" target="_blank">${s.title}</a></div>
+          <div class="cn-story-meta">${metaStr}</div>
+          <div class="cn-story-summary">${s.summary}</div>
+          <a href="${s.url}" target="_blank" class="cn-story-readmore">Read full story &#8594;</a>
+          ${relStr}
+        </div>`;
+    });
+  </script>
+</body>
+</html>
