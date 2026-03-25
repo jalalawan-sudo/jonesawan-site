@@ -6,7 +6,6 @@
   <title>CalReg — Jalal Awan, Ph.D.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .cr-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 24px; }
@@ -262,7 +261,7 @@
         </div>
       </div>
 
-      <p style="font-size:0.78rem; opacity:0.45; margin:8px 0 16px;">Updated March 12, 2026</p>
+      <p style="font-size:0.78rem; opacity:0.45; margin:8px 0 16px;">Updated March 25, 2026</p>
 
       <script>
       (function(){
@@ -762,8 +761,251 @@
       </div>
       <div class="proc-grid" id="apps-grid">
 
-        <div class="calreg-loading" style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-style:italic;">Loading proceedings…</div>
-        <div class="filter-empty" id="apps-empty">No matches for selected IOU.</div>
+        <!-- ── Current Period Header ── -->
+        <div class="period-hdr current" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Current Period</div>
+            <div class="period-hdr-date">Mar 2 – Mar 13, 2026</div>
+          </div>
+          <div class="period-hdr-right">No new filings this period</div>
+        </div>
+
+        <!-- ── Prior Period: Feb 16–27, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-feb1627')" id="toggle-apps-feb1627" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Feb 16 – Feb 27, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">4 filings</span>
+            <span class="period-hdr-arr" id="parr-apps-feb1627">&#9658;</span>
+          </div>
+        </div>
+        <div id="apps-feb1627" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.26-02-018 -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-02-018</span>
+              <span class="proc-card-date">Filed Feb 27, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>PG&amp;E — Sale of Hamilton Branch Hydroelectric Project</h3>
+            <p>PG&amp;E seeks §851 approval to sell the <strong>4.8 MW</strong> mothballed Hamilton Branch Hydroelectric Project near Lake Almanor to Hamilton Branch Hydro, LLC. FERC approval also required for jurisdictional assets.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K158/601158397.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602018" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>PG&amp;E</em> seeks CPUC authorization under PUC §851 to sell the <em>Hamilton Branch Hydroelectric Project</em> — a <strong>4.8 MW</strong> facility mothballed as uneconomical. The buyer is <em>Hamilton Branch Hydro, LLC</em>. The Commission must determine whether the sale is in the public interest and that ratepayers receive appropriate benefit from any gain on sale.<br>Purchase price not publicly disclosed in the application. Ratebase impact and disposition of proceeds addressed in financial exhibits. Transaction also requires FERC approval for jurisdictional assets. The <em>Feather River Land Trust</em> conservation easement remains in place regardless of outcome.</div>
+            </div>
+          </div>
+
+          <!-- A.26-02-019 -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-02-019</span>
+              <span class="proc-card-date">Filed Feb 27, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>PG&amp;E — 2025 Utility Owned Generation Compliance Review</h3>
+            <p>PG&amp;E's annual UOG compliance review for 2025 — covers PABA capital costs and ERRA fuel/variable O&amp;M. Diablo Canyon excluded; Commission determines prudency of all other generation costs.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K158/601158608.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602019" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">Annual §451/§454.5 compliance review of <em>PG&amp;E</em>'s utility-owned generation (UOG) fleet for 2025. The Commission must determine whether <em>PG&amp;E</em>'s generation operations, economic dispatch, fuel procurement, and contract administration were prudent and consistent with its approved procurement plan. <em>PG&amp;E</em> argues <em>Diablo Canyon Power Plant</em> (DCPP) extended operations costs belong in a separate statutory proceeding and should not be reviewed here.<br>The <em>Portfolio Allocation Balancing Account</em> (PABA) tracks capital costs; the <em>Energy Resource Recovery Account</em> (ERRA) tracks fuel and variable O&amp;M costs. Commission findings on prudency determine whether recorded costs are recoverable in rates or subject to disallowance.</div>
+            </div>
+          </div>
+
+          <!-- A.26-02-020 -->
+          <div class="proc-card" data-util="others">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-02-020</span>
+              <span class="proc-card-date">Filed Feb 27, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>Crimson California Pipeline — Crude Oil Pipeline Rate Increase (66.97%)</h3>
+            <p>Crimson California Pipeline seeks a <strong>66.97%</strong> crude oil transport rate increase effective April 1, 2026, citing steep throughput decline as California refineries reduce crude intake.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K158/601158735.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602020" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>Crimson California Pipeline</em>, a crude oil common carrier regulated by the CPUC, seeks a <strong>66.97%</strong> rate increase effective April 1, 2026. The company cites a steep decline in throughput as California refineries reduce crude intake, leaving fixed costs spread across lower volumes. The Commission must determine whether the proposed rate is just and reasonable under PUC §454. Shippers and downstream parties may intervene. No IOU ratepayer exposure — crude oil shipper costs not passed through to residential utility bills.</div>
+            </div>
+          </div>
+
+          <!-- A.26-02-021 -->
+          <div class="proc-card" data-util="others">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-02-021</span>
+              <span class="proc-card-date">Filed Feb 27, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>PacifiCorp — Wildfire Expense Memorandum Account Recovery (~$1.7B multistate)</h3>
+            <p>PacifiCorp seeks rate recovery for California-allocated wildfire costs from the 2020 Slater Fire and 2022 McKinney Fire. California's jurisdictional share subject to CPUC prudency review.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K158/601158276.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602021" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>PacifiCorp</em> (d/b/a Pacific Power) seeks CPUC authorization to recover wildfire-related costs recorded in its Wildfire Expense Memorandum Account (WEMA) for the 2020 Slater Fire and 2022 McKinney Fire. The ~<strong>$1.7B</strong> total is multistate; California's jurisdictional share is subject to CPUC review. The Commission must determine whether recorded costs were prudently incurred before authorizing rate recovery. Intervenor review of fire cause, cost allocation methodology, and insurance offsets is expected.</div>
+            </div>
+          </div>
+
+        </div><!-- /apps-feb1627 -->
+
+        <!-- ── Prior Period: Feb 2–13, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-feb0213')" id="toggle-apps-feb0213" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Feb 2 – Feb 13, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">1 filing</span>
+            <span class="period-hdr-arr" id="parr-apps-feb0213">&#9658;</span>
+          </div>
+        </div>
+        <div id="apps-feb0213" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.26-02-007 -->
+          <div class="proc-card" data-util="swg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-02-007</span>
+              <span class="proc-card-date">Filed Feb 12, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>Southwest Gas — $1.15 Billion Debt Securities Authorization</h3>
+            <p>Southwest Gas seeks CPUC authority to issue up to <strong>$1.15 billion</strong> in new debt securities and refinance existing obligations to fund California gas distribution capital improvements.</p>
+            <div class="proc-card-links">
+              <a href="https://www.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K152/599152713.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602007" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>Southwest Gas</em> seeks CPUC authorization under PUC §817 to issue up to <strong>$1.15 billion</strong> in long-term debt securities — including notes, debentures, and other obligations — over a multi-year period. Proceeds fund capital improvements to its California gas distribution system, refinance maturing obligations, and meet general corporate purposes. The Commission reviews whether the issuance is reasonably necessary for lawful corporate purposes and that the terms do not impair utility service or ratepayer interests.</div>
+            </div>
+          </div>
+
+        </div><!-- /apps-feb0213 -->
+
+        <!-- ── Prior Period: Jan 19–30, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-jan1930')" id="toggle-apps-jan1930" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Jan 19 – Jan 30, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">5 filings</span>
+            <span class="period-hdr-arr" id="parr-apps-jan1930">&#9658;</span>
+          </div>
+        </div>
+        <div id="apps-jan1930" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.26-01-021 -->
+          <div class="proc-card" data-util="pge sce sdge scg swg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-021</span>
+              <span class="proc-card-date">Filed Jan 29, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>Joint IOUs — ESA/CARE Bridge Program Year 2027</h3>
+            <p>All five major California IOUs jointly seek a one-year bridge authorization for ESA and CARE low-income programs in Program Year 2027, pending resolution of the 2028–2033 cycle applications.</p>
+            <div class="proc-card-links">
+              <a href="https://www.cpuc.ca.gov/PublishedDocs/Efile/G000/M596/K907/596907841.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601021" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">All five major California IOUs — <em>PG&amp;E, SCE, SDG&amp;E, SoCalGas, and Southwest Gas</em> — jointly seek a one-year bridge authorization to continue ESA and CARE low-income programs in Program Year 2027. The bridge is necessary because the long-term 2028–2033 cycle applications (filed separately) will not be resolved before PY2027 begins, creating a gap in program authority. Without Commission approval, IOUs would lack authorization to operate and fund the programs during 2027 — potentially interrupting service to hundreds of thousands of low-income customers.</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-010 -->
+          <div class="proc-card" data-util="sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-010</span>
+              <span class="proc-card-date">Filed Jan 16, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>SDG&amp;E — ESA/CARE Low-Income Program Authorization 2028–2033</h3>
+            <p>SDG&amp;E seeks authority to continue and expand its Energy Savings Assistance (ESA) and CARE low-income programs for the 2028–2033 cycle. Filed concurrently with the SoCalGas application.</p>
+            <div class="proc-card-links">
+              <a href="https://www.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K083/595083718.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601010" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>SDG&amp;E</em> files its Low-Income Proceedings Application for the 2028–2033 cycle, covering both the <em>Energy Savings Assistance</em> (ESA) program — which provides free weatherization and appliance upgrades to income-qualified customers — and the <em>California Alternate Rates for Energy</em> (CARE) discount program. SDG&amp;E proposes program budgets, customer targets, and delivery methods for Commission approval. Filed in coordination with the parallel SoCalGas (A.26-01-011) and joint IOU bridge (A.26-01-021) applications.</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-011 -->
+          <div class="proc-card" data-util="scg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-011</span>
+              <span class="proc-card-date">Filed Jan 16, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>SoCalGas — ESA/CARE Low-Income Program Authorization 2028–2033</h3>
+            <p>SoCalGas seeks CPUC approval to continue delivering ESA and CARE low-income programs for the 2028–2033 cycle. Filed concurrently with the SDG&amp;E application (A.26-01-010).</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K320/595320885.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601011" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>SoCalGas</em> seeks CPUC approval to continue delivering the <em>Energy Savings Assistance</em> (ESA) and <em>CARE</em> low-income programs across its gas service territory for the 2028–2033 cycle. ESA provides weatherization measures and appliance replacements to reduce energy burden for low-income customers; CARE provides a rate discount. SoCalGas proposes program structure, budgets, and outreach targets. Filed concurrently with SDG&amp;E's application (A.26-01-010) and the joint IOU bridge filing (A.26-01-021).</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-007 -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-007</span>
+              <span class="proc-card-date">Filed Jan 14, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>SCE — Woolsey Fire Bond Securitization ($1.84B)</h3>
+            <p>SCE seeks a CPUC financing order under AB 1054 authorizing <strong>$1.84 billion</strong> in rate reduction bonds to securitize Woolsey Fire costs — lowering borrowing costs vs. traditional rate base recovery.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K201/595201125.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601007" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>SCE</em> seeks a CPUC financing order under AB 1054 authorizing <strong>$1.84 billion</strong> in rate reduction bonds to securitize its approved Woolsey Fire wildfire costs. Securitization replaces traditional rate base recovery with lower-cost bond financing — saving ratepayers an estimated hundreds of millions in carrying costs over the recovery period. Bondholders are repaid through a non-bypassable charge on customer bills. The CPUC must find the structure is in the public interest and issue a financing order before bonds can be sold.</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-004 -->
+          <div class="proc-card" data-util="others">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-004</span>
+              <span class="proc-card-date">Filed Jan 12, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>Brookfield Infrastructure — Wild Goose &amp; Lodi Gas Storage Acquisition</h3>
+            <p>Brookfield Infrastructure seeks §851 approval to acquire Wild Goose (~<strong>28 Bcf</strong>) and Lodi (~<strong>12 Bcf</strong>) gas storage facilities from a PG&amp;E affiliate. FERC approval also required.</p>
+            <div class="proc-card-links">
+              <a href="https://www.cpuc.ca.gov/PublishedDocs/Efile/G000/M594/K365/594365127.PDF" target="_blank">View Application</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601004" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>Brookfield Infrastructure Partners</em> seeks CPUC authorization under PUC §851 to acquire <em>Wild Goose Energy Storage</em> (~28 Bcf working capacity) and <em>Lodi Gas Storage</em> (~12 Bcf) — two major Northern California gas storage facilities currently owned by a PG&amp;E affiliate. Together they represent critical seasonal storage capacity for the regional gas market. The Commission must find the transfer consistent with the public interest, including operational continuity, reliability, and ratepayer protection. FERC approval also required for FERC-jurisdictional assets.</div>
+            </div>
+          </div>
+
+        </div><!-- /apps-jan1930 -->
+
+        <div class="filter-empty" id="apps-empty" style="grid-column:1/-1;">No matches for selected IOU.</div>
       </div><!-- /proc-grid -->
     </div>
   </section>
@@ -784,8 +1026,296 @@
       </div>
       <div class="proc-grid" id="pd-cards">
 
-        <div class="calreg-loading" style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-style:italic;">Loading proceedings…</div>
-        <div class="filter-empty" id="pd-empty">No matches for selected IOU.</div>
+        <!-- ── Current Period Header: Mar 2–13, 2026 ── -->
+        <div class="period-hdr current" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Current Period</div>
+            <div class="period-hdr-date">Mar 2 – Mar 13, 2026</div>
+          </div>
+          <div class="period-hdr-right">6 items</div>
+        </div>
+
+        <!-- R.13-02-008 -->
+        <div class="proc-card" data-util="pge scg sdge swg">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">R.13-02-008</span>
+            <span class="proc-card-date">PD Released Mar 6, 2026</span>
+            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          </div>
+          <h3>Renewable Gas Standard — Biomethane Procurement Plan Modifications</h3>
+          <p>Modifies Renewable Gas Standard procurement targets for PG&amp;E, SoCalGas, SDG&amp;E, and Southwest Gas — specifying RNG volumes from dairy, landfill, and waste sources. Comments due <strong>March 26, 2026</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K846/601846485.PDF" target="_blank">View PD</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1302008" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The <em>Renewable Gas Standard</em> requires California's four large gas utilities to procure biomethane from dairy operations, municipal solid waste, and wastewater treatment facilities. This PD updates procurement targets and modifies pipeline interconnection requirements to reflect California's gas transition strategy and SLCP reduction goals.<br>No direct rate increase in this decision — changes to procurement volumes and interconnection requirements will affect future utility costs reflected in rates. Utilities — <em>PG&amp;E</em>, <em>SoCalGas</em>, <em>SDG&amp;E</em>, <em>Southwest Gas</em> — may face higher costs if RNG supply constraints persist. Comments due <strong>March 26, 2026</strong>.</div>
+          </div>
+        </div>
+
+        <!-- A.24-04-001 -->
+        <div class="proc-card" data-util="sce">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">A.24-04-001</span>
+            <span class="proc-card-date">PD Released Mar 6, 2026</span>
+            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          </div>
+          <h3>SCE — 2023 Energy Resource Recovery Account (ERRA) Compliance</h3>
+          <p>SCE's 2023 ERRA compliance — PD identifies a <strong>$63.2 million decrease</strong> in revenue requirement, flowing to customers as a net rate reduction. Comments due <strong>March 26, 2026</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K846/601846486.PDF" target="_blank">View PD</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2404001" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><em>SCE</em>'s annual ERRA compliance filing for 2023 — the Commission reviews whether procurement was reasonable and consistent with its approved plan. The ERRA mechanism ensures customers pay only for prudent energy costs; overcollections flow back as rate reductions. Proposed Decision issued by <em>ALJ Jeffrey Lee</em>.<br>The PD addresses a <strong>$63.195 million decrease</strong> in revenue requirement across seven accounts — customers receive a net rate reduction reflecting an overcollection in 2023. Comments due <strong>March 26, 2026</strong>.</div>
+          </div>
+        </div>
+
+        <!-- A.24-03-009 -->
+        <div class="proc-card" data-util="pge">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">A.24-03-009</span>
+            <span class="proc-card-date">PD Released Mar 6, 2026</span>
+            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          </div>
+          <h3>PG&amp;E — Leasing Transmission Entitlements to Citizens Energy Corp.</h3>
+          <p>PG&amp;E seeks §851 approval to lease transmission entitlements to <em>Citizens Energy</em> under up to five 30-year leases worth up to <strong>$1 billion</strong>. Citizens Energy commits <strong>50–90%</strong> of profits to clean energy for low-income communities.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K795/601795585.PDF" target="_blank">View PD</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403009" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><em>PG&amp;E</em> seeks authority under Public Utilities Code §851 to lease transmission entitlements to <em>Citizens Energy</em> — a nonprofit — through up to five 30-year leases. <em>Citizens Energy</em> would fund grid upgrades (safety, reliability, capacity) in exchange. The Commission must determine whether the arrangement satisfies §851 public interest requirements. Proposed Decision issued by <em>ALJ Jack Chang</em>.<br>Total investment up to <strong>$1 billion</strong> across five leases. <em>Citizens Energy</em> commits to directing <strong>50%</strong> of net after-tax profits to clean energy for low-income communities in Central and Northern California, rising to <strong>90%</strong> over time. Comments due <strong>March 26, 2026</strong>.</div>
+          </div>
+        </div>
+
+        <!-- R.25-07-013 — anchor for CalNews cross-links -->
+        <div id="proc-r2507013" class="proc-card" data-util="pge sce sdge scg">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">R.25-07-013</span>
+            <span class="proc-card-date">Comments closed Mar 9, 2026</span>
+            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          </div>
+          <h3>California Climate Credit — Proposed Pause of 2026 Residential Electric Credit</h3>
+          <p>Proposes pausing the spring 2026 residential electric California Climate Credit — funded by cap-and-trade proceeds — to evaluate shifting distribution to summer when bills are highest. Since 2014, over <strong>$16 billion</strong> distributed.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M598/K101/598101732.PDF" target="_blank">View PD</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2507013" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The Commission is reconsidering the timing of the <em>California Climate Credit</em> — a bill credit derived from cap-and-trade auction proceeds. The PD pauses the spring 2026 distribution for residential electric customers to evaluate shifting it to summer, when electricity bills are highest. Phase 1A; final credit structure to be determined.<br>Since 2014, over <strong>$16 billion</strong> distributed through the <em>Climate Credit</em> mechanism across eight California utilities. The pause affects timing only — not the total amount. Expected on the <strong>March 19, 2026</strong> voting meeting agenda.</div>
+          </div>
+        </div>
+
+        <!-- I.23-03-008 — Adopted/Closed -->
+        <div class="proc-card" data-util="pge scg sdge">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">I.23-03-008</span>
+            <span class="proc-card-date">Adopted Feb 26, 2026</span>
+            <span class="status-badge s-settled" style="margin-left:auto;">Adopted 4–0 · Closed</span>
+          </div>
+          <h3>Winter 2022–23 Natural Gas Price Spike Investigation — No Misconduct Found</h3>
+          <p>No misconduct found in the winter 2022–23 gas spike; PG&amp;E, SoCalGas, and storage providers exonerated. Core Procurement Charge cap adopted prospectively — triggered when monthly core price exceeds <strong>150%</strong> of the 10-year average.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M601/K862/601862088.PDF" target="_blank">View Decision (D-26-02-058)</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:I2303008" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">Opened March 2023 following the winter 2022–23 gas spike — some <em>SoCalGas</em> customers received bills exceeding <strong>$400</strong> in January 2023. The Commission investigated whether <em>PG&amp;E</em>, <em>SoCalGas</em>, <em>SDG&amp;E</em>, and independent storage operators engaged in market manipulation, withholding, or imprudent procurement. After nearly three years, the Commission closed the investigation with no finding of misconduct, attributing the spike to coincident demand peaks and pipeline constraints outside California.<br><strong>No penalties, fines, or refund orders</strong> against any utility. Prospective remedy: <em>Core Procurement Charge</em> (CPC) cap triggered when monthly core procurement price exceeds <strong>150% of the 10-year average</strong> (November–March window). Undercollections amortized — not borne by shareholders.</div>
+          </div>
+        </div>
+
+        <!-- R.25-06-019 — Adopted/Unanimous -->
+        <div id="proc-r2506019" class="proc-card" data-util="pge sce sdge scg swg">
+          <div class="proc-card-meta">
+            <span class="proc-card-docket">R.25-06-019</span>
+            <span class="proc-card-date">Adopted Feb 26, 2026</span>
+            <span class="status-badge s-settled" style="margin-left:auto;">Adopted — Unanimous</span>
+          </div>
+          <h3>IRP — 6,000 MW Clean Energy &amp; Storage Procurement Order</h3>
+          <p>Orders all California LSEs to procure <strong>6,000 MW</strong> of non-GHG-emitting capacity by 2030–2032. SCE: <strong>2,088 MW</strong> · PG&amp;E: <strong>1,077 MW</strong> · CCAs: remainder. At least <strong>25%</strong> must be long-duration or clean firm. Adopted <strong>5–0</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M601/K777/601777006.PDF" target="_blank">View Decision (D-26-02-057)</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2506019" target="_blank" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">President <em>Alice Reynolds</em>' final act. Requires all California load-serving entities — IOUs, CCAs, and ESPs — to procure <strong>6,000 MW</strong> of new non-GHG-emitting capacity across three equal tranches. Each tranche: no more than <strong>50%</strong> battery storage; at least <strong>25%</strong> must be long-duration (≥8 hours) or clean firm. Adopted unanimously <strong>5–0</strong>.<br>No revenue requirement set in this decision — it is a procurement mandate, not a ratesetting order. LSE obligations: <em>SCE</em> <strong>2,088 MW</strong> · <em>PG&amp;E</em> <strong>1,077 MW</strong> · CCAs allocated the remainder. Costs flow into future GRC proceedings as contracts execute. Tranche 1 NQC deadline: <strong>December 31, 2030</strong>.</div>
+          </div>
+        </div>
+
+        <!-- ── Prior Period: Feb 2–13, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('pd-feb0213')" id="toggle-pd-feb0213" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Feb 2 – Feb 13, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">5 items</span>
+            <span class="period-hdr-arr" id="parr-pd-feb0213">&#9658;</span>
+          </div>
+        </div>
+        <div id="pd-feb0213" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.25-06-012 -->
+          <div class="proc-card" data-util="scg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.25-06-012</span>
+              <span class="proc-card-date">PD Issued Feb 13, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>SoCalGas — Gas Cost Incentive Mechanism (GCIM) Year 31 Shareholder Award</h3>
+            <p>SoCalGas earns a <strong>$8.374 million</strong> shareholder award under GCIM Year 31 — procurement came in <strong>$42.1 million below benchmark</strong>. <strong>$33.77 million</strong> flows to ratepayers as lower gas costs.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K024/599024344.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2506012" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Gas Cost Incentive Mechanism</em> (GCIM) is <em>SoCalGas</em>'s procurement performance incentive, in place since the mid-1990s. Each year the CPUC reviews whether <em>SoCalGas</em> beat or missed its benchmark procurement cost. A positive result triggers a shareholder reward; a negative result triggers a shareholder penalty. The mechanism aligns utility incentives with ratepayer interests in keeping gas costs low.<br><strong>Shareholder reward: $8,374,056</strong> for GCIM Year 31 (2024–2025 gas year). <em>SoCalGas</em>'s recorded procurement costs were <strong>$42,142,370 below benchmark</strong>, of which <strong>$33,768,315 flows to ratepayers</strong> as lower gas costs and <strong>$8,374,056</strong> goes to shareholders. Customers save roughly <strong>$4 for every $1</strong> awarded to shareholders.</div>
+            </div>
+          </div>
+
+          <!-- A.09-09-022 -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.09-09-022</span>
+              <span class="proc-card-date">PD Issued Feb 13, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>SCE — Alberhill System Project CPCN (Riverside County Transmission)</h3>
+            <p>SCE's 16-year Alberhill Transmission CPCN reaches proposed decision; capital cost cap set at <strong>$481.7 million</strong> (2023 constant dollars) including <strong>15% contingency</strong>.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K038/599038893.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A0909022" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>SCE</em> filed this application in September 2009 to build the <em>Alberhill System Project</em> — transmission lines and substations in western Riverside County to meet load growth in the Inland Empire. The project faced years of environmental review, community opposition, and route modification. The ALJ's proposed decision resolves final scope and authorizes <em>SCE</em> to proceed with the modified route.<br>Capital cost cap: <strong>$481,700,000 (2023 constant dollars)</strong>, including a <strong>15% contingency of $53,800,000</strong>. Costs recovered through <em>SCE</em>'s FERC-regulated transmission rate base — borne by all SCE ratepayers through transmission charges. CPCN is granted; proceeding closes upon adoption.</div>
+            </div>
+          </div>
+
+          <!-- A.24-04-017 — anchor for CalNews cross-links -->
+          <div id="proc-a2404017" class="proc-card" data-util="others">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.24-04-017</span>
+              <span class="proc-card-date">PD Issued Feb 13, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>LS Power Grid California — Santa Clara Valley Transmission CPCN ($1.593B cap)</h3>
+            <p>LS Power seeks CPCN for a <strong>$1.593 billion</strong> HVDC line in Santa Clara County, primarily to serve data center load growth in the San José area. Adopted at Mar 19 Voting Meeting.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K056/599056564.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2404017" target="_blank" class="sec">Docket Card</a>
+            </div>
+          </div>
+
+          <!-- A.24-06-001 -->
+          <div class="proc-card" data-util="sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.24-06-001</span>
+              <span class="proc-card-date">PD Issued Feb 13, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>SDG&amp;E — 2023 Energy Resource Recovery Account (ERRA) Compliance</h3>
+            <p>SDG&amp;E's 2023 ERRA shows a net undercollection of <strong>$214.6 million</strong> — to be recovered from customers through future rates.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K038/599038878.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2406001" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">Annual §451/§454.5 ERRA compliance proceeding for <em>SDG&amp;E</em>'s 2023 energy procurement year. The Commission reviews whether <em>SDG&amp;E</em>'s dispatch decisions, market purchases, and contract administration were prudent and consistent with its approved plan.<br><em>SDG&amp;E</em>'s 2023 procurement resulted in a <strong>net undercollection of $214,580,000</strong> (gross undercollection $224,433,000, offset by $9,853,000 overcollection in two accounts). Undercollection will be <strong>recovered through future customer rates</strong>. Decision approved with modifications including updated RA portfolio valuation, corrected RPS accounting, and battery storage revenue reallocation.</div>
+            </div>
+          </div>
+
+          <!-- A.25-06-007 -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.25-06-007</span>
+              <span class="proc-card-date">PD Issued Feb 12, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>SCE — $9.85B Debt &amp; $1.155B Preferred Equity Authorization</h3>
+            <p>SCE authorized up to <strong>$9.85 billion</strong> in long-term debt and <strong>$1.155 billion</strong> in preferred equity for capital programs — <strong>$525 million below</strong> SCE's original $10.375B request.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K037/599037460.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2506007" target="_blank" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">Utilities seek CPUC authority to issue debt and equity in advance of actual issuances, allowing them to move quickly when capital market conditions are favorable. This authorization covers <em>SCE</em>'s anticipated capital needs driven by its wildfire mitigation capital program (WMCE), infrastructure replacement, and clean energy integration.<br>Authorized: <strong>$9,850,000,000</strong> in long-term debt (<em>SCE</em> requested $10,125,000,000 — reduced by <strong>$275,000,000</strong>) and <strong>$1,155,000,000</strong> in preferred equity (reduced by <strong>$250,000,000</strong>). Actual issuances within this cap do not require additional CPUC approval. Cost recovery occurs as capital is deployed and included in future GRC proceedings.</div>
+            </div>
+          </div>
+
+        </div><!-- /pd-feb0213 -->
+
+        <!-- ── Prior Period: Jan 19–30, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('pd-jan1930')" id="toggle-pd-jan1930" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Jan 19 – Jan 30, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">3 items</span>
+            <span class="period-hdr-arr" id="parr-pd-jan1930">&#9658;</span>
+          </div>
+        </div>
+        <div id="pd-jan1930" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.24-05-008 -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.24-05-008</span>
+              <span class="proc-card-date">PD Released Jan 30, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>PG&amp;E — Risk Assessment Mitigation Phase (RAMP) Proceeding Close</h3>
+            <p>Proposed Decision to close PG&amp;E's RAMP proceeding — confirms the RAMP record is accepted as informational and incorporated into its General Rate Case.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M596/K902/596902581.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008" target="_blank" class="sec">Docket Card</a>
+            </div>
+          </div>
+
+          <!-- R.19-10-005 -->
+          <div class="proc-card" data-util="pge sce sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">R.19-10-005</span>
+              <span class="proc-card-date">PD Released Jan 23, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>EPIC Phase 4 — Strategic Objectives &amp; Triennial Investment Plan PD</h3>
+            <p>Proposes the Electric Program Investment Charge (EPIC) Phase 4 triennial plan, updating strategic objectives for clean energy technology R&amp;D investment by PG&amp;E, SCE, and SDG&amp;E.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K495/595495688.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1910005" target="_blank" class="sec">Docket Card</a>
+            </div>
+          </div>
+
+          <!-- R.10-05-004 -->
+          <div class="proc-card" data-util="pge sce sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">R.10-05-004</span>
+              <span class="proc-card-date">PD Released Jan 21, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>CSI/SGIP — Petition for Modification Denied</h3>
+            <p>Denies a petition to modify the Self-Generation Incentive Program (SGIP) and California Solar Initiative (CSI) incentive structures.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M595/K495/595495666.PDF" target="_blank">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1005004" target="_blank" class="sec">Docket Card</a>
+            </div>
+          </div>
+
+        </div><!-- /pd-jan1930 -->
+
+        <div class="filter-empty" id="pd-empty" style="grid-column:1/-1;">No matches for selected IOU.</div>
 
       </div>
     </div>
@@ -864,174 +1394,6 @@
     </div>
   </section>
 
-  <script>
-// ── Supabase CalReg loader ───────────────────────────────────────────────────
-const _supa = supabase.createClient(
-  'https://hivsflsevksddjuhijwu.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpdnNmbHNldmtzZGRqdWhpand1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NjMxNTIsImV4cCI6MjA4OTQzOTE1Mn0.3uEqHtX0gb7uz3fAecK-2T6zVRQr7VPLhOOOIMo6qdc'
-);
-
-const CURRENT_PERIOD_APPS = 'Mar 2 \u2013 Mar 13, 2026';
-const CURRENT_PERIOD_PDS  = 'Mar 2 \u2013 Mar 13, 2026';
-
-document.addEventListener('DOMContentLoaded', async function () {
-  try {
-    const { data, error } = await _supa
-      .from('proceedings')
-      .select('*')
-      .order('period_sort', { ascending: true })
-      .order('date_label',  { ascending: false });
-    if (error) throw error;
-
-    const apps = data.filter(p => p.section_type === 'application');
-    const pds  = data.filter(p => p.section_type === 'proposed_decision');
-
-    _renderSection(apps, 'apps-grid', true,  CURRENT_PERIOD_APPS);
-    _renderSection(pds,  'pd-cards',  false, CURRENT_PERIOD_PDS);
-
-    // Apply default All-IOUs filter
-    ['apps-grid','pd-cards'].forEach(function(cid) {
-      var btn = document.querySelector('.cr-filters button[onclick*="' + cid + '"][onclick*="\'all\'"]');
-      if (btn && typeof filterSection === 'function') filterSection(btn, 'all', cid);
-    });
-  } catch (e) {
-    console.error('CalReg Supabase load error:', e);
-    ['apps-grid','pd-cards'].forEach(function(cid) {
-      var el = document.getElementById(cid);
-      if (el) {
-        var loading = el.querySelector('.calreg-loading');
-        if (loading) loading.textContent = 'Failed to load proceedings. Please refresh.';
-      }
-    });
-  }
-});
-
-function _renderSection(proceedings, containerId, isApps, currentPeriodLabel) {
-  var container = document.getElementById(containerId);
-  if (!container) return;
-
-  // Remove loading indicator
-  var loading = container.querySelector('.calreg-loading');
-  if (loading) loading.remove();
-
-  // Group by period_sort
-  var groups = {};
-  proceedings.forEach(function(p) {
-    var k = p.period_sort;
-    if (!groups[k]) groups[k] = { label: p.period_label, type: p.period_type, id: p.period_id, items: [] };
-    groups[k].items.push(p);
-  });
-
-  // Always render current period header (sort=1), even if 0 items
-  var hasCurrent = !!groups[1];
-  var currentItems = hasCurrent ? groups[1].items : [];
-  var currentLabel = hasCurrent ? groups[1].label : currentPeriodLabel;
-  var noun = isApps ? 'filing' : 'item';
-
-  var hdr = document.createElement('div');
-  hdr.className = 'period-hdr current';
-  hdr.style.gridColumn = '1/-1';
-  hdr.innerHTML =
-    '<div class="period-hdr-left">' +
-      '<div class="period-hdr-eyebrow">Current Period</div>' +
-      '<div class="period-hdr-date">' + currentLabel + '</div>' +
-    '</div>' +
-    '<div class="period-hdr-right">' +
-      (currentItems.length === 0 ? 'No new ' + (isApps ? 'filings' : 'items') + ' this period'
-        : currentItems.length + ' ' + noun + (currentItems.length !== 1 ? 's' : '')) +
-    '</div>';
-
-  // Insert current header + cards (in inner grid so all cards are equal height)
-  var emptyDiv = container.querySelector('.filter-empty');
-  container.insertBefore(hdr, emptyDiv);
-  if (currentItems.length > 0) {
-    var curGrid = document.createElement('div');
-    curGrid.className = 'current-period-grid';
-    curGrid.style.cssText = 'grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px;grid-auto-rows:1fr;';
-    currentItems.forEach(function(p) { curGrid.appendChild(_renderCard(p)); });
-    container.insertBefore(curGrid, emptyDiv);
-  }
-
-  // Render older/prior periods (sort >= 2)
-  var sortKeys = Object.keys(groups).map(Number).filter(function(k){ return k >= 2; }).sort(function(a,b){return a-b;});
-  sortKeys.forEach(function(k) {
-    var g = groups[k];
-    var count = g.items.length;
-    var pid = g.id || ('period-' + containerId + '-' + k);
-    var eyebrow = g.type === 'prior' ? 'Prior Period' : 'Older Period';
-
-    var phdr = document.createElement('div');
-    phdr.className = 'period-hdr prior-toggle';
-    phdr.style.gridColumn = '1/-1';
-    phdr.id = 'toggle-' + pid;
-    phdr.setAttribute('onclick', "togglePeriod('" + pid + "')");
-    phdr.innerHTML =
-      '<div class="period-hdr-left">' +
-        '<div class="period-hdr-eyebrow">' + eyebrow + '</div>' +
-        '<div class="period-hdr-date">' + g.label + '</div>' +
-      '</div>' +
-      '<div class="period-hdr-right">' +
-        '<span class="period-count">' + count + ' ' + noun + (count !== 1 ? 's' : '') + '</span>' +
-        '<span class="period-hdr-arr" id="parr-' + pid + '">&#9658;</span>' +
-      '</div>';
-    container.insertBefore(phdr, emptyDiv);
-
-    var collapse = document.createElement('div');
-    collapse.id = pid;
-    collapse.className = 'collapsible-period';
-    collapse.style.cssText = 'display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:20px;grid-auto-rows:1fr;';
-    g.items.forEach(function(p) { collapse.appendChild(_renderCard(p)); });
-    container.insertBefore(collapse, emptyDiv);
-  });
-}
-
-function _renderCard(p) {
-  var card = document.createElement('div');
-  card.className = 'proc-card';
-  if (p.anchor_id) card.id = p.anchor_id;
-  card.dataset.util = (p.utilities || []).join(' ');
-
-  var meta =
-    '<div class="proc-card-meta">' +
-      '<span class="proc-card-docket">' + _esc(p.docket) + '</span>' +
-      '<span class="proc-card-date">'   + _esc(p.date_label) + '</span>' +
-      '<span class="status-badge ' + _esc(p.status_class) + '" style="margin-left:auto;">' + _esc(p.status_text) + '</span>' +
-    '</div>';
-
-  var links = '';
-  if (p.primary_link_url) {
-    links += '<a href="' + _esc(p.primary_link_url) + '" target="_blank">' + _esc(p.primary_link_text || 'View') + '</a>';
-  }
-  if (p.docket_card_url) {
-    links += '<a href="' + _esc(p.docket_card_url) + '" target="_blank" class="sec">Docket Card</a>';
-  }
-
-  var aiBox = '';
-  if (p.ai_details_html) {
-    aiBox =
-      '<div class="ai-box">' +
-        '<div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>' +
-        '<div class="ai-body">' + p.ai_details_html + '</div>' +
-      '</div>';
-  }
-
-  card.innerHTML =
-    meta +
-    '<h3>' + _esc(p.title) + '</h3>' +
-    '<p>'  + _esc(p.summary) + '</p>' +
-    '<div class="proc-card-links">' + links + '</div>' +
-    aiBox;
-
-  return card;
-}
-
-function _esc(s) {
-  if (s == null) return '';
-  return String(s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
-</script>
   <script src="js/main.js"></script>
   <script>
     function toggleAI(hdr) {
