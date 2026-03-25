@@ -203,8 +203,8 @@
   <section class="section-sm section-alt" style="border-bottom: 1px solid var(--border);">
     <div class="container">
       <div class="label">Hot Off The Press</div>
-      <h2 style="margin-bottom:6px;">Recent Developments</h2>
-      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions and news from the past two weeks</p>
+      <h2 style="margin-bottom:6px;">Recent Developments at the CPUC</h2>
+      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions, rulemakings, and news</p>
       <div class="rd-grid" id="recent-dev">
         <!-- populated by JS -->
       </div>
@@ -230,7 +230,7 @@
           </div>
 
           <!-- More Stories -->
-          <div class="cn-section-label">More Stories</div>
+          <div class="cn-section-label">Energy and Climate News Stories</div>
           <div class="cn-story-list" id="cn-secondary">
             <!-- populated by JS -->
           </div>
@@ -374,14 +374,14 @@
       ${relatedStr}`;
 
     const secEl = document.getElementById('cn-secondary');
-    rest.forEach(s => {
+    const _card = s => {
       const metaStr = s.author
         ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank">${s.source}</a> (Author: ${s.author})`
         : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank">${s.source}</a>`;
       const relStr = s.relatedCalreg
         ? `<div class="cn-story-related">Related CalReg: <a href="../calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
         : '';
-      secEl.innerHTML += `
+      return `
         <div class="cn-story-item">
           <div class="cn-story-category">${s.category}</div>
           <div class="cn-story-title"><a href="${s.url}" target="_blank">${s.title}</a></div>
@@ -390,7 +390,19 @@
           <a href="${s.url}" target="_blank" class="cn-story-readmore">Read full story &#8594;</a>
           ${relStr}
         </div>`;
-    });
+    };
+    rest.slice(0, 3).forEach(s => { secEl.innerHTML += _card(s); });
+    if (rest.length > 3) {
+      const n = rest.length - 3;
+      secEl.innerHTML += `
+        <div id="cn-more-stories" style="display:none;">${rest.slice(3).map(_card).join('')}</div>
+        <div id="cn-show-more-wrap" style="padding:20px 0 8px; border-top:1px solid var(--border); margin-top:8px;">
+          <button onclick="document.getElementById('cn-more-stories').style.display='block';this.parentElement.style.display='none';"
+            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
+            ${n} More ${n === 1 ? 'Story' : 'Stories'} &#8594;
+          </button>
+        </div>`;
+    }
   </script>
 </body>
 </html>
