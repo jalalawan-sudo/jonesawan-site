@@ -1099,13 +1099,8 @@ function _esc(s) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
-      // Expand all collapsible periods so filter reaches all cards
-      container.querySelectorAll('.collapsible-period').forEach(w => {
-        w.style.display = 'grid';
-        const a = document.getElementById('parr-' + w.id);
-        if (a) a.classList.add('open');
-      });
-
+      // Apply filter to all cards including those in collapsed periods
+      // (querySelectorAll finds cards regardless of display:none on parent)
       _applyCards(container, util);
       _updateCounts(container);
 
