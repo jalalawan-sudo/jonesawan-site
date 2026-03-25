@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ── Recent Developments strip ── */
+    /* ── Recent Developments (CPUC/IOU decisions only) ── */
     .rd-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -46,6 +46,41 @@
     }
     .rd-more:hover { text-decoration: underline; }
 
+    /* ── Other Energy News ── */
+    .on-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media(max-width: 900px) { .on-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 520px) { .on-grid { grid-template-columns: 1fr; } }
+    .on-card {
+      padding: 13px 15px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .on-tag {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 5px;
+    }
+    .on-title {
+      font-size: 0.85rem; font-weight: 700;
+      line-height: 1.35; margin-bottom: 5px;
+    }
+    .on-title a { color: var(--text-dark); }
+    .on-title a:hover { color: var(--teal); }
+    .on-meta {
+      font-size: 0.70rem; color: var(--text-light);
+      margin-bottom: 6px;
+    }
+    .on-summary {
+      font-size: 0.78rem; color: var(--text-mid);
+      line-height: 1.55;
+    }
+
     /* ── CalNews layout ── */
     .cn-wrap {
       display: grid;
@@ -74,9 +109,7 @@
       line-height: 1.25; color: var(--text-dark);
       margin-bottom: 10px; letter-spacing: -0.01em;
     }
-    .cn-feat-headline a {
-      color: inherit;
-    }
+    .cn-feat-headline a { color: inherit; }
     .cn-feat-headline a:hover { color: var(--teal); }
     .cn-feat-byline {
       font-size: 0.75rem; color: var(--text-light);
@@ -196,13 +229,25 @@
     </div>
   </div>
 
-  <!-- ── RECENT DEVELOPMENTS ──────────────────────────────── -->
+  <!-- ── RECENT DEVELOPMENTS — CPUC/IOU decisions only ────── -->
   <section class="section-sm section-alt" style="border-bottom: 1px solid var(--border);">
     <div class="container">
       <div class="label">Hot Off The Press</div>
       <h2 style="margin-bottom:6px;">Recent Developments</h2>
-      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions and news from the past two weeks</p>
+      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions and regulatory actions affecting California IOUs</p>
       <div class="rd-grid" id="recent-dev">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OTHER ENERGY NEWS ─────────────────────────────────── -->
+  <section class="section-sm" style="border-bottom: 1px solid var(--border); background: var(--off-white);">
+    <div class="container">
+      <div class="label">California Energy</div>
+      <h2 style="margin-bottom:6px;">Other Energy News</h2>
+      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">General California energy &amp; climate coverage from CalMatters, Canary Media, and more</p>
+      <div class="on-grid" id="other-news">
         <!-- populated by JS -->
       </div>
     </div>
@@ -263,6 +308,90 @@
 
   <script src="js/main.js"></script>
   <script>
+
+    // ── RECENT: CPUC/IOU decisions ONLY (4 items) ──────────────
+    const RECENT = [
+      {
+        type: "CPUC Decision",
+        typeColor: "#dc2626",
+        title: "SoCalGas Denied $266M for Angeles Link Hydrogen Pipeline Engineering Work",
+        desc: "CPUC denied SoCalGas's bid to recover $266 million from gas ratepayers for engineering work on the proposed Angeles Link hydrogen pipeline — blocking cost recovery for a project whose future remains uncertain.",
+        date: "March 23, 2026",
+        url: "https://www.calregulatory.com/monday-aggregate-cpuc-approves-sce-rate-design-settlements-denies-socalgas-266m-for-angeles-link-hydrogen-pipeline/"
+      },
+      {
+        type: "CPUC Decision",
+        typeColor: "#0369a1",
+        title: "LS Power Santa Clara Valley & South Bay Transmission CPCNs Approved — $1.593B",
+        desc: "CPUC approved Certificates of Public Convenience and Necessity for LS Power's Power Santa Clara Valley ($1.593B) and Power the South Bay transmission projects to address reliability and load growth in Silicon Valley and the South Bay.",
+        date: "March 19, 2026 · A.24-04-017",
+        url: "https://www.calregulatory.com/march-19-2026-cpuc-voting-meeting-results-2/"
+      },
+      {
+        type: "CPUC Decision",
+        typeColor: "#0369a1",
+        title: "SCE 2024 General Rate Case Phase 2 Rate Design Settlements Approved",
+        desc: "CPUC issued a proposed decision largely approving Southern California Edison's 2024 GRC Phase 2 rate design settlements, covering rate structure modifications for residential and commercial customers.",
+        date: "March 23, 2026",
+        url: "https://www.calregulatory.com/monday-aggregate-cpuc-approves-sce-rate-design-settlements-denies-socalgas-266m-for-angeles-link-hydrogen-pipeline/"
+      },
+      {
+        type: "CPUC Decision",
+        typeColor: "#b45309",
+        title: "SoCalGas GCIM: $8.374M Shareholder Reward Approved — $33.77M Ratepayer Savings",
+        desc: "CPUC approved SoCalGas's Gas Cost Incentive Mechanism award: $8.374 million shareholder reward for outperforming procurement benchmarks, with $33.77 million in credited gas cost savings flowing to ratepayers.",
+        date: "March 19, 2026 · A.25-06-012",
+        url: "https://www.calregulatory.com/march-19-2026-cpuc-voting-meeting-results-2/"
+      }
+    ];
+
+    // ── OTHER ENERGY NEWS: General CA energy/climate ──────────
+    const OTHER_NEWS = [
+      {
+        tag: "Pipeline · Litigation",
+        title: "California Sues Trump to Keep Shut Oil Pipeline on Santa Barbara Coast",
+        url: "https://calmatters.org/environment/2026/03/bonta-sable-defense-production-oil/",
+        meta: "CalMatters · Alejandro Lazo · March 24, 2026",
+        summary: "AG Rob Bonta filed a federal lawsuit challenging Energy Secretary Wright's Defense Production Act order to restart the Sable offshore pipeline, inactive since the 2015 Refugio spill."
+      },
+      {
+        tag: "Solar · Affordability",
+        title: "The Fight Over California's Community Solar Plan Is Heating Up",
+        url: "https://www.canarymedia.com/articles/solar/fight-over-california-community-solar-plan-heating-up",
+        meta: "Canary Media · Jeff St. John · March 17, 2026",
+        summary: "Utilities' opposition to the AB 2316-mandated community solar-storage program is intensifying, risking billions in federal IRA tax credits tied to program adoption deadlines."
+      },
+      {
+        tag: "Affordability · Politics",
+        title: "As California Gas Prices Soar Past $5.50, the Governor's Race Turns Into a Fight Over Who to Blame",
+        url: "https://calmatters.org/politics/2026/03/california-governors-race-gas-taxes/",
+        meta: "CalMatters · March 18, 2026",
+        summary: "Prices hit $5.50+/gallon statewide — $1.70 above the national average — as governor's race candidates propose suspending carbon rules or the 61¢/gallon gas tax."
+      },
+      {
+        tag: "Pipeline · Federal",
+        title: "Trump Orders Restart of Santa Barbara Oil Pipeline — California Vows to Fight",
+        url: "https://calmatters.org/environment/2026/03/trump-emergency-sable-santa-barbara/",
+        meta: "CalMatters · Alejandro Lazo · March 13, 2026",
+        summary: "Trump invoked the Defense Production Act to order emergency restart of the Sable Offshore pipeline. A Santa Barbara County judge subsequently ordered it to remain closed."
+      },
+      {
+        tag: "Solar · Court",
+        title: "California Court Upholds NEM 3.0 — Rooftop Solar Export Rates Cut ~75%",
+        url: "https://calmatters.org/economy/2026/03/net-metering-defeat-for-rootftop-solar-in-california-courts/",
+        meta: "CalMatters · Malena Carollo · March 10, 2026",
+        summary: "California Court of Appeal affirmed the CPUC's NEM 3.0 decision, cutting rooftop solar export compensation by ~75% from near-retail rates under the prior NEM 2.0 tariff."
+      },
+      {
+        tag: "Gas Transition · Decarbonization",
+        title: "California Is Testing 30 Neighborhood Decarbonization Pilots — Here's What They're Learning",
+        url: "https://calmatters.org/commentary/2026/03/decarbonize-neighborhoods-natural-gas-california/",
+        meta: "CalMatters · March 3, 2026",
+        summary: "Thirty neighborhood-scale pilots are testing how to move residents off natural gas, where whole-home electrification can cost $15,000–$25,000 per household — hardest on lower-income communities."
+      }
+    ];
+
+    // ── STORIES: Featured weekly coverage ──────────────────────
     const STORIES = [
       {
         id: 20,
@@ -316,7 +445,7 @@
         source: "Canary Media",
         author: "Jeff St. John",
         category: "Solar · Affordability · Policy",
-        summary: "AB 2316 (2022) mandated the CPUC create a community solar-storage program by mid-2024, with broad support from solar advocates, labor unions, environmental groups, and consumer organizations. Utilities' opposition to the proposed program design is intensifying, with investor-owned utilities challenging the economics and favoring alternative compensation structures. Delays risk forfeiting <strong>billions in federal Inflation Reduction Act tax credits</strong> tied to program adoption deadlines — raising the cost stakes for California's clean energy expansion.",
+        summary: "AB 2316 (2022) mandated the CPUC create a community solar-storage program by mid-2024, with broad support from solar advocates, labor unions, environmental groups, and consumer organizations. Utilities' opposition to the proposed program design is intensifying, with investor-owned utilities challenging the economics and favoring alternative compensation structures. Delays risk forfeiting <strong>billions in federal Inflation Reduction Act tax credits</strong> tied to community solar program adoption deadlines.",
         relatedCalreg: null
       },
       {
@@ -354,42 +483,7 @@
       }
     ];
 
-    const RECENT = [
-      {
-        type: "Litigation",
-        typeColor: "#dc2626",
-        title: "California Sues Trump Over Sable Offshore Pipeline Restart Order",
-        desc: "AG Rob Bonta filed a federal lawsuit challenging Energy Secretary Wright's Defense Production Act order to restart the Sable pipeline, inactive since the 2015 Refugio oil spill. Santa Barbara County court had already blocked the restart.",
-        date: "March 24, 2026",
-        url: "https://calmatters.org/environment/2026/03/bonta-sable-defense-production-oil/"
-      },
-      {
-        type: "CPUC Decision",
-        typeColor: "#0369a1",
-        title: "SoCalGas Denied $266M Recovery for Angeles Link Engineering Work",
-        desc: "CPUC denied SoCalGas's bid to recover $266 million in ratepayer funds for engineering work on the proposed Angeles Link hydrogen pipeline, while issuing a proposed decision approving SCE's 2024 GRC Phase 2 rate design settlements.",
-        date: "March 23, 2026",
-        url: "https://www.calregulatory.com/monday-aggregate-cpuc-approves-sce-rate-design-settlements-denies-socalgas-266m-for-angeles-link-hydrogen-pipeline/"
-      },
-      {
-        type: "CPUC Action",
-        typeColor: "#b45309",
-        title: "2026 Residential Electric Climate Credit Distribution Paused",
-        desc: "CPUC voted to pause the spring 2026 residential electric Climate Credit distribution pending a new decision on timing and delivery method. LS Power transmission CPCNs for Santa Clara Valley ($1.593B) and South Bay were approved.",
-        date: "March 19, 2026 · R.25-07-013",
-        url: "https://www.calregulatory.com/march-19-2026-cpuc-voting-meeting-results-2/"
-      },
-      {
-        type: "Grid",
-        typeColor: "#00b4a6",
-        title: "21 GW Valley Solar Project Advances in San Joaquin Valley",
-        desc: "The Valley Clean Infrastructure Plan — 21 GW solar-plus-storage across 136,000 acres in Westlands Water District — is moving forward, projected to power 9 million homes and deliver $9B+ in net energy savings over 25 years.",
-        date: "March 24, 2026",
-        url: "https://www.canarymedia.com/articles/solar/were-harvesting-the-sun-solar-project-california"
-      }
-    ];
-
-    // Render Recent Developments
+    // ── Render Recent Developments ─────────────────────────────
     const rdEl = document.getElementById('recent-dev');
     RECENT.forEach(r => {
       rdEl.innerHTML += `
@@ -404,12 +498,23 @@
         </div>`;
     });
 
-    // Pick random featured story
+    // ── Render Other Energy News ───────────────────────────────
+    const onEl = document.getElementById('other-news');
+    OTHER_NEWS.forEach(n => {
+      onEl.innerHTML += `
+        <div class="on-card">
+          <div class="on-tag">${n.tag}</div>
+          <div class="on-title"><a href="${n.url}" target="_blank">${n.title}</a></div>
+          <div class="on-meta">${n.meta}</div>
+          <div class="on-summary">${n.summary}</div>
+        </div>`;
+    });
+
+    // ── Render Featured + Secondary Stories ───────────────────
     const featIdx = Math.floor(Math.random() * STORIES.length);
     const feat = STORIES[featIdx];
     const rest = STORIES.filter((_, i) => i !== featIdx);
 
-    // Render featured
     const bylineStr = feat.author
       ? `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a> (Author: ${feat.author})`
       : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a>`;
@@ -426,7 +531,6 @@
       <a href="${feat.url}" target="_blank" class="cn-feat-readmore">Read full story &#8594;</a>
       ${relatedStr}`;
 
-    // Render secondary stories
     const secEl = document.getElementById('cn-secondary');
     rest.forEach(s => {
       const metaStr = s.author
