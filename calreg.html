@@ -52,6 +52,7 @@
       background: var(--white); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 20px;
       transition: box-shadow 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
     }
     .proc-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
     .proc-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
@@ -61,7 +62,7 @@
     }
     .proc-card-date { font-size: 0.73rem; color: var(--text-light); }
     .proc-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
-    .proc-card p  { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; }
+    .proc-card p  { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; flex: 1; }
     .proc-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
     .proc-card-links a {
       font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 4px;
@@ -781,7 +782,7 @@
         <button class="cr-pill" onclick="filterSection(this,'swg','pd-cards')">Southwest Gas</button>
         <button class="cr-pill" onclick="filterSection(this,'others','pd-cards')" style="border-color:#94a3b8; color:#64748b;">Others</button>
       </div>
-      <div class="proc-grid" id="pd-cards" style="align-items:start;">
+      <div class="proc-grid" id="pd-cards">
 
         <div class="calreg-loading" style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-style:italic;">Loading proceedings…</div>
         <div class="filter-empty" id="pd-empty">No matches for selected IOU.</div>
@@ -972,7 +973,7 @@ function _renderSection(proceedings, containerId, isApps, currentPeriodLabel) {
     var collapse = document.createElement('div');
     collapse.id = pid;
     collapse.className = 'collapsible-period';
-    collapse.style.cssText = 'display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:20px;align-items:start;';
+    collapse.style.cssText = 'display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:20px;';
     g.items.forEach(function(p) { collapse.appendChild(_renderCard(p)); });
     container.insertBefore(collapse, emptyDiv);
   });
@@ -984,14 +985,11 @@ function _renderCard(p) {
   if (p.anchor_id) card.id = p.anchor_id;
   card.dataset.util = (p.utilities || []).join(' ');
 
-  var voteNote = p.vote_note
-    ? '<span class="vote-note">' + _esc(p.vote_note) + '</span>' : '';
   var meta =
     '<div class="proc-card-meta">' +
       '<span class="proc-card-docket">' + _esc(p.docket) + '</span>' +
       '<span class="proc-card-date">'   + _esc(p.date_label) + '</span>' +
       '<span class="status-badge ' + _esc(p.status_class) + '" style="margin-left:auto;">' + _esc(p.status_text) + '</span>' +
-      voteNote +
     '</div>';
 
   var links = '';
