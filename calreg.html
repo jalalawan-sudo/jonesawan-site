@@ -941,10 +941,16 @@ function _renderSection(proceedings, containerId, isApps, currentPeriodLabel) {
         : currentItems.length + ' ' + noun + (currentItems.length !== 1 ? 's' : '')) +
     '</div>';
 
-  // Insert current header before filter-empty div
+  // Insert current header + cards (in inner grid so all cards are equal height)
   var emptyDiv = container.querySelector('.filter-empty');
   container.insertBefore(hdr, emptyDiv);
-  currentItems.forEach(function(p) { container.insertBefore(_renderCard(p), emptyDiv); });
+  if (currentItems.length > 0) {
+    var curGrid = document.createElement('div');
+    curGrid.className = 'current-period-grid';
+    curGrid.style.cssText = 'grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px;grid-auto-rows:1fr;';
+    currentItems.forEach(function(p) { curGrid.appendChild(_renderCard(p)); });
+    container.insertBefore(curGrid, emptyDiv);
+  }
 
   // Render older/prior periods (sort >= 2)
   var sortKeys = Object.keys(groups).map(Number).filter(function(k){ return k >= 2; }).sort(function(a,b){return a-b;});
@@ -973,7 +979,7 @@ function _renderSection(proceedings, containerId, isApps, currentPeriodLabel) {
     var collapse = document.createElement('div');
     collapse.id = pid;
     collapse.className = 'collapsible-period';
-    collapse.style.cssText = 'display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:20px;';
+    collapse.style.cssText = 'display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:20px;grid-auto-rows:1fr;';
     g.items.forEach(function(p) { collapse.appendChild(_renderCard(p)); });
     container.insertBefore(collapse, emptyDiv);
   });
