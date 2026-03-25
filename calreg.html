@@ -1480,11 +1480,34 @@
       }
     }
 
-    // Apply "All IOUs" filter on load so only IOU-tagged cards show by default
+    // Apply "All IOUs" filter on load + hide prior periods beyond 3rd
     document.addEventListener('DOMContentLoaded', function() {
       ['apps-grid', 'pd-cards'].forEach(function(containerId) {
         var btn = document.querySelector('.cr-filters button[onclick*="' + containerId + '"][onclick*="\'all\'"]');
         if (btn) filterSection(btn, 'all', containerId);
+
+        // Hide prior-period toggles beyond the 3rd; show a "See older" button
+        var grid = document.getElementById(containerId);
+        if (!grid) return;
+        var toggles = Array.from(grid.querySelectorAll(':scope > .period-hdr.prior-toggle'));
+        if (toggles.length <= 3) return;
+
+        var toHide = toggles.slice(3);
+        toHide.forEach(function(tog) { tog.style.display = 'none'; });
+
+        var count = toHide.length;
+        var wrap = document.createElement('div');
+        wrap.id = containerId + '-older-wrap';
+        wrap.style.cssText = 'grid-column:1/-1; padding:14px 0 6px;';
+        var obtn = document.createElement('button');
+        obtn.style.cssText = 'font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;';
+        obtn.innerHTML = count + ' Older Period' + (count !== 1 ? 's' : '') + ' &#8594;';
+        obtn.onclick = function() {
+          toHide.forEach(function(tog) { tog.style.display = ''; });
+          wrap.style.display = 'none';
+        };
+        wrap.appendChild(obtn);
+        grid.insertBefore(wrap, toHide[0]);
       });
     });
   </script>
