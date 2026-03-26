@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews — California Energy &amp; Regulatory News · Week of Mar 23–27, 2026</title>
+  <title>CalNews — California Energy &amp; Regulatory News · Week of Mar 16–25, 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <style>
     /* ── Recent Developments (CPUC/IOU decisions only) ── */
     .rd-grid {
@@ -186,11 +186,15 @@
 </head>
 <body>
 
+  <div class="archive-banner" style="background:#f1f5f9;border-bottom:2px solid #cbd5e1;padding:10px 0;text-align:center;font-size:0.82rem;color:#64748b;">
+    &#128194; Archived Issue &nbsp;·&nbsp; <a href="../calnews.html" style="color:var(--teal);font-weight:600;">View Current Issue &rarr;</a>
+  </div>
+
   <div class="page-header">
     <div class="container">
       <div class="label">California Energy &amp; Regulatory News</div>
       <h1>CalNews</h1>
-      <p>Week of Mar 23–27, 2026 · Curated policy &amp; regulatory coverage</p>
+      <p>Week of Mar 16–25, 2026 · Curated policy &amp; regulatory coverage</p>
     </div>
   </div>
 
@@ -216,7 +220,7 @@
         <!-- ── MAIN COLUMN ── -->
         <main>
           <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Mar 23–27, 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Updated March 25, 2026
+            Week of Mar 16–25, 2026 &nbsp;·&nbsp; 11 stories &nbsp;·&nbsp; Updated March 25, 2026
           </div>
 
           <!-- Featured Story -->
@@ -235,19 +239,19 @@
         <aside class="cn-sidebar">
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Current Issue</div>
-            <a href="calnews.html" class="cn-sidebar-link active">Week of Mar 23–27, 2026</a>
+            <a href="../calnews.html" class="cn-sidebar-link">Current Week</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Archive</div>
-            <a href="archive/calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
-            <a href="archive/calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
-            <a href="archive/calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
-            <a href="archive/calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
-            <a href="archive/calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
+            <a href="../archive/calnews-2026-03-25.html" class="cn-sidebar-link active">Week of Mar 16–25, 2026</a>
+            <a href="../archive/calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
+            <a href="../archive/calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
+            <a href="../archive/calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
+            <a href="../archive/calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Docket Tracker</div>
-            <a href="calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
+            <a href="../calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-note">
@@ -260,62 +264,96 @@
     </div>
   </section>
 
-  <script src="js/main.js"></script>
+  <script src="../js/main.js"></script>
   <script>
 
-    // ── RECENT: CPUC/IOU decisions ONLY ────────────────────────
+    // ── RECENT: CPUC/IOU decisions ONLY (frozen archive) ───────
     const RECENT = [
       {
-        type: "Rulemaking Decision",
-        typeColor: "#0369a1",
-        title: "Spring 2026 Climate Credit Paused — PG&E, SCE, SDG&E (D.26-03-013)",
-        desc: "CPUC ordered the three large electric IOUs to pause distribution of the 2026 spring residential California Climate Credit pending Commission deliberation on optimal distribution timing and mechanism. The Commission will consider alternative delivery methods, including bill credits.",
-        date: "March 19, 2026 · R.25-07-013",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M603/K306/603306591.PDF"
-      },
-      {
-        type: "Major Decision",
-        typeColor: "#0369a1",
-        title: "SCE Authorized $9.85B Debt + $1.155B Preferred Equity Issuance Through 2027 (D.26-03-015)",
-        desc: "CPUC granted SCE authority to issue up to $9,850,000,000 in debt securities and $1,155,000,000 in preferred equity through December 31, 2027. Financing supports SCE's capital investment program, wildfire mitigation expenditures, and ongoing rate recovery obligations.",
-        date: "March 19, 2026 · A.25-06-007",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K037/599037460.PDF"
-      },
-      {
         type: "CPUC Decision",
         typeColor: "#0369a1",
-        title: "PG&E 2024 RAMP Proceeding Closed — New Cost-Benefit Safety Risk Framework (D.26-03-010)",
-        desc: "CPUC closed PG&E's 2024 Risk Assessment and Mitigation Phase proceeding, adopting a new cost-benefit approach for comparing safety risks across PG&E's gas and electric infrastructure programs. Sets the safety risk baseline heading into PG&E's upcoming General Rate Case.",
-        date: "March 19, 2026 · A.24-05-008",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008"
+        title: "LS Power Santa Clara Valley Transmission CPCN Approved — $1.593B Cost Cap",
+        desc: "CPUC granted LS Power Grid California a Certificate of Public Convenience and Necessity to construct an HVDC transmission line connecting the Metcalf 500 kV substation to the San José B 115 kV substation, addressing a reliability gap driven by accelerating data center and tech-sector load growth in Santa Clara County.",
+        date: "March 19, 2026 · A.24-04-017",
+        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M602/K732/602732275.PDF"
       },
       {
-        type: "CPUC Resolution",
-        typeColor: "#00b4a6",
-        title: "SCE Vehicle-Grid Integration Program (ORCHARD) Approved — Res. E-5452",
-        desc: "CPUC approved SCE's new ORCHARD vehicle-grid integration program within the LCFS Implementation Plan, including software optimization for managed EV charging load. Bidirectional charging equipment rebates denied without prejudice pending further cost-effectiveness demonstration.",
-        date: "March 19, 2026 · Res. E-5452",
-        url: "https://www.cpuc.ca.gov/transportation/electric-vehicles/vehicle-grid-integration"
-      },
-      {
-        type: "Grid · Resolution",
-        typeColor: "#00b4a6",
-        title: "ICA Remediation Plans Adopted — PG&E, SCE, SDG&E Reporting Requirements (Held to Apr 9)",
-        desc: "CPUC adopted Integration Capacity Analysis remediation plans and baseline reporting requirements for PG&E, SCE, and SDG&E to expand distributed energy resource hosting capacity. Item held to April 9, 2026 for final approval; draft resolution confirmed available.",
-        date: "March 19, 2026 (held Apr 9) · Res. E-5440",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M598/K870/598870863.PDF"
-      },
-      {
-        type: "CPUC Decision",
-        typeColor: "#0369a1",
-        title: "SGIP Biogas 96% Methane Exemption Denied — Clean Fuel Rules Upheld (D.26-03-018)",
-        desc: "CPUC denied ENGIE North America's petition to exempt wastewater treatment plants from the 96% methane requirement for on-site renewable biogas projects under the Self-Generation Incentive Program. Upholds existing clean fuel standards for IOU-administered SGIP incentives.",
-        date: "March 19, 2026 · R.20-05-012",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2005012"
+        type: "Ratepayer Win",
+        typeColor: "#b45309",
+        title: "SoCalGas GCIM Year 31: $8.374M Shareholder Reward, $33.77M Savings to Ratepayers",
+        desc: "D.26-03-011 approved SoCalGas's Year 31 Gas Cost Incentive Mechanism award after the utility procured gas $42.1 million below benchmark during April 2024–March 2025. Under the 80/20 sharing formula, ratepayers retain $33.77 million in savings; SoCalGas receives $8.374 million. Cal Advocates verified the calculation; no parties contested.",
+        date: "March 19, 2026 · A.25-06-012",
+        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M602/K988/602988661.PDF"
       }
     ];
 
     const STORIES = [
+      {
+        id: 24,
+        title: "The Fight Over California's Community Solar Plan Is Heating Up",
+        url: "https://www.canarymedia.com/articles/solar/fight-over-california-community-solar-plan-heating-up",
+        date: "March 17, 2026",
+        source: "Canary Media",
+        author: "Jeff St. John",
+        category: "Solar · Affordability · Policy",
+        summary: "AB 2316 (2022) mandated the CPUC create a community solar-storage program by mid-2024, with broad support from solar advocates, labor unions, environmental groups, and consumer organizations. Utilities' opposition to the proposed program design is intensifying, with investor-owned utilities challenging the economics and favoring alternative compensation structures. Delays risk forfeiting <strong>billions in federal Inflation Reduction Act tax credits</strong> tied to program adoption deadlines — raising the cost stakes for California's clean energy expansion.",
+        relatedCalreg: null
+      },
+      {
+        id: 25,
+        title: "Did Fake Comments Sink SoCal's Clean Heat Rules? Advocates Want Answers.",
+        url: "https://www.canarymedia.com/articles/heat-pumps/did-fake-comments-sink-socal-clean-heat-rules",
+        date: "March 16, 2026",
+        source: "Canary Media",
+        author: "Alison F. Takemura",
+        category: "Gas Transition · Regulatory",
+        summary: "Southern California's air quality regulators (SCAQMD) rejected landmark rules in June 2025 that would have ramped electric heat pump sales to <strong>90% by 2036</strong>, following a flood of <strong>over 20,000 opposing public comments</strong>. Investigations revealed many were generated through CiviClick — an AI-powered advocacy platform — hired through a consultant with ties to SoCalGas. Climate advocates are demanding a formal investigation into whether the campaign constituted astroturfing that derailed the region's clean heat transition.",
+        relatedCalreg: null
+      },
+      {
+        id: 26,
+        title: "As California Gas Prices Soar Past $5.50, the Governor's Race Turns Into a Fight Over Who to Blame",
+        url: "https://calmatters.org/politics/2026/03/california-governors-race-gas-taxes/",
+        date: "March 18, 2026",
+        source: "CalMatters",
+        author: "Jeanne Kuang",
+        category: "Energy Prices · Politics",
+        summary: "California gas prices exceeded <strong>$5.50 per gallon</strong> statewide — nearly <strong>$1.70 above the national average of $3.80</strong> — turning affordability into a flash point in the governor's race. Former LA Mayor Antonio Villaraigosa called for suspending greenhouse-gas reduction rules he claims add ~50¢ per gallon; San Jose Mayor Matt Mahan proposed suspending the state's <strong>61¢/gallon gas tax</strong>. UC Santa Barbara energy economist Paasha Mahdavi says the spike is \"almost entirely due to global oil markets,\" not state climate policy.",
+        relatedCalreg: null
+      },
+      {
+        id: 28,
+        title: "California Bets on an Obscure Tool to Replace Clean Air Authority Trump Revoked",
+        url: "https://calmatters.org/environment/2026/03/indirect-source-air-quality-trump/",
+        date: "March 16, 2026",
+        source: "CalMatters",
+        author: "Alejandra Reyes-Velarde",
+        category: "Climate · Clean Air · Federal Policy",
+        summary: "After Trump revoked California's authority to set stricter vehicle emission standards, state air regulators are turning to a rarely-used mechanism called the <strong>Indirect Source Rule</strong> — which targets air pollution generated by commercial facilities like warehouses and freight hubs — to preserve some emissions control at the local level. The South Coast AQMD has already adopted the rule, requiring large facilities generating heavy truck traffic to cut on-site emissions or pay into a mitigation fund. Critics argue the tool is a limited substitute for statewide vehicle standards covering <strong>millions of cars and trucks</strong>.",
+        relatedCalreg: null
+      },
+      {
+        id: 29,
+        title: "California Is Spending Hundreds of Millions on Heat. Will It Ever Be a Public Health Priority?",
+        url: "https://calmatters.org/environment/2026/03/extreme-heat-public-health-march/",
+        date: "March 19, 2026",
+        source: "CalMatters",
+        author: "Ana B. Ibarra & Alejandra Reyes-Velarde",
+        category: "Climate · Public Health · Affordability",
+        summary: "California has committed hundreds of millions of dollars to extreme heat programs — cooling centers, urban tree planting, heat-pump rebates — but the state still lacks a cohesive public health framework treating heat as the <strong>leading weather-related cause of death</strong> it has become. More than <strong>400 Californians die from heat annually</strong>, a number projected to rise sharply with climate change. Responsibility is fragmented across dozens of agencies with no single entity accountable for outcomes.",
+        relatedCalreg: null
+      },
+      {
+        id: 30,
+        title: "PG&E Challenges CPUC Denial of $172M in Vegetation Management Cost Recovery",
+        url: "https://www.calregulatory.com/wednesday-aggregate-17/",
+        date: "March 18, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Wildfire · Utility Costs · Regulatory",
+        summary: "PG&E filed a formal application for rehearing of a CPUC decision that denied recovery of <strong>$172 million</strong> in vegetation management costs from ratepayers. The Commission found PG&E failed to demonstrate the work was prudently incurred and properly documented. Ratepayer advocates support the denial; PG&E argues the ruling discourages proactive wildfire risk reduction and sets a harmful precedent for future safety-driven spending.",
+        relatedCalreg: null
+      },
       {
         id: 31,
         title: "Record Heat, Melting Snow: What Does It Mean for California's Reservoirs?",
@@ -325,6 +363,28 @@
         author: "Rachel Becker",
         category: "Climate · Water",
         summary: "An unseasonable late-March heat wave is accelerating Sierra Nevada snowmelt — California's primary summer water bank — raising concerns about both near-term flood risk from rapid runoff and reduced late-season reservoir storage. Sierra snowpack was already running below average heading into the melt season. Water agencies are balancing flood control releases against conservation needs across the <strong>Central Valley and Southern California</strong> delivery systems.",
+        relatedCalreg: null
+      },
+      {
+        id: 32,
+        title: "SCE Approved for 10 Clean Energy Contracts — Solar + Battery Storage",
+        url: "https://www.stoel.com/insights/reports/energy-regulatory-updates/february-4-2026",
+        date: "February 5, 2026",
+        source: "Stoel Rives / CPUC",
+        author: null,
+        category: "Clean Energy · Procurement",
+        summary: "CPUC Resolution E-5445 approved 10 clean energy contracts from SCE's 2024 Clean Energy Request for Offers — 4 projects comprising 2 co-located battery storage and solar PV systems, and 2 standalone solar PV projects. Contracts satisfy SCE's IRP and RPS obligations.",
+        relatedCalreg: null
+      },
+      {
+        id: 33,
+        title: "NEM 3.0 Upheld: California Court of Appeal Rules Net Billing Tariff Lawful",
+        url: "https://www.canarymedia.com/articles/solar/a-chapter-of-californias-rooftop-solar-battle-closes",
+        date: "March 9, 2026",
+        source: "Canary Media",
+        author: null,
+        category: "Solar Policy · Regulatory",
+        summary: "California's First District Court of Appeal upheld the CPUC's NEM 3.0 decision (D.23-02-015), ruling the Net Billing Tariff is lawful. NEM 3.0 reduced solar export compensation from roughly <strong>$0.30/kWh</strong> under NEM 2.0 to approximately <strong>$0.05–$0.08/kWh</strong> — an ~80% reduction affecting new residential solar customers beginning April 2023.",
         relatedCalreg: null
       },
       {
@@ -339,80 +399,14 @@
         relatedCalreg: null
       },
       {
-        id: 36,
-        title: "California Sues Trump to Keep Shut Sable Offshore Oil Pipeline Near Santa Barbara",
-        url: "https://calmatters.org/environment/2026/03/bonta-sable-defense-production-act-oil/",
-        date: "March 24, 2026",
+        id: 35,
+        title: "California Is Testing 30 Neighborhood Decarbonization Pilots — Here's What They're Learning",
+        url: "https://calmatters.org/environment/2026/03/california-neighborhood-decarbonization-pilots/",
+        date: "March 3, 2026",
         source: "CalMatters",
-        author: "Alejandro Lazo",
-        category: "Pipeline · Federal Policy",
-        summary: "California Attorney General Rob Bonta filed a federal lawsuit challenging the Trump administration's use of the Defense Production Act to restart the Sable offshore oil pipeline near Santa Barbara. The state argues the Energy Secretary's March 13 order lacks legal basis and improperly overrides state law and a 2020 consent decree requiring state approval before operations resume.",
-        relatedCalreg: null
-      },
-      {
-        id: 37,
-        title: "CPUC Approves SCE Rate-Design Settlements, Denies SoCalGas $266M for Angeles Link",
-        url: "https://www.calregulatory.com/monday-aggregate-cpuc-approves-sce-rate-design-settlements-denies-socalgas-266m-for-angeles-link-hydrogen-pipeline/",
-        date: "March 23, 2026",
-        source: "CalRegulatory",
-        author: null,
-        category: "Regulatory · Rate-Case · Grid",
-        summary: "The CPUC rejected SoCalGas's request to recover <strong>$266 million</strong> in Phase 2 Angeles Link hydrogen pipeline engineering costs from ratepayers, finding the project lacks demonstrated direct benefits to natural gas customers. The same roundup covers CPUC approval of SCE's rate-design settlements and grid flexibility initiatives under the \"High DER Future\" proceeding.",
-        relatedCalreg: null
-      },
-      {
-        id: 38,
-        title: "California Passed a Law to Curb Gas Price Spikes. Why Isn't It Using Those Powers Now?",
-        url: "https://calmatters.org/environment/2026/03/california-iran-oil-profit-spike/",
-        date: "March 13, 2026",
-        source: "CalMatters",
-        author: "Alejandro Lazo",
-        category: "Affordability · Pipeline",
-        summary: "California's 2023 law granting regulators authority to cap refinery profits during price spikes was delayed five years before taking effect, leaving consumers unprotected as gas prices top <strong>$5.30/gallon</strong> amid the Strait of Hormuz closure. The decision to postpone these consumer protections faces renewed scrutiny from lawmakers and ratepayer advocates.",
-        relatedCalreg: null
-      },
-      {
-        id: 39,
-        title: "As Gas Prices Soar, California's New Carbon Emission Rules Prompt a War of Words",
-        url: "https://calmatters.org/commentary/2026/03/gas-prices-california-carbon-emission/",
-        date: "March 12, 2026",
-        source: "CalMatters",
-        author: "Dan Walters",
-        category: "Climate · Affordability",
-        summary: "California's Air Resources Board faces intensifying pressure over proposed greenhouse gas emission rules as gasoline prices surge above <strong>$5/gallon</strong> amid the Iran conflict. Business groups warn the regulations will increase fuel and energy costs further, while environmental organizations counter that the rules don't go far enough to meet the state's climate goals.",
-        relatedCalreg: null
-      },
-      {
-        id: 40,
-        title: "SCE Woolsey Fire Securitization: $1.951B Settlement Reached — SDG&E Files $2.58B New Debt",
-        url: "https://www.calregulatory.com/monday-aggregate-stipulation-charts-a-course-for-1-951-billion-woolsey-fire-securitization/",
-        date: "March 16, 2026",
-        source: "CalRegulatory",
-        author: null,
-        category: "Wildfire · Rate-Case",
-        summary: "SCE and Cal Advocates reached a joint stipulation allowing SCE to issue <strong>$1.951 billion</strong> in recovery bonds covering 2018 Woolsey Fire costs, resolving all contested issues in the securitization proceeding. SDG&E simultaneously filed applications for <strong>$2.583 billion</strong> in new long-term debt authority.",
-        relatedCalreg: null
-      },
-      {
-        id: 41,
-        title: "A Contentious Project to Raise California's Shasta Dam Just Got a Funding Boost from Trump",
-        url: "https://calmatters.org/environment/2026/03/shasta-dam-raise-trump-westlands/",
-        date: "March 18, 2026",
-        source: "CalMatters",
-        author: "Rachel Becker",
-        category: "Water · Climate",
-        summary: "The Trump administration announced <strong>$40 million</strong> in federal planning funds to raise Shasta Dam, championed by Central Valley agricultural interests seeking increased water storage capacity. Environmental groups and Native American tribes oppose the project, citing threats to endangered salmon, protected rivers, and tribal sacred sites that would be submerged.",
-        relatedCalreg: null
-      },
-      {
-        id: 42,
-        title: "California's Petroleum Watchdog on Alert as Middle East Conflict Drives Gas Above $5.70",
-        url: "https://www.energy.ca.gov/news/2026-03/californias-petroleum-watchdog-protecting-consumers-amid-middle-east-conflict",
-        date: "March 19, 2026",
-        source: "California Energy Commission",
-        author: null,
-        category: "Affordability · Pipeline",
-        summary: "California's Division of Petroleum Market Oversight issued enforcement guidance and consumer advisories following the Strait of Hormuz closure, which pushed gas station prices above <strong>$5.70/gallon</strong> statewide. The agency is monitoring retail, wholesale, and spot markets to prevent unfair practices or price manipulation amid the Middle East conflict.",
+        author: "Jalal Awan",
+        category: "Decarbonization · Gas Transition · Residential Policy",
+        summary: "California is advancing 30 neighborhood-scale decarbonization pilots across the state, testing how to transition residential blocks off natural gas without stranding the millions of households that still depend on gas for heating and cooking. The pilots are surfacing critical challenges: upfront costs, building code barriers, and the difficulty of reaching renters and low-income residents in older housing stock. Early findings are shaping how the CPUC and CEC approach the broader gas transition strategy.",
         relatedCalreg: null
       }
     ];
@@ -442,7 +436,7 @@
       : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank">${feat.source}</a>`;
 
     const relatedStr = feat.relatedCalreg
-      ? `<div class="cn-feat-related">Related CalReg: <a href="calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
+      ? `<div class="cn-feat-related">Related CalReg: <a href="../calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
       : '';
 
     document.getElementById('cn-featured').innerHTML = `
@@ -459,7 +453,7 @@
         ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank">${s.source}</a> (Author: ${s.author})`
         : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank">${s.source}</a>`;
       const relStr = s.relatedCalreg
-        ? `<div class="cn-story-related">Related CalReg: <a href="calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
+        ? `<div class="cn-story-related">Related CalReg: <a href="../calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
         : '';
       return `
         <div class="cn-story-item">
