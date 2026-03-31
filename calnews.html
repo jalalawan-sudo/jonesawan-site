@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews — California Energy &amp; Regulatory News · Week of Mar 23–27, 2026</title>
+  <title>CalNews — California Energy &amp; Regulatory News · Week of Mar 23–31, 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -183,11 +183,6 @@
       border: 1px solid var(--border);
     }
   </style>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 </head>
 <body>
 
@@ -195,7 +190,7 @@
     <div class="container">
       <div class="label">California Energy &amp; Regulatory News</div>
       <h1>CalNews</h1>
-      <p>Week of Mar 23–27, 2026 · Curated policy &amp; regulatory coverage</p>
+      <p>Week of Mar 23–31, 2026 · Curated policy &amp; regulatory coverage</p>
     </div>
   </div>
 
@@ -221,7 +216,7 @@
         <!-- ── MAIN COLUMN ── -->
         <main>
           <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Mar 23–27, 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Updated March 25, 2026
+            Week of Mar 23–31, 2026 &nbsp;·&nbsp; 10 stories &nbsp;·&nbsp; Updated March 31, 2026
           </div>
 
           <!-- Featured Story -->
@@ -240,7 +235,7 @@
         <aside class="cn-sidebar">
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Current Issue</div>
-            <a href="calnews.html" class="cn-sidebar-link active">Week of Mar 23–27, 2026</a>
+            <a href="calnews.html" class="cn-sidebar-link active">Week of Mar 23–31, 2026</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Archive</div>
@@ -271,76 +266,73 @@
     // ── RECENT: CPUC/IOU decisions ONLY ────────────────────────
     const RECENT = [
       {
-        type: "Rulemaking Decision",
+        type: "New Application",
         typeColor: "#0369a1",
-        title: "Spring 2026 Climate Credit Paused — PG&E, SCE, SDG&E (D.26-03-013)",
-        desc: "CPUC ordered the three large electric IOUs to pause distribution of the 2026 spring residential California Climate Credit pending Commission deliberation on optimal distribution timing and mechanism. The Commission will consider alternative delivery methods, including bill credits.",
-        date: "March 19, 2026 · R.25-07-013",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M603/K306/603306591.PDF"
+        title: "PG&E Files for Diablo Canyon Year 3 Cost Recovery Under SB 846 (A.26-03-031)",
+        desc: "PG&E filed an application seeking CPUC authorization to recover costs for the continued extended operation of Diablo Canyon Power Plant through 2027, under the SB 846 framework. This is the third annual cost-recovery filing, following CPUC's December 2025 approval of $382 million in 2026 operating costs.",
+        date: "March 27, 2026 · A.26-03-031",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603031"
       },
       {
-        type: "Major Decision",
+        type: "Proposed Decision",
         typeColor: "#0369a1",
-        title: "SCE Authorized $9.85B Debt + $1.155B Preferred Equity Issuance Through 2027 (D.26-03-015)",
-        desc: "CPUC granted SCE authority to issue up to $9,850,000,000 in debt securities and $1,155,000,000 in preferred equity through December 31, 2027. Financing supports SCE's capital investment program, wildfire mitigation expenditures, and ongoing rate recovery obligations.",
-        date: "March 19, 2026 · A.25-06-007",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K037/599037460.PDF"
+        title: "PD Proposes Moving 2026 Residential Climate Credit to Summer Months (R.25-07-013)",
+        desc: "A proposed decision would shift the 2026 residential electric California Climate Credit from spring to high-bill summer months (August and September) to maximize affordability impact for PG&E, SCE, and SDG&E customers. The PD is scheduled for a vote at the April 30, 2026 Commissioners' meeting.",
+        date: "March 26, 2026 · R.25-07-013",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2507013"
       },
       {
-        type: "CPUC Decision",
-        typeColor: "#0369a1",
-        title: "PG&E 2024 RAMP Proceeding Closed — New Cost-Benefit Safety Risk Framework (D.26-03-010)",
-        desc: "CPUC closed PG&E's 2024 Risk Assessment and Mitigation Phase proceeding, adopting a new cost-benefit approach for comparing safety risks across PG&E's gas and electric infrastructure programs. Sets the safety risk baseline heading into PG&E's upcoming General Rate Case.",
-        date: "March 19, 2026 · A.24-05-008",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008"
+        type: "CPCN Granted",
+        typeColor: "#00b4a6",
+        title: "CPUC Certifies LS Power Santa Clara Valley Transmission Upgrade — $1.593B Cap",
+        desc: "CPUC voted 5-0 to certify LS Power Grid California's Power Santa Clara Valley transmission project, capped at $1.593 billion, to address reliability in San José's 115-kV system facing load forecasts up to 4,200 MW driven by data center growth. Cost recovery flows through CAISO-administered transmission rates.",
+        date: "March 19, 2026 · CPUC Voting Meeting",
+        url: "https://www.cpuc.ca.gov/news-and-updates"
+      },
+      {
+        type: "CPCN Granted",
+        typeColor: "#00b4a6",
+        title: "CPUC Certifies Power the South Bay 230-kV Line — $813M, June 2028 In-Service (A.24-05-014)",
+        desc: "CPUC voted 5-0 to certify a 12-mile 230-kV underground transmission line connecting PG&E's Newark substation to Silicon Valley Power's Northern Receiving Station, capped at $813.24 million with a June 2028 in-service date. The project addresses reliability risks and rising data-center demand in the San José area.",
+        date: "March 19, 2026 · A.24-05-014",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405014"
+      },
+      {
+        type: "CPCN Granted",
+        typeColor: "#00b4a6",
+        title: "CPUC Grants SCE Certificate for Alberhill System Substation — $481.7M, 560K Customers",
+        desc: "CPUC granted SCE a Certificate of Public Convenience and Necessity for a new 1,120 MVA 500/115 kV substation in western Riverside County, capped at $481.7 million. The Alberhill System Project serves an isolated network of approximately 560,000 customers in the Valley South area facing significant capacity and resilience constraints.",
+        date: "March 19, 2026 · CPUC Voting Meeting",
+        url: "https://www.cpuc.ca.gov/news-and-updates"
       },
       {
         type: "CPUC Resolution",
         typeColor: "#00b4a6",
-        title: "SCE Vehicle-Grid Integration Program (ORCHARD) Approved — Res. E-5452",
-        desc: "CPUC approved SCE's new ORCHARD vehicle-grid integration program within the LCFS Implementation Plan, including software optimization for managed EV charging load. Bidirectional charging equipment rebates denied without prejudice pending further cost-effectiveness demonstration.",
-        date: "March 19, 2026 · Res. E-5452",
-        url: "https://www.cpuc.ca.gov/transportation/electric-vehicles/vehicle-grid-integration"
-      },
-      {
-        type: "Grid · Resolution",
-        typeColor: "#00b4a6",
-        title: "ICA Remediation Plans Adopted — PG&E, SCE, SDG&E Reporting Requirements (Held to Apr 9)",
-        desc: "CPUC adopted Integration Capacity Analysis remediation plans and baseline reporting requirements for PG&E, SCE, and SDG&E to expand distributed energy resource hosting capacity. Item held to April 9, 2026 for final approval; draft resolution confirmed available.",
-        date: "March 19, 2026 (held Apr 9) · Res. E-5440",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M598/K870/598870863.PDF"
+        title: "Res. G-3617: Southwest Gas Biomethane Procurement Contract Approved",
+        desc: "Resolution G-3617 approves Southwest Gas Corporation Advice Letter 1338-G, authorizing one biomethane procurement contract under California's Renewable Gas Standard. The contract, filed July 29, 2025, advances SWG's compliance with mandatory renewable gas procurement targets.",
+        date: "March 19, 2026 · Res. G-3617",
+        url: "https://www.cpuc.ca.gov/news-and-updates"
       },
       {
         type: "CPUC Decision",
         typeColor: "#0369a1",
-        title: "SGIP Biogas 96% Methane Exemption Denied — Clean Fuel Rules Upheld (D.26-03-018)",
-        desc: "CPUC denied ENGIE North America's petition to exempt wastewater treatment plants from the 96% methane requirement for on-site renewable biogas projects under the Self-Generation Incentive Program. Upholds existing clean fuel standards for IOU-administered SGIP incentives.",
-        date: "March 19, 2026 · R.20-05-012",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2005012"
+        title: "PG&E 2024 RAMP Proceeding Closed — Safety Risk Framework Sets GRC Baseline (D.26-03-010)",
+        desc: "CPUC closed PG&E's 2024 Risk Assessment and Mitigation Phase proceeding (A.24-05-008), adopting a cost-benefit framework for comparing safety risks across PG&E's gas and electric infrastructure programs. Closure sets the safety risk baseline heading into PG&E's 2027 General Rate Case.",
+        date: "March 19, 2026 · A.24-05-008 / D.26-03-010",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008"
       }
     ];
 
     const STORIES = [
       {
-        id: 31,
-        title: "Record Heat, Melting Snow: What Does It Mean for California's Reservoirs?",
-        url: "https://calmatters.org/environment/water/2026/03/california-heat-wave-snow-reservoirs/",
-        date: "March 20, 2026",
-        source: "CalMatters",
-        author: "Rachel Becker",
-        category: "Climate · Water",
-        summary: "An unseasonable late-March heat wave is accelerating Sierra Nevada snowmelt — California's primary summer water bank — raising concerns about both near-term flood risk from rapid runoff and reduced late-season reservoir storage. Sierra snowpack was already running below average heading into the melt season. Water agencies are balancing flood control releases against conservation needs across the <strong>Central Valley and Southern California</strong> delivery systems.",
-        relatedCalreg: null
-      },
-      {
-        id: 34,
-        title: "CPUC Approves 90 MW Data Center Connection in San José, 49 MW in Sunnyvale",
-        url: "https://www.stoel.com/insights/reports/energy-regulatory-updates/march-18-2026",
-        date: "March 19, 2026",
-        source: "Stoel Rives / CPUC",
-        author: null,
-        category: "Grid Infrastructure · Data Centers",
-        summary: "CPUC approved two non-standard EPC agreements: <em>Res. E-5447</em> (90 MW for STACK Infrastructure at PG&E's Ringwood Substation in San José) and <em>Res. E-5433</em> (49 MW for Menlo Equities in Sunnyvale). Together the approvals add <strong>139 MW</strong> of new load — illustrating accelerating grid pressure as PG&E's interconnection queue has surged to over <strong>15,000 MW</strong>.",
+        id: 43,
+        title: "California Bill Would Unlock Distributed Energy Resources in Grid Resource Adequacy Market",
+        url: "https://pv-magazine-usa.com/2026/03/26/california-bill-would-unlock-distributed-energy-participation-in-grid-resource-adequacy-requirements/",
+        date: "March 26, 2026",
+        source: "pv magazine USA",
+        author: "Ryan Kennedy",
+        category: "Grid · Decarbonization",
+        summary: "Senator Josh Becker introduced SB 913 to allow customer-owned batteries, EVs, and smart thermostats to compete in California's Resource Adequacy market alongside traditional power plants. The legislation aims to reduce reliance on expensive gas peaker plants by enabling <strong>aggregated distributed energy resources</strong> to provide formal grid reliability services.",
         relatedCalreg: null
       },
       {
@@ -355,6 +347,17 @@
         relatedCalreg: null
       },
       {
+        id: 44,
+        title: "Climate Issues in the 2026 Governor's Race: Building Decarbonization and Energy Efficiency",
+        url: "https://legal-planet.org/2026/03/23/climate-issues-in-the-2026-governors-race-building-decarbonization-and-energy-efficiency/",
+        date: "March 23, 2026",
+        source: "Legal Planet",
+        author: "Shruti Sarode",
+        category: "Decarbonization · Climate",
+        summary: "This analysis examines how buildings drive California's emissions, affordability, and infrastructure challenges, with building energy consumption as a leading contributor to state greenhouse gas output. Achieving widespread electrification while controlling utility costs requires coordinated infrastructure investments and expanded access for <strong>renters and lower-income households</strong>.",
+        relatedCalreg: null
+      },
+      {
         id: 37,
         title: "CPUC Approves SCE Rate-Design Settlements, Denies SoCalGas $266M for Angeles Link",
         url: "https://www.calregulatory.com/monday-aggregate-cpuc-approves-sce-rate-design-settlements-denies-socalgas-266m-for-angeles-link-hydrogen-pipeline/",
@@ -362,40 +365,51 @@
         source: "CalRegulatory",
         author: null,
         category: "Regulatory · Rate-Case · Grid",
-        summary: "The CPUC rejected SoCalGas's request to recover <strong>$266 million</strong> in Phase 2 Angeles Link hydrogen pipeline engineering costs from ratepayers, finding the project lacks demonstrated direct benefits to natural gas customers. The same roundup covers CPUC approval of SCE's rate-design settlements and grid flexibility initiatives under the \"High DER Future\" proceeding.",
+        summary: "The CPUC rejected SoCalGas's request to recover <strong>$266 million</strong> in Phase 2 Angeles Link hydrogen pipeline engineering costs from ratepayers, finding the project lacks demonstrated direct benefits to natural gas customers. The same roundup covers CPUC approval of SCE's rate-design settlements and grid flexibility initiatives under the 'High DER Future' proceeding.",
         relatedCalreg: null
       },
       {
-        id: 38,
+        id: 31,
+        title: "Record Heat, Melting Snow: What Does It Mean for California's Reservoirs?",
+        url: "https://calmatters.org/environment/water/2026/03/california-heat-wave-snow-reservoirs/",
+        date: "March 20, 2026",
+        source: "CalMatters",
+        author: "Rachel Becker",
+        category: "Climate · Water",
+        summary: "An unseasonable late-March heat wave is accelerating Sierra Nevada snowmelt — California's primary summer water bank — raising concerns about near-term flood risk and reduced late-season reservoir storage. Water agencies are balancing flood control releases against conservation needs across the <strong>Central Valley and Southern California</strong> delivery systems.",
+        relatedCalreg: null
+      },
+      {
+        id: 45,
+        title: "Nevada Utility to Lake Tahoe: Find Electricity Elsewhere",
+        url: "https://calmatters.org/economy/2026/03/nevada-utility-to-lake-tahoe-find-electricity-elsewhere/",
+        date: "March 20, 2026",
+        source: "CalMatters",
+        author: "Malena Carollo",
+        category: "Grid · Affordability",
+        summary: "Liberty Utilities, serving <strong>49,000 Lake Tahoe customers</strong>, must find a new power source by May 2027 after NV Energy ends their contract to redirect capacity toward data centers. The utility plans competitive bidding for replacement energy, prioritizing renewables and affordable rates as the deadline approaches.",
+        relatedCalreg: null
+      },
+      {
+        id: 46,
         title: "California Passed a Law to Curb Gas Price Spikes. Why Isn't It Using Those Powers Now?",
-        url: "https://calmatters.org/environment/2026/03/california-iran-oil-profit-spike/",
-        date: "March 13, 2026",
-        source: "CalMatters",
-        author: "Alejandro Lazo",
-        category: "Affordability · Pipeline",
-        summary: "California's 2023 law granting regulators authority to cap refinery profits during price spikes was delayed five years before taking effect, leaving consumers unprotected as gas prices top <strong>$5.30/gallon</strong> amid the Strait of Hormuz closure. The decision to postpone these consumer protections faces renewed scrutiny from lawmakers and ratepayer advocates.",
-        relatedCalreg: null
-      },
-      {
-        id: 39,
-        title: "As Gas Prices Soar, California's New Carbon Emission Rules Prompt a War of Words",
-        url: "https://calmatters.org/commentary/2026/03/gas-prices-california-carbon-emission/",
-        date: "March 12, 2026",
-        source: "CalMatters",
-        author: "Dan Walters",
-        category: "Climate · Affordability",
-        summary: "California's Air Resources Board faces intensifying pressure over proposed greenhouse gas emission rules as gasoline prices surge above <strong>$5/gallon</strong> amid the Iran conflict. Business groups warn the regulations will increase fuel and energy costs further, while environmental organizations counter that the rules don't go far enough to meet the state's climate goals.",
-        relatedCalreg: null
-      },
-      {
-        id: 40,
-        title: "SCE Woolsey Fire Securitization: $1.951B Settlement Reached — SDG&E Files $2.58B New Debt",
-        url: "https://www.calregulatory.com/monday-aggregate-stipulation-charts-a-course-for-1-951-billion-woolsey-fire-securitization/",
-        date: "March 16, 2026",
-        source: "CalRegulatory",
+        url: "https://stocktonia.org/news/politics/2026/03/20/california-gas-prices/",
+        date: "March 20, 2026",
+        source: "Stocktonia News",
         author: null,
-        category: "Wildfire · Rate-Case",
-        summary: "SCE and Cal Advocates reached a joint stipulation allowing SCE to issue <strong>$1.951 billion</strong> in recovery bonds covering 2018 Woolsey Fire costs, resolving all contested issues in the securitization proceeding. SDG&E simultaneously filed applications for <strong>$2.583 billion</strong> in new long-term debt authority.",
+        category: "Affordability · Pipeline",
+        summary: "Despite legal authority under SB 1322 to intervene in gasoline markets, California's petroleum watchdog has not exercised its price-setting powers as pump prices surge past <strong>$5.60/gallon</strong> amid the Strait of Hormuz closure and Benicia refinery shutdown. The article examines political tensions surrounding the unused enforcement tools as consumers face rising fuel costs.",
+        relatedCalreg: null
+      },
+      {
+        id: 42,
+        title: "California's Petroleum Watchdog on Alert as Middle East Conflict Drives Gas Above $5.70",
+        url: "https://www.energy.ca.gov/news/2026-03/californias-petroleum-watchdog-protecting-consumers-amid-middle-east-conflict",
+        date: "March 19, 2026",
+        source: "California Energy Commission",
+        author: null,
+        category: "Affordability · Pipeline",
+        summary: "California's Division of Petroleum Market Oversight issued enforcement guidance and consumer advisories following the Strait of Hormuz closure, which pushed gas station prices above <strong>$5.70/gallon</strong> statewide. The agency is monitoring retail, wholesale, and spot markets to prevent unfair practices or price manipulation amid the Middle East conflict.",
         relatedCalreg: null
       },
       {
@@ -410,32 +424,45 @@
         relatedCalreg: null
       },
       {
-        id: 42,
-        title: "California's Petroleum Watchdog on Alert as Middle East Conflict Drives Gas Above $5.70",
-        url: "https://www.energy.ca.gov/news/2026-03/californias-petroleum-watchdog-protecting-consumers-amid-middle-east-conflict",
-        date: "March 19, 2026",
-        source: "California Energy Commission",
+        id: 40,
+        title: "SCE Woolsey Fire Securitization: $1.951B Settlement Reached — SDG&E Files $2.58B New Debt",
+        url: "https://www.calregulatory.com/monday-aggregate-stipulation-charts-a-course-for-1-951-billion-woolsey-fire-securitization/",
+        date: "March 16, 2026",
+        source: "CalRegulatory",
         author: null,
-        category: "Affordability · Pipeline",
-        summary: "California's Division of Petroleum Market Oversight issued enforcement guidance and consumer advisories following the Strait of Hormuz closure, which pushed gas station prices above <strong>$5.70/gallon</strong> statewide. The agency is monitoring retail, wholesale, and spot markets to prevent unfair practices or price manipulation amid the Middle East conflict.",
+        category: "Wildfire · Rate-Case",
+        summary: "SCE and Cal Advocates reached a joint stipulation allowing SCE to issue <strong>$1.951 billion</strong> in recovery bonds covering 2018 Woolsey Fire costs, resolving all contested issues in the securitization proceeding. SDG&E simultaneously filed applications for <strong>$2.583 billion</strong> in new long-term debt authority.",
         relatedCalreg: null
       }
     ];
 
-    // ── Render Recent Developments ─────────────────────────────
+    // ── Render Recent Developments (4 visible + load more) ─────
     const rdEl = document.getElementById('recent-dev');
-    RECENT.forEach(r => {
-      rdEl.innerHTML += `
-        <div class="rd-card">
-          <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
-          <div class="rd-title">${r.title}</div>
-          <div class="rd-desc">${r.desc}</div>
-          <div class="rd-footer">
-            <span class="rd-date">${r.date}</span>
-            <a href="${r.url}" target="_blank" class="rd-more">Read More &#8594;</a>
-          </div>
-        </div>`;
-    });
+    const _rdCard = r => `
+      <div class="rd-card">
+        <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
+        <div class="rd-title">${r.title}</div>
+        <div class="rd-desc">${r.desc}</div>
+        <div class="rd-footer">
+          <span class="rd-date">${r.date}</span>
+          <a href="${r.url}" target="_blank" class="rd-more">Read More &#8594;</a>
+        </div>
+      </div>`;
+
+    RECENT.slice(0, 4).forEach(r => { rdEl.innerHTML += _rdCard(r); });
+
+    if (RECENT.length > 4) {
+      const hiddenRecent = RECENT.slice(4);
+      const nr = hiddenRecent.length;
+      rdEl.insertAdjacentHTML('afterend', `
+        <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:16px;">${hiddenRecent.map(_rdCard).join('')}</div>
+        <div id="rd-show-btn" style="padding:14px 0 2px;">
+          <button onclick="document.getElementById('rd-more-grid').style.display='grid';this.parentElement.style.display='none';"
+            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
+            ${nr} More Decision${nr > 1 ? 's' : ''} &#8594;
+          </button>
+        </div>`);
+    }
 
     // ── Render Featured + Secondary Stories ───────────────────
     const featIdx = Math.floor(Math.random() * STORIES.length);
