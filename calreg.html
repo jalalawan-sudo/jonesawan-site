@@ -603,6 +603,9 @@
       {iou:'sdge',docket:'A.25-03-013', desc:'Cost of Capital 2026',                     rrq:  111.02, pi:19},
       {iou:'sdge',docket:'A.25-12-012', desc:'Smart Meter 2.0',                           rrq:  948.75, pi:20},
       {iou:'sdge',docket:'A.25-12-009', desc:'Palomar Decarbonization Demo',              rrq:   20.01, pi:20},
+      {iou:'pge', docket:'A.26-02-018', desc:'Hamilton Branch Hydro Sale (§851)',         rrq:  -22.30, pi:20},
+      {iou:'pge', docket:'A.26-03-031', desc:'Diablo Canyon 2027 Op. Costs (SB 846)',    rrq:  595.00, pi:20},
+      {iou:'sce', docket:'A.26-03-030', desc:'AMI 2.0 Smart Meter Program',              rrq: 3545.45, pi:20},
     ];
 
     // ── COLORS / LABELS ───────────────────────────────────────────────────────
@@ -654,8 +657,8 @@
         type:'scatter', parsing:false, order:1,
         backgroundColor:c + 'bb', borderColor:c, borderWidth:1.5,
         pointStyle:'circle',
-        pointRadius:     ctx => { const d = ctx.dataset.data[ctx.dataIndex]; return d ? Math.max(4, Math.sqrt(d.proc.rrq)*0.28) : 0; },
-        pointHoverRadius:ctx => { const d = ctx.dataset.data[ctx.dataIndex]; return d ? Math.max(6, Math.sqrt(d.proc.rrq)*0.36) : 0; },
+        pointRadius:     ctx => { const d = ctx.dataset.data[ctx.dataIndex]; return d ? Math.max(4, Math.sqrt(Math.abs(d.proc.rrq))*0.28) : 0; },
+        pointHoverRadius:ctx => { const d = ctx.dataset.data[ctx.dataIndex]; return d ? Math.max(6, Math.sqrt(Math.abs(d.proc.rrq))*0.36) : 0; },
       });
     });
 
@@ -1922,7 +1925,7 @@
     const _curFilter = {};   // { containerId → util }
 
     function _matchUtil(tags, util) {
-      if (util === 'all')      return IOU_TAGS.some(t => tags.includes(t));
+      if (util === 'all')      return IOU_TAGS.some(t => tags.includes(t)) || tags.includes('others');
       if (util === 'others')   return tags.includes('others');
       if (util === 'sdge_scg') return tags.includes('sdge') || tags.includes('scg');
       return tags.includes(util);
