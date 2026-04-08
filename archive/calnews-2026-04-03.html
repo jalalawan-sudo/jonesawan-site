@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews — California Energy &amp; Regulatory News · Week of Apr 4 – 10, 2026</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>CalNews — California Energy &amp; Regulatory News · Week of Mar 28 – Apr 3, 2026</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <style>
     /* ── Recent Developments (CPUC/IOU decisions only) ── */
     .rd-grid {
@@ -187,12 +187,15 @@
   </style>
 </head>
 <body>
+  <div class="archive-banner" style="background:#f1f5f9;border-bottom:2px solid #cbd5e1;padding:10px 0;text-align:center;font-size:0.82rem;color:#64748b;">
+    &#128194; Archived Issue &nbsp;·&nbsp; <a href="../calnews.html" style="color:var(--teal);font-weight:600;">View Current Issue &rarr;</a>
+  </div>
 
   <div class="page-header">
     <div class="container">
       <div class="label">California Energy &amp; Regulatory News</div>
       <h1>CalNews</h1>
-      <p>Week of Apr 4 – 10, 2026 · Curated policy &amp; regulatory coverage</p>
+      <p>Week of Mar 28 – Apr 3, 2026 · Curated policy &amp; regulatory coverage</p>
     </div>
   </div>
 
@@ -218,7 +221,7 @@
         <!-- ── MAIN COLUMN ── -->
         <main>
           <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Apr 4 – 10, 2026 &nbsp;·&nbsp; 10 stories &nbsp;·&nbsp; Updated April 8, 2026
+            Week of Mar 28 – Apr 3, 2026 &nbsp;·&nbsp; 7 stories &nbsp;·&nbsp; Updated April 3, 2026
           </div>
 
           <!-- Featured Story -->
@@ -237,21 +240,21 @@
         <aside class="cn-sidebar">
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Current Issue</div>
-            <a href="calnews.html" class="cn-sidebar-link active">Week of Apr 4 – 10, 2026</a>
+            <a href="../calnews.html" class="cn-sidebar-link">View Current Issue</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Archive</div>
-            <a href="archive/calnews-2026-04-03.html" class="cn-sidebar-link">Week of Mar 28 – Apr 3, 2026</a>
-            <a href="archive/calnews-2026-03-31.html" class="cn-sidebar-link">Week of Mar 23–31, 2026</a>
-            <a href="archive/calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
-            <a href="archive/calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
-            <a href="archive/calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
-            <a href="archive/calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
-            <a href="archive/calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
+            <a href="calnews-2026-04-03.html" class="cn-sidebar-link active">Week of Mar 28 – Apr 3, 2026</a>
+            <a href="calnews-2026-03-31.html" class="cn-sidebar-link">Week of Mar 23–31, 2026</a>
+            <a href="calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
+            <a href="calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
+            <a href="calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
+            <a href="calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
+            <a href="calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Docket Tracker</div>
-            <a href="calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
+            <a href="../calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-note">
@@ -264,79 +267,46 @@
     </div>
   </section>
 
-  <script src="js/main.js"></script>
+  <script src="../js/main.js"></script>
   <script>
 
     // ── RECENT: CPUC/IOU decisions ONLY ────────────────────────
     const RECENT = [
       {
+        type: "License Renewal",
+        typeColor: "#0369a1",
+        title: "NRC Approves 20-Year License Renewal for Diablo Canyon — Units 1 &amp; 2 Through 2045",
+        desc: "The U.S. Nuclear Regulatory Commission approved PG&E's application to extend Diablo Canyon Units 1 and 2 through 2044 and 2045 respectively, the first nuclear license renewal under NRC's subsequent-renewal pathway. The plant provides nearly 20% of California's clean electricity and serves approximately 4 million customers under the SB 846 extended-operations framework.",
+        date: "April 2, 2026 · A.26-03-031",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603031"
+      },
+      {
+        type: "Draft Resolution",
+        typeColor: "#0369a1",
+        title: "ICA Remediation Plans Approved — PG&E, SCE, SDG&amp;E Directed to Fix Interconnection Capacity Tools (Res. E-5440)",
+        desc: "Draft Resolution E-5440 approves remediation plans submitted by PG&E, SCE, and SDG&E to correct deficiencies in their Integration Capacity Analysis tools, which estimate how much distributed energy can interconnect without grid upgrades. Held from the March 19 voting meeting, the item is on the April 9 agenda.",
+        date: "April 9, 2026 (agenda) · Res. E-5440",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5440"
+      },
+      {
         type: "New Rulemaking",
         typeColor: "#0369a1",
-        title: "CPUC Opens Large Load / Data Center Rate Design Rulemaking — Who Pays for Grid Upgrades?",
-        desc: "The CPUC voted April 9 to open a new Order Instituting Rulemaking on electric rate design for large loads, including data centers, EV charging hubs, and industrial customers. The proceeding will determine whether large new loads pay full system upgrade costs or those costs are spread across all ratepayers. Decision expected in 2027.",
-        date: "April 9, 2026 · R.26-04-001",
+        title: "CPUC to Open New Rulemaking on Advanced Electric Rate Design — Who Pays for Data Center Load Growth?",
+        desc: "The CPUC will vote April 9 on opening an Order Instituting Rulemaking to determine how system costs are allocated as data center and large-load demand surges across California. The proceeding reflects the Commission's focus on preventing cost shifts from large new industrial loads onto residential and small commercial ratepayers.",
+        date: "April 9, 2026 (agenda)",
         url: "https://www.cpuc.ca.gov/news-and-updates"
       },
       {
         type: "Section 851 Authorization",
         typeColor: "#00b4a6",
-        title: "PG&amp;E–Citizens Energy $1B Transmission Lease Approved — Low-Income Bill Assistance Funded by After-Tax Profits",
-        desc: "The CPUC adopted D.26-04-XXX authorizing PG&E to lease transmission entitlements to Citizens Energy Corporation under up to five 30-year leases worth up to $1 billion. After-tax profits — estimated at over $450 million over 35 years — will fund bill-payment assistance for low- and moderate-income PG&E customers.",
-        date: "April 9, 2026 · A.24-03-009",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403009"
-      },
-      {
-        type: "Resolution Adopted",
-        typeColor: "#0369a1",
-        title: "ICA Remediation Plans Approved — PG&E, SCE, SDG&amp;E Ordered to Fix Interconnection Capacity Analysis Data",
-        desc: "The CPUC adopted Resolution E-5440 on April 9, directing PG&E, SCE, and SDG&E to correct deficiencies in their Integration Capacity Analysis tools. Accurate ICA data is critical for rooftop solar, battery storage, and EV charger applications — errors can mislead developers into investing in projects that ultimately face prohibitive grid upgrade costs.",
-        date: "April 9, 2026 · Res. E-5440",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5440"
-      },
-      {
-        type: "ERRA Decision",
-        typeColor: "#0369a1",
-        title: "SDG&amp;E 2023 ERRA Compliance Approved — $214.6M Net Undercollection Authorized for Recovery",
-        desc: "The CPUC adopted the proposed decision in A.24-06-001 on April 9, approving recovery of SDG&E's $214.6 million net 2023 energy procurement undercollection with modifications to RA portfolio valuation and RPS accounting. Commissioner Christine Harada presided after a March 19 holdover.",
-        date: "April 9, 2026 · A.24-06-001",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2406001"
+        title: "PG&amp;E–Citizens Energy $1B Transmission Lease — After-Tax Profits Fund Low-Income Bill Assistance",
+        desc: "The CPUC will consider authorizing PG&E to lease entitlements on new high-voltage transmission projects to Citizens Energy Corporation, which would invest up to $1 billion. After-tax profits estimated at over $450 million over 35 years would fund bill-payment assistance for low- and moderate-income PG&E customers.",
+        date: "April 9, 2026 (agenda)",
+        url: "https://www.cpuc.ca.gov/news-and-updates"
       }
     ];
 
     const STORIES = [
-      {
-        id: 56,
-        title: "SCE Submits Eaton Fire Report to CPUC as Investigators Probe Grid Equipment Near Ignition Point",
-        url: "https://calmatters.org/environment/wildfire/2026/04/sce-eaton-fire-cpuc-investigation/",
-        date: "April 7, 2026",
-        source: "CalMatters",
-        author: null,
-        category: "Wildfire · Regulatory",
-        summary: "SCE submitted its preliminary report to the CPUC on the January 2025 Eaton fire, which killed at least <strong>17 people</strong> and destroyed more than <strong>9,000 structures</strong> in Altadena and Pasadena. The utility's report details grid equipment near the fire's origin point and infrastructure conditions at the time of ignition — information central to the CPUC's formal investigation (I.26-01-009) into whether SCE's transmission or distribution equipment caused or contributed to the blaze. Wildfire victims, legislators, and consumer advocates are pressing the Commission to hold the utility financially accountable.",
-        relatedCalreg: null
-      },
-      {
-        id: 55,
-        title: "Newsom Promised California 'Lithium Valley.' It's Complicated.",
-        url: "https://timesofsandiego.com/state-region/2026/04/05/california-lithium-valley/",
-        date: "April 5, 2026",
-        source: "Times of San Diego",
-        author: null,
-        category: "Grid · Decarbonization",
-        summary: "California's Salton Sea region was touted as a future global hub for lithium extraction powering the EV revolution, with Governor Newsom coining the <strong>'Lithium Valley'</strong> moniker and backing hundreds of millions in state investment. But years later, commercial-scale output from the region's geothermal brines remains elusive — lithium prices have fallen sharply, permitting timelines have stretched, and developers like Controlled Thermal Resources face technical and financing hurdles. The gap between political promise and production reality is widening.",
-        relatedCalreg: null
-      },
-      {
-        id: 54,
-        title: "Who Pays for Data Center Load? CPUC Opens New Rulemaking on Large-Load Cost Allocation",
-        url: "https://www.calregulatory.com/puc-april-9-voting-preview-new-rulemaking-forces-a-decision-on-who-pays-for-large-load/",
-        date: "April 4, 2026",
-        source: "CalRegulatory",
-        author: null,
-        category: "Regulatory · Rate-Case",
-        summary: "The CPUC's April 9 voting agenda includes a new Order Instituting Rulemaking to address how system upgrade costs driven by surging data center and large-load demand are allocated across ratepayers. The proceeding pits large-load customers — who argue they should pay only incremental grid costs — against residential and small commercial customers who face cost shifts if utilities socialize expensive transmission and distribution upgrades. With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the outcome will set precedent for how the grid pays for its own expansion.",
-        relatedCalreg: null
-      },
       {
         id: 47,
         title: "California Approved a Gas Pipeline Solution. Now Comes the Hard Part.",
@@ -454,7 +424,7 @@
       : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a>`;
 
     const relatedStr = feat.relatedCalreg
-      ? `<div class="cn-feat-related">Related CalReg: <a href="calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
+      ? `<div class="cn-feat-related">Related CalReg: <a href="../calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
       : '';
 
     document.getElementById('cn-featured').innerHTML = `
@@ -471,7 +441,7 @@
         ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a> (Author: ${s.author})`
         : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a>`;
       const relStr = s.relatedCalreg
-        ? `<div class="cn-story-related">Related CalReg: <a href="calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
+        ? `<div class="cn-story-related">Related CalReg: <a href="../calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
         : '';
       return `
         <div class="cn-story-item">
