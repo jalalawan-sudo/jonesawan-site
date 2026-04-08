@@ -498,10 +498,10 @@
         responsive: true, maintainAspectRatio: false,
         animation: { duration:700, easing:'easeOutQuart' },
         interaction: { mode:'nearest', intersect:true },
-        layout: { padding: { right:20, left:4 } },
+        layout: { padding: { right:20, left:12 } },
         scales: {
           x: {
-            type:'linear', min:0, max:18.6,
+            type:'linear', min:-0.5, max:18.6,
             border: { display:false },
             ticks: {
               stepSize:1,
@@ -546,7 +546,7 @@
   (function () {
 
     // ── LABELS (x indices 0-17 = 2006-2023, 18-22 = projected periods) ────────
-    const XLABELS = ['2006','','2008','','2010','','2012','','2014','','2016','','2018','','2020','','2022','2023','2024','','','',''];
+    const XLABELS = ['2006','','2008','','2010','','2012','','2014','','2016','','2018','','2020','','2022','2023','2024','2025','2026','2027',''];
 
     // ── CPUC Gen+Dist historical ($M) ─────────────────────────────────────────
     const CPUC_TOT = {
@@ -672,10 +672,10 @@
         maintainAspectRatio: false,
         animation: { duration: 700, easing: 'easeOutQuart' },
         interaction: { mode: 'nearest', intersect: true },
-        layout: { padding: { right: 12 } },
+        layout: { padding: { right: 12, left: 12 } },
         scales: {
           x: {
-            type: 'linear', min: 0, max: 22,
+            type: 'linear', min: -0.5, max: 22,
             border: { display: false },
             ticks: {
               stepSize: 1,
