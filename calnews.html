@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews — California Energy &amp; Regulatory News · Week of Apr 4 – 10, 2026</title>
+  <title>CalNews — California Energy &amp; Regulatory News · Week of Apr 7 – 13, 2026</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +48,36 @@
       color: var(--teal); white-space: nowrap;
     }
     .rd-more:hover { text-decoration: underline; }
+
+    /* ── Details dropdown ── */
+    .rd-details-wrap {
+      margin-top: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+    }
+    .rd-details-toggle {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.72rem; font-weight: 600; color: var(--text-light);
+      display: flex; align-items: center; gap: 5px; padding: 0;
+    }
+    .rd-details-toggle:hover { color: var(--teal); }
+    .rd-details-arr {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-style: normal;
+      font-size: 0.65rem;
+    }
+    .rd-details-body {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      background: var(--off-white);
+      border-radius: 6px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--teal);
+    }
 
     /* ── CalNews layout ── */
     .cn-wrap {
@@ -193,7 +223,7 @@
     <div class="container">
       <div class="label">California Energy &amp; Regulatory News</div>
       <h1>CalNews</h1>
-      <p>Week of Apr 4 – 10, 2026 · Curated policy &amp; regulatory coverage</p>
+      <p>Week of Apr 7 – 13, 2026 · Curated policy &amp; regulatory coverage</p>
     </div>
   </div>
 
@@ -219,7 +249,7 @@
         <!-- ── MAIN COLUMN ── -->
         <main>
           <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Apr 4 – 10, 2026 &nbsp;·&nbsp; 10 stories &nbsp;·&nbsp; Updated April 8, 2026
+            Week of Apr 7 – 13, 2026 &nbsp;·&nbsp; 10 stories &nbsp;·&nbsp; Updated April 13, 2026
           </div>
 
           <!-- Featured Story -->
@@ -238,10 +268,11 @@
         <aside class="cn-sidebar">
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Current Issue</div>
-            <a href="calnews.html" class="cn-sidebar-link active">Week of Apr 4 – 10, 2026</a>
+            <a href="calnews.html" class="cn-sidebar-link active">Week of Apr 7 – 13, 2026</a>
           </div>
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Archive</div>
+            <a href="archive/calnews-2026-04-10.html" class="cn-sidebar-link">Week of Apr 4 – 10, 2026</a>
             <a href="archive/calnews-2026-04-03.html" class="cn-sidebar-link">Week of Mar 28 – Apr 3, 2026</a>
             <a href="archive/calnews-2026-03-31.html" class="cn-sidebar-link">Week of Mar 23–31, 2026</a>
             <a href="archive/calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
@@ -268,43 +299,178 @@
   <script src="js/main.js"></script>
   <script>
 
-    // ── RECENT: CPUC/IOU decisions ONLY ────────────────────────
+    // ── RECENT: CPUC/IOU decisions ONLY — ordered by ratepayer dollar impact ──
     const RECENT = [
       {
-        type: "New Rulemaking",
-        typeColor: "#0369a1",
-        title: "CPUC Opens California Advanced Electric Rate Design Rulemaking — Who Pays for Grid Upgrades?",
-        desc: "The CPUC voted April 9 to open a new Order Instituting Rulemaking on California Advanced Electric Rate Design, addressing cost allocation for large new loads including data centers, EV charging hubs, and industrial customers. The proceeding will determine whether large new loads pay full system upgrade costs or those costs are spread across all ratepayers. Decision expected in 2027.",
-        date: "April 9, 2026 · R.26-04-001",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M604/K449/604449740.PDF"
+        type: "Proposed Decision",
+        typeColor: "#dc2626",
+        title: "SCE Woolsey Fire Securitization — $1.951B Recovery Bonds, Est. $811M Net Ratepayer Savings",
+        desc: "The CPUC issued a PD authorizing SCE to issue approximately <strong>$1.951 billion</strong> in recovery bonds under AB 1054 to finance 2018 Woolsey Fire costs. A non-bypassable Fixed Recovery Charge applies to virtually all customers — including departing load — for up to 22 years. CARE and FERA customers are explicitly exempt. Compared to traditional rate-base financing at SCE's 7.59% authorized return, ratepayer savings are estimated at <strong>$811 million NPV</strong>. Comments due April 30; earliest CPUC vote May 14.",
+        date: "April 13, 2026 · AB 1054 Securitization",
+        url: "https://www.cpuc.ca.gov/news-and-updates",
+        details: "INSTANT ANALYSIS (CRI, Apr 13): SCE converts Woolsey liabilities into bond-backed revenue outside rate base, trading equity returns for cheaper debt. The $811M NPV savings claim is the favorable baseline; the more conservative comparison (against five-year amortization) yields ~$304M NPV. The non-bypassable charge survives customer migration, binds future customers, and calcifies wildfire costs as system-level obligations for decades. Duration is the number the savings narrative glosses over — expected maturity runs to 22 years with a 33-year legal cap. Near-term bill relief is real; so is the long-dated encumbrance. Each issuance layers another fixed charge onto the ratepayer stack."
       },
       {
         type: "Proposed Decision",
-        typeColor: "#00b4a6",
-        title: "PG&amp;E–Citizens Energy $1B Transmission Lease — Low-Income Bill Assistance Funded by After-Tax Profits",
-        desc: "ALJ proposed decision in A.24-03-009 would authorize PG&E to lease transmission entitlements to Citizens Energy Corporation under up to five 30-year leases worth up to $1 billion. After-tax profits — estimated at over $450 million over 35 years — would fund bill-payment assistance for low- and moderate-income PG&E customers. Item held to April 30, 2026 by Commissioner Houck.",
-        date: "PD filed Mar 6, 2026 · A.24-03-009 · Vote: Apr 30",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K795/601795585.PDF"
+        typeColor: "#0369a1",
+        title: "Community Solar PD — ALJ Requires 51% Low-Income Participation, Rejects Industry Tariff",
+        desc: "A proposed decision in A.22-05-022 replaces the Net Value Billing Tariff with Avoided Cost Calculator compensation and requires at least <strong>51% low-income participation</strong> for all community solar projects. Industry groups including SEIA say the decision <strong>\"virtually ensures no projects will be built\"</strong> in California. Consolidates all community solar programs. Earliest CPUC vote: May 14.",
+        date: "April 9, 2026 · A.22-05-022",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2205022",
+        details: "The PD consolidates community solar programs and anchors compensation to avoided cost rather than retail rates — eliminating the retail-rate floor developers depended on. SEIA's response ('virtually ensures no projects will be built') signals near-certain litigation or legislative override. The 51% low-income threshold complicates siting and contracting. For renters, apartment dwellers, and low-income customers who cannot install rooftop solar, community solar was a key pathway to clean energy participation. If the PD holds, that pathway narrows materially."
       },
       {
-        type: "Resolution Adopted",
+        type: "Proposed Decision",
         typeColor: "#0369a1",
-        title: "ICA Remediation Plans Approved — PG&E, SCE, SDG&amp;E Ordered to Fix Interconnection Capacity Analysis Data",
-        desc: "The CPUC adopted Resolution E-5440 on April 9, directing PG&E, SCE, and SDG&E to correct deficiencies in their Integration Capacity Analysis tools. Accurate ICA data is critical for rooftop solar, battery storage, and EV charger applications — errors can mislead developers into investing in projects that ultimately face prohibitive grid upgrade costs.",
-        date: "April 9, 2026 · Res. E-5440",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M604/K537/604537575.PDF"
+        title: "Electric Climate Credit Shifted to August/September — ~$49.36 Per Customer for PG&amp;E, SCE, SDG&amp;E",
+        desc: "A PD in R.25-07-013 moves the electric Climate Credit distribution to August and September (<strong>~$49.36/installment per customer</strong>) for PG&E, SCE, and SDG&E customers. The gas Climate Credit ($32.53 for SDG&E customers) is distributed in April as currently planned. Vote pending at the April 30 Business Meeting.",
+        date: "April 7, 2026 · R.25-07-013 · Vote: Apr 30",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2507013",
+        details: "The timing shift moves the electric credit from spring to summer billing cycles — when cooling costs are highest and low-income household bills spike. For PG&E, SCE, and SDG&E residential customers, each installment of ~$49.36 offsets summer peak bills more directly. The change is administratively modest but the timing improvement matters for households that rely on the credit to manage seasonal spikes. Gas credit timing (April) remains unchanged. No change to credit amounts — distribution timing only."
       },
       {
-        type: "ERRA Decision",
+        type: "OII Launched",
+        typeColor: "#7c3aed",
+        title: "PG&amp;E Elkhorn Storage Investigation Opened — 182.5 MW Offline, CPUC May Disallow Cost Recovery",
+        desc: "The CPUC opened a formal investigation at its April 9 meeting to determine whether PG&E's <strong>182.5 MW Elkhorn Energy Storage System</strong> at Moss Landing has been offline for nine or more consecutive months — triggering potential cost disallowance under PUC §455.5. The battery has been offline since June 2, 2025 following a coolant leak. PG&E has no definitive restart date and expects the facility to remain offline through 2026. CPUC ordered a memorandum account to track revenues, which are subject to refund.",
+        date: "April 9, 2026 · Energy Storage OII",
+        url: "https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/electric-costs/energy-storage",
+        details: "INSTANT ANALYSIS (CRI, Apr 8): If the Commission finds §455.5 applies to energy storage, the statute provides a direct path to disallow value and expenses tied to the prolonged outage. The memorandum account preserves the ability to reconcile revenues with interest if costs are found to have been improperly collected during the outage period. PG&E is working with Tesla as the maintenance and warranty provider to address the coolant leak. This is a cost-recovery proceeding anchored in outage duration and statutory interpretation — with potential downstream implications for how long-duration outages at utility-owned storage assets are treated in rates going forward."
+      },
+      {
+        type: "ALJ Ruling",
         typeColor: "#0369a1",
-        title: "SDG&amp;E 2023 ERRA Compliance Approved — $214.6M Net Undercollection Authorized for Recovery",
-        desc: "The CPUC adopted the proposed decision in A.24-06-001 on April 9, approving recovery of SDG&E's $214.58 million net 2023 energy procurement undercollection with modifications to RA portfolio valuation and RPS accounting. Commissioner Christine Harada presided after a March 19 holdover.",
-        date: "April 9, 2026 · A.24-06-001",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K038/599038878.PDF"
+        title: "Demand Response Bridge Year Funding — Comments Due April 15 on IOU Program Continuity",
+        desc: "An ALJ ruling in R.25-09-004 invites parties to comment on bridge-year funding for IOU demand response programs, with <strong>comments due April 15</strong> and reply comments due May 6. The ruling sets up a potential decision on program continuity before current authorization expires — affecting PG&E, SCE, and SDG&E load-reduction programs that form a key layer of California's grid reliability toolkit.",
+        date: "April 10, 2026 · R.25-09-004 · Comments Apr 15",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2509004",
+        details: "Demand response programs provide grid operators with dispatchable load reduction — a critical tool during peak demand and heat events. The bridge-year question is whether IOU programs continue at current funding levels while the Commission finalizes longer-term DR policy. If funding lapses, enrolled customers and program administrators face uncertainty heading into summer. The April 15 comment deadline is the immediate action item; parties opposing any reduction in DR funding need to file by that date."
+      },
+      {
+        type: "State Audit",
+        typeColor: "#b45309",
+        title: "JLAC Votes 13-0 to Audit CPUC Interconnection Oversight — Utilities Meet Timelines 18% of the Time",
+        desc: "The Joint Legislative Audit Committee voted unanimously (13-0) to authorize a state audit of CPUC oversight of utility interconnection timelines. Data suggests PG&E and SCE meet Rule 21 interconnection timelines as little as <strong>18% of the time</strong>, raising serious questions about CPUC enforcement effectiveness for solar and battery storage applications statewide.",
+        date: "March 25, 2026 · JLAC Audit 2026-126",
+        url: "https://calssa.org/press-releases/2026/3/25/legislators-overwhelmingly-approve-state-audit-of-cpuc-utility-interconnection-oversight",
+        details: "Rule 21 governs interconnection of small generators (rooftop solar, customer-sited batteries) to utility distribution systems. Utilities meeting timelines only 18% of the time points to a systemic enforcement gap — either the CPUC is not monitoring compliance effectively, or utilities face structural constraints that the rules don't account for. The audit will examine enforcement mechanisms, dispute resolution access, and whether the gap between rules and reality is addressable through enforcement alone or requires structural reform. For solar installers and customers, interconnection delays translate directly into delayed bill savings and project financing risk."
+      },
+      {
+        type: "Scoping Memo",
+        typeColor: "#0369a1",
+        title: "SB 884 Undergrounding BCR Methodology — Staff Recommends Disaggregated Formula to Constrain Utility Costs",
+        desc: "CPUC President Reynolds issued a scoping memo for A.26-02-005, establishing the framework for evaluating PG&E, SCE, and SDG&E joint SB 884 undergrounding proposals. Staff recommends 'Method 3' (Disaggregated Formulation) for Benefit-Cost Ratio calculations — limiting utility flexibility and constraining how utilities can frame cost-effectiveness. Intervenor counter-proposals due <strong>June 9</strong>; proposed decision targeted for October 2026.",
+        date: "April 13, 2026 · A.26-02-005",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602005",
+        details: "INSTANT ANALYSIS (CRI, Apr 13): This proceeding defines the rules for undergrounding as an asset class in California and will drive billions in ratepayer exposure. Staff has made the first move, recommending a BCR formula that constrains how utilities can present cost-effectiveness. The No-Build Baseline forces projects to measure incremental benefits against existing funded programs — preventing utilities from claiming credit for risk reductions already paid for by ratepayers, materially lowering headline BCRs in high-mitigation areas. EPUC's protest signals where pressure will concentrate: not on whether undergrounding is good policy, but on whether BCR inputs, audit rigor, and balancing account conditions adequately protect against cost pass-through ratepayers can't absorb."
+      },
+      {
+        type: "Proposed Decision",
+        typeColor: "#0369a1",
+        title: "Diablo Canyon Cost-Recovery Fix — Final RA Benchmark Replaces Forecast in 115% Safe Harbor Test",
+        desc: "A proposed decision partially grants a petition by the Alliance for Nuclear Responsibility to modify D.24-12-033. Going forward, the CPUC will use the <strong>final Resource Adequacy Market Price Benchmark</strong> (not the forecast value) when evaluating Diablo Canyon costs against the 115% statutory threshold. The fix applies to all Diablo Canyon extended operations proceedings through 2030. Comments due April 30.",
+        date: "April 13, 2026 · Diablo Canyon / D.24-12-033",
+        url: "https://www.cpuc.ca.gov/news-and-updates",
+        details: "INSTANT ANALYSIS (CRI, Apr 13): The safe harbor under state law is binary — sit under 115% and scrutiny largely stops. A higher forecast Market Price Benchmark made the threshold easier to clear: the 2025 forecast RA Market Price Benchmark was $42.54/kW-month against a final value of $11.21. By switching to the final value, the PD hardens the back-end audit function of the Diablo Canyon framework. The PD stops short of reopening past revenue requirements, keeping PG&E whole on already-booked costs — but going forward, the evaluation is grounded in actual market conditions rather than CPUC forecasts that proved dramatically wrong."
+      },
+      {
+        type: "Proposed Decision",
+        typeColor: "#0369a1",
+        title: "Shared Renewables Portfolio PD — Solar for All Funding Terminated, Program Proceeds at Avoided Cost",
+        desc: "A proposed decision implements the California Shared Renewables Portfolio on a ReMAT/PURPA-compliant foundation, rejecting compensation above avoided-cost levels. Following EPA termination of <strong>Solar for All funding</strong> and reversion of the <strong>$33 million</strong> state appropriation, the program proceeds without the external funding layer contemplated in D.24-05-065. Comments due April 27.",
+        date: "April 8, 2026 · Shared Renewables",
+        url: "https://www.cpuc.ca.gov/news-and-updates",
+        details: "INSTANT ANALYSIS (CRI, Apr 8): The PD places the shared renewables portfolio within a strict avoided-cost framework. With Solar for All funding terminated and the $33M appropriation reverted, the program loses the subsidy layer expected to support participation. By anchoring the tariff to ReMAT and rejecting adders above avoided cost, the Commission signals that nonparticipants will not subsidize the program — preserving legal defensibility but narrowing the revenue stack for developers and making project financing more difficult. For CCAs and developers, the result is a viable tariff structure with limited pricing flexibility and weaker market-building incentives."
+      },
+      {
+        type: "Compliance Report",
+        typeColor: "#0369a1",
+        title: "SB 1221 Gas Decarbonization Pilot Outreach — Opposition Majorities at SoCalGas, SDG&amp;E Sessions",
+        desc: "California's four major gas utilities filed SB 1221 compliance reports on their decarbonization pilot outreach. SoCalGas drew <strong>29 of 38 commenters in opposition</strong>; SDG&E drew <strong>25 of 34 against</strong>. Commenters raised grid reliability, wildfire and PSPS risk, and cost concerns — including six-figure electrification costs for commercial customers and equity barriers for low-income households.",
+        date: "April 8, 2026 · Long-Term Gas Planning Docket",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2307002",
+        details: "INSTANT ANALYSIS (CRI, Apr 8): The July 1 program design deadline is what actually matters. Cost recovery — who pays, how stranded gas assets get treated, whether utilities earn on electrification capital — determines whether large users engage or ignore this proceeding. The equity problem is baked in: if pilots front-load costs onto residents in disadvantaged communities without robust bill protection and appliance replacement funding, the CPUC will have built something politically and legally vulnerable from Day 1. SB 1221 requires 67% property owner consent before any pilot can be approved — a real constraint on deployment whose mechanics haven't been designed yet."
       }
     ];
 
     const STORIES = [
+      {
+        id: 57,
+        title: "CPUC Rate-Design Overhaul Launched — Wildfire Costs, Data Centers, and Income Tiers Collide",
+        url: "https://www.calregulatory.com/april-9-2026-cpuc-voting-meeting-results/",
+        date: "April 9, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Regulatory · Rate-Case",
+        summary: "The CPUC's April 9 voting meeting launched a new rate-design rulemaking addressing cost allocation for data centers, wildfire cost recovery, and income-based tiering — potentially reshaping how all California utility customers pay for grid upgrades. The meeting also yielded adopted decisions on ICA remediation (Res. E-5440) and SDG&E's <strong>$214.6M ERRA undercollection</strong>, while several other items were held to the April 30 Business Meeting.",
+        relatedCalreg: null
+      },
+      {
+        id: 58,
+        title: "California Community Solar PD 'Virtually Ensures No Projects Will Be Built'",
+        url: "https://pv-magazine-usa.com/2026/04/09/california-proposed-decision-virtually-ensures-no-community-solar-projects-will-be-built/",
+        date: "April 9, 2026",
+        source: "pv magazine USA",
+        author: "Tim Sylvia",
+        category: "Solar · Regulatory",
+        summary: "The CPUC's proposed decision in the community solar proceeding (A.22-05-022) replaces the Net Value Billing Tariff with Avoided Cost Calculator compensation and requires at least <strong>51% low-income participation</strong> — changes the Solar Energy Industries Association says make it economically impossible to build community solar projects in California. The decision consolidates multiple programs and eliminates the retail-rate compensation floor that developers depended on to secure project financing.",
+        relatedCalreg: null
+      },
+      {
+        id: 59,
+        title: "Batteries Buying 'Free' California Solar Are Driving Up Its Price",
+        url: "https://pv-magazine-usa.com/2026/04/08/batteries-buying-free-california-solar-driving-up-price/",
+        date: "April 8, 2026",
+        source: "pv magazine USA",
+        author: "John Fitzgerald Weaver",
+        category: "Grid · Solar",
+        summary: "Battery storage systems are increasingly purchasing surplus solar power during midday low-price hours — a dynamic that is gradually raising the floor price of the so-called 'free' solar period as storage arbitrage reduces price depth. As California adds more grid-scale batteries, the economics of solar arbitrage are shifting in ways that affect NEM export values, wholesale market prices, and future procurement strategy for utilities and independent power producers.",
+        relatedCalreg: null
+      },
+      {
+        id: 60,
+        title: "California Legislature Considers Bills on VPPs and Solar-Charged Battery Compensation",
+        url: "https://www.solarpowerworldonline.com/2026/04/california-legislature-considers-vpps-and-solar-charged-battery-compensation/",
+        date: "April 7, 2026",
+        source: "Solar Power World",
+        author: "Kelly Pickerel",
+        category: "Grid · Solar",
+        summary: "California legislators are advancing bills that would establish compensation frameworks for virtual power plants and solar-charged residential batteries participating in grid services. The proposals respond to the Newsom administration's move to restructure the Demand Side Grid Support program — which had enrolled <strong>over 1 GW</strong> of residential and commercial capacity — and aim to preserve customer participation in grid reliability programs.",
+        relatedCalreg: null
+      },
+      {
+        id: 61,
+        title: "Trump Energy Chief Attacks California Oil and Gas Policies at Long Beach Conference",
+        url: "https://calmatters.org/environment/2026/04/wright-synergy-oil-long-beach/",
+        date: "April 9, 2026",
+        source: "CalMatters",
+        author: "Reyes-Velarde, Lazo",
+        category: "Federal Policy · Climate",
+        summary: "U.S. Secretary of Energy Chris Wright criticized California's oil and gas regulatory framework at an industry conference in Long Beach, calling state policies 'anti-energy' and arguing they drive up costs for consumers and businesses. The speech marks the latest flashpoint in the federal-state conflict over energy policy, with the Trump administration actively targeting California's climate programs through executive action, permitting rollbacks, and budget cuts to clean energy programs.",
+        relatedCalreg: null
+      },
+      {
+        id: 62,
+        title: "Data Center Electricity Rate Bills Clear California Assembly Committee",
+        url: "https://www.eenews.net/articles/data-center-electricity-rate-bills-pass-california-assembly-committee/",
+        date: "April 2026",
+        source: "E&E News",
+        author: null,
+        category: "Data Centers · Regulatory",
+        summary: "California Assembly committees advanced legislation that would require data centers to pay a greater share of grid upgrade costs tied to their load growth — a legislative parallel to the CPUC's new rate-design rulemaking (R.26-04-001). The bills reflect growing political pressure to prevent large commercial customers from socializing system upgrade costs onto residential ratepayers as data center electricity demand is projected to rise <strong>40–60%</strong> by 2030.",
+        relatedCalreg: null
+      },
+      {
+        id: 63,
+        title: "CPUC Community Solar Decision Could Halt All Future Projects, Raising Energy Costs for Californians",
+        url: "https://solarquarter.com/2026/04/13/cpucs-new-proposed-decision-california-community-solar/",
+        date: "April 13, 2026",
+        source: "SolarQuarter",
+        author: "S.S. Dev",
+        category: "Solar · Affordability",
+        summary: "The CPUC's proposed decision on community solar has drawn sharp criticism from industry groups who say the avoided-cost compensation structure and <strong>51% low-income participation</strong> requirement will make community solar economically unviable in California. If implemented, the decision could eliminate an important pathway for renters, apartment dwellers, and low-income customers to access solar energy without rooftop panels — deepening inequities in the clean energy transition at a time of persistently high utility bills.",
+        relatedCalreg: null
+      },
       {
         id: 56,
         title: "SCE Submits Eaton Fire Report to CPUC as Investigators Probe Grid Equipment Near Ignition Point",
@@ -313,7 +479,7 @@
         source: "CalMatters",
         author: null,
         category: "Wildfire · Regulatory",
-        summary: "SCE submitted its preliminary report to the CPUC on the January 2025 Eaton fire, which killed at least <strong>17 people</strong> and destroyed more than <strong>9,000 structures</strong> in Altadena and Pasadena. The utility's report details grid equipment near the fire's origin point and infrastructure conditions at the time of ignition — information central to the CPUC's formal investigation (I.26-01-009) into whether SCE's transmission or distribution equipment caused or contributed to the blaze. Wildfire victims, legislators, and consumer advocates are pressing the Commission to hold the utility financially accountable.",
+        summary: "SCE submitted its preliminary report to the CPUC on the January 2025 Eaton fire, which killed at least <strong>17 people</strong> and destroyed more than <strong>9,000 structures</strong> in Altadena and Pasadena. The utility's report details grid equipment near the fire's origin point and infrastructure conditions at the time of ignition — information central to the CPUC's formal investigation (I.26-01-009) into whether SCE's transmission or distribution equipment caused or contributed to the blaze.",
         relatedCalreg: null
       },
       {
@@ -324,7 +490,7 @@
         source: "Times of San Diego",
         author: null,
         category: "Grid · Decarbonization",
-        summary: "California's Salton Sea region was touted as a future global hub for lithium extraction powering the EV revolution, with Governor Newsom coining the <strong>'Lithium Valley'</strong> moniker and backing hundreds of millions in state investment. But years later, commercial-scale output from the region's geothermal brines remains elusive — lithium prices have fallen sharply, permitting timelines have stretched, and developers like Controlled Thermal Resources face technical and financing hurdles. The gap between political promise and production reality is widening.",
+        summary: "California's Salton Sea region was touted as a future global hub for lithium extraction powering the EV revolution, with Governor Newsom coining the <strong>'Lithium Valley'</strong> moniker and backing hundreds of millions in state investment. But years later, commercial-scale output from the region's geothermal brines remains elusive — lithium prices have fallen sharply, permitting timelines have stretched, and developers face mounting technical and financing hurdles.",
         relatedCalreg: null
       },
       {
@@ -335,89 +501,12 @@
         source: "CalRegulatory",
         author: null,
         category: "Regulatory · Rate-Case",
-        summary: "The CPUC's April 9 voting agenda includes a new Order Instituting Rulemaking to address how system upgrade costs driven by surging data center and large-load demand are allocated across ratepayers. The proceeding pits large-load customers — who argue they should pay only incremental grid costs — against residential and small commercial customers who face cost shifts if utilities socialize expensive transmission and distribution upgrades. With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the outcome will set precedent for how the grid pays for its own expansion.",
-        relatedCalreg: null
-      },
-      {
-        id: 47,
-        title: "California Approved a Gas Pipeline Solution. Now Comes the Hard Part.",
-        url: "https://www.utilitydive.com/news/california-approved-a-gas-pipeline-solution-now-comes-the-hard-part/812087/",
-        date: "April 2, 2026",
-        source: "Utility Dive (Opinion)",
-        author: "Jalal Awan",
-        category: "Pipeline · Decarbonization",
-        summary: "SB 1221's neighborhood decarbonization pilot program offers a rare opportunity to align climate action with lower bills, but two problems threaten its promise: participation bias that favors well-organized coastal neighborhoods over high-burden inland communities, and misaligned utility incentives that reward gas pipeline spending over electrification. The CPUC must resist the path of least resistance and use <strong>CalEnviroScreen vulnerability scores</strong> to direct pilots to where savings are greatest and need is highest.",
-        relatedCalreg: null
-      },
-      {
-        id: 48,
-        title: "NRC Extends Diablo Canyon Operating License 20 Years, Through 2044–2045",
-        url: "https://www.kcbx.org/environment-and-energy/2026-04-02/diablo-canyon-gets-new-20-year-federal-license",
-        date: "April 2, 2026",
-        source: "KCBX News",
-        author: null,
-        category: "Grid · Regulatory",
-        summary: "The NRC approved PG&E's license renewal application, allowing Diablo Canyon to operate through 2044–2045 and securing nearly <strong>20% of California's clean energy supply</strong>. Governor Newsom welcomed the decision, calling it a fulfillment of California's commitment to a clean and reliable grid as the state navigates the energy transition.",
-        relatedCalreg: null
-      },
-      {
-        id: 51,
-        title: "PCIA Reset Incoming: Track 3 Opens the Door to Repricing Cost Responsibility for Departing Load",
-        url: "https://www.calregulatory.com/pcia-reset-incoming-track-3-opens-the-door-to-repricing-cost-responsibility/",
-        date: "April 1, 2026",
-        source: "CalRegulatory",
-        author: null,
-        category: "Regulatory · Rate-Case",
-        summary: "Track 3 of the Power Charge Indifference Adjustment proceeding (R.25-02-005) is shaping up as the most consequential PCIA reform since 2017, with PG&E, SCE, SDG&E, CalCCA, and TURN filing competing proposals on scope and repricing. The stakes involve <strong>billions of dollars</strong> in cost allocation between bundled IOU customers and departing community choice aggregation customers.",
-        relatedCalreg: null
-      },
-      {
-        id: 49,
-        title: "Will California Fund or Kill Its Thriving Virtual Power Plant Program?",
-        url: "https://www.canarymedia.com/articles/virtual-power-plants/california-fund-or-kill-vpp-program",
-        date: "March 31, 2026",
-        source: "Canary Media",
-        author: "Jeff St. John",
-        category: "Grid · Decarbonization",
-        summary: "The Newsom administration proposes eliminating the Demand Side Grid Support program, which has enrolled <strong>over 1 gigawatt</strong> of residential and commercial capacity to support grid reliability during peak periods. Lawmakers and environmental advocates are pushing back, arguing the program should continue rather than be transferred to a less effective utility-overseen alternative.",
-        relatedCalreg: null
-      },
-      {
-        id: 50,
-        title: "Forecast Uncertainty Tempers a Banner 2025 for US Energy Storage",
-        url: "https://www.utilitydive.com/news/forecast-uncertainty-tempers-a-banner-2025-for-us-energy-storage-reports/816236/",
-        date: "March 31, 2026",
-        source: "Utility Dive",
-        author: "Robert Walton",
-        category: "Grid · Solar",
-        summary: "Industry reports show 2025 was a record year for U.S. energy storage deployment, but forecast uncertainty is moderating near-term growth expectations as policy shifts and supply chain variability create a more cautious outlook. Analysts warn that changing market conditions could temper momentum built by <strong>record battery storage installations</strong> in 2024–2025.",
-        relatedCalreg: null
-      },
-      {
-        id: 52,
-        title: "California Announces 300 Wildfire Projects Fast-Tracked in 300 Days",
-        url: "https://www.gov.ca.gov/2026/03/20/california-announces-300-wildfire-projects-fast-tracked-in-300-days/",
-        date: "March 20, 2026",
-        source: "Office of Governor Newsom",
-        author: null,
-        category: "Wildfire",
-        summary: "State agencies approved more than <strong>300 wildfire safety projects</strong> across nearly 57,000 acres in just 300 days following Governor Newsom's emergency proclamation, with streamlined environmental reviews completing in as few as 30 days. Project applications continue through May 1, 2026, backed by $135 million in available funding.",
-        relatedCalreg: null
-      },
-      {
-        id: 53,
-        title: "PG&amp;E Lowers Electric Prices in March — Fifth Rate Drop Since Early 2024",
-        url: "https://investor.pgecorp.com/news-events/press-releases/press-release-details/2026/PGE-Lowers-Electric-Prices-in-March-Fifth-Electric-Rate-Drop-Since-Early-2024/default.aspx",
-        date: "March 1, 2026",
-        source: "PG&E",
-        author: null,
-        category: "Affordability · Rate-Case",
-        summary: "PG&E implemented its fifth electric rate decrease since early 2024, with bundled residential rates down approximately <strong>5%</strong> and typical monthly bills falling by $7. The reduction stems from lower generation costs and full collection of a prior $1.2 billion safety and reliability surcharge, though it applies only to bundled customers — about one-third of PG&E's total customer base.",
+        summary: "The CPUC's April 9 voting agenda includes a new Order Instituting Rulemaking to address how system upgrade costs driven by surging data center and large-load demand are allocated across ratepayers. The proceeding pits large-load customers against residential and small commercial customers who face cost shifts if utilities socialize expensive transmission and distribution upgrades. With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the outcome will set precedent for how the grid pays for its own expansion.",
         relatedCalreg: null
       }
     ];
 
-    // ── Render Recent Developments (4 visible + load more) ─────
+    // ── Render Recent Developments (6 visible + load more) ─────
     const rdEl = document.getElementById('recent-dev');
     const _rdCard = r => `
       <div class="rd-card">
@@ -428,12 +517,19 @@
           <span class="rd-date">${r.date}</span>
           <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="rd-more">Read More &#8594;</a>
         </div>
+        ${r.details ? `
+        <div class="rd-details-wrap">
+          <button class="rd-details-toggle" onclick="(function(btn){var b=btn.nextElementSibling;var a=btn.querySelector('.rd-details-arr');if(b.style.display==='block'){b.style.display='none';a.style.transform='rotate(0deg)';}else{b.style.display='block';a.style.transform='rotate(90deg)';};})(this)">
+            <span class="rd-details-arr">&#9658;</span> Analyst Notes
+          </button>
+          <div class="rd-details-body">${r.details}</div>
+        </div>` : ''}
       </div>`;
 
-    RECENT.slice(0, 4).forEach(r => { rdEl.innerHTML += _rdCard(r); });
+    RECENT.slice(0, 6).forEach(r => { rdEl.innerHTML += _rdCard(r); });
 
-    if (RECENT.length > 4) {
-      const hiddenRecent = RECENT.slice(4);
+    if (RECENT.length > 6) {
+      const hiddenRecent = RECENT.slice(6);
       const nr = hiddenRecent.length;
       rdEl.insertAdjacentHTML('afterend', `
         <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:16px;">${hiddenRecent.map(_rdCard).join('')}</div>
