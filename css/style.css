@@ -3,15 +3,15 @@
 /* ============================================================
    JALAL AWAN — Personal Consulting Website
    style.css — Main stylesheet
-   Colors: Navy #1b2a3b | Teal #0d9488 | Page bg #f3f5f9
+   Colors: Navy #1b2a3b | Gold #c49a2e | Page bg #f3f5f9
    ============================================================ */
 
 /* ── Variables ── */
 :root {
   --navy:       #1b2a3b;
   --navy-mid:   #263553;
-  --teal:       #0d9488;
-  --teal-light: #f0fdfa;
+  --teal:       #c49a2e;
+  --teal-light: #fef8ed;
   --white:      #ffffff;
   --off-white:  #ffffff;
   --text-dark:  #1b2a3b;
@@ -85,7 +85,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
   border: 2px solid transparent;
 }
 .btn-primary { background: var(--teal); color: var(--white); }
-.btn-primary:hover { background: #0a7a72; color: var(--white); transform: translateY(-1px); }
+.btn-primary:hover { background: #a8821e; color: var(--white); transform: translateY(-1px); }
 .btn-outline { background: transparent; border-color: var(--teal); color: var(--teal); }
 .btn-outline:hover { background: var(--teal); color: var(--white); }
 .btn-white  { background: var(--white); color: var(--navy); }
@@ -134,7 +134,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
 }
 .nav-links a:hover, .nav-links a.active {
   color: var(--white);
-  background: rgba(13,148,136,0.18);
+  background: rgba(196,154,46,0.18);
 }
 .nav-cta {
   background: var(--teal);
@@ -142,7 +142,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
   padding: 7px 16px !important;
   border-radius: 4px;
 }
-.nav-cta:hover { background: #0a7a72 !important; }
+.nav-cta:hover { background: #a8821e !important; }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
 
@@ -162,15 +162,15 @@ small { font-size: 0.82rem; color: var(--text-light); }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(13,148,136,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13,148,136,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(196,154,46,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,154,46,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .hero-content { position: relative; z-index: 1; max-width: 680px; }
 .hero-tag {
   display: inline-block;
-  background: rgba(13,148,136,0.15);
-  border: 1px solid rgba(13,148,136,0.35);
+  background: rgba(196,154,46,0.15);
+  border: 1px solid rgba(196,154,46,0.35);
   color: var(--teal);
   font-size: 0.78rem;
   font-weight: 600;
@@ -341,7 +341,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
 .form-group textarea:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
+  box-shadow: 0 0 0 3px rgba(196,154,46,0.12);
 }
 .form-group textarea { resize: vertical; min-height: 130px; }
 .form-success {
@@ -399,8 +399,8 @@ footer {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(13,148,136,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13,148,136,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(196,154,46,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,154,46,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .page-header .container { position: relative; }
@@ -519,9 +519,9 @@ footer {
 }
 .week-label-current {
   display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #0c6a62; background: #c5f7ee;
+  text-transform: uppercase; color: #7a5c10; background: #fef3cd;
   border-radius: 4px; padding: 3px 10px; margin-bottom: 14px;
-  border: 1px solid #52d9ce;
+  border: 1px solid #f0cc6e;
 }
 .week-label-prior {
   display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
@@ -605,8 +605,8 @@ footer {
   50%      { text-shadow: 0 0 18px rgba(255,255,255,0.6); }
 }
 @keyframes pulseTransparent {
-  0%,100% { text-shadow: 0 0 0px #5DC8C0; }
-  50%      { text-shadow: 0 0 22px rgba(93,200,192,0.9); }
+  0%,100% { text-shadow: 0 0 0px #c49a2e; }
+  50%      { text-shadow: 0 0 22px rgba(196,154,46,0.9); }
 }
 .banner-word-simpler {
   color: #ffffff; font-size: 1.65em; font-weight: 900;
@@ -615,8 +615,8 @@ footer {
   animation: pulseSimpler 2s ease-in-out infinite;
 }
 .banner-word-transparent {
-  color: #5DC8C0; font-size: 1.65em; font-weight: 900;
-  letter-spacing: -0.02em; background: rgba(93,200,192,0.15);
+  color: #c49a2e; font-size: 1.65em; font-weight: 900;
+  letter-spacing: -0.02em; background: rgba(196,154,46,0.15);
   padding: 2px 10px; border-radius: 4px;
   animation: pulseTransparent 2s ease-in-out infinite 0.3s;
 }
