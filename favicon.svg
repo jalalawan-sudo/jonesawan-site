@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="5" fill="#1a2744"/>
-  <rect x="3" y="27.5" width="26" height="3" rx="1.5" fill="#00c4b4"/>
+  <rect width="32" height="32" rx="5" fill="#1b2a3b"/>
+  <rect x="3" y="27.5" width="26" height="3" rx="1.5" fill="#c49a2e"/>
   <text x="16" y="22.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="800" font-size="17" text-anchor="middle" letter-spacing="0.5">
-    <tspan fill="#ffffff">J</tspan><tspan fill="#00c4b4">A</tspan>
+    <tspan fill="#ffffff">J</tspan><tspan fill="#c49a2e">A</tspan>
   </text>
 </svg>
