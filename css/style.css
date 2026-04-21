@@ -1,22 +1,22 @@
 /* ============================================================
    JALAL AWAN — Personal Consulting Website
    style.css — Main stylesheet
-   Colors: Navy #1a2744 | Teal #00b4a6 | Off-white #f8f9fa
+   Colors: Navy #1b2a3b | Teal #0d9488 | Off-white #f8f9fa
    ============================================================ */
 
 /* ── Variables ── */
 :root {
-  --navy:       #1a2744;
-  --navy-mid:   #253560;
-  --teal:       #00b4a6;
-  --teal-light: #e6f7f6;
+  --navy:       #1b2a3b;
+  --navy-mid:   #263553;
+  --teal:       #0d9488;
+  --teal-light: #f0fdfa;
   --white:      #ffffff;
   --off-white:  #f8f9fa;
-  --text-dark:  #1a2744;
+  --text-dark:  #1b2a3b;
   --text-mid:   #4a5568;
   --text-light: #718096;
   --border:     #e2e8f0;
-  --shadow:     0 4px 20px rgba(26,39,68,0.08);
+  --shadow:     0 4px 20px rgba(27,42,59,0.08);
   --radius:     6px;
   --font:       'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -82,7 +82,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
   border: 2px solid transparent;
 }
 .btn-primary { background: var(--teal); color: var(--white); }
-.btn-primary:hover { background: #009e91; color: var(--white); transform: translateY(-1px); }
+.btn-primary:hover { background: #0a7a72; color: var(--white); transform: translateY(-1px); }
 .btn-outline { background: transparent; border-color: var(--teal); color: var(--teal); }
 .btn-outline:hover { background: var(--teal); color: var(--white); }
 .btn-white  { background: var(--white); color: var(--navy); }
@@ -93,7 +93,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 999;
-  background: rgba(26,39,68,0.97);
+  background: rgba(27,42,59,0.97);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   height: 64px;
@@ -131,7 +131,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
 }
 .nav-links a:hover, .nav-links a.active {
   color: var(--white);
-  background: rgba(0,180,166,0.18);
+  background: rgba(13,148,136,0.18);
 }
 .nav-cta {
   background: var(--teal);
@@ -139,7 +139,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
   padding: 7px 16px !important;
   border-radius: 4px;
 }
-.nav-cta:hover { background: #009e91 !important; }
+.nav-cta:hover { background: #0a7a72 !important; }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
 
@@ -159,15 +159,15 @@ small { font-size: 0.82rem; color: var(--text-light); }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,180,166,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,180,166,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(13,148,136,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,148,136,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .hero-content { position: relative; z-index: 1; max-width: 680px; }
 .hero-tag {
   display: inline-block;
-  background: rgba(0,180,166,0.15);
-  border: 1px solid rgba(0,180,166,0.35);
+  background: rgba(13,148,136,0.15);
+  border: 1px solid rgba(13,148,136,0.35);
   color: var(--teal);
   font-size: 0.78rem;
   font-weight: 600;
@@ -337,7 +337,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
 .form-group textarea:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(0,180,166,0.12);
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
 }
 .form-group textarea { resize: vertical; min-height: 130px; }
 .form-success {
@@ -395,8 +395,8 @@ footer {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,180,166,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,180,166,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(13,148,136,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,148,136,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .page-header .container { position: relative; }
