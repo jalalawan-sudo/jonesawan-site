@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap');
+
 /* ============================================================
    JALAL AWAN — Personal Consulting Website
    style.css — Main stylesheet
-   Colors: Navy #1b2a3b | Teal #0d9488 | Off-white #f4f6f9
+   Colors: Navy #1b2a3b | Teal #0d9488 | Page bg #f3f5f9
    ============================================================ */
 
 /* ── Variables ── */
@@ -11,27 +13,28 @@
   --teal:       #0d9488;
   --teal-light: #f0fdfa;
   --white:      #ffffff;
-  --off-white:  #f4f6f9;
+  --off-white:  #ffffff;
   --text-dark:  #1b2a3b;
   --text-mid:   #485470;
   --text-light: #6b7896;
-  --border:     #dde3ec;
-  --shadow:     0 4px 20px rgba(27,42,59,0.08);
-  --radius:     6px;
+  --border:     #d6dce8;
+  --shadow:     0 2px 8px rgba(27,42,59,0.07), 0 8px 24px rgba(27,42,59,0.06);
+  --radius:     8px;
   --font:       'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: var(--font); color: var(--text-dark); background: var(--white); line-height: 1.7; }
+body { font-family: var(--font); color: var(--text-dark); background: #f3f5f9; line-height: 1.7; }
 img { max-width: 100%; display: block; }
 a { color: var(--teal); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--navy); }
 
 /* ── Typography ── */
-h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
-h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.2; }
+h1 { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+h2 { font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.2; }
 h3 { font-size: 1.2rem; font-weight: 600; }
 h4 { font-size: 1rem; font-weight: 600; }
 p  { color: var(--text-mid); }
@@ -202,6 +205,7 @@ small { font-size: 0.82rem; color: var(--text-light); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
+  box-shadow: 0 1px 3px rgba(27,42,59,0.06);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 .card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
@@ -459,7 +463,9 @@ footer {
 .news-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
 .news-card {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 20px; transition: box-shadow 0.2s;
+  border-radius: var(--radius); padding: 20px;
+  box-shadow: 0 1px 3px rgba(27,42,59,0.06);
+  transition: box-shadow 0.2s;
 }
 .news-card:hover { box-shadow: var(--shadow); }
 .news-type { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
@@ -473,6 +479,7 @@ footer {
 .proc-card {
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 20px;
+  box-shadow: 0 1px 3px rgba(27,42,59,0.06);
   transition: box-shadow 0.2s, transform 0.2s;
   display: flex; flex-direction: column;
 }
