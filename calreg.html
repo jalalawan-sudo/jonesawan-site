@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <p style="font-size:0.78rem; opacity:0.45; margin:8px 0 16px;">Updated April 13, 2026</p>
+      <p style="font-size:0.78rem; opacity:0.45; margin:8px 0 16px;">Updated April 18, 2026</p>
 
       <script>
       (function(){
@@ -567,17 +567,30 @@
       </div>
       <div class="proc-grid" id="apps-grid">
 
-        <!-- ── Current Period Header: Apr 1–13, 2026 ── -->
+        <!-- ── Current Period Header: Apr 14–18, 2026 ── -->
         <div class="period-hdr current" style="grid-column:1/-1;">
           <div class="period-hdr-left">
             <div class="period-hdr-eyebrow">Current Period</div>
-            <div class="period-hdr-date">Apr 1 – Apr 13, 2026</div>
+            <div class="period-hdr-date">Apr 14 – Apr 18, 2026</div>
           </div>
-          <div class="period-hdr-right">3 filings</div>
+          <div class="period-hdr-right">No new filings</div>
         </div>
 
+        <!-- ── Prior Period Archive: Apr 1–13, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-apr0113')" id="toggle-apps-apr0113" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Apr 1 – Apr 13, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">3 filings</span>
+            <span class="period-hdr-arr" id="parr-apps-apr0113">&#9658;</span>
+          </div>
+        </div>
+        <div id="apps-apr0113" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px; align-items:start;">
+
         <!-- R.26-04-001 Large Load / Data Center OIR -->
-        <div class="proc-card" data-util="others" style="grid-column:1/-1;">
+        <div class="proc-card" data-util="others">
           <div class="proc-card-meta">
             <span class="proc-card-docket">R.26-04-001</span>
             <span class="proc-card-date">Opened April 9, 2026</span>
@@ -632,6 +645,8 @@
             <div class="ai-body">The <em>Elkhorn Battery Energy Storage System</em> is a 182.5 MW / 730 MWh lithium-ion storage facility located at the Moss Landing power plant complex in Monterey County — one of the largest grid-scale storage facilities in the world at the time of its commissioning. The facility has been under prolonged outage following fire and safety concerns that have affected the Moss Landing complex since late 2024.<br>CPUC regulations provide that if a utility-owned or utility-contracted resource remains out of service for nine or more consecutive months, the Commission may disallow expenses associated with that resource from ratepayer recovery — effectively requiring <em>PG&amp;E</em> to absorb costs rather than pass them through to customers. This investigation will determine whether the Elkhorn outage has crossed that threshold and, if so, what costs are subject to disallowance. The proceeding has significant precedent value for how California regulators treat storage facility outages going forward.</div>
           </div>
         </div>
+
+        </div><!-- /apps-apr0113 -->
 
         <!-- ── Prior Period Header: Mar 14–31, 2026 ── -->
         <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-mar1431')" id="toggle-apps-mar1431" style="grid-column:1/-1;">
@@ -940,6 +955,93 @@
 
         </div><!-- /apps-feb0213 -->
 
+        <!-- ── Prior Period: Jan 2–16, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-jan0216')" id="toggle-apps-jan0216" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Jan 2 – Jan 16, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">4 filings</span>
+            <span class="period-hdr-arr" id="parr-apps-jan0216">&#9658;</span>
+          </div>
+        </div>
+        <div id="apps-jan0216" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.26-01-003 -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-003</span>
+              <span class="proc-card-date">Filed Jan 9, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>PG&amp;E — ESA/CARE Low-Income Programs 2028–2033</h3>
+            <p><em>PG&amp;E</em> seeks approval of its Energy Savings Assistance (ESA) and CARE low-income programs for the <strong>2028–2033</strong> cycle, proposing program budgets, customer targets, and delivery methods.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">PG&E files its Low-Income Proceedings Application for the 2028–2033 program cycle, requesting Commission approval to continue administering the Energy Savings Assistance (ESA) program — which provides free weatherization and energy-efficiency upgrades to income-qualified households — and the California Alternate Rates for Energy (CARE) discount program. The application proposes six-year program budgets, outreach strategies, and customer enrollment targets. This proceeding was consolidated with SCE (A.26-01-005), SDG&amp;E (A.26-01-010), and SoCalGas (A.26-01-011) per an ALJ ruling on February 10, 2026, reflecting the CPUC's preference for coordinated review of all IOU low-income programs.</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-005 -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-005</span>
+              <span class="proc-card-date">Filed Jan 9, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>SCE — ESA/CARE/FERA Low-Income Programs 2028–2033</h3>
+            <p><em>SCE</em> seeks approval of its Energy Savings Assistance, CARE, and Family Electric Rate Assistance (FERA) low-income programs for the <strong>2028–2033</strong> cycle.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601005" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">SCE files its Low-Income Proceedings Application for the 2028–2033 program cycle, covering the Energy Savings Assistance (ESA) program, the California Alternate Rates for Energy (CARE) discount, and the Family Electric Rate Assistance (FERA) program — which provides a smaller discount to households slightly above CARE income thresholds. SCE proposes program structure, budgets, and outreach targets for Commission approval. This proceeding was consolidated with PG&amp;E (A.26-01-003), SDG&amp;E (A.26-01-010), and SoCalGas (A.26-01-011) per an ALJ ruling on February 10, 2026.</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-009 -->
+          <div class="proc-card" data-util="scg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-009</span>
+              <span class="proc-card-date">Filed Jan 15, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>SoCalGas — Compliance Filing per D.24-12-076</h3>
+            <p><em>SoCalGas</em> files compliance application per Ordering Paragraph 6 of <strong>D.24-12-076</strong>, addressing directed action from a prior Commission decision. Assigned to Commissioner Karen Douglas and ALJ Jamie Ormond.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">SoCalGas files a compliance application as directed by Ordering Paragraph 6 of Decision 24-12-076. The application addresses specific compliance requirements imposed by the Commission in that prior decision. Assigned to Commissioner Karen Douglas and ALJ Jamie Ormond, the proceeding is categorized as ratesetting within the gas industry. Compliance filings of this type are required when a prior decision orders a utility to return to the Commission with a formal application implementing specific directed actions.</div>
+            </div>
+          </div>
+
+          <!-- A.26-01-002 -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-002</span>
+              <span class="proc-card-date">Filed Jan 5, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Application</span>
+            </div>
+            <h3>SCE — Section 851 Easement Grant to City of Ontario</h3>
+            <p><em>SCE</em> seeks PUC Section 851 approval to grant public road and limited utility easements to the <strong>City of Ontario</strong> for infrastructure accommodation. Assigned to Commissioner Darcie Houck and ALJ Marcelo Poirier.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601002" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">SCE requests Commission authorization under Public Utilities Code Section 851 to grant public road and limited utility easements to the City of Ontario. Section 851 requires CPUC approval before a utility can sell, lease, or transfer any property necessary for its operations. This is a routine infrastructure accommodation with no direct rate impact — the easement allows public road development over or alongside SCE-owned land while preserving utility access rights. Assigned to Commissioner Darcie Houck and ALJ Marcelo Poirier.</div>
+            </div>
+          </div>
+
+        </div><!-- /apps-jan0216 -->
+
         <!-- ── Prior Period: Jan 19–30, 2026 ── -->
         <div class="period-hdr prior-toggle" onclick="togglePeriod('apps-jan1930')" id="toggle-apps-jan1930" style="grid-column:1/-1;">
           <div class="period-hdr-left">
@@ -1071,147 +1173,180 @@
       </div>
       <div class="proc-grid" id="pd-cards">
 
-        <!-- ── Current Period Header: Apr 1–13, 2026 ── -->
+        <!-- ── Current Period Header: Apr 14–18, 2026 ── -->
         <div class="period-hdr current" style="grid-column:1/-1;">
           <div class="period-hdr-left">
             <div class="period-hdr-eyebrow">Current Period</div>
-            <div class="period-hdr-date">Apr 1 – Apr 13, 2026</div>
+            <div class="period-hdr-date">Apr 14 – Apr 18, 2026</div>
           </div>
-          <div class="period-hdr-right">7 items</div>
+          <div class="period-hdr-right">1 ruling</div>
         </div>
 
-        <!-- C-Apr1: R.26-04-001 Large Load OIR Opened -->
-        <div class="proc-card" data-util="others">
-          <div class="proc-card-meta">
-            <span class="proc-card-docket">R.26-04-001</span>
-            <span class="proc-card-date">Opened April 9, 2026</span>
-            <span class="status-badge s-ongoing" style="margin-left:auto;">New Rulemaking</span>
-          </div>
-          <h3>Large Load / Data Center Rate Design — New OIR Opened</h3>
-          <p>CPUC opens a new <strong>Order Instituting Rulemaking</strong> to determine how system upgrade costs driven by surging data center and large-load demand are allocated across ratepayers — a decision that will shape grid expansion costs for millions of California customers.</p>
-          <div class="proc-card-links">
-            <a href="https://www.cpuc.ca.gov/news-and-updates" target="_blank" rel="noopener noreferrer">CPUC News</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2604001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
-          </div>
-          <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the CPUC opened this rulemaking to establish durable rules for large-load cost allocation. The central policy question: when a new data center or industrial facility requires expensive grid upgrades, should that customer bear the full incremental cost, or should the costs be spread across all ratepayers?<br>Large-load customers argue that general ratepayer sharing is appropriate because all customers benefit from a more robust grid. Consumer advocates and ratepayer groups — including TURN — counter that socializing costs driven by a narrow class of high-demand customers amounts to an unjust subsidy. The proceeding follows the April 9, 2026 vote and will involve workshops, data requests, and potentially a phase for proposed decisions. A final decision is expected in 2027.</div>
-          </div>
-        </div>
-
-        <!-- C-Apr2: A.24-03-009 Citizens Energy Adopted -->
-        <div class="proc-card" data-util="pge">
-          <div class="proc-card-meta">
-            <span class="proc-card-docket">A.24-03-009</span>
-            <span class="proc-card-date">Adopted April 9, 2026</span>
-            <span class="status-badge s-settled" style="margin-left:auto;">Adopted</span>
-          </div>
-          <h3>PG&amp;E — Citizens Energy $1B Transmission Lease Approved (§851)</h3>
-          <p>The CPUC adopted the proposed decision authorizing <em>PG&amp;E</em> to lease transmission entitlements to <em>Citizens Energy Corporation</em> under up to five 30-year leases worth up to <strong>$1 billion</strong>. After-tax profits — estimated at over <strong>$450 million</strong> over 35 years — will fund bill-payment assistance for low- and moderate-income PG&amp;E customers.</p>
-          <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K795/601795585.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
-          </div>
-          <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">The Commission adopted the decision authorizing <em>PG&amp;E</em> to lease entitlements on new high-voltage transmission projects to <em>Citizens Energy Corporation</em> — a nonprofit — through up to five 30-year leases. <em>Citizens Energy</em> funds grid upgrades (safety, reliability, capacity) in exchange for the entitlements. The arrangement satisfies Public Utilities Code §851 public interest requirements, per the adopted decision by <em>ALJ Jack Chang</em>.<br>Total investment up to <strong>$1 billion</strong>. <em>Citizens Energy</em> commits to directing <strong>50%</strong> of net after-tax profits to clean energy for low-income communities in Central and Northern California, rising to <strong>90%</strong> over time. Over 35 years, the CPUC estimated after-tax profit flows to low-income customers at over <strong>$450 million</strong>.</div>
-          </div>
-        </div>
-
-        <!-- C-Apr3: Res. E-5440 ICA Adopted -->
+        <!-- R.24-01-018 Energization Timelines ALJ Ruling -->
         <div class="proc-card" data-util="pge sce sdge">
           <div class="proc-card-meta">
-            <span class="proc-card-docket">Res. E-5440</span>
-            <span class="proc-card-date">Adopted April 9, 2026</span>
-            <span class="status-badge s-settled" style="margin-left:auto;">Resolution Adopted</span>
+            <span class="proc-card-docket">R.24-01-018</span>
+            <span class="proc-card-date">ALJ Ruling Apr 17, 2026</span>
+            <span class="status-badge s-ongoing" style="margin-left:auto;">ALJ Ruling</span>
           </div>
-          <h3>ICA Remediation Plans Adopted — PG&amp;E, SCE, SDG&amp;E Ordered to Fix Interconnection Capacity Data</h3>
-          <p>The CPUC adopted Resolution E-5440, directing <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> to correct Integration Capacity Analysis data deficiencies within a specified compliance timeline. Accurate ICA data governs distributed energy resource interconnection across all three service territories.</p>
+          <h3>CPUC — Energization Timelines ALJ Ruling: Bridge-Year Enforcement Framework</h3>
+          <p>ALJ Dugowson issues a ruling in R.24-01-018 establishing the procedural framework for CPUC enforcement of electric service energization timelines — addressing how <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> must meet Rule 21 and new service connection deadlines as the Commission develops enforcement tools.</p>
           <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M603/K306/603306235.PDF" target="_blank" rel="noopener noreferrer">View Resolution</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5440" target="_blank" rel="noopener noreferrer" class="sec">Docket</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2401018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">The <em>Integration Capacity Analysis</em> (ICA) is a map-based tool showing how much distributed energy resource capacity each grid segment can accommodate without costly upgrades. CPUC staff found that all three large IOUs had methodology errors and data gaps that could mislead rooftop solar, battery storage, and EV charger applicants about available interconnection headroom.<br>Resolution E-5440, adopted at the April 9, 2026 voting meeting after being held from March 19, requires each utility to submit corrected ICA data and a remediation plan to CPUC staff within a specified timeline. Failure to provide accurate ICA data can cause developers to incur pre-development costs for projects that will ultimately face prohibitive grid upgrade requirements — a longstanding complaint from the California solar and storage industry.</div>
+            <div class="ai-body">R.24-01-018 is the CPUC's rulemaking on energization timelines — the time it takes utilities to connect new customers, rooftop solar, and battery storage systems to the grid. Data shows PG&amp;E and SCE meet Rule 21 interconnection timelines as little as 18% of the time, prompting the JLAC to authorize a state audit (JLAC 2026-126) and the CPUC to develop formal enforcement mechanisms.<br>This April 17 ALJ ruling by ALJ Dugowson sets out the procedural schedule and framework for how the Commission will enforce compliance going forward, including potential penalty mechanisms. The ruling is significant because it marks the CPUC's first formal procedural step toward creating binding enforcement tools for energization delays — a longstanding pain point for solar installers, EV charging developers, and customers awaiting new service connections.</div>
           </div>
         </div>
 
-        <!-- C-Apr4: A.24-06-001 SDG&E ERRA Adopted -->
-        <div class="proc-card" data-util="sdge">
-          <div class="proc-card-meta">
-            <span class="proc-card-docket">A.24-06-001</span>
-            <span class="proc-card-date">Adopted April 9, 2026</span>
-            <span class="status-badge s-settled" style="margin-left:auto;">Adopted</span>
+        <!-- ── Prior Period Archive: Apr 1–13, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('pd-apr0113')" id="toggle-pd-apr0113" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Apr 1 – Apr 13, 2026</div>
           </div>
-          <h3>SDG&amp;E — 2023 ERRA Compliance: <strong>$214.6M</strong> Net Undercollection Approved for Recovery</h3>
-          <p>The CPUC adopted the proposed decision in A.24-06-001, approving <em>SDG&amp;E</em>'s recovery of a net <strong>$214.6 million</strong> 2023 energy procurement undercollection with modifications to RA portfolio valuation, RPS accounting, and battery storage revenue allocation. Commissioner Christine Harada presided after a March 19 holdover.</p>
-          <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K038/599038878.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2406001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
-          </div>
-          <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">The <em>Energy Resource Recovery Account</em> (ERRA) mechanism allows <em>SDG&amp;E</em> to track and recover reasonable energy procurement costs that differ from the forecast embedded in rates. The 2023 compliance filing reviewed whether procurement was prudent and consistent with the Commission-approved plan. The net <strong>$214.580 million undercollection</strong> flows back to customers through future rate adjustments.<br>The adopted decision includes modifications: <em>SDG&amp;E</em> must update its resource adequacy portfolio valuation methodology, correct RPS compliance accounting, allocate battery storage revenues across a broader customer base, and recover Stranded Green Tariff Shared Renewables costs via the Public Purpose Programs charge. The item was held from the March 19 voting meeting to April 9 following reassignment to Commissioner Christine Harada.</div>
+          <div class="period-hdr-right">
+            <span class="period-count">7 items</span>
+            <span class="period-hdr-arr" id="parr-pd-apr0113">&#9658;</span>
           </div>
         </div>
+        <div id="pd-apr0113" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px; align-items:start;">
 
-        <!-- C-Apr5: A.22-05-022 PG&E Green Tariff Shared Renewables PD -->
-        <div class="proc-card" data-util="pge">
-          <div class="proc-card-meta">
-            <span class="proc-card-docket">A.22-05-022</span>
-            <span class="proc-card-date">PD Issued Apr 7, 2026</span>
-            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          <!-- C-Apr1: R.26-04-001 Large Load OIR Opened -->
+          <div class="proc-card" data-util="others">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">R.26-04-001</span>
+              <span class="proc-card-date">Opened April 9, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">New Rulemaking</span>
+            </div>
+            <h3>Large Load / Data Center Rate Design — New OIR Opened</h3>
+            <p>CPUC opens a new <strong>Order Instituting Rulemaking</strong> to determine how system upgrade costs driven by surging data center and large-load demand are allocated across ratepayers — a decision that will shape grid expansion costs for millions of California customers.</p>
+            <div class="proc-card-links">
+              <a href="https://www.cpuc.ca.gov/news-and-updates" target="_blank" rel="noopener noreferrer">CPUC News</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2604001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the CPUC opened this rulemaking to establish durable rules for large-load cost allocation. The central policy question: when a new data center or industrial facility requires expensive grid upgrades, should that customer bear the full incremental cost, or should the costs be spread across all ratepayers?<br>Large-load customers argue that general ratepayer sharing is appropriate because all customers benefit from a more robust grid. Consumer advocates and ratepayer groups — including TURN — counter that socializing costs driven by a narrow class of high-demand customers amounts to an unjust subsidy. The proceeding follows the April 9, 2026 vote and will involve workshops, data requests, and potentially a phase for proposed decisions. A final decision is expected in 2027.</div>
+            </div>
           </div>
-          <h3>PG&amp;E — Green Tariff Shared Renewables &amp; DA Community Solar Programs PD</h3>
-          <p><em>ALJ Kao</em> issues a proposed decision implementing <em>PG&amp;E</em>'s <strong>Green Tariff Shared Renewables</strong>, <strong>Disadvantaged Communities Green Tariff</strong>, and <strong>Community Solar Green Tariff</strong> programs — establishing program rules, customer enrollment procedures, and cost-recovery mechanisms for this shared clean energy portfolio.</p>
-          <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K536/604536932.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2205022" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
-          </div>
-          <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">California's <em>Green Tariff Shared Renewables</em> program allows customers — including renters and others who cannot install rooftop solar — to subscribe to a share of a utility-owned or utility-contracted renewable energy project and receive a credit on their bill. The <em>Disadvantaged Communities Green Tariff</em> extends this model specifically to low-income customers in disadvantaged communities with additional subsidy. The <em>Community Solar Green Tariff</em> involves smaller, community-scale projects with local siting requirements.<br>This consolidated PD (covering A.22-05-022, A.22-05-023, and A.22-05-024) implements the regulatory framework for all three programs — setting subscription sizes, credit calculation methods, program caps, and cost allocation to non-participating ratepayers. The decision will affect how hundreds of thousands of California customers who want renewable energy access clean power without installing their own systems. Comments are expected in late April 2026.</div>
-          </div>
-        </div>
 
-        <!-- C-Apr6: A.24-03-018 PG&E Diablo Canyon Cost Recovery PD -->
-        <div class="proc-card" data-util="pge">
-          <div class="proc-card-meta">
-            <span class="proc-card-docket">A.24-03-018</span>
-            <span class="proc-card-date">PD Issued Apr 10, 2026</span>
-            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          <!-- C-Apr2: A.24-03-009 Citizens Energy Adopted -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.24-03-009</span>
+              <span class="proc-card-date">Adopted April 9, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Adopted</span>
+            </div>
+            <h3>PG&amp;E — Citizens Energy $1B Transmission Lease Approved (§851)</h3>
+            <p>The CPUC adopted the proposed decision authorizing <em>PG&amp;E</em> to lease transmission entitlements to <em>Citizens Energy Corporation</em> under up to five 30-year leases worth up to <strong>$1 billion</strong>. After-tax profits — estimated at over <strong>$450 million</strong> over 35 years — will fund bill-payment assistance for low- and moderate-income PG&amp;E customers.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M601/K795/601795585.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission adopted the decision authorizing <em>PG&amp;E</em> to lease entitlements on new high-voltage transmission projects to <em>Citizens Energy Corporation</em> — a nonprofit — through up to five 30-year leases. <em>Citizens Energy</em> funds grid upgrades (safety, reliability, capacity) in exchange for the entitlements. The arrangement satisfies Public Utilities Code §851 public interest requirements, per the adopted decision by <em>ALJ Jack Chang</em>.<br>Total investment up to <strong>$1 billion</strong>. <em>Citizens Energy</em> commits to directing <strong>50%</strong> of net after-tax profits to clean energy for low-income communities in Central and Northern California, rising to <strong>90%</strong> over time. Over 35 years, the CPUC estimated after-tax profit flows to low-income customers at over <strong>$450 million</strong>.</div>
+            </div>
           </div>
-          <h3>PG&amp;E — Diablo Canyon Extended Operations Cost Recovery (Sep 2023 – Dec 2025)</h3>
-          <p><em>ALJ Atamturk</em> issues a proposed decision granting in part <em>PG&amp;E</em>'s petition to modify D.24-12-033, authorizing recovery of extended operation costs incurred at <strong>Diablo Canyon</strong> from September 2023 through December 2025 and addressing 2025 volumetric performance fees.</p>
-          <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K545/604545283.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
-          </div>
-          <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body"><em>Diablo Canyon Power Plant</em> — California's last operating nuclear facility, with 2,200 MW of carbon-free generation — was extended beyond its original 2025 closure date through state legislation (SB 846, 2022) and a Department of Energy loan to <em>PG&amp;E</em>. The facility's continued operation required significant incremental costs: maintenance, licensing fees, and regulatory compliance from September 2023 onward that were not included in prior rate cases.<br>This PD addresses <em>PG&amp;E</em>'s request to modify D.24-12-033 to authorize recovery of those incremental costs from ratepayers. The Commission previously approved a framework for Diablo Canyon cost recovery; this proceeding resolves the specific amounts for the September 2023 through December 2025 period and sets 2025 performance fee volumes. The decision is significant for California's nuclear policy and for the broader question of how ratepayers bear the cost of facility life extensions driven by state policy decisions. An alternate PD was also filed concurrently, indicating commissioner-level disagreement on scope or methodology.</div>
-          </div>
-        </div>
 
-        <!-- C-Apr7: A.26-01-007 SCE Woolsey Fire Recovery Bonds PD -->
-        <div class="proc-card" data-util="sce">
-          <div class="proc-card-meta">
-            <span class="proc-card-docket">A.26-01-007</span>
-            <span class="proc-card-date">PD Issued Apr 10, 2026</span>
-            <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+          <!-- C-Apr3: Res. E-5440 ICA Adopted -->
+          <div class="proc-card" data-util="pge sce sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">Res. E-5440</span>
+              <span class="proc-card-date">Adopted April 9, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Resolution Adopted</span>
+            </div>
+            <h3>ICA Remediation Plans Adopted — PG&amp;E, SCE, SDG&amp;E Ordered to Fix Interconnection Capacity Data</h3>
+            <p>The CPUC adopted Resolution E-5440, directing <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> to correct Integration Capacity Analysis data deficiencies within a specified compliance timeline. Accurate ICA data governs distributed energy resource interconnection across all three service territories.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M603/K306/603306235.PDF" target="_blank" rel="noopener noreferrer">View Resolution</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5440" target="_blank" rel="noopener noreferrer" class="sec">Docket</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Integration Capacity Analysis</em> (ICA) is a map-based tool showing how much distributed energy resource capacity each grid segment can accommodate without costly upgrades. CPUC staff found that all three large IOUs had methodology errors and data gaps that could mislead rooftop solar, battery storage, and EV charger applicants about available interconnection headroom.<br>Resolution E-5440, adopted at the April 9, 2026 voting meeting after being held from March 19, requires each utility to submit corrected ICA data and a remediation plan to CPUC staff within a specified timeline. Failure to provide accurate ICA data can cause developers to incur pre-development costs for projects that will ultimately face prohibitive grid upgrade requirements — a longstanding complaint from the California solar and storage industry.</div>
+            </div>
           </div>
-          <h3>SCE — Woolsey Fire Recovery Bond Securitization: Financing Order PD</h3>
-          <p><em>ALJ DeAngelis</em> issues a proposed decision authorizing <em>SCE</em> to issue <strong>rate reduction bonds</strong> to securitize its Woolsey Fire wildfire costs under AB 1054 — converting higher-cost traditional rate base recovery into lower-cost bond financing to reduce the total burden on ratepayers.</p>
-          <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K577/604577373.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
-            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601007" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+
+          <!-- C-Apr4: A.24-06-001 SDG&E ERRA Adopted -->
+          <div class="proc-card" data-util="sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.24-06-001</span>
+              <span class="proc-card-date">Adopted April 9, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Adopted</span>
+            </div>
+            <h3>SDG&amp;E — 2023 ERRA Compliance: <strong>$214.6M</strong> Net Undercollection Approved for Recovery</h3>
+            <p>The CPUC adopted the proposed decision in A.24-06-001, approving <em>SDG&amp;E</em>'s recovery of a net <strong>$214.6 million</strong> 2023 energy procurement undercollection with modifications to RA portfolio valuation, RPS accounting, and battery storage revenue allocation. Commissioner Christine Harada presided after a March 19 holdover.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M599/K038/599038878.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2406001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The <em>Energy Resource Recovery Account</em> (ERRA) mechanism allows <em>SDG&amp;E</em> to track and recover reasonable energy procurement costs that differ from the forecast embedded in rates. The 2023 compliance filing reviewed whether procurement was prudent and consistent with the Commission-approved plan. The net <strong>$214.580 million undercollection</strong> flows back to customers through future rate adjustments.<br>The adopted decision includes modifications: <em>SDG&amp;E</em> must update its resource adequacy portfolio valuation methodology, correct RPS compliance accounting, allocate battery storage revenues across a broader customer base, and recover Stranded Green Tariff Shared Renewables costs via the Public Purpose Programs charge. The item was held from the March 19 voting meeting to April 9 following reassignment to Commissioner Christine Harada.</div>
+            </div>
           </div>
-          <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">AB 1054 (2019) established a wildfire fund and authorized utilities to securitize approved wildfire costs through <em>rate reduction bonds</em> (also called catastrophe bonds or securitization bonds). Securitization replaces traditional utility financing — where the utility borrows at its weighted average cost of capital — with lower-cost bond financing backed by a non-bypassable charge on customer bills. Because bonds carry lower interest rates than utility debt, securitization reduces the total cost of recovery for ratepayers over the repayment period, typically 15–25 years.<br><em>SCE</em>'s application (A.26-01-007) seeks a financing order authorizing approximately <strong>$1.84 billion</strong> in rate reduction bonds for approved Woolsey Fire costs. This PD, if adopted, would issue the financing order allowing <em>SCE</em> to go to market with the bonds. The non-bypassable charge on bills provides bondholders security equivalent to a senior utility obligation — enabling the lower financing cost. Comments on the PD are due in late April 2026, with a decision expected at the May or June 2026 voting meeting.</div>
+
+          <!-- C-Apr5: A.22-05-022 PG&E Green Tariff Shared Renewables PD -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.22-05-022</span>
+              <span class="proc-card-date">PD Issued Apr 7, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>PG&amp;E — Green Tariff Shared Renewables &amp; DA Community Solar Programs PD</h3>
+            <p><em>ALJ Kao</em> issues a proposed decision implementing <em>PG&amp;E</em>'s <strong>Green Tariff Shared Renewables</strong>, <strong>Disadvantaged Communities Green Tariff</strong>, and <strong>Community Solar Green Tariff</strong> programs — establishing program rules, customer enrollment procedures, and cost-recovery mechanisms for this shared clean energy portfolio.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K536/604536932.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2205022" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">California's <em>Green Tariff Shared Renewables</em> program allows customers — including renters and others who cannot install rooftop solar — to subscribe to a share of a utility-owned or utility-contracted renewable energy project and receive a credit on their bill. The <em>Disadvantaged Communities Green Tariff</em> extends this model specifically to low-income customers in disadvantaged communities with additional subsidy. The <em>Community Solar Green Tariff</em> involves smaller, community-scale projects with local siting requirements.<br>This consolidated PD (covering A.22-05-022, A.22-05-023, and A.22-05-024) implements the regulatory framework for all three programs — setting subscription sizes, credit calculation methods, program caps, and cost allocation to non-participating ratepayers. The decision will affect how hundreds of thousands of California customers who want renewable energy access clean power without installing their own systems. Comments are expected in late April 2026.</div>
+            </div>
           </div>
-        </div>
+
+          <!-- C-Apr6: A.24-03-018 PG&E Diablo Canyon Cost Recovery PD -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.24-03-018</span>
+              <span class="proc-card-date">PD Issued Apr 10, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>PG&amp;E — Diablo Canyon Extended Operations Cost Recovery (Sep 2023 – Dec 2025)</h3>
+            <p><em>ALJ Atamturk</em> issues a proposed decision granting in part <em>PG&amp;E</em>'s petition to modify D.24-12-033, authorizing recovery of extended operation costs incurred at <strong>Diablo Canyon</strong> from September 2023 through December 2025 and addressing 2025 volumetric performance fees.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K545/604545283.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body"><em>Diablo Canyon Power Plant</em> — California's last operating nuclear facility, with 2,200 MW of carbon-free generation — was extended beyond its original 2025 closure date through state legislation (SB 846, 2022) and a Department of Energy loan to <em>PG&amp;E</em>. The facility's continued operation required significant incremental costs: maintenance, licensing fees, and regulatory compliance from September 2023 onward that were not included in prior rate cases.<br>This PD addresses <em>PG&amp;E</em>'s request to modify D.24-12-033 to authorize recovery of those incremental costs from ratepayers. The Commission previously approved a framework for Diablo Canyon cost recovery; this proceeding resolves the specific amounts for the September 2023 through December 2025 period and sets 2025 performance fee volumes. The decision is significant for California's nuclear policy and for the broader question of how ratepayers bear the cost of facility life extensions driven by state policy decisions. An alternate PD was also filed concurrently, indicating commissioner-level disagreement on scope or methodology.</div>
+            </div>
+          </div>
+
+          <!-- C-Apr7: A.26-01-007 SCE Woolsey Fire Recovery Bonds PD -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.26-01-007</span>
+              <span class="proc-card-date">PD Issued Apr 10, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>SCE — Woolsey Fire Recovery Bond Securitization: Financing Order PD</h3>
+            <p><em>ALJ DeAngelis</em> issues a proposed decision authorizing <em>SCE</em> to issue <strong>rate reduction bonds</strong> to securitize its Woolsey Fire wildfire costs under AB 1054 — converting higher-cost traditional rate base recovery into lower-cost bond financing to reduce the total burden on ratepayers.</p>
+            <div class="proc-card-links">
+              <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M604/K577/604577373.PDF" target="_blank" rel="noopener noreferrer">View PD</a>
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601007" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">AB 1054 (2019) established a wildfire fund and authorized utilities to securitize approved wildfire costs through <em>rate reduction bonds</em> (also called catastrophe bonds or securitization bonds). Securitization replaces traditional utility financing — where the utility borrows at its weighted average cost of capital — with lower-cost bond financing backed by a non-bypassable charge on customer bills. Because bonds carry lower interest rates than utility debt, securitization reduces the total cost of recovery for ratepayers over the repayment period, typically 15–25 years.<br><em>SCE</em>'s application (A.26-01-007) seeks a financing order authorizing approximately <strong>$1.84 billion</strong> in rate reduction bonds for approved Woolsey Fire costs. This PD, if adopted, would issue the financing order allowing <em>SCE</em> to go to market with the bonds. The non-bypassable charge on bills provides bondholders security equivalent to a senior utility obligation — enabling the lower financing cost. Comments on the PD are due in late April 2026, with a decision expected at the May or June 2026 voting meeting.</div>
+            </div>
+          </div>
+
+        </div><!-- /pd-apr0113 -->
 
         <!-- ── Prior Period Header: Mar 14–31, 2026 ── -->
         <div class="period-hdr prior-toggle" onclick="togglePeriod('pd-mar1431')" id="toggle-pd-mar1431" style="grid-column:1/-1;">
@@ -1632,6 +1767,147 @@
 
         </div><!-- /pd-feb0213 -->
 
+        <!-- ── Prior Period: Jan 2–16, 2026 ── -->
+        <div class="period-hdr prior-toggle" onclick="togglePeriod('pd-jan0216')" id="toggle-pd-jan0216" style="grid-column:1/-1;">
+          <div class="period-hdr-left">
+            <div class="period-hdr-eyebrow">Prior Period</div>
+            <div class="period-hdr-date">Jan 2 – Jan 16, 2026</div>
+          </div>
+          <div class="period-hdr-right">
+            <span class="period-count">7 items</span>
+            <span class="period-hdr-arr" id="parr-pd-jan0216">&#9658;</span>
+          </div>
+        </div>
+        <div id="pd-jan0216" class="collapsible-period" style="display:none; grid-column:1/-1; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <!-- A.22-05-015/016 — SDG&E/SoCalGas Wildfire GRC -->
+          <div class="proc-card" data-util="sdge scg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.22-05-015/016</span>
+              <span class="proc-card-date">Voted Jan 15, 2026</span>
+              <span class="status-badge s-denied" style="margin-left:auto;">Decision</span>
+            </div>
+            <h3>SDG&amp;E / SoCalGas — Wildfire Mitigation Cost Recovery GRC (2019–2022)</h3>
+            <p><em>SDG&amp;E</em> wildfire mitigation cost recovery: Commission disallows <strong>$434.9 million</strong> — approving $90.6M of $284M O&amp;M and $945.2M of $1,188M capital requested.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2205016" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission rules on SDG&amp;E's wildfire mitigation cost recovery within its consolidated General Rate Case (A.22-05-015/016 with SoCalGas). SDG&amp;E sought recovery of $284 million in wildfire-related operations and maintenance costs and $1,188 million in capital expenditures incurred from May 2019 through December 2022. The Commission approved $90.6 million in O&amp;M (disallowing $192.6M) and $945.2 million in capital (disallowing $242.4M) — a combined disallowance of approximately <strong>$434.9 million</strong>, signaling heightened scrutiny of wildfire mitigation spending and cost controls. The decision reinforces the Commission's use of cost reasonableness review to protect ratepayers from imprudent utility capital investments.</div>
+            </div>
+          </div>
+
+          <!-- A.25-08-008 — SoCalGas DIMP -->
+          <div class="proc-card" data-util="scg">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.25-08-008</span>
+              <span class="proc-card-date">PD Voted Jan 15, 2026</span>
+              <span class="status-badge s-ongoing" style="margin-left:auto;">Proposed Decision</span>
+            </div>
+            <h3>SoCalGas — DIMP Balancing Account Recovery 2019–2023</h3>
+            <p><em>SoCalGas</em> receives interim rate recovery of <strong>$35.5 million</strong> — 60% of the $59.1M requested — for Distribution Integrity Management Program costs recorded 2019–2023, with a 12-month refund obligation.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2508008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">A Proposed Decision grants SoCalGas interim rate recovery of $35.5 million — 60% of the $59.1 million recorded in its Distribution Integrity Management Program (DIMP) Balancing Account from January 2019 through December 2023. The DIMP program covers pipeline integrity assessments, leak surveys, and infrastructure replacement required under federal pipeline safety regulations (49 CFR Part 192). The 60% interim recovery figure reflects Commission caution pending full review; SoCalGas bears a refund obligation if the final authorized amount is lower. The 12-month recovery period limits near-term rate impact on customers.</div>
+            </div>
+          </div>
+
+          <!-- A.23-04-003 — SCE ERRA -->
+          <div class="proc-card" data-util="sce">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">A.23-04-003</span>
+              <span class="proc-card-date">PD Voted Jan 15, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Decision</span>
+            </div>
+            <h3>SCE — ERRA Compliance Review 2022</h3>
+            <p><em>SCE</em> found compliant with its adopted procurement plan for 2022; <strong>$51.4 million</strong> in recorded energy procurement costs authorized for recovery.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2304003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission reviews SCE's Energy Resource Recovery Account (ERRA) compliance for the record period January 1 through December 31, 2022. The PD finds that SCE's procurement-related operations — including power purchases, generation dispatch, and greenhouse gas compliance instrument procurement — complied with its adopted procurement plan. SCE's request to recover <strong>$51.442 million</strong> in costs recorded across five regulatory accounts is authorized. ERRA compliance proceedings are annual filings required of each electric IOU to verify that procurement spending was prudent and consistent with Commission-approved plans before costs are passed through to ratepayers.</div>
+            </div>
+          </div>
+
+          <!-- Res. E-5437 — PG&E Dirac 225 MW -->
+          <div class="proc-card" data-util="pge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">Res. E-5437</span>
+              <span class="proc-card-date">Adopted Jan 15, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Resolution</span>
+            </div>
+            <h3>PG&amp;E — Dirac 225 MW Battery Storage (Balsam/Aypa Power)</h3>
+            <p><em>PG&amp;E</em> approved to contract with Balsam Project (Aypa Power) for a <strong>225 MW</strong> lithium-ion battery energy storage system, 15-year contract, commercial operation May 2028.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601003" target="_blank" rel="noopener noreferrer" class="sec">CPUC Dockets</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission approves PG&amp;E's contract with Balsam Project LLC (developed by Aypa Power) for the Dirac Battery Energy Storage System, a 225 MW lithium-ion facility with a commercial operation date of May 20, 2028. The 15-year contract begins August 1, 2028. The procurement supports California's grid reliability and clean energy integration goals — battery storage is critical for absorbing excess solar generation during midday and discharging during evening peak demand periods. Contract costs flow through PG&amp;E's procurement cost recovery mechanisms and are ultimately borne by ratepayers.</div>
+            </div>
+          </div>
+
+          <!-- Res. E-5396 — PacifiCorp Fixed Charge -->
+          <div class="proc-card" data-util="others">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">Res. E-5396</span>
+              <span class="proc-card-date">Adopted Jan 15, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Resolution</span>
+            </div>
+            <h3>PacifiCorp — Income-Graduated Fixed Charge (BSC) Approved</h3>
+            <p><em>PacifiCorp</em> income-graduated fixed charge (basic service charge) for residential customers approved with modifications per <strong>D.24-05-028</strong> AB 205 rate reform framework.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601003" target="_blank" rel="noopener noreferrer" class="sec">CPUC Dockets</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission approves, with modifications, PacifiCorp's Advice Letters implementing an income-graduated fixed charge (basic service charge) for residential customers, as directed by Decision 24-05-028. The income-graduated fixed charge is part of California's AB 205 rate reform, which restructures electric rates to include a fixed monthly charge scaled to household income — reducing the per-kWh volumetric rate in exchange. PacifiCorp serves a small portion of northeastern California; this approval extends the fixed charge framework beyond the three large IOUs and establishes precedent for the broader statewide rollout.</div>
+            </div>
+          </div>
+
+          <!-- R.21-03-011 — POLR Guidelines -->
+          <div class="proc-card" data-util="pge sce sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">R.21-03-011</span>
+              <span class="proc-card-date">Decision Jan 15, 2026</span>
+              <span class="status-badge s-settled" style="margin-left:auto;">Decision</span>
+            </div>
+            <h3>Provider of Last Resort (POLR) Guidelines — SB 520</h3>
+            <p>Commission adopts streamlined POLR eligibility guidelines for non-IOU entities under <strong>SB 520</strong>, opening CCA and other entities to seek full POLR designation.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2103011" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission adopts a decision establishing streamlined eligibility guidelines for non-IOU entities seeking Provider of Last Resort (POLR) designation under Senate Bill 520. POLR is the obligation to serve customers who lose their electricity provider — historically this responsibility has fallen to IOUs as default. SB 520 opened the door for community choice aggregators (CCAs) and other entities to apply for POLR status. The adopted guidelines specify application requirements and evidentiary standards. As of this decision, no non-IOU entity has formally sought comprehensive POLR designation, but the framework is now in place for future applicants.</div>
+            </div>
+          </div>
+
+          <!-- R.18-07-003 — BioMAT Denied -->
+          <div class="proc-card" data-util="pge sce sdge">
+            <div class="proc-card-meta">
+              <span class="proc-card-docket">R.18-07-003</span>
+              <span class="proc-card-date">Decision Jan 15, 2026</span>
+              <span class="status-badge s-denied" style="margin-left:auto;">Petition Denied</span>
+            </div>
+            <h3>BioMAT Tariff End-Date Extension — Petition Denied</h3>
+            <p>Petition to extend the Bioenergy Market Adjusting Tariff (BioMAT) beyond its December 2025 end date <strong>denied</strong>; program closes as scheduled per Governor Newsom's Executive Order N-5-24.</p>
+            <div class="proc-card-links">
+              <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1807003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+            </div>
+            <div class="ai-box">
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+              <div class="ai-body">The Commission denies a petition by the Bioenergy Association of California (BAC) to modify Decision 20-08-043 and extend the Bioenergy Market Adjusting Tariff (BioMAT) program beyond its scheduled end date of December 31, 2025. BioMAT provided feed-in tariff contracts for small bioenergy facilities — including dairy biogas, forest biomass, and landfill gas projects — interconnected to IOU distribution systems at above-market rates. The denial is consistent with Governor Newsom's Executive Order N-5-24, which maintained the BioMAT sunset date. The program's closure shifts bioenergy procurement to other pathways, including the Renewable Gas Standard and bilateral power purchase agreements.</div>
+            </div>
+          </div>
+
+        </div><!-- /pd-jan0216 -->
+
         <!-- ── Prior Period: Jan 19–30, 2026 ── -->
         <div class="period-hdr prior-toggle" onclick="togglePeriod('pd-jan1930')" id="toggle-pd-jan1930" style="grid-column:1/-1;">
           <div class="period-hdr-left">
@@ -1778,7 +2054,7 @@
         <a href="https://docs.cpuc.ca.gov" target="_blank" rel="noopener noreferrer">Document Portal</a> ·
         <a href="https://www.calregulatory.com" target="_blank" rel="noopener noreferrer">CalRegulatory</a> ·
         <a href="https://www.utilitydive.com" target="_blank" rel="noopener noreferrer">Utility Dive</a>
-        <span style="margin-left:auto;">Updated Apr 13, 2026</span>
+        <span style="margin-left:auto;">Updated Apr 18, 2026</span>
       </div>
 
       <!--
