@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalNews — California Energy &amp; Regulatory News · Week of Apr 27 – May 13, 2026</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ── Recent Developments (CPUC/IOU decisions only) ── */
+    .rd-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media(max-width:640px) { .rd-grid { grid-template-columns: 1fr; } }
+    .rd-card {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .rd-type {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .rd-title {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text-dark); line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .rd-desc {
+      font-size: 0.8rem; color: var(--text-mid);
+      line-height: 1.55; margin-bottom: 8px;
+    }
+    .rd-footer {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .rd-date { font-size: 0.72rem; color: var(--text-light); }
+    .rd-more {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--teal); white-space: nowrap;
+    }
+    .rd-more:hover { text-decoration: underline; }
+
+    /* ── Details dropdown ── */
+    .rd-details-wrap {
+      margin-top: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+    }
+    .rd-details-toggle {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.72rem; font-weight: 600; color: var(--text-light);
+      display: flex; align-items: center; gap: 5px; padding: 0;
+    }
+    .rd-details-toggle:hover { color: var(--teal); }
+    .rd-details-arr {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-style: normal;
+      font-size: 0.65rem;
+    }
+    .rd-details-body {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      background: var(--off-white);
+      border-radius: 6px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--teal);
+    }
+
+    /* ── CalNews layout ── */
+    .cn-wrap {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media(max-width: 768px) {
+      .cn-wrap { grid-template-columns: 1fr; }
+      .cn-sidebar { order: -1; }
+    }
+
+    /* ── Featured story ── */
+    .cn-featured {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+    }
+    .cn-feat-category {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .cn-feat-headline {
+      font-size: 1.45rem; font-weight: 800;
+      line-height: 1.25; color: var(--text-dark);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .cn-feat-headline a { color: inherit; }
+    .cn-feat-headline a:hover { color: var(--teal); }
+    .cn-feat-byline {
+      font-size: 0.75rem; color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .cn-feat-byline strong { color: var(--text-mid); }
+    .cn-feat-summary {
+      font-size: 0.94rem; color: var(--text-mid);
+      line-height: 1.72; margin-bottom: 14px;
+    }
+    .cn-feat-readmore {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--teal); display: inline-flex;
+      align-items: center; gap: 4px;
+    }
+    .cn-feat-readmore:hover { text-decoration: underline; }
+    .cn-feat-related {
+      margin-top: 12px;
+      font-size: 0.75rem; color: var(--text-light);
+      border-left: 3px solid var(--teal);
+      padding-left: 10px;
+    }
+    .cn-feat-related a { color: var(--teal); font-weight: 600; }
+
+    /* ── Secondary stories list ── */
+    .cn-section-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-bottom: 14px;
+    }
+    .cn-story-list {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .cn-story-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cn-story-category {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 4px;
+    }
+    .cn-story-title {
+      font-size: 1.05rem; font-weight: 700;
+      line-height: 1.3; margin-bottom: 4px;
+    }
+    .cn-story-title a { color: var(--text-dark); }
+    .cn-story-title a:hover { color: var(--teal); }
+    .cn-story-meta {
+      font-size: 0.72rem; color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .cn-story-summary {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.68; margin-bottom: 10px;
+    }
+    .cn-story-readmore {
+      font-size: 0.78rem; font-weight: 700; color: var(--teal);
+    }
+    .cn-story-readmore:hover { text-decoration: underline; }
+    .cn-story-related {
+      margin-top: 8px; font-size: 0.72rem; color: var(--text-light);
+      border-left: 2px solid var(--teal); padding-left: 8px;
+    }
+    .cn-story-related a { color: var(--teal); font-weight: 600; }
+
+    /* ── Sidebar ── */
+    .cn-sidebar {
+      position: sticky; top: 80px;
+    }
+    .cn-sidebar-block {
+      margin-bottom: 28px;
+    }
+    .cn-sidebar-hdg {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 10px;
+      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .cn-sidebar-link {
+      display: block; font-size: 0.82rem;
+      color: var(--text-mid); padding: 5px 0;
+      border-bottom: 1px solid #f1f5f9;
+      transition: color 0.15s;
+    }
+    .cn-sidebar-link:hover { color: var(--teal); }
+    .cn-sidebar-link.active { color: var(--teal); font-weight: 600; }
+    .cn-sidebar-calreg {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--teal); padding: 9px 12px;
+      border: 1.5px solid var(--teal);
+      border-radius: var(--radius);
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+    .cn-sidebar-calreg:hover { background: var(--teal-light); }
+    .cn-sidebar-note {
+      font-size: 0.75rem; color: var(--text-light);
+      line-height: 1.6; padding: 12px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+<div class="archive-banner" style="background:#f1f5f9;border-bottom:2px solid #cbd5e1;padding:10px 0;text-align:center;font-size:0.82rem;color:#64748b;">
+  &#128194; Archived Issue &nbsp;&middot;&nbsp; <a href="../calnews.html" style="color:var(--teal);font-weight:600;">View Current Issue &rarr;</a>
+</div>
+
+
+  <div class="page-header">
+    <div class="container">
+      <div class="label">California Energy &amp; Regulatory News</div>
+      <h1>CalNews</h1>
+      <p>Week of Apr 27 – May 13, 2026 · Curated policy &amp; regulatory coverage</p>
+    </div>
+  </div>
+
+  <!-- ── RECENT DEVELOPMENTS — CPUC/IOU decisions only ────── -->
+  <section class="section-sm section-alt" style="border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="label">Hot Off The Press</div>
+      <h2 style="margin-bottom:6px;">Recent Developments at the CPUC</h2>
+      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions, rulemakings, and news</p>
+      <div class="rd-grid" id="recent-dev">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none; border-top: 2.5px solid #1e293b; margin:0;">
+
+  <!-- ── MAIN NEWS ─────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="cn-wrap">
+
+        <!-- ── MAIN COLUMN ── -->
+        <main>
+          <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
+            Week of Apr 27 – May 13, 2026 &nbsp;·&nbsp; 10 stories &nbsp;·&nbsp; Updated May 13, 2026
+          </div>
+
+          <!-- Featured Story -->
+          <div class="cn-featured" id="cn-featured">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- More Stories -->
+          <div class="cn-section-label">Energy and Climate News Stories</div>
+          <div class="cn-story-list" id="cn-secondary">
+            <!-- populated by JS -->
+          </div>
+        </main>
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="cn-sidebar">
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Current Issue</div>
+            <a href="../calnews.html" class="cn-sidebar-link">Week of Apr 27 – May 13, 2026</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Archive</div>
+            <a href="archive/calnews-2026-04-13.html" class="cn-sidebar-link">Week of Apr 7 – 13, 2026</a>
+            <a href="archive/calnews-2026-04-10.html" class="cn-sidebar-link">Week of Apr 4 – 10, 2026</a>
+            <a href="archive/calnews-2026-04-03.html" class="cn-sidebar-link">Week of Mar 28 – Apr 3, 2026</a>
+            <a href="archive/calnews-2026-03-31.html" class="cn-sidebar-link">Week of Mar 23–31, 2026</a>
+            <a href="archive/calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
+            <a href="archive/calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
+            <a href="archive/calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
+            <a href="archive/calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
+            <a href="archive/calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Docket Tracker</div>
+            <a href="../calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-note">
+              Stories adapted from original reporting. All headlines link to source publications. Coverage spans CPUC proceedings, clean energy policy, and California utility regulation.
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script>
+
+    // ── RECENT: CPUC/CEC items ONLY ──
+    const RECENT = [
+      {
+        type: "May 14 Voting Meeting",
+        typeColor: "#dc2626",
+        title: "$1.95B SCE Woolsey Securitization, PG&amp;E Gas Peak-Day Reset, Diablo Cost Threshold Tightening",
+        desc: "The CPUC's May 14 voting agenda includes consideration of the SCE financing order authorizing approximately <strong>$1.951 billion</strong> in securitized recovery bonds for 2018 Woolsey Fire costs, a PG&amp;E natural gas peak-day supply reset, and a tightening of the Diablo Canyon cost-effectiveness threshold.",
+        date: "Agenda: May 14, 2026 · AB 1054 Securitization",
+        url: "https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings",
+        details: "The SCE financing order converts Woolsey liabilities into bond-backed revenue outside rate base, trading equity returns for cheaper debt. The PG&amp;E peak-day reset adjusts the gas demand-forecast parameters underpinning future procurement. The Diablo Canyon item moves the cost-effectiveness comparison from a forecast Resource Adequacy benchmark to the final RA benchmark, hardening the audit function under the 115% statutory threshold."
+      },
+      {
+        type: "CEC Enforcement",
+        typeColor: "#7c3aed",
+        title: "CEC Issues Administrative Investigative Subpoena to Golden State Wind",
+        desc: "The California Energy Commission issued an administrative investigative subpoena to Golden State Wind seeking documents on its agreement with the U.S. Department of the Interior to relinquish its Morro Bay offshore wind lease in exchange for <strong>$120 million</strong>. CEC Chair David Hochschild stated taxpayer dollars should not be used &ldquo;to pay to make projects disappear.&rdquo;",
+        date: "May 4, 2026 · CEC Investigative Action",
+        url: "https://www.energy.ca.gov/newsroom/news-releases/california-energy-commission-issues-subpoena-golden-state-wind",
+        details: "Investigative subpoenas are a rarely used CEC tool. Golden State Wind held one of three Morro Bay leases auctioned in 2022. The federal buyback through DOI reverses prior procurement; the CEC subpoena focuses on what California ratepayers and taxpayers ultimately financed. The subpoena response and any CEC findings will set precedent for how the state treats offshore-wind procurement reversal going forward."
+      },
+      {
+        type: "Summer Reliability",
+        typeColor: "#00b4a6",
+        title: "CEC, CAISO, CPUC Summer Energy Reliability Workshop — 17 GW Battery Storage Online",
+        desc: "California's three energy agencies convened the annual inter-agency workshop on summer 2026 grid reliability, reporting over <strong>17,000 MW</strong> of cumulative battery storage online, up to <strong>4,500 MW</strong> of Strategic Reliability Reserve resources, and no flex alerts called in 2023-2025. Written comments due to Docket 21-ESR-01 by May 18, 2026.",
+        date: "May 4, 2026 · Docket 21-ESR-01",
+        url: "https://www.energy.ca.gov/news/2026-05/california-energy-leaders-report-progress-grid-reliability-ahead-summer-2026",
+        details: "Three consecutive flex-alert-free summers is the headline. The 17 GW battery fleet provides peak-period coverage that previously required emergency demand-response calls or imported capacity. The remaining risks are extreme heat duration (multi-day events exceed battery storage durations) and wildfire-driven transmission outages. Workshop materials are the principal public-record source for California's summer-reliability posture entering 2026."
+      },
+      {
+        type: "CEC Project Approval",
+        typeColor: "#00b4a6",
+        title: "CEC Approves $700M Soda Mountain Solar + Battery Storage Project (300 MW / 1,200 MWh)",
+        desc: "The CEC approved the <strong>$700 million</strong> Soda Mountain Solar and Battery Storage Project in San Bernardino County under its Opt-In Certification authority. The project authorizes up to <strong>300 MW</strong> of solar PV plus <strong>300 MW / 1,200 MWh</strong> of battery storage.",
+        date: "April 27, 2026 · CEC Opt-In Certification",
+        url: "https://www.energy.ca.gov/news/2026-04/cec-approves-soda-mountain-solar-and-battery-storage-project-san-bernardino",
+        details: "The Opt-In Certification process consolidates state-level permitting for utility-scale renewables and storage at the CEC, accelerating project timelines that previously routed through local land-use and CPUC interconnection in parallel. Soda Mountain is the latest project authorized under this pathway. The 4-hour storage duration is increasingly the California standard for grid-scale battery procurement."
+      }
+    ];
+
+    const STORIES = [
+      {
+        id: 70,
+        title: "California's Battery Array Is as Powerful as 12 Nuclear Power Plants. Here's What's on the Horizon",
+        url: "https://insideclimatenews.org/news/05052026/california-battery-power/",
+        date: "May 5, 2026",
+        source: "Inside Climate News",
+        author: "Claire Barber",
+        category: "Grid · Storage",
+        summary: "California's storage fleet discharged over <strong>12,000 MW</strong> in late March, meeting roughly <strong>40%</strong> of state demand at the peak hour. Consultant Ed Smeloff argues battery and solar build-out has durable momentum through 2032, with the fleet now equivalent in nameplate to twelve full-size nuclear plants. The story situates the discharge milestone within California's broader transition off gas peakers.",
+        relatedCalreg: null
+      },
+      {
+        id: 69,
+        title: "Californians' Electric Bills Would Be Much Lower Without State's Program Fees",
+        url: "https://calmatters.org/commentary/2026/05/electric-bills-california-fees/",
+        date: "May 4, 2026",
+        source: "CalMatters Commentary",
+        author: null,
+        category: "Affordability",
+        summary: "Commentary documents how &ldquo;public purpose&rdquo; surcharges add roughly <strong>37%</strong> to investor-owned utility bills, costing the average customer about <strong>$820 per year</strong>. The piece argues these programs should be funded through general taxation rather than ratepayer-funded surcharges, and that the distributional effect is regressive.",
+        relatedCalreg: null
+      },
+      {
+        id: 68,
+        title: "SoCalGas Loses Bid to Put $266M Angeles Link Hydrogen Pipeline Costs on Household Bills",
+        url: "https://fuelcellsworks.com/2026/05/01/green-investment/socalgas-loses-bid-to-put-266m-angeles-link-hydrogen-pipeline-costs-on-household-bills",
+        date: "May 1, 2026",
+        source: "Fuel Cells Works",
+        author: null,
+        category: "Pipeline · Hydrogen",
+        summary: "Trade-press coverage of the CPUC's April 30 denial of SoCalGas's <strong>$266 million</strong> Phase 2 cost-recovery request for the Angeles Link hydrogen pipeline pre-development work. The piece focuses on alternative private and federal funding paths SoCalGas is now expected to pursue.",
+        relatedCalreg: null
+      },
+      {
+        id: 67,
+        title: "Without Wildfire Reform, California Utilities Could See Credit Impacts: Edison International",
+        url: "https://www.utilitydive.com/news/eix-california-utilities-credit-rating-wildfire-earnings/819026/",
+        date: "May 1, 2026",
+        source: "Utility Dive",
+        author: "Emma Penrod",
+        category: "Wildfire · Regulatory",
+        summary: "Edison International CEO Pedro Pizarro warned that absent legislative wildfire-liability reform in 2026, credit downgrades could spread beyond utilities. SCE has now offered over <strong>$500 million</strong> in Eaton Fire settlements to roughly <strong>3,800 claimants</strong>. The story flags the August legislative deadline as the operational pressure point for the IOUs' five-year capex plans.",
+        relatedCalreg: null
+      },
+      {
+        id: 66,
+        title: "Wildfires Weigh on PG&amp;E as California Sees Modest Large Load Demand",
+        url: "https://www.utilitydive.com/news/wildfires-weigh-on-pge-as-california-sees-modest-large-load-demand/818715/",
+        date: "April 30, 2026",
+        source: "Utility Dive",
+        author: "Emma Penrod",
+        category: "Wildfire · Data Centers",
+        summary: "PG&amp;E reaffirms its <strong>$73 billion</strong> five-year capex plan but signals the program could be revised if California fails to pass wildfire reform by August. The utility expects <strong>1.8 GW</strong> of data-center load online by 2030, which is modest relative to load growth forecasts in Virginia, Texas, and Ohio. The piece pairs the wildfire-reform risk with the data-center load opportunity.",
+        relatedCalreg: null
+      },
+      {
+        id: 65,
+        title: "April 30 CPUC Voting Meeting Results: Biomethane Cut, Hydrogen Denied, Transmission Financing Opens",
+        url: "https://www.calregulatory.com/april-30-cpuc-voting-meeting-results-biomethane-cut-hydrogen-denied-transmission-financing-opens/",
+        date: "April 30, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Regulatory",
+        summary: "Recap of the April 30 voting meeting covering the biomethane procurement cut to <strong>36.4 Bcf</strong>, denial of SoCalGas Angeles Link cost recovery, and the new Citizens Energy transmission lease framework. The roundup also flags the climate-credit timing shift to August/September for electric customers.",
+        relatedCalreg: null
+      },
+      {
+        id: 64,
+        title: "Trump EPA Wants to Eliminate Protections Against Climate Pollution — Public Must Be Allowed to Weigh In",
+        url: "https://blogs.edf.org/climate411/2026/05/05/the-trump-epa-wants-to-eliminate-protections-against-the-climate-pollution-that-endangers-public-health-the-public-must-be-allowed-to-weigh-in/",
+        date: "May 5, 2026",
+        source: "EDF Climate 411",
+        author: null,
+        category: "Federal Policy · Climate",
+        summary: "EDF analysis of the Trump EPA's proposed repeal of the 2009 endangerment finding and implications for California's vehicle-emissions waiver, which Governor Newsom is challenging in court. The piece outlines the public-comment window and the procedural attack surface for the rulemaking.",
+        relatedCalreg: null
+      },
+      {
+        id: 61,
+        title: "Trump Energy Chief Attacks California Oil and Gas Policies at Long Beach Conference",
+        url: "https://calmatters.org/environment/2026/04/wright-synergy-oil-long-beach/",
+        date: "April 9, 2026",
+        source: "CalMatters",
+        author: "Reyes-Velarde, Lazo",
+        category: "Federal Policy · Climate",
+        summary: "U.S. Secretary of Energy Chris Wright criticized California's oil and gas regulatory framework at an industry conference in Long Beach, calling state policies 'anti-energy' and arguing they drive up costs for consumers and businesses. The speech marks the latest flashpoint in the federal-state conflict over energy policy, with the Trump administration actively targeting California's climate programs through executive action, permitting rollbacks, and budget cuts to clean energy programs.",
+        relatedCalreg: null
+      },
+      {
+        id: 62,
+        title: "Data Center Electricity Rate Bills Clear California Assembly Committee",
+        url: "https://www.eenews.net/articles/data-center-electricity-rate-bills-pass-california-assembly-committee/",
+        date: "April 2026",
+        source: "E&E News",
+        author: null,
+        category: "Data Centers · Regulatory",
+        summary: "California Assembly committees advanced legislation that would require data centers to pay a greater share of grid upgrade costs tied to their load growth — a legislative parallel to the CPUC's new rate-design rulemaking (R.26-04-001). The bills reflect growing political pressure to prevent large commercial customers from socializing system upgrade costs onto residential ratepayers as data center electricity demand is projected to rise <strong>40–60%</strong> by 2030.",
+        relatedCalreg: null
+      },
+      {
+        id: 63,
+        title: "CPUC Community Solar Decision Could Halt All Future Projects, Raising Energy Costs for Californians",
+        url: "https://solarquarter.com/2026/04/13/cpucs-new-proposed-decision-california-community-solar/",
+        date: "April 13, 2026",
+        source: "SolarQuarter",
+        author: "S.S. Dev",
+        category: "Solar · Affordability",
+        summary: "The CPUC's proposed decision on community solar has drawn sharp criticism from industry groups who say the avoided-cost compensation structure and <strong>51% low-income participation</strong> requirement will make community solar economically unviable in California. If implemented, the decision could eliminate an important pathway for renters, apartment dwellers, and low-income customers to access solar energy without rooftop panels — deepening inequities in the clean energy transition at a time of persistently high utility bills.",
+        relatedCalreg: null
+      },
+      {
+        id: 56,
+        title: "SCE Submits Eaton Fire Report to CPUC as Investigators Probe Grid Equipment Near Ignition Point",
+        url: "https://calmatters.org/environment/wildfire/2026/04/sce-eaton-fire-cpuc-investigation/",
+        date: "April 7, 2026",
+        source: "CalMatters",
+        author: null,
+        category: "Wildfire · Regulatory",
+        summary: "SCE submitted its preliminary report to the CPUC on the January 2025 Eaton fire, which killed at least <strong>17 people</strong> and destroyed more than <strong>9,000 structures</strong> in Altadena and Pasadena. The utility's report details grid equipment near the fire's origin point and infrastructure conditions at the time of ignition — information central to the CPUC's formal investigation (I.26-01-009) into whether SCE's transmission or distribution equipment caused or contributed to the blaze.",
+        relatedCalreg: null
+      },
+      {
+        id: 55,
+        title: "Newsom Promised California 'Lithium Valley.' It's Complicated.",
+        url: "https://timesofsandiego.com/state-region/2026/04/05/california-lithium-valley/",
+        date: "April 5, 2026",
+        source: "Times of San Diego",
+        author: null,
+        category: "Grid · Decarbonization",
+        summary: "California's Salton Sea region was touted as a future global hub for lithium extraction powering the EV revolution, with Governor Newsom coining the <strong>'Lithium Valley'</strong> moniker and backing hundreds of millions in state investment. But years later, commercial-scale output from the region's geothermal brines remains elusive — lithium prices have fallen sharply, permitting timelines have stretched, and developers face mounting technical and financing hurdles.",
+        relatedCalreg: null
+      },
+      {
+        id: 54,
+        title: "Who Pays for Data Center Load? CPUC Opens New Rulemaking on Large-Load Cost Allocation",
+        url: "https://www.calregulatory.com/puc-april-9-voting-preview-new-rulemaking-forces-a-decision-on-who-pays-for-large-load/",
+        date: "April 4, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Regulatory · Rate-Case",
+        summary: "The CPUC's April 9 voting agenda includes a new Order Instituting Rulemaking to address how system upgrade costs driven by surging data center and large-load demand are allocated across ratepayers. The proceeding pits large-load customers against residential and small commercial customers who face cost shifts if utilities socialize expensive transmission and distribution upgrades. With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the outcome will set precedent for how the grid pays for its own expansion.",
+        relatedCalreg: null
+      }
+    ];
+
+    // ── Render Recent Developments (6 visible + load more) ─────
+    const rdEl = document.getElementById('recent-dev');
+    const _rdCard = r => `
+      <div class="rd-card">
+        <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
+        <div class="rd-title">${r.title}</div>
+        <div class="rd-desc">${r.desc}</div>
+        <div class="rd-footer">
+          <span class="rd-date">${r.date}</span>
+          <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="rd-more">Read More &#8594;</a>
+        </div>
+        ${r.details ? `
+        <div class="rd-details-wrap">
+          <button class="rd-details-toggle" onclick="(function(btn){var b=btn.nextElementSibling;var a=btn.querySelector('.rd-details-arr');if(b.style.display==='block'){b.style.display='none';a.style.transform='rotate(0deg)';}else{b.style.display='block';a.style.transform='rotate(90deg)';};})(this)">
+            <span class="rd-details-arr">&#9658;</span> Analyst Notes
+          </button>
+          <div class="rd-details-body">${r.details}</div>
+        </div>` : ''}
+      </div>`;
+
+    RECENT.slice(0, 6).forEach(r => { rdEl.innerHTML += _rdCard(r); });
+
+    if (RECENT.length > 6) {
+      const hiddenRecent = RECENT.slice(6);
+      const nr = hiddenRecent.length;
+      rdEl.insertAdjacentHTML('afterend', `
+        <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:16px;">${hiddenRecent.map(_rdCard).join('')}</div>
+        <div id="rd-show-btn" style="padding:14px 0 2px;">
+          <button onclick="document.getElementById('rd-more-grid').style.display='grid';this.parentElement.style.display='none';"
+            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
+            ${nr} More Decision${nr > 1 ? 's' : ''} &#8594;
+          </button>
+        </div>`);
+    }
+
+    // ── Render Featured + Secondary Stories ───────────────────
+    const featIdx = Math.floor(Math.random() * STORIES.length);
+    const feat = STORIES[featIdx];
+    const rest = STORIES.filter((_, i) => i !== featIdx);
+
+    const bylineStr = feat.author
+      ? `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a> (Author: ${feat.author})`
+      : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a>`;
+
+    const relatedStr = feat.relatedCalreg
+      ? `<div class="cn-feat-related">Related CalReg: <a href="calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
+      : '';
+
+    document.getElementById('cn-featured').innerHTML = `
+      <div class="cn-feat-category">${feat.category}</div>
+      <div class="cn-feat-headline"><a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.title}</a></div>
+      <div class="cn-feat-byline">${bylineStr}</div>
+      <div class="cn-feat-summary">${feat.summary}</div>
+      <a href="${feat.url}" target="_blank" rel="noopener noreferrer" class="cn-feat-readmore">Read full story &#8594;</a>
+      ${relatedStr}`;
+
+    const secEl = document.getElementById('cn-secondary');
+    const _card = s => {
+      const metaStr = s.author
+        ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a> (Author: ${s.author})`
+        : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a>`;
+      const relStr = s.relatedCalreg
+        ? `<div class="cn-story-related">Related CalReg: <a href="calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
+        : '';
+      return `
+        <div class="cn-story-item">
+          <div class="cn-story-category">${s.category}</div>
+          <div class="cn-story-title"><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a></div>
+          <div class="cn-story-meta">${metaStr}</div>
+          <div class="cn-story-summary">${s.summary}</div>
+          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="cn-story-readmore">Read full story &#8594;</a>
+          ${relStr}
+        </div>`;
+    };
+    rest.slice(0, 3).forEach(s => { secEl.innerHTML += _card(s); });
+    if (rest.length > 3) {
+      const n = rest.length - 3;
+      secEl.innerHTML += `
+        <div id="cn-more-stories" style="display:none;">${rest.slice(3).map(_card).join('')}</div>
+        <div id="cn-show-more-wrap" style="padding:20px 0 8px; border-top:1px solid var(--border); margin-top:8px;">
+          <button onclick="document.getElementById('cn-more-stories').style.display='block';this.parentElement.style.display='none';"
+            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
+            ${n} More ${n === 1 ? 'Story' : 'Stories'} &#8594;
+          </button>
+        </div>`;
+    }
+  </script>
+</body>
+</html>
