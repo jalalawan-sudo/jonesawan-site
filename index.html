@@ -17,10 +17,10 @@
       display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
     }
     .logo-mark {
-      width: 50px; height: 50px; background: #fff; border-radius: 10px;
-      border: 1.5px solid rgba(93,200,192,0.5);
+      width: 50px; height: 50px; background: #fff; border-radius: 0;
+      border: 1.5px solid #000;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      box-shadow: 0 2px 12px rgba(93,200,192,0.18);
+      box-shadow: 3px 3px 0 #000;
     }
     .logo-text-block { line-height: 1; }
     .logo-name {
@@ -44,9 +44,10 @@
     .principal-name { font-size: 0.95rem; font-weight: 700; color: var(--white); }
     .principal-title { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
     .principal-tag {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--teal); background: rgba(93,200,192,0.15); border: 1px solid rgba(93,200,192,0.3);
-      border-radius: 20px; padding: 3px 10px; white-space: nowrap;
+      font-family: 'JetBrains Mono','SF Mono',monospace;
+      font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff; background: transparent; border: 1.5px solid #fff;
+      border-radius: 0; padding: 3px 8px; white-space: nowrap;
     }
 
     /* ── Service cards — dark header + white body ── */
@@ -54,19 +55,20 @@
       display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
     }
     .svc {
-      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      background: var(--white); border: 1.5px solid #000; border-radius: 0;
       overflow: hidden; display: flex; flex-direction: column;
-      transition: box-shadow 0.25s, transform 0.25s;
+      transition: box-shadow 0.12s, transform 0.12s;
       text-decoration: none; color: inherit;
     }
-    .svc:hover { box-shadow: 0 14px 44px rgba(0,0,0,0.10); transform: translateY(-3px); }
+    .svc:hover { box-shadow: 4px 4px 0 #000; transform: translate(-2px,-2px); }
     .svc-top {
-      background: #0f172a; padding: 26px 24px 22px;
-      border-bottom: 3px solid var(--teal); position: relative;
+      background: #000; padding: 26px 24px 22px;
+      border-bottom: 1.5px solid #000; position: relative;
     }
-    .svc-icon { font-size: 2rem; display: block; margin-bottom: 14px; line-height: 1; }
+    .svc-icon { font-size: 2rem; display: block; margin-bottom: 14px; line-height: 1; filter: grayscale(100%) brightness(2); }
     .svc h3 {
-      font-size: 1.05rem; font-weight: 800; color: #fff;
+      font-family: 'Space Grotesk','Inter',sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: #fff;
       letter-spacing: -0.01em; line-height: 1.35; min-height: 1.4em;
     }
     .svc-body { padding: 20px 24px; flex: 1; }
@@ -85,9 +87,11 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px;
     }
     .tk-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      background: var(--white); border: 1.5px solid #000; border-radius: 0;
       padding: 16px 18px;
+      transition: transform 0.12s, box-shadow 0.12s;
     }
+    .tk-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 #000; }
     .tk-card-title {
       font-size: 0.8rem; font-weight: 700; color: var(--text-dark);
       margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
@@ -99,10 +103,13 @@
       font-size: 0.76rem; color: var(--text-light); line-height: 1.6;
     }
 
-    /* ── Section eyebrow ── */
+    /* ── Section eyebrow — refined Neo-Brutalist mono label ── */
     .section-eyebrow {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+      display: inline-block;
+      font-family: 'JetBrains Mono','SF Mono',monospace;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #000; margin-bottom: 12px;
+      padding: 2px 8px; border: 1.5px solid #000; background: #fff;
     }
 
     @media(max-width:768px){

@@ -18,21 +18,22 @@
   <!-- ── Announcement Banner (auto-dismisses after 30s) ── -->
   <div id="calreg-banner" style="
     margin-top: 64px;
-    background: linear-gradient(135deg, #0a1628 0%, #0d3b35 100%);
-    border-bottom: 4px solid #5DC8C0;
-    border-top: 4px solid #5DC8C0;
-    padding: 28px 40px;
+    background: #ffffff;
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 20px 40px;
     text-align: center;
-    font-family: Inter, sans-serif;
-    color: rgba(255,255,255,0.65);
-    font-size: 1.1rem;
-    line-height: 2;
-    letter-spacing: 0.01em;
+    font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    color: #000;
+    font-size: 0.86rem;
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   ">
-    CalReg aims to make regulatory proceedings affecting rates more
-    <span class="banner-word-simpler">simpler</span>
+    CalReg makes regulatory proceedings affecting rates
+    <span style="background:#F6C947; color:#000; padding:2px 6px; font-weight:700;">simpler</span>
     and
-    <span class="banner-word-transparent">transparent</span>.
+    <span style="background:#000; color:#fff; padding:2px 6px; font-weight:700;">transparent</span>.
   </div>
   <script>
     setTimeout(function(){
@@ -73,15 +74,9 @@
       </div>
 
       <p style="font-size:0.78rem; opacity:0.45; margin:8px 0 8px;">Updated May 30, 2026</p>
-      <div style="background:#FFF8E1; border-left:4px solid #F39C12; padding:10px 14px; border-radius:4px; margin:0 0 18px; max-width:780px;">
-        <p style="margin:0; font-size:0.83rem; color:#3a3a3a; line-height:1.55;">
-          <strong>What's new:</strong> Each proceeding now includes an
-          <em>Analysis &amp; What This Means</em> dropdown that expands into a plain-language
-          read of the docket — verbatim quotes from filings, dollar figures, deadlines, and
-          why the case matters for ratepayers. Click any
-          <span style="color:#7c4a03;">&#9658;</span> to expand.
-        </p>
-      </div>
+      <p style="font-family:'JetBrains Mono','SF Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#000; margin:0 0 18px; padding:6px 10px; border-left:3px solid #000; background:#FAFAFA;">
+        Click any &#9658; on a card to expand details
+      </p>
 
       <script>
       (function(){
@@ -224,7 +219,7 @@
   <!-- ============================================================
        DUAL CHART SECTION — Retail Rates + Distribution Rate Base
        ============================================================ -->
-  <section class="section" id="rbSection" style="background:#f8fafc; border-bottom:2px solid #e2e8f0; padding:40px 0 36px;">
+  <section class="section" id="rbSection" style="background:#FAFAFA; border-bottom:1.5px solid #000; padding:40px 0 36px;">
     <div class="container">
 
       <!-- Shared filter -->
@@ -244,7 +239,7 @@
         <div class="chart-panel">
           <p class="chart-panel-title">Bundled Average Retail Rate</p>
           <p class="chart-panel-sub">¢/kWh, January 1 each year · bundled utility customers</p>
-          <div style="border-top:4px solid #e03131; background:#fff; padding:18px 8px 10px; box-sizing:border-box;">
+          <div style="border:1.5px solid #000; background:#fff; padding:18px 8px 10px; box-sizing:border-box;">
             <div style="position:relative; width:100%; height:380px;">
               <canvas id="rateChart"></canvas>
             </div>
@@ -255,7 +250,7 @@
         <div class="chart-panel">
           <p class="chart-panel-title">CPUC Distribution Rate Base</p>
           <p class="chart-panel-sub">$B · CPUC-jurisdictional distribution · dashed = pending proceedings</p>
-          <div style="border-top:4px solid #e03131; background:#fff; padding:18px 8px 10px; box-sizing:border-box;">
+          <div style="border:1.5px solid #000; background:#fff; padding:18px 8px 10px; box-sizing:border-box;">
             <div style="position:relative; width:100%; height:380px;">
               <canvas id="rbChart"></canvas>
             </div>
@@ -598,7 +593,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2008022" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">This PD is the CPUC&rsquo;s first attempt to convert SB 1221 from gas-transition policy into a working project pipeline, and it is structured to make conversion <em>difficult</em> by design. Slot allocation is primarily between PG&amp;E and SoCalGas/SDG&amp;E by 2024 gas demand (7 each per round for the first two rounds), with one slot reserved for Southwest Gas and one for smaller CPUC-regulated gas corporations. Application deadlines are <strong>December 15, 2026; December 15, 2027; and July 1, 2028</strong> if slots remain. (The PD summary states June 1, 2028, conflicting with the ordering paragraph; the discrepancy should be resolved before adoption.)<br><br>Each application must demonstrate via net-present-value analysis (using the applicant&rsquo;s WACC as the discount rate) that <strong>avoided gas infrastructure costs exceed the zero-emission alternative cost</strong>. Four cost-effectiveness tests are required, varying inclusion of non-ratepayer funding and administrative costs; the governing test excludes both. Applications must also document electric infrastructure upgrades, outreach, GHG emissions forecasts using the Avoided Cost Calculator, and cost-recovery proposals. Crucially, the PD imposes a <strong>67% non-binding expression-of-interest threshold</strong> before filing and a <strong>67% binding notarized consent threshold</strong> after Commission approval but before any building remediation, appliance removal, or implementation spending. Behind-the-meter costs must be <em>expensed rather than capitalized</em>, meaning utilities cannot earn their authorized rate of return on BTM investments and may propose amortization periods of up to 10 years. The application process (rather than the lower-touch advice-letter process) keeps every pilot subject to full Commission and intervenor scrutiny, which is where cost allocation, bill-impact assumptions, and electric-grid attribution will be contested. Data collection, reporting, evaluation, and shareholder incentive mechanics are all deferred to Track 4. For ratepayer advocates, the key wins in this PD are (a) governing-test exclusion of admin/outreach costs, (b) BTM expensing, and (c) the application process itself. The principal risk is that the high-touch consent and outreach burden filters out exactly the kinds of dense, working-class, multi-family neighborhoods where pilots would most efficiently displace gas spending.</div>
           </div>
         </div>
@@ -617,7 +612,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2304003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">D.26-04-034 is the decision that effectively ended SoCalGas&rsquo;s near-term path to ratepayer-funded Angeles Link development. The Commission&rsquo;s denial of the Phase 2A request (<strong>$266M for continued pre-development</strong>) signaled that ratepayers should not bear ongoing development costs absent stronger evidence of project viability and customer benefit. The May 29 ALJ ruling in the Phase 1 cost-recovery proceeding now asks parties (1) whether it is just and reasonable for ratepayers, or a subset of ratepayers, to bear Phase 1 costs and if so when recovery should occur; (2) whether the CPUC must reach jurisdiction over Angeles Link or can dispose of the proceeding on cost-recovery grounds alone; and (3) the remaining schedule including whether evidentiary hearings are necessary. For TURN and ratepayer advocates, the favorable framing is that the Phase 2A denial creates a strong precedent for refusing socialization of Phase 1 sunk costs as well, since the Commission&rsquo;s rationale (insufficient evidence of project viability) applies equally to retroactive recovery of money already spent. The most defensible TURN position is shareholder absorption of all Phase 1 costs, with any cost recovery limited strictly to identifiable subsets of customers who would benefit from a hypothetical built project &mdash; a class that may not exist on the current record.</div>
           </div>
         </div>
@@ -635,7 +630,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2512014" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">Public Utilities Code §851 acquisitions are typically reviewed for (a) consistency with public interest, (b) absence of harm to ratepayers, and (c) reasonable terms. The scoping memo identifies what issues will be litigated and on what schedule. Two questions deserve TURN attention. First, the <em>price paid</em> for Chevron&rsquo;s 1/7 stake and the 20-year stock purchase: if the purchase price reflects pre-2022 valuations or excludes the discounting that should apply to long-life gas-transmission assets during the gas-transition era, ratepayers will bear an inflated rate-base addition for decades. Second, the <em>transportation agreements preserving Chevron&rsquo;s system access</em>: if Chevron receives below-cost transportation as part of the deal, the difference is a cross-subsidy from PG&amp;E ratepayers to Chevron. Filing a §851 challenge or conditioned approval is most effective at the scoping-memo stage, when the issues for hearing are set. Given the long-life nature of the asset and California&rsquo;s 2045 gas-transition deadlines, an asset useful life shorter than the standard depreciation schedule should also be requested.</div>
           </div>
         </div>
@@ -653,7 +648,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2212011" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The reopened EITE exemption question is the structural issue. EITE customers (cement, steel, food processing, refineries) argue they will relocate production out of California if forced to bear RGS above-market costs, citing emissions-leakage risk. The principle is sound but the implementation matters: a poorly designed exemption shifts those costs to <strong>core residential and small commercial customers</strong> via rebalancing. The CPUC&rsquo;s prior position was reluctance to extend new exemptions absent demonstrated leakage risk. Now D.26-04-044 has reshaped the RGS in ways that may alter the cost incidence, and the ALJ is asking parties to revisit their positions. Most defensible ratepayer position: any EITE exemption must (a) be capped at a defined percentage of RGS volume; (b) be conditioned on demonstrable trade-exposure metrics from CARB&rsquo;s existing cap-and-trade leakage framework, not ad hoc industry self-certification; and (c) include sunset provisions tied to the RGS itself. Without these guardrails, EITE exemptions become a permanent cross-subsidy from residential to industrial customers.</div>
           </div>
         </div>
@@ -671,7 +666,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2408004" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><em>PG&amp;E</em> sought to exclude debt and equity impacts tied to (a) the 2019 Kincade Fire, (b) the 2021 Dixie Fire, and (c) a <strong>$1.4 billion forgivable DWR loan</strong> tied to the Diablo Canyon extension. The PD rejects PG&amp;E&rsquo;s request on three separate grounds: the wildfire costs amount to only <strong>0.6% of equity</strong>, well below the rule&rsquo;s 1% adverse-financial-event threshold; the PD refuses to aggregate the Kincade and Dixie events (unrelated incidents years apart) to manufacture a qualifying reduction; and the DWR loan fails independently because a forgivable loan is not an adverse financial event. PG&amp;E&rsquo;s 2020 waiver covered $8.9 billion in wildfire costs — an order of magnitude larger — and SCE&rsquo;s approved request would have represented approximately 10% of equity. Neither offers persuasive precedent here.<br><br>The most consequential implication sits in the affordability section. The ALJ declines to accept PG&amp;E&rsquo;s carrying-cost argument at face value and instead credits TURN&rsquo;s critique: that operating with debt excluded from capital structure calculations allows PG&amp;E to compensate shareholders based on an inflated authorized equity ratio while ratepayers absorb the leverage risk. TURN&rsquo;s record shows PG&amp;E&rsquo;s actual equity has run <strong>7 to 10 percentage points below its authorized 52%</strong> since 2021, producing an estimated <strong>$2.4 billion in shareholder profits from ratepayers</strong>. That theory is now on record and likely travels into Cost of Capital proceedings, wildfire financing debates, and affordability dockets. Comments due June 10. Earliest CPUC consideration: July 2, 2026.</div>
           </div>
         </div>
@@ -689,7 +684,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2605018" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">RAMP filings are required under <strong>D.18-12-014</strong> and are the foundational input to a utility&rsquo;s forward GRC capital plan. SCE&rsquo;s 2026 RAMP will frame the risk-spend efficiency (RSE) and capital prioritization for SCE&rsquo;s next GRC application. The proceeding sits in parallel with the new Risk-Based Decision-Making OIR (<strong>R.26-04-016</strong>) opened at the April 30 voting meeting, which will refine the analytical methodologies underpinning all future IOU RAMPs.</div>
           </div>
         </div>
@@ -707,7 +702,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2605007" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">ERRA is the annual reconciliation of forecast vs. actual energy procurement costs for bundled customers. PG&amp;E&rsquo;s 2027 forecast reflects exposure to wholesale energy markets, GHG allowance prices, and Resource Adequacy procurement obligations. The <strong>+5.7% bundled-rate projection</strong> follows multi-year affordability pressure on residential bills.<br><br>SDG&amp;E&rsquo;s parallel <strong>A.26-05-009 2027 ERRA Forecast</strong> seeks approval of an <strong>$893 million procurement-related revenue requirement</strong>, a 1.5% increase from currently effective levels, with new rates effective January 1, 2027. Inside the SDG&amp;E filing: the ERRA revenue requirement falls 3.3% to $379.3M with a projected $45M overcollection, but the Portfolio Allocation Balancing Account rises 71% to $301.4M, partially offset by a prior-year balance reduction. Bundled customers see an approximate 1.2% rate decline aided by California Climate Credit returns; a typical 400 kWh residential customer sees no bill movement. <strong>Unbundled customers face a 1.4% increase</strong> in delivery-plus-PCIA charges. SDG&amp;E forecasts $181.4M in GHG allowance revenues, with $137.8M returned via California Climate Credits and $2.8M to EITE customers. The filing also picks up the new <strong>Transmission Accelerator Revolving Fund</strong> obligation: 5% of qualifying GHG auction revenues remitted to the state beginning July 1, 2026. SCE&rsquo;s <strong>A.26-05-006</strong> shows procurement costs falling versus 2026, yet bundled customer bills are projected to edge higher due to fixed-cost amortization.</div>
           </div>
         </div>
@@ -725,7 +720,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2605005" target="_blank" rel="noopener noreferrer">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">PTC applications under GO 131-D authorize construction of transmission facilities below the CPCN threshold (200 kV) but require Commission review of need, alternatives, and environmental impact. The Suncrest Loop-In supports east-San Diego County reliability and integration of large-scale solar and battery generation in the Boulevard and Jacumba corridors. Environmental review will run in parallel with the application; CEQA timing typically drives the schedule.</div>
           </div>
         </div>
@@ -743,7 +738,7 @@
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M606/K595/606595697.pdf" target="_blank" rel="noopener noreferrer">View Resolution</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><em>SDG&amp;E</em>&rsquo;s Tier 3 advice letter (AL 4736-E) seeks Commission approval to acquire the Westside Canal 2A storage facility via a Membership Interest Purchase Agreement with RWE Clean Energy. Total transaction value is approximately <strong>$267.9 million</strong>. The 119 MW / 4-hour battery is intended for summer reliability and integration into SDG&amp;E&rsquo;s Resource Adequacy portfolio. The companion 10-year LTSA covers operations and maintenance for the asset life.</div>
           </div>
         </div>
@@ -776,7 +771,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2206017" target="_blank" rel="noopener noreferrer" class="sec">R.22-06-017</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">D.24-05-028 authorized IGFCs for PG&amp;E, SCE, and SDG&amp;E pursuant to AB 205. Liberty&rsquo;s implementation extends the design to a multi-jurisdictional utility and creates the first benchmark for how IGFC mechanics translate outside the three large IOU service territories. Income-verification process improvements remain under deliberation in R.26-04-009 (Advanced Electric Rate Design OIR).</div>
           </div>
         </div>
@@ -795,7 +790,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2211013" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The Avoided Cost Calculator (ACC) sets the avoided cost benchmarks used in benefit-cost tests for energy efficiency, demand response, distributed generation, and storage. Updates to the ACC propagate through every DER program cost-effectiveness filing. The 2026 update sits at the intersection of the community solar PD (A.22-05-022) and the new rate-design rulemaking (R.26-04-009) and is consequential for net-energy-metering successor program cost-effectiveness as well.</div>
           </div>
         </div>
@@ -813,7 +808,7 @@
             <a href="https://www.energy.ca.gov/data-reports/reports/integrated-energy-policy-report-iepr/2025-integrated-energy-policy-report" target="_blank" rel="noopener noreferrer">IEPR Page</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The IEPR is the CEC&rsquo;s biennial demand forecast and policy assessment that drives procurement orders at CPUC, capacity planning at CAISO, and infrastructure planning across the IOUs. Hydrogen and firm zero-carbon resource analyses respond to SB 1075 and SB 423 mandates respectively. Comments are the principal public-record vehicle for shaping the load-forecast inputs that feed every downstream proceeding.</div>
           </div>
         </div>
@@ -832,7 +827,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2505009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The bill-flat framing reflects PG&amp;E&rsquo;s exposure to affordability pressure following multi-year rate increases driven by wildfire and capital programs. The 2027-2030 base revenue requirement embeds the Risk Assessment Mitigation Phase outcomes from A.24-05-008 and frames the capital trajectory that will be revisited under the new Risk-Based Decision-Making OIR (R.26-04-016). TURN, Public Advocates Office, and other intervenors are active in evidentiary hearings.</div>
           </div>
         </div>
@@ -851,7 +846,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2008022" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">SB 1221 requires <strong>67% property owner consent</strong> before any pilot may be approved, which is a real constraint on deployment whose mechanics have not been fully designed. Cost-recovery questions (who pays, how stranded gas assets are treated, whether utilities earn on electrification capital) are the substantive issues that will determine whether the program operates as written. The pilot is also the testing ground for distributional outcomes in disadvantaged communities under the Commission's ESJ Action Plan.</div>
           </div>
         </div>
@@ -898,7 +893,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2604001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">California data center electricity demand is projected to grow <strong>40–60%</strong> by 2030, requiring billions in new transmission and distribution infrastructure. The core policy question is cost causation: should large-load customers whose demand drives upgrade requirements bear those costs directly, or should they be allocated across all ratepayers through general rate increases?<br>The proceeding follows a series of CPUC authorizations for merchant transmission lines serving data center load pockets — including the <strong>$813M Power the South Bay</strong> project and <strong>$1.593B Santa Clara Valley</strong> project adopted at the March 19, 2026 voting meeting. Those merchant projects were funded by large customers. The new rulemaking will establish a durable framework for cost allocation going forward, with ratepayer advocates and environmental groups expected to weigh in heavily. A decision is anticipated in 2027.</div>
           </div>
         </div>
@@ -917,7 +912,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2604002" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The <em>Energy Resource Recovery Account</em> (ERRA) is a tracking mechanism that allows IOUs to recover the difference between actual energy procurement costs and the forecast amount built into rates. Each year, utilities file a compliance application documenting whether procurement was reasonable and consistent with the Commission-approved plan.<br><em>SCE</em>'s 2025 compliance filing covers electricity procurement for its 15 million customers across Southern and Central California. The <strong>$11.531 million</strong> net undercollection — relatively modest by ERRA standards — reflects the gap between 2025 actual costs and the forecast embedded in rates. If approved, the undercollection is recovered through a future rate adjustment. CPUC staff and intervenors may challenge the reasonableness of specific procurement decisions before a decision is issued.</div>
           </div>
         </div>
@@ -936,7 +931,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:I2604008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The <em>Elkhorn Battery Energy Storage System</em> is a 182.5 MW / 730 MWh lithium-ion storage facility located at the Moss Landing power plant complex in Monterey County — one of the largest grid-scale storage facilities in the world at the time of its commissioning. The facility has been under prolonged outage following fire and safety concerns that have affected the Moss Landing complex since late 2024.<br>CPUC regulations provide that if a utility-owned or utility-contracted resource remains out of service for nine or more consecutive months, the Commission may disallow expenses associated with that resource from ratepayer recovery — effectively requiring <em>PG&amp;E</em> to absorb costs rather than pass them through to customers. This investigation will determine whether the Elkhorn outage has crossed that threshold and, if so, what costs are subject to disallowance. The proceeding has significant precedent value for how California regulators treat storage facility outages going forward.</div>
           </div>
         </div>
@@ -970,7 +965,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603010" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">California IOUs file coordinated Energy Efficiency Business Plans covering strategic direction and a Portfolio Plan specifying programs, budgets, and customer targets. The CPUC approves both through an application proceeding, then each utility implements programs funded by the <em>Energy Efficiency Program Charge</em> on customer bills. The 2028–2031 cycle is the next multi-year authorization following the current 2025–2027 plans.<br><em>SCE</em>'s application covers electric EE programs across its 15 million customer accounts in Southern and Central California. Typical annual EE budgets for SCE run approximately <strong>$400–$500 million</strong> per year, with programs targeting residential retrofits, commercial lighting, HVAC efficiency, and industrial process improvements. The Commission will hold workshops and formal hearings before issuing a decision, likely in 2027.</div>
           </div>
         </div>
@@ -989,7 +984,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603012" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><em>SDG&amp;E</em>'s combined Business Plan and Portfolio Plan cover electric and natural gas efficiency programs for its San Diego and southern Orange County service territory — approximately 3.6 million customer accounts. The filing coordinates with SoCalGas which serves overlapping gas customers in the same region.<br>EE spending is funded through customer surcharges and is subject to CPUC oversight via annual compliance filings. <em>SDG&amp;E</em>'s annual EE budget has historically ranged from <strong>$80–$120 million</strong>. The Commission will evaluate cost-effectiveness using Total Resource Cost (TRC) and Program Administrator Cost (PAC) tests before approving program portfolios.</div>
           </div>
         </div>
@@ -1008,7 +1003,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603017" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><em>PG&amp;E</em> is the largest EE program administrator in California, serving approximately 5.5 million electric and 4.5 million gas accounts across Northern and Central California. Its application covers both electric efficiency (HVAC, lighting, data centers, agriculture) and natural gas efficiency (water heating, building envelope, industrial processes).<br>Annual EE budgets for <em>PG&amp;E</em> have historically approached <strong>$700–$800 million</strong> combined electric and gas. The Commission evaluates portfolio cost-effectiveness through the TRC test and sets minimum savings targets before adoption. Decisions on these applications are typically issued 12–18 months after filing.</div>
           </div>
         </div>
@@ -1027,7 +1022,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><em>SoCalGas</em> is California's primary natural gas EE program administrator, serving approximately 21 million people across Southern California. Its EE portfolio focuses on gas end-uses: space heating, water heating, appliances, and industrial thermal processes. The application must also address how programs fit within California's long-term gas transition strategy under the 2022 Climate Action Plan.<br>Annual gas EE budgets for <em>SoCalGas</em> typically range from <strong>$150–$200 million</strong>. The Commission scrutinizes cost-effectiveness of gas programs given California's broader decarbonization goals — some gas EE investments face questions about stranded cost risk as electrification accelerates.</div>
           </div>
         </div>
@@ -1046,7 +1041,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603030" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><em>SCE</em>'s AMI 2.0 application seeks authorization to replace approximately 5.4 million legacy SmartConnect (AMI 1.0) meters and add 300,000 new meters across its 15 million-customer service territory. The original SmartConnect system was authorized across three phases from 2005 to 2008; vendor support for the existing hardware expires in 2035, and each year of delay costs approximately <strong>$140 million</strong> in extended maintenance.<br>The proposed <strong>$1,865 million</strong> revenue requirement covers 2026 through 2033, with small-scale deployment beginning in late 2028 and mass deployment running 2029 through 2033. SCE projects a benefit-cost ratio of <strong>7.56</strong> relative to the incremental cost of simply extending AMI 1.0 life. New meters will support two-way communication, faster outage detection, time-of-use pricing, and vehicle-grid integration. Capitalized software costs are forecast at $444.6 million, with a 110% reasonableness threshold of $489 million. No ALJ has been assigned yet.</div>
           </div>
         </div>
@@ -1065,7 +1060,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603031" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">SB 846 (2022) reversed <em>PG&amp;E</em>'s planned retirement of Diablo Canyon and established a framework for up to five additional years of operation. The statute requires annual Commission review and approval of <em>PG&amp;E</em>'s recorded costs — covering fuel, operations and maintenance, capital investment, nuclear waste management, and accelerated decommissioning trust contributions. Year 1 (A.24-03-007) and Year 2 (A.25-03-012) applications preceded this filing.<br>This Year 3 application covers the period ending December 31, 2026. Commission review focuses on whether recorded costs are reasonable and consistent with the SB 846 operational authorization. Diablo Canyon Unit 1 and Unit 2 collectively produce approximately <strong>2,250 MW</strong> — roughly <strong>8–9%</strong> of California's total in-state generation capacity. Cost recovery is funded through PG&amp;E electric rates via the Nuclear Decommissioning Cost Memorandum Account and related balancing accounts.</div>
           </div>
         </div>
@@ -1099,7 +1094,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>SDG&amp;E</em> seeks CPUC authorization under PUC §817 to issue <strong>$2,583,000,000</strong> in new long-term debt securities (notes, debentures, other obligations) and refinance <strong>$1,348,000,000</strong> in maturing obligations via roll-over securities over a multi-year period. Combined authorization of ~$3.93B funds capital investment driven by grid modernization (Smart Meter 2.0, <strong>$948.75M</strong>), wildfire mitigation, and general reliability. Commission reviews whether issuance is reasonably necessary for lawful corporate purposes and that terms don't impair utility service or ratepayer interests. Actual issuances within the cap require only an Advice Letter.</div>
             </div>
           </div>
@@ -1118,7 +1113,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2603003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>SCE</em> provides water and gas utility service on Santa Catalina Island through its Catalina Island subsidiary — a Class C water utility and a small gas distribution system. This application seeks Commission approval for cost recovery covering infrastructure maintenance, capital investment, and operating expenses for these island utility services. Catalina Island is served exclusively by SCE across electric, water, and gas; the island's isolation makes utility operations structurally more expensive than mainland operations. Ratepayer impact and approved dollar amount to be determined through the Commission's rate case review.</div>
             </div>
           </div>
@@ -1152,7 +1147,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>PG&amp;E</em> seeks CPUC authorization under PUC §851 to sell the <em>Hamilton Branch Hydroelectric Project</em> — a <strong>4.8 MW</strong> facility mothballed as uneconomical. The buyer is <em>Hamilton Branch Hydro, LLC</em>. The Commission must determine whether the sale is in the public interest and that ratepayers receive appropriate benefit from any gain on sale.<br>Purchase price not publicly disclosed in the application. Ratebase impact and disposition of proceeds addressed in financial exhibits. Transaction also requires FERC approval for jurisdictional assets. The <em>Feather River Land Trust</em> conservation easement remains in place regardless of outcome.</div>
             </div>
           </div>
@@ -1171,7 +1166,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602019" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">Annual §451/§454.5 compliance review of <em>PG&amp;E</em>'s utility-owned generation (UOG) fleet for 2025. The Commission must determine whether <em>PG&amp;E</em>'s generation operations, economic dispatch, fuel procurement, and contract administration were prudent and consistent with its approved procurement plan. <em>PG&amp;E</em> argues <em>Diablo Canyon Power Plant</em> (DCPP) extended operations costs belong in a separate statutory proceeding and should not be reviewed here.<br>The <em>Portfolio Allocation Balancing Account</em> (PABA) tracks capital costs; the <em>Energy Resource Recovery Account</em> (ERRA) tracks fuel and variable O&amp;M costs. Commission findings on prudency determine whether recorded costs are recoverable in rates or subject to disallowance.</div>
             </div>
           </div>
@@ -1190,7 +1185,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602020" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>Crimson California Pipeline</em>, a crude oil common carrier regulated by the CPUC, seeks a <strong>66.97%</strong> rate increase effective April 1, 2026. The company cites a steep decline in throughput as California refineries reduce crude intake, leaving fixed costs spread across lower volumes. The Commission must determine whether the proposed rate is just and reasonable under PUC §454. Shippers and downstream parties may intervene. No IOU ratepayer exposure — crude oil shipper costs not passed through to residential utility bills.</div>
             </div>
           </div>
@@ -1209,7 +1204,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602021" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>PacifiCorp</em> (d/b/a Pacific Power) seeks CPUC authorization to recover wildfire-related costs recorded in its Wildfire Expense Memorandum Account (WEMA) for the 2020 Slater Fire and 2022 McKinney Fire. The ~<strong>$1.7B</strong> total is multistate; California's jurisdictional share is subject to CPUC review. The Commission must determine whether recorded costs were prudently incurred before authorizing rate recovery. Intervenor review of fire cause, cost allocation methodology, and insurance offsets is expected.</div>
             </div>
           </div>
@@ -1243,7 +1238,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602007" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>Southwest Gas</em> seeks CPUC authorization under PUC §817 to issue up to <strong>$1.15 billion</strong> in long-term debt securities — including notes, debentures, and other obligations — over a multi-year period. Proceeds fund capital improvements to its California gas distribution system, refinance maturing obligations, and meet general corporate purposes. The Commission reviews whether the issuance is reasonably necessary for lawful corporate purposes and that the terms do not impair utility service or ratepayer interests.</div>
             </div>
           </div>
@@ -1276,7 +1271,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">PG&E files its Low-Income Proceedings Application for the 2028–2033 program cycle, requesting Commission approval to continue administering the Energy Savings Assistance (ESA) program — which provides free weatherization and energy-efficiency upgrades to income-qualified households — and the California Alternate Rates for Energy (CARE) discount program. The application proposes six-year program budgets, outreach strategies, and customer enrollment targets. This proceeding was consolidated with SCE (A.26-01-005), SDG&amp;E (A.26-01-010), and SoCalGas (A.26-01-011) per an ALJ ruling on February 10, 2026, reflecting the CPUC's preference for coordinated review of all IOU low-income programs.</div>
             </div>
           </div>
@@ -1294,7 +1289,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601005" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">SCE files its Low-Income Proceedings Application for the 2028–2033 program cycle, covering the Energy Savings Assistance (ESA) program, the California Alternate Rates for Energy (CARE) discount, and the Family Electric Rate Assistance (FERA) program — which provides a smaller discount to households slightly above CARE income thresholds. SCE proposes program structure, budgets, and outreach targets for Commission approval. This proceeding was consolidated with PG&amp;E (A.26-01-003), SDG&amp;E (A.26-01-010), and SoCalGas (A.26-01-011) per an ALJ ruling on February 10, 2026.</div>
             </div>
           </div>
@@ -1312,7 +1307,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">SoCalGas files a compliance application as directed by Ordering Paragraph 6 of Decision 24-12-076. The application addresses specific compliance requirements imposed by the Commission in that prior decision. Assigned to Commissioner Karen Douglas and ALJ Jamie Ormond, the proceeding is categorized as ratesetting within the gas industry. Compliance filings of this type are required when a prior decision orders a utility to return to the Commission with a formal application implementing specific directed actions.</div>
             </div>
           </div>
@@ -1330,7 +1325,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601002" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">SCE requests Commission authorization under Public Utilities Code Section 851 to grant public road and limited utility easements to the City of Ontario. Section 851 requires CPUC approval before a utility can sell, lease, or transfer any property necessary for its operations. This is a routine infrastructure accommodation with no direct rate impact — the easement allows public road development over or alongside SCE-owned land while preserving utility access rights. Assigned to Commissioner Darcie Houck and ALJ Marcelo Poirier.</div>
             </div>
           </div>
@@ -1364,7 +1359,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601021" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">All five major California IOUs — <em>PG&amp;E, SCE, SDG&amp;E, SoCalGas, and Southwest Gas</em> — jointly seek a one-year bridge authorization to continue ESA and CARE low-income programs in Program Year 2027. The bridge is necessary because the long-term 2028–2033 cycle applications (filed separately) will not be resolved before PY2027 begins, creating a gap in program authority. Without Commission approval, IOUs would lack authorization to operate and fund the programs during 2027 — potentially interrupting service to hundreds of thousands of low-income customers.</div>
             </div>
           </div>
@@ -1383,7 +1378,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601010" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>SDG&amp;E</em> files its Low-Income Proceedings Application for the 2028–2033 cycle, covering both the <em>Energy Savings Assistance</em> (ESA) program — which provides free weatherization and appliance upgrades to income-qualified customers — and the <em>California Alternate Rates for Energy</em> (CARE) discount program. SDG&amp;E proposes program budgets, customer targets, and delivery methods for Commission approval. Filed in coordination with the parallel SoCalGas (A.26-01-011) and joint IOU bridge (A.26-01-021) applications.</div>
             </div>
           </div>
@@ -1402,7 +1397,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601011" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>SoCalGas</em> seeks CPUC approval to continue delivering the <em>Energy Savings Assistance</em> (ESA) and <em>CARE</em> low-income programs across its gas service territory for the 2028–2033 cycle. ESA provides weatherization measures and appliance replacements to reduce energy burden for low-income customers; CARE provides a rate discount. SoCalGas proposes program structure, budgets, and outreach targets. Filed concurrently with SDG&amp;E's application (A.26-01-010) and the joint IOU bridge filing (A.26-01-021).</div>
             </div>
           </div>
@@ -1421,7 +1416,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601007" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>SCE</em> seeks a CPUC financing order under AB 1054 authorizing <strong>$1.84 billion</strong> in rate reduction bonds to securitize its approved Woolsey Fire wildfire costs. Securitization replaces traditional rate base recovery with lower-cost bond financing — saving ratepayers an estimated hundreds of millions in carrying costs over the recovery period. Bondholders are repaid through a non-bypassable charge on customer bills. The CPUC must find the structure is in the public interest and issue a financing order before bonds can be sold.</div>
             </div>
           </div>
@@ -1440,7 +1435,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601004" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>Brookfield Infrastructure Partners</em> seeks CPUC authorization under PUC §851 to acquire <em>Wild Goose Energy Storage</em> (~28 Bcf working capacity) and <em>Lodi Gas Storage</em> (~12 Bcf) — two major Northern California gas storage facilities currently owned by a PG&amp;E affiliate. Together they represent critical seasonal storage capacity for the regional gas market. The Commission must find the transfer consistent with the public interest, including operational continuity, reliability, and ratepayer protection. FERC approval also required for FERC-jurisdictional assets.</div>
             </div>
           </div>
@@ -1491,7 +1486,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2604009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">R.26-04-009 is the CPUC's successor rulemaking to R.22-07-005, which established the current advanced residential rate framework including default time-of-use rates and income-graduated fixed charges. The new OIR expands scope to non-residential customers and addresses rate design for high-electrification scenarios -- how rates should be structured as buildings and transportation shift to electricity. ALJ Joanna Perez-Green and Commissioner John Reynolds were assigned April 22, signaling Commission prioritization. The proceeding will shape how millions of California ratepayers are billed for electricity as the grid transitions and fixed-cost recovery shifts away from volumetric charges.</div>
           </div>
         </div>
@@ -1509,7 +1504,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2401018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">R.24-01-018 is the CPUC's rulemaking on energization timelines — the time it takes utilities to connect new customers, rooftop solar, and battery storage systems to the grid. Data shows PG&amp;E and SCE meet Rule 21 interconnection timelines as little as 18% of the time, prompting the JLAC to authorize a state audit (JLAC 2026-126) and the CPUC to develop formal enforcement mechanisms.<br>This April 17 ALJ ruling by ALJ Dugowson sets out the procedural schedule and framework for how the Commission will enforce compliance going forward, including potential penalty mechanisms. The ruling is significant because it marks the CPUC's first formal procedural step toward creating binding enforcement tools for energization delays — a longstanding pain point for solar installers, EV charging developers, and customers awaiting new service connections.</div>
           </div>
         </div>
@@ -1527,7 +1522,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2412011" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">Angeles Link is SoCalGas's proposed 36-inch hydrogen transmission pipeline spanning roughly 215 miles across Los Angeles County. The Phase 2 cost estimate ballooned from $92 million (2022) to $266 million (2024) -- a 189% increase before a single pipe was laid. SoCalGas applied to recover this cost from ratepayers under A.24-12-011. The CPUC rejected the request, holding that SoCalGas had not demonstrated specific, quantified ratepayer benefits sufficient to justify ratepayer funding. The decision effectively forces SoCalGas either to abandon Phase 2 or fund it with shareholder capital. Environmental and consumer groups including Sierra Club and EDF supported the denial, arguing the project would lock ratepayers into a hydrogen infrastructure bet that may not materialize as green hydrogen costs remain far above natural gas.</div>
           </div>
         </div>
@@ -1545,7 +1540,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1302008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">R.13-02-008 is the CPUC's Renewable Gas Standard rulemaking, which sets mandatory procurement targets for biomethane (renewable natural gas from organic waste) that gas utilities must meet. The April 30 decision reflects a significant policy retreat: the 2030 annual procurement target was halved from 72.8 to 36.4 billion cubic feet, and both the Diverted Organic Waste and overall targets were extended from 2030 to 2035. A new Cost Containment Mechanism limits ratepayer exposure to above-market biomethane prices. All feedstocks remain eligible to bid into future utility solicitations, and all procurement contracts must go through Tier 3 Advice Letters regardless of price. Gas utilities must also submit revised Renewable Gas Procurement Plans. The decision reflects growing CPUC caution about the cost trajectory of renewable gas mandates as biomethane prices remain high relative to conventional gas.</div>
           </div>
         </div>
@@ -1563,7 +1558,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2507013" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The California Climate Credit is a twice-yearly credit on utility bills funded by cap-and-trade auction revenue, providing meaningful bill relief for residential customers. For 2026, the April credit for PG&amp;E residential electric customers was paused and redistributed to August and September -- when air conditioning demand drives bills to annual highs. For smaller utilities (Bear Valley, Liberty, Pacific Power), the credit shifts to April and November for 2026, then October and November in future years. The total annual credit per household remains the same; only the delivery timing changes. The policy rationale is straightforward: delivering bill relief when bills are highest has greater affordability impact than spreading it to lower-use spring months. The decision applies to the electric Climate Credit; gas credits follow a separate schedule.</div>
           </div>
         </div>
@@ -1581,7 +1576,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403019" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">GRC Phase 2 proceedings set rate design -- the allocation of revenue requirement authorized in Phase 1 across SCE's various customer rate schedules (residential, commercial, industrial, agricultural, EV, etc.). The April 30 decision adopts the negotiated rate design settlements, locking in how SCE will recover its authorized revenue from different customer groups through at least the next general rate case cycle. Rate design outcomes directly affect the distribution of costs between high- and low-usage customers, the structure of tiered vs. flat rates, and the incentive signals embedded in time-of-use and demand charge schedules. The decision follows separate Phase 1 revenue requirement proceedings already concluded.</div>
           </div>
         </div>
@@ -1599,7 +1594,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5436" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The California DGStats platform (californiadgstats.ca.gov) aggregates interconnection data from all California IOUs and publishes monthly reports on distributed energy resource deployments -- rooftop solar capacity, battery storage installations, EV chargers, and interconnection queue status by utility and zip code. It is the authoritative public data source used by CPUC staff, researchers, local governments, and industry to track California's DER buildout.<br>Resolution E-5436 increases the contract budget from approximately $875,000 to $2.6 million per 3-year cycle -- roughly tripling current funding -- and authorizes the Energy Division to adjust annually for inflation. The funding increase reflects the platform's growing role as the backbone for CPUC interconnection planning, enforcement, and ICA (Integration Capacity Analysis) compliance tracking. All three large electric IOUs (PG&amp;E, SCE, SDG&amp;E) contribute data to the platform and fund it through their rates.</div>
           </div>
         </div>
@@ -1631,7 +1626,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2604001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">With California data center electricity demand projected to grow <strong>40–60%</strong> by 2030, the CPUC opened this rulemaking to establish durable rules for large-load cost allocation. The central policy question: when a new data center or industrial facility requires expensive grid upgrades, should that customer bear the full incremental cost, or should the costs be spread across all ratepayers?<br>Large-load customers argue that general ratepayer sharing is appropriate because all customers benefit from a more robust grid. Consumer advocates and ratepayer groups — including TURN — counter that socializing costs driven by a narrow class of high-demand customers amounts to an unjust subsidy. The proceeding follows the April 9, 2026 vote and will involve workshops, data requests, and potentially a phase for proposed decisions. A final decision is expected in 2027.</div>
             </div>
           </div>
@@ -1650,7 +1645,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission adopted the decision authorizing <em>PG&amp;E</em> to lease entitlements on new high-voltage transmission projects to <em>Citizens Energy Corporation</em> — a nonprofit — through up to five 30-year leases. <em>Citizens Energy</em> funds grid upgrades (safety, reliability, capacity) in exchange for the entitlements. The arrangement satisfies Public Utilities Code §851 public interest requirements, per the adopted decision by <em>ALJ Jack Chang</em>.<br>Total investment up to <strong>$1 billion</strong>. <em>Citizens Energy</em> commits to directing <strong>50%</strong> of net after-tax profits to clean energy for low-income communities in Central and Northern California, rising to <strong>90%</strong> over time. Over 35 years, the CPUC estimated after-tax profit flows to low-income customers at over <strong>$450 million</strong>.</div>
             </div>
           </div>
@@ -1669,7 +1664,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:E5440" target="_blank" rel="noopener noreferrer" class="sec">Docket</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Integration Capacity Analysis</em> (ICA) is a map-based tool showing how much distributed energy resource capacity each grid segment can accommodate without costly upgrades. CPUC staff found that all three large IOUs had methodology errors and data gaps that could mislead rooftop solar, battery storage, and EV charger applicants about available interconnection headroom.<br>Resolution E-5440, adopted at the April 9, 2026 voting meeting after being held from March 19, requires each utility to submit corrected ICA data and a remediation plan to CPUC staff within a specified timeline. Failure to provide accurate ICA data can cause developers to incur pre-development costs for projects that will ultimately face prohibitive grid upgrade requirements — a longstanding complaint from the California solar and storage industry.</div>
             </div>
           </div>
@@ -1688,7 +1683,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2406001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Energy Resource Recovery Account</em> (ERRA) mechanism allows <em>SDG&amp;E</em> to track and recover reasonable energy procurement costs that differ from the forecast embedded in rates. The 2023 compliance filing reviewed whether procurement was prudent and consistent with the Commission-approved plan. The net <strong>$214.580 million undercollection</strong> flows back to customers through future rate adjustments.<br>The adopted decision includes modifications: <em>SDG&amp;E</em> must update its resource adequacy portfolio valuation methodology, correct RPS compliance accounting, allocate battery storage revenues across a broader customer base, and recover Stranded Green Tariff Shared Renewables costs via the Public Purpose Programs charge. The item was held from the March 19 voting meeting to April 9 following reassignment to Commissioner Christine Harada.</div>
             </div>
           </div>
@@ -1707,7 +1702,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2205022" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">California's <em>Green Tariff Shared Renewables</em> program allows customers — including renters and others who cannot install rooftop solar — to subscribe to a share of a utility-owned or utility-contracted renewable energy project and receive a credit on their bill. The <em>Disadvantaged Communities Green Tariff</em> extends this model specifically to low-income customers in disadvantaged communities with additional subsidy. The <em>Community Solar Green Tariff</em> involves smaller, community-scale projects with local siting requirements.<br>This consolidated PD (covering A.22-05-022, A.22-05-023, and A.22-05-024) implements the regulatory framework for all three programs — setting subscription sizes, credit calculation methods, program caps, and cost allocation to non-participating ratepayers. The decision will affect how hundreds of thousands of California customers who want renewable energy access clean power without installing their own systems. Comments are expected in late April 2026.</div>
             </div>
           </div>
@@ -1726,7 +1721,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2403018" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>Diablo Canyon Power Plant</em> — California's last operating nuclear facility, with 2,200 MW of carbon-free generation — was extended beyond its original 2025 closure date through state legislation (SB 846, 2022) and a Department of Energy loan to <em>PG&amp;E</em>. The facility's continued operation required significant incremental costs: maintenance, licensing fees, and regulatory compliance from September 2023 onward that were not included in prior rate cases.<br>This PD addresses <em>PG&amp;E</em>'s request to modify D.24-12-033 to authorize recovery of those incremental costs from ratepayers. The Commission previously approved a framework for Diablo Canyon cost recovery; this proceeding resolves the specific amounts for the September 2023 through December 2025 period and sets 2025 performance fee volumes. The decision is significant for California's nuclear policy and for the broader question of how ratepayers bear the cost of facility life extensions driven by state policy decisions. An alternate PD was also filed concurrently, indicating commissioner-level disagreement on scope or methodology.</div>
             </div>
           </div>
@@ -1745,7 +1740,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601007" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">AB 1054 (2019) established a wildfire fund and authorized utilities to securitize approved wildfire costs through <em>rate reduction bonds</em> (also called catastrophe bonds or securitization bonds). Securitization replaces traditional utility financing — where the utility borrows at its weighted average cost of capital — with lower-cost bond financing backed by a non-bypassable charge on customer bills. Because bonds carry lower interest rates than utility debt, securitization reduces the total cost of recovery for ratepayers over the repayment period, typically 15–25 years.<br><em>SCE</em>'s application (A.26-01-007) seeks a financing order authorizing approximately <strong>$1.84 billion</strong> in rate reduction bonds for approved Woolsey Fire costs. This PD, if adopted, would issue the financing order allowing <em>SCE</em> to go to market with the bonds. The non-bypassable charge on bills provides bondholders security equivalent to a senior utility obligation — enabling the lower financing cost. Comments on the PD are due in late April 2026, with a decision expected at the May or June 2026 voting meeting.</div>
             </div>
           </div>
@@ -1779,7 +1774,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405014" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">A CPUC CPCN is required before a developer can construct new electric transmission facilities in California. The CPCN process reviews need, site suitability, environmental impacts, and consistency with CAISO transmission planning requirements.<br>The <em>Power the South Bay Project</em> is a 12-mile 230-kV double-circuit transmission line running from PG&amp;E's Newark substation (Alameda County) to Silicon Valley Power's Northern Receiving Station in San Jose. The project addresses transmission constraints in the South Bay load pocket and supports load growth from data centers and electrification. <em>LS Power</em>'s cost cap is <strong>$813,240,000</strong>; the broader project including related PG&amp;E substation work totals approximately <strong>$1.59 billion</strong>. Construction was authorized to begin March 2026 with a June 1, 2028 in-service deadline. Commissioner Karen Douglas presided; the item passed on the consent agenda.</div>
           </div>
         </div>
@@ -1798,7 +1793,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A0909022" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">Originally filed September 2009, the <em>Alberhill System Project</em> is one of the longest-running CPUC transmission proceedings in recent history. The project addresses transmission constraints in the western Riverside County load pocket driven by Inland Empire population growth and electrification load. Years of route modifications, environmental review, and community opposition delayed final CPCN authorization.<br>The Commission granted the CPCN on the consent agenda at the <strong>March 19, 2026</strong> voting meeting — reflecting unanimous staff and ALJ recommendation. Capital cost cap: <strong>$481,700,000 (2023 constant dollars)</strong>, including a 15% contingency of $53.8 million. Costs are recovered through <em>SCE</em>'s FERC-regulated transmission rate base — borne by all SCE ratepayers through transmission charges on monthly bills. The proceeding closes upon adoption.</div>
           </div>
         </div>
@@ -1817,7 +1812,7 @@
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2404017" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">LS Power Grid California proposed a new high-voltage transmission line to deliver power to the Santa Clara Valley in response to surging data center electricity demand in the San José metro area. PG&amp;E's Ringwood Substation interconnection queue had grown to over <strong>15,000 MW</strong> of pending requests — far exceeding available capacity under the existing grid.<br>The CPCN approved at the March 19, 2026 voting meeting authorizes construction with a capital cost cap of <strong>$1,593,000,000</strong>. As a merchant transmission project, LS Power will recover costs through bilateral contracts with data center customers and LSEs — not through PG&amp;E's regulated rate base. This approach shields ratepayers from direct cost recovery risk while enabling faster permitting than CAISO-driven transmission planning processes.</div>
           </div>
         </div>
@@ -1851,7 +1846,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2404001" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>SCE</em>'s annual ERRA compliance filing for 2023 — the Commission reviews whether procurement was reasonable and consistent with its approved plan. The ERRA mechanism ensures customers pay only for prudent energy costs; overcollections flow back as rate reductions. Proposed Decision issued by <em>ALJ Jeffrey Lee</em>.<br>The PD addresses a <strong>$63.195 million decrease</strong> in revenue requirement across seven accounts — customers receive a net rate reduction reflecting an overcollection in 2023. Comments due <strong>March 26, 2026</strong>.</div>
             </div>
           </div>
@@ -1870,7 +1865,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2106021" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body"><em>PG&amp;E</em>'s 2023 GRC was split into three phases: Phase I set the revenue requirement (adopted in D.23-12-037); Phase II addressed nuclear operations and wildfire-related capital; Phase III resolved remaining contested issues including vegetation management cost recovery and outstanding intervenor claims.<br>D.26-02-035 formally closes Phase III after resolving all remaining issues, allowing the proceeding record to be finalized. Closure of Phase III does not reset or alter currently effective rates — all rate changes from this GRC were set at Phase I adoption effective January 1, 2023. The next GRC cycle (2027 GRC, A.25-06-016) will set rates effective January 1, 2027.</div>
             </div>
           </div>
@@ -1888,7 +1883,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2008020" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">NEM 3.0 (D.23-02-015), adopted April 2023, replaced California's highly compensatory NEM 2.0 tariff for new rooftop solar customers. Under NEM 2.0, utilities credited solar exports at the full retail rate (~$0.30/kWh). Under NEM 3.0's Net Billing Tariff, new customers receive <em>Avoided Cost Calculator</em>-based rates averaging <strong>$0.05–$0.08/kWh</strong> — an ~80% reduction. Existing NEM 2.0 customers are grandfathered for 20 years.<br>Solar industry groups and several municipalities challenged the decision in court, arguing the CPUC failed to meet public notice requirements and violated the renewable energy mandate. California's First District Court of Appeal upheld the CPUC's decision on March 9, 2026 — rejecting all procedural and substantive challenges. NEM 3.0 remains binding law; the rooftop solar compensation question is now definitively resolved for the foreseeable future.</div>
             </div>
           </div>
@@ -1923,7 +1918,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:I2303008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">Opened March 2023 following the winter 2022–23 gas spike — some <em>SoCalGas</em> customers received bills exceeding <strong>$400</strong> in January 2023. The Commission investigated whether <em>PG&amp;E</em>, <em>SoCalGas</em>, <em>SDG&amp;E</em>, and independent storage operators engaged in market manipulation, withholding, or imprudent procurement. After nearly three years, the Commission closed the investigation with no finding of misconduct, attributing the spike to coincident demand peaks and pipeline constraints outside California.<br><strong>No penalties, fines, or refund orders</strong> against any utility. Prospective remedy: <em>Core Procurement Charge</em> (CPC) cap triggered when monthly core procurement price exceeds <strong>150% of the 10-year average</strong> (November–March window). Undercollections amortized — not borne by shareholders.</div>
             </div>
           </div>
@@ -1942,7 +1937,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2506019" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">President <em>Alice Reynolds</em>' final act. Requires all California load-serving entities — IOUs, CCAs, and ESPs — to procure <strong>6,000 MW</strong> of new non-GHG-emitting capacity across three equal tranches. Each tranche: no more than <strong>50%</strong> battery storage; at least <strong>25%</strong> must be long-duration (≥8 hours) or clean firm. Adopted unanimously <strong>5–0</strong>.<br>No revenue requirement set in this decision — it is a procurement mandate, not a ratesetting order. LSE obligations: <em>SCE</em> <strong>2,088 MW</strong> · <em>PG&amp;E</em> <strong>1,077 MW</strong> · CCAs allocated the remainder. Costs flow into future GRC proceedings as contracts execute. Tranche 1 NQC deadline: <strong>December 31, 2030</strong>.</div>
             </div>
           </div>
@@ -1976,7 +1971,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2506012" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Gas Cost Incentive Mechanism</em> (GCIM) is <em>SoCalGas</em>'s procurement performance incentive, in place since the mid-1990s. Each year the CPUC reviews whether <em>SoCalGas</em> beat or missed its benchmark procurement cost. A positive result triggers a shareholder reward; a negative result triggers a shareholder penalty. The mechanism aligns utility incentives with ratepayer interests in keeping gas costs low.<br><strong>Shareholder reward: $8,374,056</strong> for GCIM Year 31 (2024–2025 gas year). <em>SoCalGas</em>'s recorded procurement costs were <strong>$42,142,370 below benchmark</strong>, of which <strong>$33,768,315 flows to ratepayers</strong> as lower gas costs and <strong>$8,374,056</strong> goes to shareholders. Customers save roughly <strong>$4 for every $1</strong> awarded to shareholders.</div>
             </div>
           </div>
@@ -1995,7 +1990,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2506007" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">Utilities seek CPUC authority to issue debt and equity in advance of actual issuances, allowing them to move quickly when capital market conditions are favorable. This authorization covers <em>SCE</em>'s anticipated capital needs driven by its wildfire mitigation capital program (WMCE), infrastructure replacement, and clean energy integration.<br>Authorized: <strong>$9,850,000,000</strong> in long-term debt (<em>SCE</em> requested $10,125,000,000 — reduced by <strong>$275,000,000</strong>) and <strong>$1,155,000,000</strong> in preferred equity (reduced by <strong>$250,000,000</strong>). Actual issuances within this cap do not require additional CPUC approval. Cost recovery occurs as capital is deployed and included in future GRC proceedings.</div>
             </div>
           </div>
@@ -2013,7 +2008,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2508008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Distribution Integrity Management Program</em> (DIMP) is a federally-mandated natural gas pipeline safety program requiring operators to assess and remediate risks across their distribution systems. <em>SoCalGas</em> operates one of the largest gas distribution networks in North America — approximately 100,000 miles of pipeline serving 21 million customers.<br>Interim rate authority allows <em>SoCalGas</em> to recover <strong>$35,500,000</strong> of the <strong>$59,100,000</strong> claimed for DIMP costs incurred 2019–2023 while the full rate case proceeds. The interim amount represents a 60% grant — a common Commission approach to balance utility cash flow needs against unresolved prudency questions. Any amount recovered under the interim authorization that exceeds the final approved amount must be refunded to ratepayers with interest. The 12-month authorization expires in early 2027.</div>
             </div>
           </div>
@@ -2046,7 +2041,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2205016" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission rules on SDG&amp;E's wildfire mitigation cost recovery within its consolidated General Rate Case (A.22-05-015/016 with SoCalGas). SDG&amp;E sought recovery of $284 million in wildfire-related operations and maintenance costs and $1,188 million in capital expenditures incurred from May 2019 through December 2022. The Commission approved $90.6 million in O&amp;M (disallowing $192.6M) and $945.2 million in capital (disallowing $242.4M) — a combined disallowance of approximately <strong>$434.9 million</strong>, signaling heightened scrutiny of wildfire mitigation spending and cost controls. The decision reinforces the Commission's use of cost reasonableness review to protect ratepayers from imprudent utility capital investments.</div>
             </div>
           </div>
@@ -2064,7 +2059,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2304003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission reviews SCE's Energy Resource Recovery Account (ERRA) compliance for the record period January 1 through December 31, 2022. The PD finds that SCE's procurement-related operations — including power purchases, generation dispatch, and greenhouse gas compliance instrument procurement — complied with its adopted procurement plan. SCE's request to recover <strong>$51.442 million</strong> in costs recorded across five regulatory accounts is authorized. ERRA compliance proceedings are annual filings required of each electric IOU to verify that procurement spending was prudent and consistent with Commission-approved plans before costs are passed through to ratepayers.</div>
             </div>
           </div>
@@ -2082,7 +2077,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601003" target="_blank" rel="noopener noreferrer" class="sec">CPUC Dockets</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission approves PG&amp;E's contract with Balsam Project LLC (developed by Aypa Power) for the Dirac Battery Energy Storage System, a 225 MW lithium-ion facility with a commercial operation date of May 20, 2028. The 15-year contract begins August 1, 2028. The procurement supports California's grid reliability and clean energy integration goals — battery storage is critical for absorbing excess solar generation during midday and discharging during evening peak demand periods. Contract costs flow through PG&amp;E's procurement cost recovery mechanisms and are ultimately borne by ratepayers.</div>
             </div>
           </div>
@@ -2100,7 +2095,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2601003" target="_blank" rel="noopener noreferrer" class="sec">CPUC Dockets</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission approves, with modifications, PacifiCorp's Advice Letters implementing an income-graduated fixed charge (basic service charge) for residential customers, as directed by Decision 24-05-028. The income-graduated fixed charge is part of California's AB 205 rate reform, which restructures electric rates to include a fixed monthly charge scaled to household income — reducing the per-kWh volumetric rate in exchange. PacifiCorp serves a small portion of northeastern California; this approval extends the fixed charge framework beyond the three large IOUs and establishes precedent for the broader statewide rollout.</div>
             </div>
           </div>
@@ -2118,7 +2113,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2103011" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission adopts a decision establishing streamlined eligibility guidelines for non-IOU entities seeking Provider of Last Resort (POLR) designation under Senate Bill 520. POLR is the obligation to serve customers who lose their electricity provider — historically this responsibility has fallen to IOUs as default. SB 520 opened the door for community choice aggregators (CCAs) and other entities to apply for POLR status. The adopted guidelines specify application requirements and evidentiary standards. As of this decision, no non-IOU entity has formally sought comprehensive POLR designation, but the framework is now in place for future applicants.</div>
             </div>
           </div>
@@ -2136,7 +2131,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1807003" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The Commission denies a petition by the Bioenergy Association of California (BAC) to modify Decision 20-08-043 and extend the Bioenergy Market Adjusting Tariff (BioMAT) program beyond its scheduled end date of December 31, 2025. BioMAT provided feed-in tariff contracts for small bioenergy facilities — including dairy biogas, forest biomass, and landfill gas projects — interconnected to IOU distribution systems at above-market rates. The denial is consistent with Governor Newsom's Executive Order N-5-24, which maintained the BioMAT sunset date. The program's closure shifts bioenergy procurement to other pathways, including the Renewable Gas Standard and bilateral power purchase agreements.</div>
             </div>
           </div>
@@ -2170,7 +2165,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2405008" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Risk Assessment Mitigation Phase</em> (RAMP) is a CPUC-mandated pre-GRC safety proceeding. Before filing a GRC, each large IOU must conduct a structured safety risk assessment across its assets — using a defined risk model — and file the RAMP report for Commission review. The RAMP record informs the Commission's evaluation of GRC safety spending requests but does not itself set rates.<br>Closing the RAMP proceeding formally incorporates the RAMP record into the GRC proceeding record and ends the standalone RAMP docket. The adopted RAMP report for <em>PG&amp;E</em>'s 2027 GRC cycle was already submitted; this closure is procedural. No direct rate impact — RAMP outcomes influence but do not directly determine approved GRC safety spending levels.</div>
             </div>
           </div>
@@ -2189,7 +2184,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1910005" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Electric Program Investment Charge</em> (EPIC) is a customer-funded clean energy R&D program managed by the California Energy Commission (CEC) and the three large electric IOUs — <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em>. Customers pay the EPIC charge (~$130–$170 million per year statewide) to fund applied research, technology demonstrations, and market facilitation for renewable energy, grid integration, and demand response.<br>Phase 4 covers 2026–2028. The PD updates investment priorities to align with California's evolving clean energy goals — including offshore wind integration, long-duration storage, building electrification, and grid modernization. IOU-administered funds focus on projects with near-term deployment potential in IOU territories; CEC-administered funds cover longer-horizon R&D. The EPIC charge is a small surcharge on all electric bills — ratepayers fund this program indirectly through their electricity rates.</div>
             </div>
           </div>
@@ -2208,7 +2203,7 @@
               <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1005004" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
             </div>
             <div class="ai-box">
-              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+              <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
               <div class="ai-body">The <em>Self-Generation Incentive Program</em> (SGIP) provides rebates to customers who install behind-the-meter energy storage, fuel cells, or other clean generation resources. The <em>California Solar Initiative</em> (CSI) funded incentives for rooftop solar installations — its funding is largely exhausted, but the program framework remains in CPUC rulemaking. Petitions for modification (PFMs) allow stakeholders to formally request changes to prior Commission decisions.<br>This PD denies the petition, maintaining the existing SGIP incentive tiers and CSI framework without modification. The petitioner's proposed changes — not specified in the card — were found insufficient to warrant reopening the rulemaking. SGIP is funded by a surcharge on electric bills for <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> customers; denial of this PFM preserves current incentive structures and budget allocations.</div>
             </div>
           </div>
@@ -2243,7 +2238,7 @@
             <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/modernizing-safety-and-service---advancing-utility-infrastructure-in-mobile-home-park-communities" target="_blank" rel="noopener noreferrer" class="sec">CPUC Release</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">California has approximately 5,000 mobile home parks housing over 500,000 low-income and senior residents. Many parks have outdated master-meter utility systems where the park owner is the utility customer — residents pay the owner, not the IOU directly, and do not benefit from low-income programs (CARE, FERA, REACH). The MHP Upgrade Program, authorized by D.20-04-004, requires all five large IOUs to convert park utility systems to direct metering at IOU expense.<br>Total program investment: <strong>$1.57 billion</strong> since 2015. The 2025 priority list covers 1,525 parks with approximately <strong>168,400 home spaces</strong>. Costs are recovered through IOU rate bases, spread across all ratepayers. Once converted, park residents gain direct utility accounts — making them eligible for CARE (~20–35% rate discount), FERA, medical baseline, and other low-income protections. The 50% conversion target by 2030 represents a significant equity milestone for utility access in California.</div>
           </div>
         </div>
@@ -2261,7 +2256,7 @@
             <a href="https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings" target="_blank" rel="noopener noreferrer" class="sec">2026 Meeting Schedule</a>
           </div>
           <div class="ai-box">
-            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Analysis &amp; What This Means</div>
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The March 19 voting meeting was the first under new CPUC President <em>Karen Douglas</em> (appointed March 2026). Key outcomes: SCE's <strong>Alberhill Transmission CPCN</strong> adopted; LS Power's <strong>Santa Clara Valley Transmission CPCN</strong> ($1.593B) adopted; California Climate Credit pause (<strong>R.25-07-013</strong>, D.26-02-057) adopted 5-0 — pausing 2026 credits to fund the new 6,000 MW clean energy procurement order; PG&amp;E RAMP closure approved.<br>ICA Remediation (Res. E-5440) was held to the <strong>April 9, 2026</strong> voting meeting for additional review. DG Statistics Platform (Res. E-5436) remained deferred. The LS Power San José data center CPCN items may have been voted on separately as individual agenda items — see specific card entries for confirmed status.</div>
           </div>
         </div>
