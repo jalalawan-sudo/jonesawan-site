@@ -511,8 +511,13 @@ footer {
 @media (max-width: 768px) {
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .hero-stats { flex-wrap: wrap; gap: 24px; }
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 4px; }
   .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { color: var(--white); display: block; padding: 12px 14px; font-size: 0.9rem; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); background: var(--accent); }
+  .nav-cta { background: var(--accent) !important; color: var(--black) !important; border-color: var(--accent) !important; text-align: center; }
+  .nav-cta:hover { background: var(--white) !important; }
   .nav-toggle { display: block; }
   .proc-table { font-size: 0.78rem; }
   .proc-table th:nth-child(3), .proc-table td:nth-child(3) { display: none; } /* hide outcome col on mobile */
