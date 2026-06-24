@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of an industrial data center facility">
+  <defs>
+    <linearGradient id="dcsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8f0f7"/>
+      <stop offset="1" stop-color="#bfd2e1"/>
+    </linearGradient>
+    <linearGradient id="dcfacade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5d6e7e"/>
+      <stop offset="1" stop-color="#3a4856"/>
+    </linearGradient>
+    <linearGradient id="dcfacade2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a5965"/>
+      <stop offset="1" stop-color="#2b3540"/>
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="1200" height="280" fill="url(#dcsky)"/>
+  <!-- Ground -->
+  <rect y="280" width="1200" height="80" fill="#262e36"/>
+  <line x1="0" y1="284" x2="1200" y2="284" stroke="#0a0f17" stroke-width="1"/>
+  <!-- Back parking lot lines -->
+  <g stroke="#cdd6dc" stroke-width="1" stroke-dasharray="14 8" opacity="0.55">
+    <line x1="0" y1="305" x2="1200" y2="305"/>
+    <line x1="0" y1="325" x2="1200" y2="325"/>
+  </g>
+  <!-- Back building (long warehouse, lower) -->
+  <rect x="40" y="170" width="380" height="115" fill="url(#dcfacade2)" stroke="#0a0f17" stroke-width="1.4"/>
+  <rect x="40" y="170" width="380" height="10" fill="#0a0f17" opacity="0.6"/>
+  <!-- Back building loading doors -->
+  <g fill="#1b2a3b" stroke="#0a0f17" stroke-width="1">
+    <rect x="60" y="235" width="40" height="48"/>
+    <rect x="115" y="235" width="40" height="48"/>
+    <rect x="170" y="235" width="40" height="48"/>
+    <rect x="225" y="235" width="40" height="48"/>
+    <rect x="280" y="235" width="40" height="48"/>
+    <rect x="335" y="235" width="40" height="48"/>
+  </g>
+  <!-- Back building vents/cooling units on roof -->
+  <g fill="#a8b3bd" stroke="#0a0f17" stroke-width="1">
+    <rect x="65" y="150" width="55" height="22"/>
+    <rect x="135" y="150" width="55" height="22"/>
+    <rect x="205" y="150" width="55" height="22"/>
+    <rect x="275" y="150" width="55" height="22"/>
+    <rect x="345" y="150" width="55" height="22"/>
+  </g>
+  <!-- Main building (large foreground) -->
+  <rect x="370" y="105" width="700" height="180" fill="url(#dcfacade)" stroke="#0a0f17" stroke-width="1.8"/>
+  <!-- Roof line -->
+  <rect x="370" y="105" width="700" height="14" fill="#0a0f17" opacity="0.6"/>
+  <!-- Roof cooling units -->
+  <g fill="#c4ccd2" stroke="#0a0f17" stroke-width="1.4">
+    <rect x="395" y="75" width="80" height="32"/>
+    <rect x="495" y="75" width="80" height="32"/>
+    <rect x="595" y="75" width="80" height="32"/>
+    <rect x="695" y="75" width="80" height="32"/>
+    <rect x="795" y="75" width="80" height="32"/>
+    <rect x="895" y="75" width="80" height="32"/>
+    <rect x="995" y="75" width="60" height="32"/>
+  </g>
+  <!-- Fans on cooling units (circles) -->
+  <g fill="#3a4856" stroke="#0a0f17" stroke-width="0.8">
+    <circle cx="415" cy="91" r="8"/>
+    <circle cx="455" cy="91" r="8"/>
+    <circle cx="515" cy="91" r="8"/>
+    <circle cx="555" cy="91" r="8"/>
+    <circle cx="615" cy="91" r="8"/>
+    <circle cx="655" cy="91" r="8"/>
+    <circle cx="715" cy="91" r="8"/>
+    <circle cx="755" cy="91" r="8"/>
+    <circle cx="815" cy="91" r="8"/>
+    <circle cx="855" cy="91" r="8"/>
+    <circle cx="915" cy="91" r="8"/>
+    <circle cx="955" cy="91" r="8"/>
+    <circle cx="1015" cy="91" r="8"/>
+    <circle cx="1045" cy="91" r="8"/>
+  </g>
+  <!-- Building facade windows (tight grid suggesting industrial server hall) -->
+  <g fill="#f6c947" opacity="0.95">
+    <!-- Top row of small slit windows -->
+    <rect x="395" y="135" width="22" height="6"/>
+    <rect x="430" y="135" width="22" height="6"/>
+    <rect x="465" y="135" width="22" height="6"/>
+    <rect x="500" y="135" width="22" height="6"/>
+    <rect x="535" y="135" width="22" height="6"/>
+    <rect x="570" y="135" width="22" height="6"/>
+    <rect x="605" y="135" width="22" height="6"/>
+    <rect x="640" y="135" width="22" height="6"/>
+    <rect x="675" y="135" width="22" height="6"/>
+    <rect x="710" y="135" width="22" height="6"/>
+    <rect x="745" y="135" width="22" height="6"/>
+    <rect x="780" y="135" width="22" height="6"/>
+    <rect x="815" y="135" width="22" height="6"/>
+    <rect x="850" y="135" width="22" height="6"/>
+    <rect x="885" y="135" width="22" height="6"/>
+    <rect x="920" y="135" width="22" height="6"/>
+    <rect x="955" y="135" width="22" height="6"/>
+    <rect x="990" y="135" width="22" height="6"/>
+    <rect x="1025" y="135" width="22" height="6"/>
+  </g>
+  <!-- Vertical pilasters (concrete columns) -->
+  <g fill="#0a0f17" opacity="0.45">
+    <rect x="425" y="119" width="3" height="166"/>
+    <rect x="495" y="119" width="3" height="166"/>
+    <rect x="565" y="119" width="3" height="166"/>
+    <rect x="635" y="119" width="3" height="166"/>
+    <rect x="705" y="119" width="3" height="166"/>
+    <rect x="775" y="119" width="3" height="166"/>
+    <rect x="845" y="119" width="3" height="166"/>
+    <rect x="915" y="119" width="3" height="166"/>
+    <rect x="985" y="119" width="3" height="166"/>
+    <rect x="1025" y="119" width="3" height="166"/>
+  </g>
+  <!-- Entrance bay (centered) -->
+  <rect x="690" y="225" width="60" height="60" fill="#1b2a3b" stroke="#0a0f17" stroke-width="1.5"/>
+  <rect x="695" y="230" width="50" height="55" fill="#262e36"/>
+  <rect x="718" y="230" width="2" height="55" fill="#0a0f17"/>
+  <!-- Side service doors -->
+  <g fill="#1b2a3b" stroke="#0a0f17" stroke-width="1">
+    <rect x="535" y="255" width="22" height="30"/>
+    <rect x="868" y="255" width="22" height="30"/>
+  </g>
+  <!-- Side chiller plant tower (right) -->
+  <rect x="1080" y="160" width="80" height="125" fill="#37444f" stroke="#0a0f17" stroke-width="1.5"/>
+  <rect x="1080" y="160" width="80" height="10" fill="#0a0f17" opacity="0.6"/>
+  <g fill="#a8b3bd" stroke="#0a0f17" stroke-width="1">
+    <rect x="1090" y="180" width="60" height="38"/>
+  </g>
+  <circle cx="1120" cy="199" r="14" fill="#3a4856" stroke="#0a0f17" stroke-width="0.8"/>
+  <!-- Perimeter security fence -->
+  <g stroke="#0a0f17" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="295" x2="1200" y2="295"/>
+  </g>
+  <g stroke="#0a0f17" stroke-width="0.8" opacity="0.5">
+    <line x1="20" y1="285" x2="20" y2="305"/>
+    <line x1="60" y1="285" x2="60" y2="305"/>
+    <line x1="100" y1="285" x2="100" y2="305"/>
+    <line x1="140" y1="285" x2="140" y2="305"/>
+    <line x1="180" y1="285" x2="180" y2="305"/>
+    <line x1="1020" y1="285" x2="1020" y2="305"/>
+    <line x1="1060" y1="285" x2="1060" y2="305"/>
+    <line x1="1100" y1="285" x2="1100" y2="305"/>
+    <line x1="1140" y1="285" x2="1140" y2="305"/>
+    <line x1="1180" y1="285" x2="1180" y2="305"/>
+  </g>
+</svg>
