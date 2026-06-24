@@ -167,6 +167,30 @@
       font-size: 0.88rem; color: var(--text-mid);
       line-height: 1.68; margin-bottom: 10px;
     }
+    .cn-story-image {
+      margin: 4px 0 12px;
+    }
+    .cn-story-image img {
+      width: 100%; height: auto; max-height: 280px; object-fit: cover;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      display: block;
+    }
+    .cn-story-image figcaption {
+      font-size: 0.68rem; color: var(--text-light);
+      margin-top: 4px; line-height: 1.4; font-style: italic;
+    }
+    .cn-feat-image {
+      margin: 6px 0 16px;
+    }
+    .cn-feat-image img {
+      width: 100%; height: auto; max-height: 360px; object-fit: cover;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      display: block;
+    }
+    .cn-feat-image figcaption {
+      font-size: 0.7rem; color: var(--text-light);
+      margin-top: 5px; line-height: 1.4; font-style: italic;
+    }
     .cn-story-readmore {
       font-size: 0.78rem; font-weight: 700; color: var(--teal);
     }
@@ -369,6 +393,8 @@
         author: null,
         category: "Data Centers · Generation Build",
         summary: "Tennessee Valley Authority's draft Integrated Resource Plan considers building <strong>7 to 26 GW of new gas-fired generation</strong> to meet load growth from data centers and electrification. Load growth in the TVA region is <strong>already outpacing the reference case forecast</strong> in the draft IRP, signaling how rapidly large-load demand can break planning assumptions even at federal-utility scale.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Marmaraere%C4%9Flisi_Natural_Gas_Combined_Cycle_Power_Plant.jpg/1280px-Marmaraere%C4%9Flisi_Natural_Gas_Combined_Cycle_Power_Plant.jpg",
+        imageCredit: "Combined-cycle natural gas power plant. Photo by Harald the Bard via Wikimedia Commons (CC BY-SA 4.0).",
         relatedCalreg: null
       },
       {
@@ -391,6 +417,8 @@
         author: "Deborah Sullivan Brennan",
         category: "Data Centers · Local Opposition",
         summary: "A <strong>950,000-square-foot</strong> data center proposed next to the Victoria Ranch housing community in Imperial, CA became a lightning rod, prompting local leaders to challenge a project they had previously approved. If built, it would be the <strong>largest data center in the state</strong>. Illustrates the growing pattern of community opposition to AI-driven hyperscale projects in California's rural-energy-economy counties.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Data_Center_3_%28UNC%29.jpg/1280px-Data_Center_3_%28UNC%29.jpg",
+        imageCredit: "Industrial data center facility (representative photo). By Ana Las Heras via Wikimedia Commons (CC BY-SA 4.0).",
         relatedCalreg: null
       },
       {
@@ -407,12 +435,14 @@
       {
         id: 85,
         title: "CAISO $6.7B 2025-26 Transmission Plan Approved: 38 Projects; Path 15 Congestion Forecast Up 13x by 2035",
-        url: "https://www.calregulatory.com/saturday-briefing-californias-load-growth-problems-are-showing-up-everywhere/",
+        url: "https://www.caiso.com/planning/transmission",
         date: "Jun 6, 2026",
-        source: "California Regulatory Intelligence",
+        source: "CAISO",
         author: null,
         category: "Transmission · CAISO",
         summary: "CAISO approved <strong>38 projects totaling $6.7 billion</strong> over the next decade. Reliability dominates at <strong>33 projects, $4.2B</strong>, led by the <strong>$1.424B Tesla-Trimble-Metcalf 230 kV</strong> corridor in PG&amp;E territory. Four policy projects total $2.4B, including the <strong>$1.685B Trout Canyon-Lugo 500 kV</strong> line. Serrano-Del Amo-Mesa 500 kV cancelled after cost re-estimate to <strong>$5B</strong> from $1.125B. <strong>Path 15</strong> congestion forecast moved from 244 hours in 2030 to <strong>3,256 hours</strong> in 2035.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Transmission_towers_at_sunset_in_East_Texas.jpg/1280px-Transmission_towers_at_sunset_in_East_Texas.jpg",
+        imageCredit: "High-voltage transmission corridor at sunset (representative photo). By Matthew T Rader via Wikimedia Commons (CC BY-SA 4.0).",
         relatedCalreg: "proc-caiso-tpp-2025-26"
       },
       {
@@ -520,10 +550,15 @@
       ? `<div class="cn-feat-related">Related CalReg: <a href="calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
       : '';
 
+    const featImgStr = feat.image
+      ? `<figure class="cn-feat-image"><img src="${feat.image}" alt="" loading="lazy">${feat.imageCredit ? `<figcaption>${feat.imageCredit}</figcaption>` : ''}</figure>`
+      : '';
+
     document.getElementById('cn-featured').innerHTML = `
       <div class="cn-feat-category">${feat.category}</div>
       <div class="cn-feat-headline"><a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.title}</a></div>
       <div class="cn-feat-byline">${bylineStr}</div>
+      ${featImgStr}
       <div class="cn-feat-summary">${feat.summary}</div>
       <a href="${feat.url}" target="_blank" rel="noopener noreferrer" class="cn-feat-readmore">Read full story &#8594;</a>
       ${relatedStr}`;
@@ -536,11 +571,15 @@
       const relStr = s.relatedCalreg
         ? `<div class="cn-story-related">Related CalReg: <a href="calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
         : '';
+      const imgStr = s.image
+        ? `<figure class="cn-story-image"><img src="${s.image}" alt="" loading="lazy">${s.imageCredit ? `<figcaption>${s.imageCredit}</figcaption>` : ''}</figure>`
+        : '';
       return `
         <div class="cn-story-item">
           <div class="cn-story-category">${s.category}</div>
           <div class="cn-story-title"><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a></div>
           <div class="cn-story-meta">${metaStr}</div>
+          ${imgStr}
           <div class="cn-story-summary">${s.summary}</div>
           <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="cn-story-readmore">Read full story &#8594;</a>
           ${relStr}
