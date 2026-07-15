@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of wildfire liability weighing on utility earnings">
+  <defs>
+    <pattern id="dot-bg-f" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="1.6" cy="1.6" r="0.9" fill="#1A2534" opacity="0.08"/>
+    </pattern>
+    <linearGradient id="fire-grad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#E3120B"/>
+      <stop offset="0.6" stop-color="#F5C947"/>
+      <stop offset="1" stop-color="#F5C947" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" fill="#F1EAD8"/>
+  <rect width="1200" height="360" fill="url(#dot-bg-f)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#E3120B"/>
+
+  <!-- Distant hills -->
+  <path d="M0 250 L200 210 L360 240 L520 200 L720 240 L900 215 L1100 245 L1200 220 L1200 320 L0 320 Z" fill="#4E7C7A" opacity="0.35"/>
+  <!-- Ground -->
+  <rect y="285" width="1200" height="75" fill="#1A2534" opacity="0.08"/>
+  <line x1="0" y1="285" x2="1200" y2="285" stroke="#1A2534" stroke-width="1.8"/>
+
+  <!-- Transmission tower silhouette (large, left) -->
+  <g stroke="#1A2534" stroke-width="3" fill="none" stroke-linejoin="miter" stroke-linecap="square" transform="translate(80 40)">
+    <!-- Main legs -->
+    <line x1="80" y1="40" x2="40" y2="245"/>
+    <line x1="80" y1="40" x2="120" y2="245"/>
+    <!-- Cross bracing -->
+    <line x1="65" y1="120" x2="95" y2="120"/>
+    <line x1="55" y1="170" x2="105" y2="170"/>
+    <line x1="45" y1="215" x2="115" y2="215"/>
+    <line x1="65" y1="120" x2="105" y2="170"/>
+    <line x1="95" y1="120" x2="55" y2="170"/>
+    <line x1="55" y1="170" x2="115" y2="215"/>
+    <line x1="105" y1="170" x2="45" y2="215"/>
+    <!-- Cross arms -->
+    <line x1="20" y1="80" x2="140" y2="80"/>
+    <line x1="20" y1="80" x2="80" y2="70"/>
+    <line x1="140" y1="80" x2="80" y2="70"/>
+    <line x1="10" y1="110" x2="150" y2="110"/>
+    <line x1="10" y1="110" x2="80" y2="98"/>
+    <line x1="150" y1="110" x2="80" y2="98"/>
+  </g>
+
+  <!-- Flames rising from base of tower (abstract Economist style) -->
+  <g transform="translate(80 240)">
+    <path d="M40 45 Q30 20 50 10 Q60 25 55 40 Q75 22 85 40 Q95 15 110 30 Q120 5 130 40 Q145 20 150 45 Q145 65 100 60 Q55 65 40 45 Z" fill="url(#fire-grad)" stroke="#E3120B" stroke-width="1.5"/>
+    <!-- Inner flame -->
+    <path d="M70 50 Q65 35 75 28 Q80 40 78 48 Q90 35 95 48 Q100 30 108 45 Q115 35 118 50 Q112 60 90 58 Q75 60 70 50 Z" fill="#F5C947" opacity="0.85"/>
+  </g>
+
+  <!-- Downward earnings arrow -->
+  <g transform="translate(500 70)">
+    <text x="0" y="30" fill="#1A2534" font-family="Georgia, serif" font-weight="700" font-size="17" letter-spacing="1">Q1 2026 EARNINGS PRESSURE</text>
+    <!-- Trend line dropping -->
+    <path d="M0 60 L60 75 L120 70 L180 100 L240 130 L300 175 L360 220" stroke="#E3120B" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
+    <path d="M0 60 L60 75 L120 70 L180 100 L240 130 L300 175 L360 220 L360 260 L0 260 Z" fill="#E3120B" opacity="0.10"/>
+    <!-- Arrow head -->
+    <polygon points="360,220 340,205 375,205" fill="#E3120B"/>
+    <!-- Data points -->
+    <g fill="#E3120B" stroke="#1A2534" stroke-width="1.5">
+      <circle cx="0" cy="60" r="4"/>
+      <circle cx="60" cy="75" r="4"/>
+      <circle cx="120" cy="70" r="4"/>
+      <circle cx="180" cy="100" r="4"/>
+      <circle cx="240" cy="130" r="4"/>
+      <circle cx="300" cy="175" r="4"/>
+    </g>
+    <!-- Axis labels -->
+    <g fill="#1A2534" font-family="Georgia, serif" font-size="10" opacity="0.7">
+      <text x="0" y="278">2021</text>
+      <text x="120" y="278">2023</text>
+      <text x="240" y="278">2025</text>
+      <text x="330" y="278">2026</text>
+    </g>
+  </g>
+
+  <!-- Weight / anchor symbol -->
+  <g transform="translate(970 130)">
+    <!-- Chain -->
+    <g stroke="#1A2534" stroke-width="3" fill="none">
+      <line x1="60" y1="0" x2="60" y2="55"/>
+      <circle cx="60" cy="10" r="6"/>
+      <circle cx="60" cy="25" r="6"/>
+      <circle cx="60" cy="40" r="6"/>
+    </g>
+    <!-- Weight -->
+    <path d="M20 60 L100 60 L118 165 L2 165 Z" fill="#1A2534"/>
+    <!-- Label on weight -->
+    <text x="60" y="115" text-anchor="middle" fill="#F1EAD8" font-family="Georgia, serif" font-weight="700" font-size="18">$13.6B</text>
+    <text x="60" y="140" text-anchor="middle" fill="#F5C947" font-family="Georgia, serif" font-style="italic" font-size="11">POST-CAT.</text>
+    <!-- Ring -->
+    <ellipse cx="60" cy="60" rx="26" ry="6" fill="#1A2534"/>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="600" y="335" text-anchor="middle" fill="#1A2534" font-family="Georgia, serif" font-style="italic" font-size="12" opacity="0.75">WILDFIRE COSTS &nbsp;·&nbsp; 14&ndash;19% OF AVERAGE RESIDENTIAL IOU BILL</text>
+</svg>

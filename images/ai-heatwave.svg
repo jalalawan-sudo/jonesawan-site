@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of AI data centers under heatwave stress">
+  <defs>
+    <pattern id="dot-bg-d" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="1.6" cy="1.6" r="0.9" fill="#1A2534" opacity="0.08"/>
+    </pattern>
+    <linearGradient id="heat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E3120B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F5C947" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" fill="#F1EAD8"/>
+  <rect width="1200" height="360" fill="url(#dot-bg-d)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#E3120B"/>
+
+  <!-- Blazing sun -->
+  <g transform="translate(220 120)">
+    <circle r="55" fill="#E3120B" opacity="0.95"/>
+    <circle r="40" fill="#F5C947"/>
+    <!-- Rays -->
+    <g stroke="#E3120B" stroke-width="4" stroke-linecap="round">
+      <line x1="0" y1="-75" x2="0" y2="-95"/>
+      <line x1="0" y1="75" x2="0" y2="95"/>
+      <line x1="-75" y1="0" x2="-95" y2="0"/>
+      <line x1="75" y1="0" x2="95" y2="0"/>
+      <line x1="-52" y1="-52" x2="-68" y2="-68"/>
+      <line x1="52" y1="-52" x2="68" y2="-68"/>
+      <line x1="-52" y1="52" x2="-68" y2="68"/>
+      <line x1="52" y1="52" x2="68" y2="68"/>
+    </g>
+    <!-- Thermometer symbol on sun -->
+    <g transform="translate(-10 -18)" fill="#1A2534">
+      <rect x="0" y="0" width="6" height="26" rx="3"/>
+      <circle cx="3" cy="30" r="7"/>
+      <circle cx="3" cy="30" r="4" fill="#E3120B"/>
+    </g>
+  </g>
+
+  <!-- Heat wave lines emanating -->
+  <g stroke="#E3120B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.55">
+    <path d="M340 90 Q360 100 380 90 T420 90 T460 90"/>
+    <path d="M340 130 Q360 140 380 130 T420 130 T460 130"/>
+    <path d="M340 170 Q360 180 380 170 T420 170 T460 170"/>
+  </g>
+
+  <!-- Server rack (data center) — right side -->
+  <g transform="translate(520 70)">
+    <!-- Heat overlay -->
+    <rect x="-20" y="-20" width="500" height="240" fill="url(#heat)"/>
+    <!-- Rack outer frame -->
+    <rect x="0" y="0" width="460" height="220" fill="#1A2534" stroke="#1A2534" stroke-width="3"/>
+    <!-- Server units -->
+    <g fill="#F1EAD8" stroke="#1A2534" stroke-width="1.5">
+      <!-- Row 1 -->
+      <rect x="15" y="15" width="200" height="42"/>
+      <rect x="245" y="15" width="200" height="42"/>
+      <!-- Row 2 -->
+      <rect x="15" y="70" width="200" height="42"/>
+      <rect x="245" y="70" width="200" height="42"/>
+      <!-- Row 3 -->
+      <rect x="15" y="125" width="200" height="42"/>
+      <rect x="245" y="125" width="200" height="42"/>
+      <!-- Row 4 -->
+      <rect x="15" y="180" width="200" height="26"/>
+      <rect x="245" y="180" width="200" height="26"/>
+    </g>
+    <!-- LED lights -->
+    <g>
+      <circle cx="30" cy="36" r="3" fill="#E3120B"/>
+      <circle cx="42" cy="36" r="3" fill="#F5C947"/>
+      <circle cx="54" cy="36" r="3" fill="#4E7C7A"/>
+      <circle cx="260" cy="36" r="3" fill="#E3120B"/>
+      <circle cx="272" cy="36" r="3" fill="#F5C947"/>
+      <circle cx="284" cy="36" r="3" fill="#4E7C7A"/>
+      <circle cx="30" cy="91" r="3" fill="#E3120B"/>
+      <circle cx="42" cy="91" r="3" fill="#E3120B"/>
+      <circle cx="54" cy="91" r="3" fill="#F5C947"/>
+      <circle cx="260" cy="91" r="3" fill="#E3120B"/>
+      <circle cx="272" cy="91" r="3" fill="#4E7C7A"/>
+      <circle cx="284" cy="91" r="3" fill="#4E7C7A"/>
+      <circle cx="30" cy="146" r="3" fill="#F5C947"/>
+      <circle cx="42" cy="146" r="3" fill="#E3120B"/>
+      <circle cx="54" cy="146" r="3" fill="#4E7C7A"/>
+      <circle cx="260" cy="146" r="3" fill="#4E7C7A"/>
+      <circle cx="272" cy="146" r="3" fill="#F5C947"/>
+      <circle cx="284" cy="146" r="3" fill="#4E7C7A"/>
+    </g>
+    <!-- Server slots / ventilation -->
+    <g stroke="#1A2534" stroke-width="0.6" opacity="0.35">
+      <line x1="80" y1="15" x2="80" y2="57"/>
+      <line x1="110" y1="15" x2="110" y2="57"/>
+      <line x1="140" y1="15" x2="140" y2="57"/>
+      <line x1="170" y1="15" x2="170" y2="57"/>
+      <line x1="200" y1="15" x2="200" y2="57"/>
+      <line x1="310" y1="15" x2="310" y2="57"/>
+      <line x1="340" y1="15" x2="340" y2="57"/>
+      <line x1="370" y1="15" x2="370" y2="57"/>
+      <line x1="400" y1="15" x2="400" y2="57"/>
+      <line x1="430" y1="15" x2="430" y2="57"/>
+    </g>
+    <!-- "AI" label overlay -->
+    <text x="230" y="145" text-anchor="middle" fill="#1A2534" font-family="Georgia, serif" font-size="40" font-weight="700" opacity="0.15">AI</text>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="600" y="335" text-anchor="middle" fill="#1A2534" font-family="Georgia, serif" font-style="italic" font-size="12" opacity="0.75">DATA-CENTER LOAD · 4% &rarr; 9% OF U.S. POWER BY 2030</text>
+</svg>

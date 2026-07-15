@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalNews — California Energy &amp; Regulatory News · Week of May 14 – May 29, 2026</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ── Recent Developments (CPUC/IOU decisions only) ── */
+    .rd-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media(max-width:640px) { .rd-grid { grid-template-columns: 1fr; } }
+    .rd-card {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .rd-type {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .rd-title {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--text-dark); line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .rd-desc {
+      font-size: 0.8rem; color: var(--text-mid);
+      line-height: 1.55; margin-bottom: 8px;
+    }
+    .rd-footer {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .rd-date { font-size: 0.72rem; color: var(--text-light); }
+    .rd-more {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--teal); white-space: nowrap;
+    }
+    .rd-more:hover { text-decoration: underline; }
+
+    /* ── Details dropdown ── */
+    .rd-details-wrap {
+      margin-top: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+    }
+    .rd-details-toggle {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.72rem; font-weight: 600; color: var(--text-light);
+      display: flex; align-items: center; gap: 5px; padding: 0;
+    }
+    .rd-details-toggle:hover { color: var(--teal); }
+    .rd-details-arr {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-style: normal;
+      font-size: 0.65rem;
+    }
+    .rd-details-body {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      background: var(--off-white);
+      border-radius: 6px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--teal);
+    }
+
+    /* ── CalNews layout ── */
+    .cn-wrap {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media(max-width: 768px) {
+      .cn-wrap { grid-template-columns: 1fr; }
+      .cn-sidebar { order: -1; }
+    }
+
+    /* ── Featured story ── */
+    .cn-featured {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+    }
+    .cn-feat-category {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .cn-feat-headline {
+      font-size: 1.45rem; font-weight: 800;
+      line-height: 1.25; color: var(--text-dark);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .cn-feat-headline a { color: inherit; }
+    .cn-feat-headline a:hover { color: var(--teal); }
+    .cn-feat-byline {
+      font-size: 0.75rem; color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .cn-feat-byline strong { color: var(--text-mid); }
+    .cn-feat-summary {
+      font-size: 0.94rem; color: var(--text-mid);
+      line-height: 1.72; margin-bottom: 14px;
+    }
+    .cn-feat-readmore {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--teal); display: inline-flex;
+      align-items: center; gap: 4px;
+    }
+    .cn-feat-readmore:hover { text-decoration: underline; }
+    .cn-feat-related {
+      margin-top: 12px;
+      font-size: 0.75rem; color: var(--text-light);
+      border-left: 3px solid var(--teal);
+      padding-left: 10px;
+    }
+    .cn-feat-related a { color: var(--teal); font-weight: 600; }
+
+    /* ── Secondary stories list ── */
+    .cn-section-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-bottom: 14px;
+    }
+    .cn-story-list {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .cn-story-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cn-story-category {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 4px;
+    }
+    .cn-story-title {
+      font-size: 1.05rem; font-weight: 700;
+      line-height: 1.3; margin-bottom: 4px;
+    }
+    .cn-story-title a { color: var(--text-dark); }
+    .cn-story-title a:hover { color: var(--teal); }
+    .cn-story-meta {
+      font-size: 0.72rem; color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .cn-story-summary {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.68; margin-bottom: 10px;
+    }
+    .cn-story-image {
+      margin: 4px 0 12px;
+    }
+    .cn-story-image img {
+      width: 100%; height: auto; max-height: 280px; object-fit: cover;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      display: block;
+    }
+    .cn-story-image figcaption {
+      font-size: 0.68rem; color: var(--text-light);
+      margin-top: 4px; line-height: 1.4; font-style: italic;
+    }
+    .cn-feat-image {
+      margin: 6px 0 16px;
+    }
+    .cn-feat-image img {
+      width: 100%; height: auto; max-height: 360px; object-fit: cover;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      display: block;
+    }
+    .cn-feat-image figcaption {
+      font-size: 0.7rem; color: var(--text-light);
+      margin-top: 5px; line-height: 1.4; font-style: italic;
+    }
+    .cn-story-readmore {
+      font-size: 0.78rem; font-weight: 700; color: var(--teal);
+    }
+    .cn-story-readmore:hover { text-decoration: underline; }
+    .cn-story-related {
+      margin-top: 8px; font-size: 0.72rem; color: var(--text-light);
+      border-left: 2px solid var(--teal); padding-left: 8px;
+    }
+    .cn-story-related a { color: var(--teal); font-weight: 600; }
+
+    /* ── Sidebar ── */
+    .cn-sidebar {
+      position: sticky; top: 80px;
+    }
+    .cn-sidebar-block {
+      margin-bottom: 28px;
+    }
+    .cn-sidebar-hdg {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 10px;
+      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .cn-sidebar-link {
+      display: block; font-size: 0.82rem;
+      color: var(--text-mid); padding: 5px 0;
+      border-bottom: 1px solid #f1f5f9;
+      transition: color 0.15s;
+    }
+    .cn-sidebar-link:hover { color: var(--teal); }
+    .cn-sidebar-link.active { color: var(--teal); font-weight: 600; }
+    .cn-sidebar-calreg {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--teal); padding: 9px 12px;
+      border: 1.5px solid var(--teal);
+      border-radius: var(--radius);
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+    .cn-sidebar-calreg:hover { background: var(--teal-light); }
+    .cn-sidebar-note {
+      font-size: 0.75rem; color: var(--text-light);
+      line-height: 1.6; padding: 12px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="archive-banner" style="background:#f1f5f9;border-bottom:2px solid #cbd5e1;padding:10px 0;text-align:center;font-size:0.82rem;color:#64748b;">
+    &#128194; Archived Issue &nbsp;&middot;&nbsp; <a href="../calnews.html" style="color:var(--teal);font-weight:600;">View Current Issue &rarr;</a>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="label">California Energy &amp; Regulatory News</div>
+      <h1>CalNews</h1>
+      <p>Week of May 14 – May 29, 2026 · Curated policy &amp; regulatory coverage</p>
+    </div>
+  </div>
+
+  <!-- ── RECENT DEVELOPMENTS — CPUC/IOU decisions only ────── -->
+  <section class="section-sm section-alt" style="border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="label">Hot Off The Press</div>
+      <h2 style="margin-bottom:6px;">Recent Developments at the CPUC</h2>
+      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions, rulemakings, and news</p>
+      <div class="rd-grid" id="recent-dev">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <hr style="border:none; border-top: 2.5px solid #1e293b; margin:0;">
+
+  <!-- ── MAIN NEWS ─────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="cn-wrap">
+
+        <!-- ── MAIN COLUMN ── -->
+        <main>
+          <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
+            Week of May 14 – May 29, 2026 &nbsp;·&nbsp; 5 stories &nbsp;·&nbsp; Updated May 29, 2026
+          </div>
+
+          <!-- Featured Story -->
+          <div class="cn-featured" id="cn-featured">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- More Stories -->
+          <div class="cn-section-label">Energy and Climate News Stories</div>
+          <div class="cn-story-list" id="cn-secondary">
+            <!-- populated by JS -->
+          </div>
+        </main>
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="cn-sidebar">
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Current Issue</div>
+            <a href="../calnews.html" class="cn-sidebar-link">Week of Jul 6 &ndash; Jul 12, 2026</a>
+            <a href="calnews-2026-07-05.html" class="cn-sidebar-link active">Week of Jun 29 &ndash; Jul 5, 2026</a>
+            <a href="archive/calnews-2026-05-13.html" class="cn-sidebar-link">Week of Apr 27 – May 13, 2026</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Archive</div>
+            <a href="archive/calnews-2026-04-13.html" class="cn-sidebar-link">Week of Apr 7 – 13, 2026</a>
+            <a href="archive/calnews-2026-04-10.html" class="cn-sidebar-link">Week of Apr 4 – 10, 2026</a>
+            <a href="archive/calnews-2026-04-03.html" class="cn-sidebar-link">Week of Mar 28 – Apr 3, 2026</a>
+            <a href="archive/calnews-2026-03-31.html" class="cn-sidebar-link">Week of Mar 23–31, 2026</a>
+            <a href="archive/calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
+            <a href="archive/calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
+            <a href="archive/calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
+            <a href="archive/calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
+            <a href="archive/calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-hdg">Docket Tracker</div>
+            <a href="../calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
+          </div>
+          <div class="cn-sidebar-block">
+            <div class="cn-sidebar-note">
+              Stories adapted from original reporting. All headlines link to source publications. Coverage spans CPUC proceedings, clean energy policy, and California utility regulation.
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script>
+
+    // ── RECENT: CPUC/CEC items ONLY ──
+    const RECENT = [
+      {
+        type: "Voting Meeting",
+        typeColor: "#0369a1",
+        title: "CPUC July 2 Voting Meeting: RA Reform PD, SB 1221 Pilot Framework, PG&amp;E $2.6B Capital-Structure Denial, SDG&amp;E Residential CBP Rejection",
+        desc: "The <strong>July 2, 2026 voting meeting</strong> at Fort Bragg Town Hall (Agenda 3583) is expected to adopt the <strong>Resource Adequacy Reform PD</strong> (R.25-10-003), the <strong>SB 1221 Pilot Framework</strong> (R.24-09-012), <strong>denial of PG&amp;E's $2.6B capital-structure waiver</strong> (A.24-08-004), rejection of SDG&amp;E's residential Capacity Bidding Program (Res. E-5444), the PG&amp;E Moraga-Oakland <strong>$276.8M</strong> transmission rebuild permit (A.24-11-005), Southwest Gas's <strong>$1.15B</strong> debt authorization (A.26-02-007), and the SDG&amp;E TIMP <strong>$6.99M</strong> settlement (A.25-02-012).",
+        date: "Jul 2, 2026 · Agenda 3583",
+        url: "https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings",
+        details: "RA Reform Track 1 PD (R.25-10-003) is the first major RA structural overhaul since 2019: adopts 2027-2029 LCRs (23,618 / 24,545 / 25,480 MW), the UCAP framework effective 2028, storage penalty structures, and ends paper capacity. SB 1221 Pilot PD establishes the application process for up to 30 statewide neighborhood decarbonization pilots across three deadlines (Dec 15, 2026; Dec 15, 2027; Jul 1, 2028), with the Application (not Advice Letter) approval path, 67% consent thresholds, BTM expense-only treatment, and project-level cost-effectiveness. The PG&amp;E capital-structure denial preserves the authorized debt-to-equity ratio. Moraga-Oakland X 115 kV rebuild addresses 2026 East Bay summer-peak thermal violations. Res. E-5444 residential CBP rejection cuts off a planned residential DR expansion channel."
+      },
+      {
+        type: "Major Filing",
+        typeColor: "#0369a1",
+        title: "SCE 2026 RAMP Protest Period Closes June 29; Portfolio Optimization Compliance With D.25-08-032 in Focus",
+        desc: "Protests on <em>SCE</em>'s 2026 Risk Assessment and Mitigation Phase application (<strong>A.26-05-018</strong>) closed <strong>June 29, 2026</strong>. Compliance with the <strong>D.25-08-032</strong> Four Optimized Enterprise Portfolios framework (85% / 90% / 95% / 100% of Baseline Cost Forecast) and the prescribed binary optimization model with budget constraint is the central intervenor scrutiny area.",
+        date: "Jun 29, 2026 · A.26-05-018",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2605018",
+        details: "The 2026 SCE RAMP is the first submission to test compliance with D.25-08-032's consolidated framework replacing the RMAR. Threshold compliance issues include: whether the optimization is a true constrained binary program or a greedy BCR-sort heuristic; whether the Baseline Cost Forecast comes from the current RAMP/GRC rather than the prior GRC (Conclusion of Law 12); whether mutually exclusive mitigations (CC, VM, CC+VM) are bounded against additive alternatives; whether Overall Residual Risk shows a longitudinal trajectory across 2018, 2021, and 2026 cycles; whether RRU datasets have cell-level formulas; whether 2026-2028 tranche-level spending is disclosed at all chapters; and whether WIM-Climate documents GCM ensemble, SSP pathway, and downscaling method at the circuit-segment level."
+      },
+      {
+        type: "Grid Milestone",
+        typeColor: "#00b4a6",
+        title: "CPUC Marks First IRP-Procured LDES Facility: Tumbleweed 8-Hour Battery (Kern County) Online",
+        desc: "The CPUC announced completion of the <strong>Tumbleweed 8-hour battery</strong> in Rosamond, Kern County &mdash; the <strong>first Long-Duration Energy Storage facility</strong> procured under the Integrated Resource Planning process. Contributes to the <strong>1,000 MW LDES procurement mandate</strong> adopted in 2023.",
+        date: "Jun 25, 2026 · IRP · LDES",
+        url: "https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-celebrates-first-long-duration-energy-storage-project-developed-under-irp-process",
+        details: "Under the RA Reform PD (R.25-10-003) up for adoption Jul 2, LDES resources capable of discharging at maximum capacity for at least 8 continuous hours receive a Forward Charge Period multiplier ranging from <strong>2x (8-hour) to 8x (72-hour+)</strong> starting 2027. Tumbleweed's 8-hour duration sits at the floor of the LDES definition. Siting near the Tehachapi renewables hub places the project in a high solar and wind curtailment zone where 8+ hour storage most efficiently arbitrages between mid-day surplus and evening peak demand. Follows the December 2024 completion of the Westside Canal Phase 2a 119 MW / 4-hour battery approved via SDG&amp;E's Res. E-5467 acquisition."
+      },
+      {
+        type: "Application Filed",
+        typeColor: "#0369a1",
+        title: "PG&amp;E Files $276.8M Moraga-Oakland X 115 kV Transmission Rebuild for Jul 2 PTC Approval",
+        desc: "The <strong>~5-mile Moraga-Oakland X 115 kV</strong> transmission rebuild connecting Orinda to Oakland is on the Jul 2 voting agenda (A.24-11-005, Item 26) for Permit to Construct approval at approximately <strong>$276.8 million</strong>. The rebuild addresses <strong>2026 summer-peak thermal violations</strong> driven by East Bay load growth (residential electrification + commercial data-center anchor tenants). Construction begins 2027; in-service target 2029.",
+        date: "Jul 2, 2026 (agenda) · A.24-11-005",
+        url: "https://ia.cpuc.ca.gov/environment/info/aspen/moraga-oakland/moraga-oakland.htm",
+        details: "The Moraga-Oakland X 115 kV corridor connects the Orinda substation to the Oakland X substation. Load flow studies identified summer-peak thermal violations on the existing conductor as of 2026. The rebuild replaces existing conductor and structures with higher-capacity conductor and, where feasible, retrofits existing rights-of-way to avoid new corridor acquisition. The $276.8M cost is embedded in PG&amp;E's Test Year 2027 GRC (A.25-05-009) transmission capital forecast. Adoption at July 2 clears the CEQA and PTC gate; construction 2027 and in-service 2029 align the project with East Bay Rule 30 large-load studies now in progress."
+      },
+      {
+        type: "Application Filed",
+        typeColor: "#0369a1",
+        title: "Southwest Gas $1.15B Debt Authorization Expected at July 2 Vote",
+        desc: "The CPUC is expected to authorize <em>Southwest Gas</em> to issue up to <strong>$1,150,000,000</strong> in new debt, refinance short-term securities, and enter interest rate risk management contracts at the <strong>July 2 voting meeting</strong> (A.26-02-007, Item 7). Standard financing authorization ahead of an active capital deployment window.",
+        date: "Jul 2, 2026 (agenda) · A.26-02-007",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2602007",
+        details: "The $1.15B debt authorization covers up to five years of financing needs: new debt for capital investment, refinancing of maturing short-term paper, and interest rate hedging instruments including swaps and caps. Southwest Gas has been active in Northern California and Nevada rate cases; the financing authority is the enabling instrument for its 2027-2030 rate-base growth. Commission approval is routine at this scale absent evidence of adverse financial condition or misuse of prior authorizations."
+      },
+      {
+        type: "Resolution",
+        typeColor: "#00b4a6",
+        title: "SDG&amp;E Residential Capacity Bidding Program to Be REJECTED at July 2 Vote",
+        desc: "Draft Resolution <strong>E-5444</strong> is expected to be adopted at the <strong>July 2 voting meeting</strong> (Item 19), rejecting <em>SDG&amp;E</em>'s proposal to create a residential Capacity Bidding Program and associated budget transfers. The rejection cuts off a planned residential Demand Response expansion channel.",
+        date: "Jul 2, 2026 (agenda) · Res. E-5444",
+        url: "https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings",
+        details: "Res. E-5444 is one of a four-part Demand Response package first previewed at the June 3, 2026 CPUC voting meeting agenda. The other three DR draft resolutions (E-5456 SCE CBP-Elect direct enrollment, E-5450 PG&amp;E ART partial approval, E-5453 Joint PG&amp;E+SCE AutoDR update) either advanced with modifications or received approval. The SDG&amp;E residential CBP rejection is the tightest guardrail: the Commission is explicit that residential DR expansion or DER-based supply-side programs will not be approved absent full documentation matching supply-side resource requirements."
+      }
+    ];
+
+    const STORIES = [
+      {
+        id: 101,
+        title: "Newsom's Parting Gift: $352B Budget Delays Deep Climate Cuts to 2027; GGRF Taps for CAL FIRE and ZEV",
+        url: "https://calmatters.org/politics/2026/06/california-gavin-newsom-final-budget-deal/",
+        date: "Jun 29, 2026",
+        source: "CalMatters",
+        author: "Yue Stella Yu",
+        category: "Climate Policy · Budget",
+        summary: "The three-party <strong>$352B 2026-27 California budget</strong> agreement allocates <strong>$1.25B from the Greenhouse Gas Reduction Fund to CAL FIRE</strong> and <strong>$115M</strong> from the climate fund toward EV incentives (part of a $356M ZEV package). Full GGRF spend plan is punted to summer negotiations; broader climate-program funding still open.",
+        relatedCalreg: null
+      },
+      {
+        id: 100,
+        title: "Duke Energy Surrenders Carolina Long Bay Offshore Wind Lease for $129M Partial Reimbursement",
+        url: "https://www.utilitydive.com/news/duke-energy-offshore-wind-lease-for-trump-interior/824095/",
+        date: "Jun 30, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "Litigation · Offshore Wind",
+        summary: "Duke surrendered its <strong>1.6 GW OCS-A 0546 Carolina Long Bay</strong> lease for <strong>$129M</strong> (vs. $155M paid in 2022), the ninth Interior buyout totaling <strong>$2.6B+</strong> across nine lease areas. Eight states including California have filed suit opposing the buyback strategy, tying directly to CA's own offshore wind litigation (Bonta / CEC Notice of Intent).",
+        relatedCalreg: "proc-ca-offshore-wind-suit"
+      },
+      {
+        id: 99,
+        title: "PJM Opposes FERC Waiver for $2B Chestnut Run Gas Plant Fast-Track Interconnection",
+        url: "https://www.utilitydive.com/news/pjm-gas-fired-chestnut-hill-interconnection-ferc/823958/",
+        date: "Jun 30, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "FERC · Interconnection",
+        summary: "Advanced Power Services sought a FERC waiver to trim its <strong>$2B, 1.3 GW Chestnut Run gas project</strong> by 55 MW (to 1.245 GW) citing GE Vernova turbine backlogs. PJM protested, arguing the exception would advantage the developer over others meeting the June 1, 2032 reliability backstop deadline. Precedent-setter on data-center-era interconnection speed relevant to CAISO queue reform.",
+        relatedCalreg: null
+      },
+      {
+        id: 98,
+        title: "Sen. King Urges FERC to Reject $67B NextEra-Dominion Merger, Citing $20M NECEC Campaign and $150M Florida Settlement",
+        url: "https://www.utilitydive.com/news/senator-king-ferc-nextera-dominion-merger-necec/824073/",
+        date: "Jun 30, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "FERC · Utility Consolidation",
+        summary: "Sen. Angus King (I-Maine) asked FERC to block the <strong>$67B NextEra-Dominion tie-up</strong>, citing NextEra's <strong>$20M campaign</strong> against the 1.2 GW New England Clean Energy Connect line and a <strong>$150M Florida political-misconduct settlement</strong> as evidence of anticompetitive conduct. Major FERC merger review with national utility-consolidation implications.",
+        relatedCalreg: null
+      },
+      {
+        id: 97,
+        title: "CARB Delays SB 253 Climate Disclosure Reporting Deadline by 3 Months to November 10",
+        url: "https://www.utilitydive.com/news/california-delays-emissions-reporting-deadline-by-3-months/823988/",
+        date: "Jun 30, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "Climate Disclosure · CARB",
+        summary: "CARB pushed the <strong>SB 253 Scope 1/2 reporting compliance deadline</strong> from August 10 to <strong>November 10, 2026</strong> for companies with over <strong>$1B</strong> in revenue, and will propose \"limited changes\" during a 15-day public comment period. Direct California climate-disclosure regulatory action affecting IOUs and large loads.",
+        relatedCalreg: null
+      },
+      {
+        id: 96,
+        title: "ICF: 445 GW of New Capacity by 2030 as U.S. Demand Grows 21%; Solar and Storage Dominate",
+        url: "https://www.utilitydive.com/news/solar-storage-demand-growth-data-centers-icf/823866/",
+        date: "Jun 26, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "Grid · Capacity Buildout",
+        summary: "ICF projects <strong>445 GW nameplate</strong> (177 GW solar, 120 GW storage) online by 2030, contributing <strong>191 GW toward peak</strong>. U.S. electricity demand rises <strong>21% by 2030</strong> and <strong>39% by 2035</strong>, with only 26 GW of excess capacity and PJM/ERCOT constrained beyond 2027. Frames CAISO's data-center-driven procurement urgency.",
+        relatedCalreg: null
+      },
+      {
+        id: 95,
+        title: "FERC Order 2023 Interconnection Reform: CAISO and SPP Show Promising Progress; MISO Trails",
+        url: "https://www.utilitydive.com/news/generator-interconnection-reform-ferc-spp-miso-pjm/823613/",
+        date: "Jun 24, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "FERC · Interconnection Reform",
+        summary: "Advanced Energy United's progress report finds U.S. RTOs have made meaningful interconnection reform progress under <strong>FERC Order 2023</strong>, though processing speeds have not yet improved. <strong>SPP and CAISO</strong> show \"promising improvements\"; MISO trails. The report warns fast-track policies may favor utility-affiliated and fossil resources, with implications for CAISO's pending generator interconnection queue reforms.",
+        image: "../images/transmission.svg",
+        imageCredit: "High-voltage transmission corridor (illustrative).",
+        relatedCalreg: null
+      },
+      {
+        id: 94,
+        title: "California to Sue Trump Administration Over $2.6B Offshore Wind Buyouts; Morro Bay Lease Targeted",
+        url: "https://www.utilitydive.com/news/california-file-suit-over-trump-administrations-offshore-wind-buybacks/823790/",
+        date: "Jun 25, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "Litigation · Offshore Wind",
+        summary: "AG Rob Bonta announced suit against the U.S. Interior Department over <strong>$2.5 billion</strong> in offshore wind lease buyouts spanning eight areas, including Golden State Wind's <strong>2 GW</strong> Morro Bay lease (OCS-P 0564) and Invenergy's <strong>1.5 GW</strong> Morro Bay lease (OCS-P 0565). California has invested more than <strong>$100 million</strong> in offshore wind port and transmission readiness; suit cites the Outer Continental Shelf Lands Act.",
+        relatedCalreg: null
+      },
+      {
+        id: 89,
+        title: "TVA Considers Up To 26 GW of New Gas-Fired Generation in 2026 IRP",
+        url: "https://www.utilitydive.com/news/tva-proposes-7-to-26-gw-natural-gas-2026-irp/823520/",
+        date: "Jun 23, 2026",
+        source: "Utility Dive",
+        author: null,
+        category: "Data Centers · Generation Build",
+        summary: "Tennessee Valley Authority's draft Integrated Resource Plan considers building <strong>7 to 26 GW of new gas-fired generation</strong> to meet load growth from data centers and electrification. Load growth in the TVA region is <strong>already outpacing the reference case forecast</strong> in the draft IRP, signaling how rapidly large-load demand can break planning assumptions even at federal-utility scale.",
+        image: "../images/gasplant.svg",
+        imageCredit: "Natural gas combined-cycle power plant (illustrative).",
+        relatedCalreg: null
+      },
+      {
+        id: 87,
+        title: "Imperial County Approved a Massive Data Center &mdash; Then Changed Its Mind",
+        url: "https://calmatters.org/environment/2026/06/imperial-county-data-center/",
+        date: "Jun 23, 2026",
+        source: "CalMatters",
+        author: "Deborah Sullivan Brennan",
+        category: "Data Centers · Local Opposition",
+        summary: "A <strong>950,000-square-foot</strong> data center proposed next to the Victoria Ranch housing community in Imperial, CA became a lightning rod, prompting local leaders to challenge a project they had previously approved. If built, it would be the <strong>largest data center in the state</strong>. Illustrates the growing pattern of community opposition to AI-driven hyperscale projects in California's rural-energy-economy counties.",
+        image: "../images/datacenter.svg",
+        imageCredit: "Industrial data center facility (illustrative).",
+        relatedCalreg: null
+      },
+    ];
+
+    // ── Render Recent Developments (6 visible + load more) ─────
+    const rdEl = document.getElementById('recent-dev');
+    const _rdCard = r => `
+      <div class="rd-card">
+        <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
+        <div class="rd-title">${r.title}</div>
+        <div class="rd-desc">${r.desc}</div>
+        <div class="rd-footer">
+          <span class="rd-date">${r.date}</span>
+          <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="rd-more">Read More &#8594;</a>
+        </div>
+        ${r.details ? `
+        <div class="rd-details-wrap">
+          <button class="rd-details-toggle" onclick="(function(btn){var b=btn.nextElementSibling;var a=btn.querySelector('.rd-details-arr');if(b.style.display==='block'){b.style.display='none';a.style.transform='rotate(0deg)';}else{b.style.display='block';a.style.transform='rotate(90deg)';};})(this)">
+            <span class="rd-details-arr">&#9658;</span> Analyst Notes
+          </button>
+          <div class="rd-details-body">${r.details}</div>
+        </div>` : ''}
+      </div>`;
+
+    RECENT.slice(0, 6).forEach(r => { rdEl.innerHTML += _rdCard(r); });
+
+    if (RECENT.length > 6) {
+      const hiddenRecent = RECENT.slice(6);
+      const nr = hiddenRecent.length;
+      rdEl.insertAdjacentHTML('afterend', `
+        <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:16px;">${hiddenRecent.map(_rdCard).join('')}</div>
+        <div id="rd-show-btn" style="padding:14px 0 2px;">
+          <button onclick="document.getElementById('rd-more-grid').style.display='grid';this.parentElement.style.display='none';"
+            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
+            ${nr} More Decision${nr > 1 ? 's' : ''} &#8594;
+          </button>
+        </div>`);
+    }
+
+    // ── Render Featured + Secondary Stories ───────────────────
+    const featIdx = Math.floor(Math.random() * STORIES.length);
+    const feat = STORIES[featIdx];
+    const rest = STORIES.filter((_, i) => i !== featIdx);
+
+    const bylineStr = feat.author
+      ? `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a> (Author: ${feat.author})`
+      : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a>`;
+
+    const relatedStr = feat.relatedCalreg
+      ? `<div class="cn-feat-related">Related CalReg: <a href="../calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
+      : '';
+
+    const featImgStr = feat.image
+      ? `<figure class="cn-feat-image"><img src="${feat.image}" alt="" loading="lazy">${feat.imageCredit ? `<figcaption>${feat.imageCredit}</figcaption>` : ''}</figure>`
+      : '';
+
+    document.getElementById('cn-featured').innerHTML = `
+      <div class="cn-feat-category">${feat.category}</div>
+      <div class="cn-feat-headline"><a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.title}</a></div>
+      <div class="cn-feat-byline">${bylineStr}</div>
+      ${featImgStr}
+      <div class="cn-feat-summary">${feat.summary}</div>
+      <a href="${feat.url}" target="_blank" rel="noopener noreferrer" class="cn-feat-readmore">Read full story &#8594;</a>
+      ${relatedStr}`;
+
+    const secEl = document.getElementById('cn-secondary');
+    const _card = s => {
+      const metaStr = s.author
+        ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a> (Author: ${s.author})`
+        : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a>`;
+      const relStr = s.relatedCalreg
+        ? `<div class="cn-story-related">Related CalReg: <a href="../calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
+        : '';
+      const imgStr = s.image
+        ? `<figure class="cn-story-image"><img src="${s.image}" alt="" loading="lazy">${s.imageCredit ? `<figcaption>${s.imageCredit}</figcaption>` : ''}</figure>`
+        : '';
+      return `
+        <div class="cn-story-item">
+          <div class="cn-story-category">${s.category}</div>
+          <div class="cn-story-title"><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a></div>
+          <div class="cn-story-meta">${metaStr}</div>
+          ${imgStr}
+          <div class="cn-story-summary">${s.summary}</div>
+          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="cn-story-readmore">Read full story &#8594;</a>
+          ${relStr}
+        </div>`;
+    };
+    rest.slice(0, 3).forEach(s => { secEl.innerHTML += _card(s); });
+    if (rest.length > 3) {
+      const n = rest.length - 3;
+      secEl.innerHTML += `
+        <div id="cn-more-stories" style="display:none;">${rest.slice(3).map(_card).join('')}</div>
+        <div id="cn-show-more-wrap" style="padding:20px 0 8px; border-top:1px solid var(--border); margin-top:8px;">
+          <button onclick="document.getElementById('cn-more-stories').style.display='block';this.parentElement.style.display='none';"
+            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
+            ${n} More ${n === 1 ? 'Story' : 'Stories'} &#8594;
+          </button>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

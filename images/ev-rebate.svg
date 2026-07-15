@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of an EV point-of-sale rebate">
+  <defs>
+    <pattern id="dot-bg-e" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="1.6" cy="1.6" r="0.9" fill="#1A2534" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="360" fill="#F1EAD8"/>
+  <rect width="1200" height="360" fill="url(#dot-bg-e)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#E3120B"/>
+
+  <!-- Road baseline -->
+  <line x1="0" y1="285" x2="1200" y2="285" stroke="#1A2534" stroke-width="1.8"/>
+  <!-- Dashed road markings -->
+  <g stroke="#1A2534" stroke-width="2" opacity="0.35">
+    <line x1="20" y1="310" x2="50" y2="310"/>
+    <line x1="80" y1="310" x2="110" y2="310"/>
+    <line x1="140" y1="310" x2="170" y2="310"/>
+    <line x1="200" y1="310" x2="230" y2="310"/>
+    <line x1="260" y1="310" x2="290" y2="310"/>
+    <line x1="320" y1="310" x2="350" y2="310"/>
+    <line x1="380" y1="310" x2="410" y2="310"/>
+    <line x1="440" y1="310" x2="470" y2="310"/>
+    <line x1="500" y1="310" x2="530" y2="310"/>
+    <line x1="560" y1="310" x2="590" y2="310"/>
+    <line x1="620" y1="310" x2="650" y2="310"/>
+  </g>
+
+  <!-- EV silhouette (side view, Economist geometric) -->
+  <g transform="translate(120 130)">
+    <!-- Car body -->
+    <path d="M20 100 L60 100 L90 50 L280 50 L330 90 L400 90 L410 100 L410 150 L20 150 Z" fill="#4E7C7A" stroke="#1A2534" stroke-width="2.5" stroke-linejoin="miter"/>
+    <!-- Windshield -->
+    <path d="M100 55 L145 55 L145 90 L82 90 Z" fill="#F5C947" opacity="0.9" stroke="#1A2534" stroke-width="1.5"/>
+    <!-- Rear window -->
+    <path d="M150 55 L275 55 L305 90 L150 90 Z" fill="#F5C947" opacity="0.9" stroke="#1A2534" stroke-width="1.5"/>
+    <!-- Wheels -->
+    <circle cx="90" cy="150" r="32" fill="#1A2534"/>
+    <circle cx="90" cy="150" r="16" fill="#F1EAD8"/>
+    <circle cx="90" cy="150" r="6" fill="#1A2534"/>
+    <circle cx="340" cy="150" r="32" fill="#1A2534"/>
+    <circle cx="340" cy="150" r="16" fill="#F1EAD8"/>
+    <circle cx="340" cy="150" r="6" fill="#1A2534"/>
+    <!-- Charge port with lightning bolt -->
+    <g transform="translate(360 100)">
+      <rect x="0" y="0" width="24" height="24" fill="#1A2534"/>
+      <path d="M12 4 L6 14 L11 14 L9 20 L18 8 L13 8 L15 4 Z" fill="#F5C947"/>
+    </g>
+    <!-- Headlight -->
+    <circle cx="405" cy="120" r="6" fill="#F5C947"/>
+  </g>
+
+  <!-- Price tag on the car with rebate -->
+  <g transform="translate(700 100)">
+    <!-- Tag shape -->
+    <path d="M0 0 L280 0 L340 60 L280 120 L0 120 Z" fill="#E3120B" stroke="#1A2534" stroke-width="2.5" stroke-linejoin="miter"/>
+    <!-- Hole -->
+    <circle cx="280" cy="60" r="10" fill="#F1EAD8" stroke="#1A2534" stroke-width="2"/>
+    <!-- Dollar amount -->
+    <text x="140" y="55" text-anchor="middle" fill="#F1EAD8" font-family="Georgia, serif" font-size="42" font-weight="700">$3,500</text>
+    <text x="140" y="88" text-anchor="middle" fill="#F1EAD8" font-family="Georgia, serif" font-style="italic" font-size="14">INSTANT REBATE</text>
+  </g>
+
+  <!-- Small "SB 168 · MyFirstEV" mark -->
+  <text x="600" y="335" text-anchor="middle" fill="#1A2534" font-family="Georgia, serif" font-style="italic" font-size="12" opacity="0.75">SB 168 · MyFirstEV &nbsp;·&nbsp; POINT-OF-SALE REBATE</text>
+</svg>
