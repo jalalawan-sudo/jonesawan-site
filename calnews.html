@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews — California Energy &amp; Regulatory News · Week of Jul 6 – Jul 12, 2026</title>
+  <title>CalNews — California Energy &amp; Regulatory News · Week of Jul 20 – Jul 26, 2026</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -247,7 +247,7 @@
     <div class="container">
       <div class="label">California Energy &amp; Regulatory News</div>
       <h1>CalNews</h1>
-      <p>Week of Jul 6 – Jul 12, 2026 · Curated policy &amp; regulatory coverage</p>
+      <p>Week of Jul 20 – Jul 26, 2026 · Curated policy &amp; regulatory coverage</p>
     </div>
   </div>
 
@@ -273,7 +273,7 @@
         <!-- ── MAIN COLUMN ── -->
         <main>
           <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Jul 6 – Jul 12, 2026 &nbsp;·&nbsp; 10 stories &nbsp;·&nbsp; Updated Jul 15, 2026
+            Week of Jul 20 – Jul 26, 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Updated Jul 28, 2026
           </div>
 
           <!-- Featured Story -->
@@ -292,7 +292,8 @@
         <aside class="cn-sidebar">
           <div class="cn-sidebar-block">
             <div class="cn-sidebar-hdg">Current Issue</div>
-            <a href="calnews.html" class="cn-sidebar-link active">Week of Jul 6 – Jul 12, 2026</a>
+            <a href="calnews.html" class="cn-sidebar-link active">Week of Jul 20 – Jul 26, 2026</a>
+            <a href="archive/calnews-2026-07-12.html" class="cn-sidebar-link">Week of Jul 6 – Jul 12, 2026</a>
             <a href="archive/calnews-2026-07-05.html" class="cn-sidebar-link">Week of Jun 29 – Jul 5, 2026</a>
             <a href="archive/calnews-2026-05-13.html" class="cn-sidebar-link">Week of Apr 27 – May 13, 2026</a>
           </div>
@@ -329,169 +330,151 @@
     // ── RECENT: CPUC/CEC items ONLY ──
     const RECENT = [
       {
+        type: "Resolution",
+        typeColor: "#00b4a6",
+        title: "Res. E-5468 Adopted: CPUC Lowers the Extreme-Heat Disconnection Trigger to 90&deg;F Across PG&amp;E, SCE, SDG&amp;E, and SoCalGas",
+        desc: "The July 16 resolution approves, with modifications, Tier-3 advice letters from the four large IOUs implementing <strong>D.25-06-012</strong>. It replaces the prior <strong>100&deg;F</strong> heat trigger for residential disconnections (from D.20-06-003) with a <strong>CalHeatScore Level 2</strong> trigger and an interim <strong>90&deg;F</strong> fallback, and lets the utilities record incremental costs in their Disconnections Memorandum Accounts.",
+        date: "Jul 16, 2026 &middot; Res. E-5468",
+        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M610/K649/610649527.PDF",
+        details: "The four advice letters (SCE 5707-E, PG&amp;E 7783-E, SDG&amp;E 4770-E, SoCalGas 6570-G) were all filed December 17, 2025 under Ordering Paragraph 4 of D.25-06-012. The prior 100&deg;F threshold traces to D.20-06-003. No fixed dollar amount is approved; the resolution authorizes recording &ldquo;minimal&rdquo; incremental costs to the Disconnections Memorandum Accounts and requires PG&amp;E, SCE, and SDG&amp;E to file annual Tier-1 arrearage-impact reports for three years. Item 18 on the July 16 agenda (Agenda ID 24329)."
+      },
+      {
         type: "Proposed Decision",
         typeColor: "#0369a1",
-        title: "PG&amp;E Limited Capital Structure Adjustment: $2.6B Denial Held to July 16 Voting Meeting",
-        desc: "The proposed decision denies <em>PG&amp;E</em>'s request to exclude approximately <strong>$2.6 billion</strong> in Dixie Fire, Kincade Fire, and forgivable DWR loan expenses from its debt-to-equity ratio calculation. Item was held from the July 2 voting meeting to the <strong>July 16, 2026</strong> voting meeting for final action.",
-        date: "Held to Jul 16, 2026 · A.24-08-004",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:A2408004",
-        details: "The PD rejects PG&amp;E's request on three separate grounds: the wildfire liabilities amount to only <strong>0.6% of equity</strong>, well below the rule's 1% adverse-financial-event threshold; the PD refuses to aggregate Kincade and Dixie (unrelated events years apart) to manufacture a qualifying reduction; and the DWR loan fails independently because a forgivable loan is not an adverse financial event. PG&amp;E's 2020 waiver covered $8.9 billion in wildfire costs, an order of magnitude larger; SCE's approved request represented approximately 10% of equity. Preserves the authorized debt-to-equity ratio for downstream Cost of Capital and customer rate calculations."
+        title: "PG&amp;E Hinkley S-238 Compressor CPCN: Proposed Decision Would Grant Withdrawal of a $93.5M Project Already Under Construction",
+        desc: "A proposed decision by ALJ Zhen Zhang would grant <em>PG&amp;E</em>'s motion to withdraw its Certificate of Public Convenience and Necessity application for the <strong>$93.5 million</strong> Hinkley Station S-238 compressor-replacement project. PG&amp;E began the work in January 2026 under a General Order 177 emergency exemption, then moved to withdraw the CPCN in February. Earliest Commission action: <strong>August 13, 2026</strong>.",
+        date: "Proposed Jul 8, 2026 &middot; A.25-04-004",
+        url: "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M610/K353/610353817.PDF",
+        details: "PG&amp;E commenced the project January 20, 2026 under the GO 177 Section IV.B.c emergency exemption, completed a Final Initial Study / Mitigated Negative Declaration in January 2026, then filed to withdraw the application February 4, 2026. The proposed decision would close the proceeding. Agenda ID 24368; Assigned Commissioner Matthew Baker. The item is not final and is set no earlier than the August 13, 2026 voting meeting."
       },
       {
         type: "Rulemaking",
         typeColor: "#0369a1",
-        title: "R.24-09-012 SB 1221 Neighborhood Decarbonization Pilot Application Process Adopted",
-        desc: "The July 2, 2026 CPUC decision establishes the application process for up to <strong>30 statewide neighborhood decarbonization pilots</strong> that gas corporations (PG&amp;E, SoCalGas, SDG&amp;E, Southwest Gas) may submit across three deadlines (<strong>Dec 15, 2026; Dec 15, 2027; Jul 1, 2028</strong>). Adopts the Application (not Advice Letter) approach with 67% pre-filing and post-approval consent thresholds, BTM expense-only treatment, and project-level cost-effectiveness.",
-        date: "Jul 2, 2026 · R.24-09-012",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2409012",
-        details: "Slot allocation is primarily between PG&amp;E and SoCalGas/SDG&amp;E by 2024 gas demand (7 each per round for the first two rounds), with one slot reserved for Southwest Gas and one for smaller CPUC-regulated gas corporations. Each application must demonstrate via NPV analysis (using the applicant's WACC as the discount rate) that avoided gas infrastructure costs exceed the zero-emission alternative cost. Behind-the-meter costs must be expensed rather than capitalized, meaning utilities cannot earn their authorized rate of return on BTM investments and may propose amortization periods of up to 10 years. Data collection, reporting, evaluation, and shareholder incentive mechanics are all deferred to Track 4."
+        title: "IRP Net Cost of New Entry (Net CONE) Procurement-Penalty Mechanism: CPUC Staff Workshop Held July 23",
+        desc: "Energy Division staff held a <strong>July 23</strong> workshop in the electric Integrated Resource Planning oversight rulemaking on how to apply the <strong>Net Cost of New Entry (Net CONE)</strong> procurement-penalty mechanism, covering good-faith-effort standards, online-date criteria, capacity-factor calculations, and citations. Net CONE is benchmarked to the cost of new battery storage via the Avoided Cost Calculator.",
+        date: "Jul 23, 2026 &middot; R.25-06-019",
+        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2506019",
+        details: "The Order Instituting Rulemaking (filed June 26, 2025) continues CPUC oversight of electric IRP and procurement processes. Assigned Commissioner John Reynolds; ALJs Colin Rizzo and Julie Fitch. No decision has issued on the penalty mechanism; the July 23 workshop develops the record for a future proposed decision."
       },
       {
-        type: "Rulemaking",
-        typeColor: "#0369a1",
-        title: "R.25-10-003 Resource Adequacy Reform Adopted: UCAP Framework for 2028, 2027-2029 LCRs",
-        desc: "The July 2 adopted decision is the first major Resource Adequacy structural overhaul since 2019. Adopts 2027-2029 Local Capacity Requirements (<strong>23,618 / 24,545 / 25,480 MW</strong>), 2027 Flexible Capacity Requirements, the <strong>Unforced Capacity (UCAP) framework</strong> effective 2028, storage penalty structures, and formally ends paper capacity.",
-        date: "Jul 2, 2026 · R.25-10-003",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2510003",
-        details: "Storage operators face the most exposure from the PD's penalty structure (charging-sufficiency shortfalls convert to a flat 24-hour MW adder, with the largest hourly deficiency setting the penalty) and from the UCAP derating that will move 2028 RA accreditation off nameplate capacity. LDES developers receive a formal RA accreditation pathway via the Forward Charge Period multiplier (<strong>2x for 8-hour resources, scaling to 8x for 72-hour-plus</strong>). Six Track 2 items remain deferred: hybrid resource methodology, Must-Offer Obligation basis, EFORd for the energy component of storage, fifth-hour foldback, Flexible RA interaction, and Slice-of-Day template integration."
+        type: "CEC",
+        typeColor: "#00b4a6",
+        title: "CEC 2026 IEPR: Geothermal Proceeding Weighs State Actions to Expand In-State Development",
+        desc: "The California Energy Commission's <strong>2026 Integrated Energy Policy Report</strong> update opened a dedicated geothermal docket assessing barriers and potential state actions to expand in-state geothermal development. Two Commissioner workshops were held June 19 and July 9; written comments were due <strong>July 23, 2026</strong>.",
+        date: "Comments Jul 23, 2026 &middot; CEC 26-IEPR-04",
+        url: "https://efiling.energy.ca.gov/Lists/DocketLog.aspx?docketnumber=26-IEPR-04",
+        details: "Chair David Hochschild is the lead commissioner and Commissioner Noem&iacute; Gallardo the associate member. More than 15 comment letters were filed July 22-27. The geothermal assessment feeds the broader 2026 IEPR Update on reliability, affordability, and clean-firm resources."
       },
       {
-        type: "Enforcement",
-        typeColor: "#b45309",
-        title: "PG&amp;E $22M Mosquito Fire Settlement Proposed by CPUC Safety and Enforcement Division",
-        desc: "The CPUC's <strong>Safety and Enforcement Division</strong> (SED) proposed a <strong>$22 million</strong> settlement with <em>PG&amp;E</em> to resolve its investigation of the 2022 Mosquito Fire, which burned <strong>76,788 acres</strong> in Placer and El Dorado counties and destroyed 78 structures. PG&amp;E shareholders would pay $21M to the state General Fund and up to $1M for an independent review of the utility's Transmission Centralized Inspection Review Team. Earliest CPUC consideration: <strong>August 13, 2026</strong>.",
-        date: "Jul 10, 2026 · Mosquito Fire ACO",
-        url: "https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-staff-issue-proposal-penalizing-pacific-gas-and-electric-22-million-for-2022-placer-county-fire",
-        details: "For settlement purposes, PG&amp;E admits four violations of General Order 95: overdue corrective repairs; failure to preserve the removed pole and attached equipment due to an internal coordination error; six years of missed function tests on the two Oxbow Junction switches; and inadequate clearance between a jumper and the interconnection switch rod (the condition SED alleges created the September 6 electrical fault). SED's record shows the inspection-review team cancelled <strong>131,119 notifications created in 2023 alone</strong>. The $1M examination covers the team's general policies and procedures rather than the specific Oxbow cancellations; SED reserved the right to open separate enforcement based on the third-party report."
+        type: "CEC",
+        typeColor: "#00b4a6",
+        title: "CEC Advances Draft DEBA Solicitation to Fund Clean Distributed Backup Assets for Grid Reliability",
+        desc: "The California Energy Commission advanced a draft grant solicitation for its <strong>Distributed Electricity Backup Assets (DEBA)</strong> program, which funds clean distributed generation and storage that can supply reliability during extreme events and grid emergencies.",
+        date: "Draft Jul 15, 2026 &middot; CEC 22-RENEW-01",
+        url: "https://efiling.energy.ca.gov/Lists/DocketLog.aspx?docketnumber=22-RENEW-01",
+        details: "DEBA supports deployment of cleaner distributed backup resources as an alternative to fossil-fueled backup generation, targeting grid reliability during heat events, wildfires, and other emergencies. The draft solicitation opens a comment window ahead of a final funding notice."
       }
     ];
 
     const STORIES = [
       {
-        id: 109,
-        title: "Lowering California's high utility costs takes more than flashy slogans. It needs these reforms",
-        url: "https://calmatters.org/commentary/2026/07/electric-costs-utility-budget-california/",
-        date: "Jul 10, 2026",
+        id: 118,
+        title: "California moves to restrict utility power shutoffs during extreme heat",
+        url: "https://calmatters.org/environment/2026/07/california-utility-heat-shutoff-rules-cpuc/",
+        date: "Jul 17, 2026",
         source: "CalMatters",
-        author: "Travis Ritchie",
-        category: "Affordability · Reform",
-        summary: "UC Berkeley energy fellow argues California's electricity crisis demands <strong>structural regulatory reforms</strong> rather than campaign promises: controlling wildfire-mitigation spending, reining in special billing accounts that recover costs outside the General Rate Case, and using public funding for grid infrastructure investments. Rate base has grown to a level where one in five IOU customers fell behind on bills in 2025 by an average of <strong>$639</strong>.",
-        image: "images/affordability.svg",
-        imageCredit: "California residential electricity bill trajectory (illustrative).",
-        relatedCalreg: null
+        author: "Alejandro Lazo",
+        category: "Ratepayer · Disconnections",
+        summary: "The CPUC moved to bar utilities from disconnecting delinquent residential customers during dangerous heat, <strong>lowering the shutoff-protection threshold from 100&deg;F to 90&deg;F</strong> and tying it to the new CalHeatScore index. The change, implemented through <strong>Resolution E-5468</strong>, applies to PG&amp;E, SCE, SDG&amp;E, and SoCalGas.",
+        relatedCalreg: { anchor: "proc-rese5468", label: "Res. E-5468" }
       },
       {
-        id: 108,
-        title: "A pioneering grid-battery factory is headed for this California city",
-        url: "https://www.canarymedia.com/articles/batteries/pioneering-grid-battery-factory-california",
-        date: "Jul 10, 2026",
-        source: "Canary Media",
-        author: null,
-        category: "Storage · Manufacturing",
-        summary: "Peak Energy's <strong>183,000-square-foot Sacramento plant</strong> will be the first US commercial manufacturing facility for grid-scale sodium-ion energy storage systems. Sodium-ion chemistry operates safely at wider temperature ranges than lithium-iron-phosphate cells, positioning it well for extreme-heat markets. Production and shipments start <strong>Q1 2027</strong> at up to <strong>4 GWh per year</strong>.",
-        image: "images/battery-factory.svg",
-        imageCredit: "Sodium-ion battery gigafactory (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 107,
-        title: "Grid storage startup Peak Energy raising $80M as it plans battery factory",
-        url: "https://www.axios.com/pro/climate-deals/2026/07/08/peak-energy-battery-factory-series-b",
-        date: "Jul 8, 2026",
-        source: "Axios Pro Climate Deals",
-        author: null,
-        category: "Startup · Series B",
-        summary: "Peak Energy raised <strong>$80 million Series B</strong> at a <strong>$475 million pre-money valuation</strong> to fund its Sacramento sodium-ion gigafactory buildout. The raise reflects continued VC appetite for domestic grid-scale storage manufacturing amid federal tax-credit uncertainty following OBBBA changes to Section 45Y/48E qualification rules.",
-        image: "images/startup-funding.svg",
-        imageCredit: "Climate-tech Series B financing trajectory (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 106,
-        title: "US heatwave raises alarms over AI data centre energy demands",
-        url: "https://www.aljazeera.com/economy/2026/7/3/us-heatwave-raises-alarms-over-ai-data-centre-energy-demands",
-        date: "Jul 3, 2026",
-        source: "Al Jazeera",
-        author: "Andy Hirschfeld",
-        category: "Data Centers · Heatwave",
-        summary: "Severe US heatwave is straining power grids and water supplies, intensifying concerns about the rapid expansion of energy-intensive AI data centers projected to rise from <strong>4% to 9% of national power demand by 2030</strong>. Roughly <strong>50,000 California customers</strong> near Lake Tahoe were told to find a new power provider earlier this year amid data-center-driven demand.",
-        image: "images/ai-heatwave.svg",
-        imageCredit: "AI data centers under summer-peak heat stress (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 105,
-        title: "California Will Give You $3,500 To Buy A New EV",
-        url: "https://www.forbes.com/sites/alanohnsman/2026/07/08/california-will-give-you-3500-to-buy-a-new-ev/",
-        date: "Jul 8, 2026",
-        source: "Forbes",
-        author: "Alan Ohnsman",
-        category: "EV · Rebate Program",
-        summary: "Governor Newsom signed <strong>SB 168</strong> launching the MyFirstEV program: instant <strong>$3,500</strong> point-of-sale rebate on new EVs (MSRP up to $50,000) and <strong>$1,750</strong> on used EVs. Program aims to reverse a Q1 2026 collapse in ZEV market share (13.7%, down from 21% in 2025) after federal $7,500 EV tax credit expired Sept 30, 2025. Registrations dropped over 40% year-over-year.",
-        image: "images/ev-rebate.svg",
-        imageCredit: "MyFirstEV $3,500 point-of-sale rebate (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 104,
-        title: "Wildfires weigh on PG&amp;E as California sees modest large-load demand",
-        url: "https://www.utilitydive.com/news/wildfires-weigh-on-pge-as-california-sees-modest-large-load-demand/818715/",
-        date: "Jul 2026",
-        source: "Utility Dive",
-        author: null,
-        category: "Wildfire · Utility Finance",
-        summary: "Utility Dive's analysis of PG&amp;E's Q1 2026 earnings shows wildfire liability continues to pressure the utility even as data-center-related large load additions in California come in <strong>below expectations</strong>. Residential bundled electric rates are down <strong>23% since January 2024</strong> for the most vulnerable customers, though wildfire costs now represent 14&ndash;19% of an average IOU bill.",
-        image: "images/wildfire-liability.svg",
-        imageCredit: "Wildfire liability weighing on IOU earnings (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 103,
-        title: "FERC Launches Aggressive Targeted Action to Speed Large Load Integration",
-        url: "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration",
-        date: "Jun 2026 (deadlines Jul 9 / Jul 18)",
-        source: "FERC",
-        author: null,
-        category: "Federal · Large Load",
-        summary: "FERC issued <strong>show-cause orders to all six RTOs/ISOs including CAISO</strong> on large-load integration reforms across five categories: alternative transmission technologies, cost-shift prevention, co-location arrangements, retail-transmission interaction, and reliability. CAISO must submit an <strong>informational report by July 18, 2026</strong> on how it plans to serve existing and new large loads.",
-        image: "images/ferc-largeload.svg",
-        imageCredit: "FERC show-cause action on RTO/ISO large-load integration (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 102,
-        title: "California boosts estimate of data centers' power demand",
-        url: "https://www.eenews.net/articles/california-boosts-estimate-of-data-centers-power-demand/",
-        date: "Jul 2026",
-        source: "E&amp;E News / POLITICO",
-        author: null,
-        category: "Data Centers · CA Load Growth",
-        summary: "California Energy Commission is raising its forecast of data-center load growth as PG&amp;E flags a <strong>$73 billion grid infrastructure plan</strong> to accommodate up to <strong>10 GW of new hyperscaler demand</strong>. Lawmakers previously shelved bills that would have required data-center energy and water disclosures, leaving cost-allocation and rate-impact questions for CPUC to address in future Rule 30 proceedings.",
-        image: "images/dc-power-demand.svg",
-        imageCredit: "California data-center power-demand forecast (illustrative).",
-        relatedCalreg: null
-      },
-      {
-        id: 101,
-        title: "Newsom's Parting Gift: $352B Budget Delays Deep Climate Cuts to 2027; GGRF Taps for CAL FIRE and ZEV",
-        url: "https://calmatters.org/politics/2026/06/california-gavin-newsom-final-budget-deal/",
-        date: "Jun 29, 2026",
+        id: 117,
+        title: "California halted a school air-conditioning program with much of the money unspent",
+        url: "https://calmatters.org/environment/2026/07/california-school-hvac-funding-cut/",
+        date: "Jul 23, 2026",
         source: "CalMatters",
-        author: "Yue Stella Yu",
-        category: "Climate Policy · Budget",
-        summary: "The three-party <strong>$352B 2026-27 California budget</strong> agreement allocates <strong>$1.25B from the Greenhouse Gas Reduction Fund to CAL FIRE</strong> and <strong>$115M</strong> from the climate fund toward EV incentives (part of a $356M ZEV package). Full GGRF spend plan is punted to summer negotiations; broader climate-program funding still open.",
+        author: "Alejandra Reyes-Velarde",
+        category: "Policy · Heat Resilience",
+        summary: "A state program to install cooling in classrooms was paused with roughly <strong>$200 million unspent</strong>, having funded upgrades at only <strong>172 of an estimated 4,500 schools</strong> that need them, even as extreme heat drives a rising share of fall school closures.",
         relatedCalreg: null
       },
       {
-        id: 100,
-        title: "Duke Energy Surrenders Carolina Long Bay Offshore Wind Lease for $129M Partial Reimbursement",
-        url: "https://www.utilitydive.com/news/duke-energy-offshore-wind-lease-for-trump-interior/824095/",
-        date: "Jun 30, 2026",
-        source: "Utility Dive",
+        id: 116,
+        title: "California EV sales rebound in the second quarter",
+        url: "https://www.energy.ca.gov/news/2026-07/ev-sales-rebound-trumps-war-iran-rages",
+        date: "Jul 20, 2026",
+        source: "California Energy Commission",
         author: null,
-        category: "Litigation · Offshore Wind",
-        summary: "Duke surrendered its <strong>1.6 GW OCS-A 0546 Carolina Long Bay</strong> lease for <strong>$129M</strong> (vs. $155M paid in 2022), the ninth Interior buyout totaling <strong>$2.6B+</strong> across nine lease areas. Eight states including California have filed suit opposing the buyback strategy, tying directly to CA's own offshore wind litigation (Bonta / CEC Notice of Intent).",
-        relatedCalreg: "proc-ca-offshore-wind-suit"
+        category: "EVs · Transportation",
+        summary: "New CEC data show <strong>86,857 zero-emission vehicles</strong> sold in Q2 2026, or <strong>19.1% of new-car sales</strong>, a rebound after the expiration of the federal $7,500 EV tax credit and the launch of California's MyFirstEV point-of-sale rebate.",
+        relatedCalreg: null
+      },
+      {
+        id: 115,
+        title: "SoCalGas seeks a 14.8% backbone-transport rate increase as a supply deficit looms",
+        url: "https://www.calregulatory.com/saturday-briefing-socalgas-seeks-14-8-bts-rate-increase-as-southern-system-faces-supply-deficit/",
+        date: "Jul 25, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Ratepayer · Gas",
+        summary: "In its 2028 General Rate Case, <em>SoCalGas</em> is seeking a <strong>14.8% backbone-transmission-service rate increase</strong>, citing a widening Southern System supply deficit and reliability investment needs.",
+        relatedCalreg: null
+      },
+      {
+        id: 114,
+        title: "PG&amp;E seeks to extend its wildfire self-insurance mechanism",
+        url: "https://www.calregulatory.com/tuesday-briefing-a-safety-spending-test-a-1-billion-wildfire-fund-and-the-end-of-rule-21s-flat-fee/",
+        date: "Jul 21, 2026",
+        source: "CalRegulatory",
+        author: null,
+        category: "Wildfire · Ratepayer",
+        summary: "<em>PG&amp;E</em> is asking the CPUC to extend its wildfire self-insurance approach, claiming roughly <strong>$1.8 billion in customer savings</strong> and pointing to more than <strong>$1 billion</strong> in reserves, part of a briefing that also covered a safety-spending test and the end of Rule 21's flat fee.",
+        relatedCalreg: null
+      },
+      {
+        id: 113,
+        title: "More than 12,000 seek compensation directly through SCE for Eaton Fire recovery",
+        url: "https://newsroom.edison.com/releases/more-than-12000-seek-compensation-directly-through-sce-for-eaton-fire-recovery",
+        date: "Jul 24, 2026",
+        source: "Southern California Edison",
+        author: null,
+        category: "Wildfire · Recovery",
+        summary: "<em>SCE</em> reported that more than <strong>12,000 people</strong> have sought compensation through its direct Eaton Fire recovery program, with <strong>over $750 million offered and more than $360 million paid</strong> to claimants.",
+        relatedCalreg: null
+      },
+      {
+        id: 112,
+        title: "Sunrun expands its California home-battery virtual power plant to 425 MW",
+        url: "https://www.globenewswire.com/news-release/2026/07/14/3326774/0/en/sunrun-s-california-distributed-power-plant-expands-dispatch-capacity-to-425-megawatts-to-provide-statewide-grid-relief.html",
+        date: "Jul 14, 2026",
+        source: "Sunrun (GlobeNewswire)",
+        author: null,
+        category: "Solar · Storage",
+        summary: "<em>Sunrun</em> said its California distributed power plant can now dispatch <strong>425 megawatts</strong> across more than <strong>110,000 home batteries</strong>, providing statewide grid relief during peak-demand events.",
+        relatedCalreg: null
+      },
+      {
+        id: 111,
+        title: "PG&amp;E reports Q2 2026 results and raises its capital plan to $73B",
+        url: "https://www.prnewswire.com/news-releases/pge-corporation-reports-second-quarter-2026-results-on-track-to-deliver-solid-2026-302832745.html",
+        date: "Jul 23, 2026",
+        source: "PG&amp;E (PR Newswire)",
+        author: null,
+        category: "Utility Finance",
+        summary: "<em>PG&amp;E Corporation</em> reported <strong>$733 million</strong> in Q2 net income and raised its <strong>2026-2030 capital plan to $73 billion</strong>, citing grid investment and growing data-center interconnection demand.",
+        relatedCalreg: null
+      },
+      {
+        id: 110,
+        title: "PG&amp;E claims a 12.7 GW data-center pipeline as it courts smaller loads",
+        url: "https://www.utilitydive.com/news/pge-claims-127-gw-in-data-center-pipeline-as-utility-courts-smaller-loads/826099/",
+        date: "Jul 24, 2026",
+        source: "Utility Dive",
+        author: "Emma Penrod",
+        category: "Data Centers · Load Growth",
+        summary: "<em>PG&amp;E</em> now reports a <strong>12.7 GW data-center pipeline</strong>, up from 5.1 GW in March, and is courting smaller loads even as regulators weigh cost-allocation and rate-impact questions for large new users.",
+        relatedCalreg: null
       },
     ];
 
