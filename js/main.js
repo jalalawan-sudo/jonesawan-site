@@ -5,16 +5,14 @@
 const NAV_HTML = `
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">Jones-<span>Awan</span></a>
+    <a class="nav-logo" href="index.html">Jalal <span>Awan</span></a>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">About</a></li>
       <li><a href="calreg.html">CalReg</a></li>
       <li><a href="calnews.html">CalNews</a></li>
-      <li><a href="contact.html" class="nav-cta">Contact</a></li>
     </ul>
   </div>
 </nav>`;
@@ -24,11 +22,9 @@ const FOOTER_HTML = `
   <div class="footer-inner">
     <div>© ${new Date().getFullYear()} Jalal Awan, Ph.D. All rights reserved.</div>
     <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
+      <a href="index.html">About</a>
       <a href="calreg.html">CalReg</a>
       <a href="calnews.html">CalNews</a>
-      <a href="contact.html">Contact</a>
     </div>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/jalal-awan-bb43957/" target="_blank" class="social-icon" title="LinkedIn">in</a>
