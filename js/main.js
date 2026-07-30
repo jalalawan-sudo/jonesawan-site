@@ -1,11 +1,11 @@
 /* ============================================================
-   main.js — Nav, mobile menu, counters, active links
+   main.js - Nav, mobile menu, counters, active links
    ============================================================ */
 
 const NAV_HTML = `
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">Jalal <span>Awan</span></a>
+    <a class="nav-logo" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="9" fill="#16130f"/><path d="M14 11 v13 a4.5 4.5 0 0 1 -8 0" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M20 27 l6.5 -16 6.5 16 M22.4 21.5 h8.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="31.4" width="16" height="2.4" rx="1.2" fill="#c8102e"/></svg><span class="brand-name">Jones-Awan</span></a>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (a.getAttribute('href') === page) a.classList.add('active');
   });
 
-  // Animated counters — all start simultaneously when .hero-stats enters viewport
+  // Animated counters - all start simultaneously when .hero-stats enters viewport
   const statsContainer = document.querySelector('.hero-stats');
   if (statsContainer) {
     const counters = statsContainer.querySelectorAll('.hero-stat-num[data-target]');
