@@ -3,331 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalNews — California Energy &amp; Regulatory News · Week of Jul 20 – Jul 26, 2026</title>
+  <title>CalNews · California Energy &amp; Regulatory News · Week of Jul 20 – Jul 26, 2026</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ── Recent Developments (CPUC/IOU decisions only) ── */
-    .rd-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    /* ===== Editorial, self-contained CalNews ===== */
+    :root{
+      --ink:#16130f; --body:#3c4650; --muted:#8b95a0; --faint:#aeb6bf;
+      --hair:#e6e3dd; --hair2:#efece6; --paper:#ffffff; --panel:#faf8f4;
+      --red:#c8102e; --red-dk:#9d0c23;
+      --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --sans:'Inter', system-ui, -apple-system, sans-serif;
     }
-    @media(max-width:640px) { .rd-grid { grid-template-columns: 1fr; } }
-    .rd-card {
-      padding: 16px 18px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--white);
-    }
-    .rd-type {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-    .rd-title {
-      font-size: 0.88rem; font-weight: 600;
-      color: var(--text-dark); line-height: 1.4;
-      margin-bottom: 5px;
-    }
-    .rd-desc {
-      font-size: 0.8rem; color: var(--text-mid);
-      line-height: 1.55; margin-bottom: 8px;
-    }
-    .rd-footer {
-      display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 6px;
-    }
-    .rd-date { font-size: 0.72rem; color: var(--text-light); }
-    .rd-more {
-      font-size: 0.75rem; font-weight: 600;
-      color: var(--teal); white-space: nowrap;
-    }
-    .rd-more:hover { text-decoration: underline; }
+    *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
+    html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+    body{font-family:var(--sans); color:var(--body); background:var(--paper);
+      line-height:1.6; font-size:17px; -webkit-font-smoothing:antialiased;}
+    img{max-width:100%; display:block;}
+    a{color:inherit; text-decoration:none;}
+    ::selection{background:#ffe1e4;}
+    .container{max-width:1080px; margin:0 auto; padding:0 32px;}
+    @media(max-width:640px){ .container{padding:0 20px;} body{font-size:16px;} }
 
-    /* ── Details dropdown ── */
-    .rd-details-wrap {
-      margin-top: 10px;
-      border-top: 1px solid var(--border);
-      padding-top: 8px;
-    }
-    .rd-details-toggle {
-      background: none; border: none; cursor: pointer;
-      font-size: 0.72rem; font-weight: 600; color: var(--text-light);
-      display: flex; align-items: center; gap: 5px; padding: 0;
-    }
-    .rd-details-toggle:hover { color: var(--teal); }
-    .rd-details-arr {
-      display: inline-block;
-      transition: transform 0.2s;
-      font-style: normal;
-      font-size: 0.65rem;
-    }
-    .rd-details-body {
-      display: none;
-      margin-top: 8px;
-      font-size: 0.78rem;
-      color: var(--text-mid);
-      line-height: 1.6;
-      background: var(--off-white);
-      border-radius: 6px;
-      padding: 10px 12px;
-      border-left: 3px solid var(--teal);
+    /* ---- nav ---- */
+    nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--hair);}
+    .nav-inner{max-width:1080px; margin:0 auto; padding:14px 32px;
+      display:flex; align-items:center; justify-content:space-between;}
+    .nav-logo{font-family:var(--serif); font-weight:700; font-size:1.15rem; color:var(--ink); letter-spacing:-.01em;}
+    .nav-logo span{color:var(--red);}
+    .nav-links{list-style:none; display:flex; gap:30px;}
+    .nav-links a{font-size:.82rem; font-weight:500; color:var(--body); letter-spacing:.01em; padding-bottom:2px; border-bottom:2px solid transparent; transition:color .15s,border-color .15s;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a.active{color:var(--ink); border-color:var(--red);}
+    .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer;}
+    .nav-toggle span{width:22px; height:2px; background:var(--ink);}
+    @media(max-width:640px){
+      .nav-toggle{display:flex;}
+      .nav-links{position:absolute; top:100%; right:0; left:0; background:#fff; flex-direction:column; gap:0; padding:8px 32px 16px; border-bottom:1px solid var(--hair); display:none;}
+      .nav-links.open{display:flex;}
+      .nav-links a{padding:11px 0; border-bottom:1px solid var(--hair2);}
     }
 
-    /* ── CalNews layout ── */
-    .cn-wrap {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 48px;
-      align-items: start;
-    }
-    @media(max-width: 768px) {
-      .cn-wrap { grid-template-columns: 1fr; }
-      .cn-sidebar { order: -1; }
-    }
+    /* ---- masthead ---- */
+    .masthead{padding:52px 0 28px; border-bottom:2px solid var(--ink);}
+    .masthead .rule{width:54px; height:3px; background:var(--red); margin-bottom:18px;}
+    .masthead .eyebrow{font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:12px;}
+    .masthead h1{font-family:var(--serif); font-weight:700; font-size:clamp(2.6rem,6vw,4rem); line-height:.98; letter-spacing:-.02em; color:var(--ink);}
+    .masthead .dateline{margin-top:14px; font-size:.9rem; color:var(--muted);}
 
-    /* ── Featured story ── */
-    .cn-featured {
-      border-bottom: 2px solid var(--navy);
-      padding-bottom: 28px;
-      margin-bottom: 28px;
-    }
-    .cn-feat-category {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 8px;
-    }
-    .cn-feat-headline {
-      font-size: 1.45rem; font-weight: 800;
-      line-height: 1.25; color: var(--text-dark);
-      margin-bottom: 10px; letter-spacing: -0.01em;
-    }
-    .cn-feat-headline a { color: inherit; }
-    .cn-feat-headline a:hover { color: var(--teal); }
-    .cn-feat-byline {
-      font-size: 0.75rem; color: var(--text-light);
-      margin-bottom: 12px;
-    }
-    .cn-feat-byline strong { color: var(--text-mid); }
-    .cn-feat-summary {
-      font-size: 0.94rem; color: var(--text-mid);
-      line-height: 1.72; margin-bottom: 14px;
-    }
-    .cn-feat-readmore {
-      font-size: 0.82rem; font-weight: 700;
-      color: var(--teal); display: inline-flex;
-      align-items: center; gap: 4px;
-    }
-    .cn-feat-readmore:hover { text-decoration: underline; }
-    .cn-feat-related {
-      margin-top: 12px;
-      font-size: 0.75rem; color: var(--text-light);
-      border-left: 3px solid var(--teal);
-      padding-left: 10px;
-    }
-    .cn-feat-related a { color: var(--teal); font-weight: 600; }
+    /* ---- section scaffolding ---- */
+    .section{padding:38px 0;}
+    .kicker{font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:8px;}
+    .sec-head{font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--ink); letter-spacing:-.01em; line-height:1.15;}
+    .sec-sub{font-size:.86rem; color:var(--muted); margin-top:5px;}
+    .band{background:var(--panel); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);}
 
-    /* ── Secondary stories list ── */
-    .cn-section-label {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-light);
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-      margin-bottom: 14px;
-    }
-    .cn-story-list {
-      display: flex; flex-direction: column; gap: 0;
-    }
-    .cn-story-item {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .cn-story-category {
-      font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.09em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 4px;
-    }
-    .cn-story-title {
-      font-size: 1.05rem; font-weight: 700;
-      line-height: 1.3; margin-bottom: 4px;
-    }
-    .cn-story-title a { color: var(--text-dark); }
-    .cn-story-title a:hover { color: var(--teal); }
-    .cn-story-meta {
-      font-size: 0.72rem; color: var(--text-light);
-      margin-bottom: 10px;
-    }
-    .cn-story-summary {
-      font-size: 0.88rem; color: var(--text-mid);
-      line-height: 1.68; margin-bottom: 10px;
-    }
-    .cn-story-image {
-      margin: 4px 0 12px;
-    }
-    .cn-story-image img {
-      width: 100%; height: auto; max-height: 280px; object-fit: cover;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      display: block;
-    }
-    .cn-story-image figcaption {
-      font-size: 0.68rem; color: var(--text-light);
-      margin-top: 4px; line-height: 1.4; font-style: italic;
-    }
-    .cn-feat-image {
-      margin: 6px 0 16px;
-    }
-    .cn-feat-image img {
-      width: 100%; height: auto; max-height: 360px; object-fit: cover;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      display: block;
-    }
-    .cn-feat-image figcaption {
-      font-size: 0.7rem; color: var(--text-light);
-      margin-top: 5px; line-height: 1.4; font-style: italic;
-    }
-    .cn-story-readmore {
-      font-size: 0.78rem; font-weight: 700; color: var(--teal);
-    }
-    .cn-story-readmore:hover { text-decoration: underline; }
-    .cn-story-related {
-      margin-top: 8px; font-size: 0.72rem; color: var(--text-light);
-      border-left: 2px solid var(--teal); padding-left: 8px;
-    }
-    .cn-story-related a { color: var(--teal); font-weight: 600; }
+    /* ---- Recent developments ---- */
+    .rd-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--hair); border:1px solid var(--hair); margin-top:22px;}
+    @media(max-width:640px){ .rd-grid{grid-template-columns:1fr;} }
+    .rd-card{background:#fff; padding:20px 22px; position:relative;}
+    .rd-card::before{content:""; position:absolute; left:0; top:20px; bottom:20px; width:3px; background:var(--tc,#0369a1);}
+    .rd-type{font-size:.64rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase; margin-bottom:7px;}
+    .rd-title{font-family:var(--serif); font-size:1.02rem; font-weight:600; color:var(--ink); line-height:1.32; margin-bottom:8px;}
+    .rd-desc{font-size:.83rem; color:var(--body); line-height:1.6; margin-bottom:12px;}
+    .rd-desc strong{color:var(--ink); font-weight:600;}
+    .rd-footer{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;}
+    .rd-date{font-size:.72rem; color:var(--muted); font-variant-numeric:tabular-nums;}
+    .rd-more{font-size:.74rem; font-weight:600; color:var(--red); white-space:nowrap;}
+    .rd-more:hover{text-decoration:underline;}
+    .rd-details-wrap{margin-top:12px; border-top:1px solid var(--hair); padding-top:9px;}
+    .rd-details-toggle{background:none; border:none; cursor:pointer; font-size:.7rem; font-weight:600; color:var(--muted); display:flex; align-items:center; gap:6px; padding:0; font-family:var(--sans);}
+    .rd-details-toggle:hover{color:var(--red);}
+    .rd-details-arr{display:inline-block; transition:transform .2s; font-size:.6rem;}
+    .rd-details-body{display:none; margin-top:9px; font-size:.78rem; color:var(--body); line-height:1.62; background:var(--panel); border-left:3px solid var(--red); border-radius:0 4px 4px 0; padding:11px 13px;}
+    .rd-details-body strong{color:var(--ink);}
+    .rd-showbtn{font-size:.76rem; font-weight:600; color:var(--ink); background:transparent; border:1px solid var(--ink); padding:9px 22px; border-radius:2px; cursor:pointer; font-family:var(--sans);}
+    .rd-showbtn:hover{background:var(--ink); color:#fff;}
 
-    /* ── Sidebar ── */
-    .cn-sidebar {
-      position: sticky; top: 80px;
-    }
-    .cn-sidebar-block {
-      margin-bottom: 28px;
-    }
-    .cn-sidebar-hdg {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-light); margin-bottom: 10px;
-      padding-bottom: 6px; border-bottom: 1px solid var(--border);
-    }
-    .cn-sidebar-link {
-      display: block; font-size: 0.82rem;
-      color: var(--text-mid); padding: 5px 0;
-      border-bottom: 1px solid #f1f5f9;
-      transition: color 0.15s;
-    }
-    .cn-sidebar-link:hover { color: var(--teal); }
-    .cn-sidebar-link.active { color: var(--teal); font-weight: 600; }
-    .cn-sidebar-calreg {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 0.82rem; font-weight: 600;
-      color: var(--teal); padding: 9px 12px;
-      border: 1.5px solid var(--teal);
-      border-radius: var(--radius);
-      transition: all 0.15s;
-      margin-top: 4px;
-    }
-    .cn-sidebar-calreg:hover { background: var(--teal-light); }
-    .cn-sidebar-note {
-      font-size: 0.75rem; color: var(--text-light);
-      line-height: 1.6; padding: 12px;
-      background: var(--off-white);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
+    /* ---- main news layout ---- */
+    .cn-wrap{display:grid; grid-template-columns:1fr 232px; gap:52px; align-items:start;}
+    @media(max-width:860px){ .cn-wrap{grid-template-columns:1fr;} .cn-sidebar{order:-1;} }
+    .cn-dateline{font-size:.74rem; color:var(--muted); padding-bottom:14px; margin-bottom:26px; border-bottom:1px solid var(--hair); letter-spacing:.01em; font-variant-numeric:tabular-nums;}
+
+    /* editorial illustration */
+    .art{width:100%; border:1px solid var(--hair); background:var(--panel); display:block;}
+    .art svg{display:block; width:100%; height:auto;}
+    figure figcaption{font-size:.68rem; color:var(--muted); margin-top:6px; line-height:1.4;}
+
+    /* featured */
+    .cn-featured{border-bottom:1px solid var(--hair); padding-bottom:34px; margin-bottom:8px;}
+    .cn-feat-cat{font-size:.68rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--red); margin-bottom:10px;}
+    .cn-feat-head{font-family:var(--serif); font-size:clamp(1.7rem,3.2vw,2.3rem); font-weight:700; line-height:1.12; letter-spacing:-.015em; color:var(--ink); margin-bottom:12px;}
+    .cn-feat-head a:hover{color:var(--red);}
+    .cn-feat-byline{font-size:.76rem; color:var(--muted); margin-bottom:18px;}
+    .cn-feat-byline strong{color:var(--body); font-weight:600;}
+    .cn-feat-byline a{color:var(--red); text-decoration:underline; text-underline-offset:2px;}
+    .cn-feat-fig{margin:0 0 18px;}
+    .cn-feat-summary{font-size:1.06rem; color:var(--body); line-height:1.72; margin-bottom:16px;}
+    .cn-feat-summary strong{color:var(--ink); font-weight:600;}
+    .cn-readmore{font-size:.8rem; font-weight:600; color:var(--red); display:inline-flex; align-items:center; gap:5px;}
+    .cn-readmore:hover{text-decoration:underline;}
+    .cn-related{margin-top:14px; font-size:.74rem; color:var(--muted); border-left:3px solid var(--red); padding-left:11px;}
+    .cn-related a{color:var(--red); font-weight:600;}
+
+    /* secondary list */
+    .cn-seclabel{font-family:var(--serif); font-size:.82rem; font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:var(--ink); border-top:2px solid var(--ink); padding-top:14px; margin:38px 0 8px;}
+    .cn-item{display:grid; grid-template-columns:1fr 168px; gap:22px; padding:24px 0; border-bottom:1px solid var(--hair); align-items:start;}
+    .cn-item.norev{grid-template-columns:1fr;}
+    @media(max-width:560px){ .cn-item{grid-template-columns:1fr;} .cn-item .cn-thumb{order:-1;} }
+    .cn-cat{font-size:.63rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--red); margin-bottom:5px;}
+    .cn-title{font-family:var(--serif); font-size:1.16rem; font-weight:600; line-height:1.28; color:var(--ink); margin-bottom:5px;}
+    .cn-title a:hover{color:var(--red);}
+    .cn-meta{font-size:.72rem; color:var(--muted); margin-bottom:9px; font-variant-numeric:tabular-nums;}
+    .cn-meta a{color:var(--red); text-decoration:underline; text-underline-offset:2px;}
+    .cn-summary{font-size:.9rem; color:var(--body); line-height:1.62; margin-bottom:9px;}
+    .cn-summary strong{color:var(--ink); font-weight:600;}
+    .cn-thumb .art{}
+    .cn-story-related{margin-top:8px; font-size:.72rem; color:var(--muted); border-left:2px solid var(--red); padding-left:8px;}
+    .cn-story-related a{color:var(--red); font-weight:600;}
+    .cn-showbtn{font-size:.78rem; font-weight:600; color:var(--ink); background:transparent; border:1px solid var(--ink); padding:9px 22px; border-radius:2px; cursor:pointer; font-family:var(--sans); margin-top:20px;}
+    .cn-showbtn:hover{background:var(--ink); color:#fff;}
+
+    /* sidebar */
+    .cn-sidebar{position:sticky; top:88px;}
+    .cn-sb-block{margin-bottom:30px;}
+    .cn-sb-hd{font-size:.66rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin-bottom:11px; padding-bottom:7px; border-bottom:2px solid var(--ink);}
+    .cn-sb-link{display:block; font-size:.8rem; color:var(--body); padding:7px 0; border-bottom:1px solid var(--hair2); transition:color .15s;}
+    .cn-sb-link:hover{color:var(--red);}
+    .cn-sb-link.active{color:var(--ink); font-weight:600;}
+    .cn-sb-calreg{display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--ink); padding:11px 14px; border:1px solid var(--ink); border-radius:2px; transition:all .15s;}
+    .cn-sb-calreg:hover{background:var(--ink); color:#fff;}
+    .cn-sb-note{font-size:.74rem; color:var(--muted); line-height:1.6; padding:14px; background:var(--panel); border:1px solid var(--hair);}
+
+    /* footer */
+    footer{border-top:2px solid var(--ink); margin-top:20px; padding:30px 0;}
+    .footer-inner{max-width:1080px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:.76rem; color:var(--muted);}
+    .footer-links{display:flex; gap:20px;}
+    .footer-links a:hover{color:var(--red);}
+    .social-icons{display:flex; gap:10px;}
+    .social-icon{width:30px; height:30px; border:1px solid var(--hair); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.66rem; font-weight:600; color:var(--body);}
+    .social-icon:hover{border-color:var(--ink); color:var(--ink);}
   </style>
 </head>
 <body>
 
-  <div class="page-header">
-    <div class="container">
-      <div class="label">California Energy &amp; Regulatory News</div>
-      <h1>CalNews</h1>
-      <p>Week of Jul 20 – Jul 26, 2026 · Curated policy &amp; regulatory coverage</p>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Jalal <span>Awan</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">About</a></li>
+        <li><a href="calreg.html">CalReg</a></li>
+        <li><a href="calnews.html" class="active">CalNews</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
-  <!-- ── RECENT DEVELOPMENTS — CPUC/IOU decisions only ────── -->
-  <section class="section-sm section-alt" style="border-bottom: 1px solid var(--border);">
+  <header class="masthead">
     <div class="container">
-      <div class="label">Hot Off The Press</div>
-      <h2 style="margin-bottom:6px;">Recent Developments at the CPUC</h2>
-      <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:20px;">Key CPUC decisions, rulemakings, and news</p>
-      <div class="rd-grid" id="recent-dev">
-        <!-- populated by JS -->
-      </div>
+      <div class="rule"></div>
+      <div class="eyebrow">California Energy &amp; Regulatory News</div>
+      <h1>CalNews</h1>
+      <div class="dateline">Week of Jul 20 – Jul 26, 2026 &nbsp;·&nbsp; Curated policy &amp; regulatory coverage</div>
+    </div>
+  </header>
+
+  <!-- Recent Developments -->
+  <section class="section band">
+    <div class="container">
+      <div class="kicker">Hot Off The Press</div>
+      <div class="sec-head">Recent Developments at the CPUC</div>
+      <div class="sec-sub">Key CPUC decisions, rulemakings, and news</div>
+      <div class="rd-grid" id="recent-dev"></div>
     </div>
   </section>
 
-  <hr style="border:none; border-top: 2.5px solid #1e293b; margin:0;">
-
-  <!-- ── MAIN NEWS ─────────────────────────────────────────── -->
+  <!-- Main news -->
   <section class="section">
     <div class="container">
       <div class="cn-wrap">
-
-        <!-- ── MAIN COLUMN ── -->
         <main>
-          <div style="font-size:0.75rem; color:var(--text-light); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            Week of Jul 20 – Jul 26, 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Updated Jul 28, 2026
-          </div>
-
-          <!-- Featured Story -->
-          <div class="cn-featured" id="cn-featured">
-            <!-- populated by JS -->
-          </div>
-
-          <!-- More Stories -->
-          <div class="cn-section-label">Energy and Climate News Stories</div>
-          <div class="cn-story-list" id="cn-secondary">
-            <!-- populated by JS -->
-          </div>
+          <div class="cn-dateline">Week of Jul 20 – Jul 26, 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Updated Jul 28, 2026</div>
+          <div class="cn-featured" id="cn-featured"></div>
+          <div class="cn-seclabel">Energy and Climate News</div>
+          <div id="cn-secondary"></div>
         </main>
 
-        <!-- ── SIDEBAR ── -->
         <aside class="cn-sidebar">
-          <div class="cn-sidebar-block">
-            <div class="cn-sidebar-hdg">Current Issue</div>
-            <a href="calnews.html" class="cn-sidebar-link active">Week of Jul 20 – Jul 26, 2026</a>
-            <a href="archive/calnews-2026-07-12.html" class="cn-sidebar-link">Week of Jul 6 – Jul 12, 2026</a>
-            <a href="archive/calnews-2026-07-05.html" class="cn-sidebar-link">Week of Jun 29 – Jul 5, 2026</a>
-            <a href="archive/calnews-2026-05-13.html" class="cn-sidebar-link">Week of Apr 27 – May 13, 2026</a>
+          <div class="cn-sb-block">
+            <div class="cn-sb-hd">Current Issue</div>
+            <a href="calnews.html" class="cn-sb-link active">Week of Jul 20 – Jul 26, 2026</a>
+            <a href="archive/calnews-2026-07-12.html" class="cn-sb-link">Week of Jul 6 – Jul 12, 2026</a>
+            <a href="archive/calnews-2026-07-05.html" class="cn-sb-link">Week of Jun 29 – Jul 5, 2026</a>
+            <a href="archive/calnews-2026-05-13.html" class="cn-sb-link">Week of Apr 27 – May 13, 2026</a>
           </div>
-          <div class="cn-sidebar-block">
-            <div class="cn-sidebar-hdg">Archive</div>
-            <a href="archive/calnews-2026-04-13.html" class="cn-sidebar-link">Week of Apr 7 – 13, 2026</a>
-            <a href="archive/calnews-2026-04-10.html" class="cn-sidebar-link">Week of Apr 4 – 10, 2026</a>
-            <a href="archive/calnews-2026-04-03.html" class="cn-sidebar-link">Week of Mar 28 – Apr 3, 2026</a>
-            <a href="archive/calnews-2026-03-31.html" class="cn-sidebar-link">Week of Mar 23–31, 2026</a>
-            <a href="archive/calnews-2026-03-25.html" class="cn-sidebar-link">Week of Mar 16–25, 2026</a>
-            <a href="archive/calnews-2026-03-13.html" class="cn-sidebar-link">Week of Mar 9–13, 2026</a>
-            <a href="archive/calnews-2026-03-06.html" class="cn-sidebar-link">Week of Mar 2–6, 2026</a>
-            <a href="archive/calnews-2026-02-28.html" class="cn-sidebar-link">Week of Feb 23–27, 2026</a>
-            <a href="archive/calnews-2026-02-21.html" class="cn-sidebar-link">Week of Feb 16–20, 2026</a>
+          <div class="cn-sb-block">
+            <div class="cn-sb-hd">Archive</div>
+            <a href="archive/calnews-2026-04-13.html" class="cn-sb-link">Week of Apr 7 – 13, 2026</a>
+            <a href="archive/calnews-2026-04-10.html" class="cn-sb-link">Week of Apr 4 – 10, 2026</a>
+            <a href="archive/calnews-2026-04-03.html" class="cn-sb-link">Week of Mar 28 – Apr 3, 2026</a>
+            <a href="archive/calnews-2026-03-31.html" class="cn-sb-link">Week of Mar 23–31, 2026</a>
+            <a href="archive/calnews-2026-03-25.html" class="cn-sb-link">Week of Mar 16–25, 2026</a>
+            <a href="archive/calnews-2026-03-13.html" class="cn-sb-link">Week of Mar 9–13, 2026</a>
+            <a href="archive/calnews-2026-03-06.html" class="cn-sb-link">Week of Mar 2–6, 2026</a>
+            <a href="archive/calnews-2026-02-28.html" class="cn-sb-link">Week of Feb 23–27, 2026</a>
+            <a href="archive/calnews-2026-02-21.html" class="cn-sb-link">Week of Feb 16–20, 2026</a>
           </div>
-          <div class="cn-sidebar-block">
-            <div class="cn-sidebar-hdg">Docket Tracker</div>
-            <a href="calreg.html" class="cn-sidebar-calreg">&#9878; CalReg Monitor</a>
+          <div class="cn-sb-block">
+            <div class="cn-sb-hd">Docket Tracker</div>
+            <a href="calreg.html" class="cn-sb-calreg">&#9878; CalReg Monitor</a>
           </div>
-          <div class="cn-sidebar-block">
-            <div class="cn-sidebar-note">
-              Stories adapted from original reporting. All headlines link to source publications. Coverage spans CPUC proceedings, clean energy policy, and California utility regulation.
-            </div>
+          <div class="cn-sb-block">
+            <div class="cn-sb-note">Stories adapted from original reporting. All headlines link to source publications. Coverage spans CPUC proceedings, clean energy policy, and California utility regulation.</div>
           </div>
         </aside>
-
       </div>
     </div>
   </section>
 
-  <script src="js/main.js"></script>
-  <script>
+  <footer>
+    <div class="footer-inner">
+      <div id="footyear">© Jalal Awan, Ph.D. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="index.html">About</a>
+        <a href="calreg.html">CalReg</a>
+        <a href="calnews.html">CalNews</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/jalal-awan-bb43957/" target="_blank" class="social-icon" title="LinkedIn">in</a>
+        <a href="https://scholar.google.com/citations?user=0A3_DZUAAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">GS</a>
+      </div>
+    </div>
+  </footer>
 
-    // ── RECENT: CPUC/CEC items ONLY ──
+  <script>
+    document.getElementById('footyear').textContent = '© ' + new Date().getFullYear() + ' Jalal Awan, Ph.D. All rights reserved.';
+
+    // ── RECENT: CPUC/CEC items ONLY ── (content unchanged)
     const RECENT = [
       {
         type: "Resolution",
@@ -478,10 +396,86 @@
       },
     ];
 
-    // ── Render Recent Developments (6 visible + load more) ─────
+    // ── Editorial SVG illustrations (flat, muted + red accent) ──
+    const C = { bg:"#edeae3", ink:"#26333b", mid:"#9aa7ad", pale:"#d3dde1", red:"#c8102e" };
+    const frame = inner => `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="400" height="250" fill="${C.bg}"/>${inner}</svg>`;
+    const ART = {
+      heat: frame(`
+        <circle cx="300" cy="86" r="46" fill="${C.red}"/>
+        ${[0,45,90,135,180,225,270,315].map(a=>{const r=a*Math.PI/180,x1=300+Math.cos(r)*58,y1=86+Math.sin(r)*58,x2=300+Math.cos(r)*74,y2=86+Math.sin(r)*74;return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${C.red}" stroke-width="5" stroke-linecap="round"/>`}).join('')}
+        <rect x="96" y="40" width="26" height="130" rx="13" fill="none" stroke="${C.ink}" stroke-width="7"/>
+        <circle cx="109" cy="188" r="28" fill="none" stroke="${C.ink}" stroke-width="7"/>
+        <rect x="103" y="96" width="12" height="70" rx="6" fill="${C.red}"/>
+        <circle cx="109" cy="188" r="15" fill="${C.red}"/>
+        <path d="M170 200 q10 -14 20 0 t20 0 t20 0" fill="none" stroke="${C.mid}" stroke-width="5" stroke-linecap="round"/>`),
+      schools: frame(`
+        <rect x="70" y="120" width="180" height="95" fill="${C.ink}"/>
+        <polygon points="60,120 160,66 260,120" fill="${C.ink}"/>
+        <rect x="150" y="40" width="6" height="30" fill="${C.mid}"/><polygon points="156,42 190,52 156,62" fill="${C.red}"/>
+        <rect x="150" y="150" width="46" height="65" fill="${C.bg}"/>
+        <rect x="96" y="140" width="34" height="30" fill="${C.pale}"/><rect x="200" y="140" width="34" height="30" fill="${C.pale}"/>
+        <rect x="288" y="96" width="74" height="52" rx="4" fill="${C.mid}"/><rect x="288" y="96" width="74" height="16" rx="4" fill="${C.ink}"/>
+        <line x1="300" y1="122" x2="300" y2="136" stroke="#fff" stroke-width="4"/><line x1="316" y1="122" x2="316" y2="136" stroke="#fff" stroke-width="4"/><line x1="332" y1="122" x2="332" y2="136" stroke="#fff" stroke-width="4"/><line x1="348" y1="122" x2="348" y2="136" stroke="#fff" stroke-width="4"/>
+        <g stroke="${C.red}" stroke-width="3" stroke-linecap="round"><line x1="305" y1="160" x2="305" y2="180"/><line x1="325" y1="160" x2="325" y2="184"/><line x1="345" y1="160" x2="345" y2="178"/></g>`),
+      ev: frame(`
+        <path d="M70 168 l16 -44 q4 -12 18 -12 h108 q14 0 20 12 l20 44 z" fill="${C.ink}"/>
+        <rect x="70" y="164" width="192" height="34" rx="10" fill="${C.ink}"/>
+        <path d="M104 124 h104 l12 30 h-128 z" fill="${C.pale}"/>
+        <circle cx="112" cy="200" r="20" fill="${C.mid}"/><circle cx="112" cy="200" r="9" fill="${C.bg}"/>
+        <circle cx="222" cy="200" r="20" fill="${C.mid}"/><circle cx="222" cy="200" r="9" fill="${C.bg}"/>
+        <polygon points="322,96 300,150 322,150 306,206 350,138 326,138" fill="${C.red}"/>`),
+      gas: frame(`
+        <rect x="60" y="150" width="150" height="26" fill="${C.mid}"/>
+        <rect x="200" y="88" width="26" height="88" fill="${C.mid}"/>
+        <rect x="200" y="150" width="120" height="26" fill="${C.mid}"/>
+        <circle cx="213" cy="88" r="26" fill="${C.ink}"/><rect x="209" y="58" width="8" height="20" fill="${C.ink}"/><rect x="193" y="54" width="40" height="8" fill="${C.ink}"/>
+        <circle cx="118" cy="163" r="8" fill="${C.ink}"/><circle cx="300" cy="163" r="8" fill="${C.ink}"/>
+        <polygon points="330,150 360,150 345,120" fill="${C.red}"/><rect x="340" y="150" width="10" height="60" fill="${C.red}"/>`),
+      wildfire: frame(`
+        <line x1="300" y1="60" x2="300" y2="210" stroke="${C.ink}" stroke-width="7"/>
+        <polygon points="300,60 272,96 328,96" fill="none" stroke="${C.ink}" stroke-width="6"/>
+        <line x1="264" y1="104" x2="336" y2="104" stroke="${C.ink}" stroke-width="6"/>
+        <line x1="272" y1="132" x2="328" y2="132" stroke="${C.ink}" stroke-width="6"/>
+        <line x1="300" y1="104" x2="270" y2="120" stroke="${C.mid}" stroke-width="4"/><line x1="300" y1="104" x2="330" y2="120" stroke="${C.mid}" stroke-width="4"/>
+        <path d="M120 210 c-40 -20 -20 -60 4 -74 c-6 22 14 26 12 44 c14 -8 10 -30 2 -44 c30 16 46 44 30 74 z" fill="${C.red}"/>
+        <path d="M120 210 c-16 -10 -10 -30 4 -40 c0 14 10 16 8 28 z" fill="${C.bg}"/>`),
+      recovery: frame(`
+        <polygon points="150,70 240,70 240,86 195,64 150,86" fill="${C.ink}"/>
+        <path d="M150 86 h90 v96 h-90 z" fill="${C.ink}"/>
+        <polygon points="140,92 195,64 250,92" fill="${C.ink}"/>
+        <rect x="180" y="132" width="30" height="50" fill="${C.bg}"/>
+        <path d="M300 78 l40 14 v34 c0 34 -22 52 -40 60 c-18 -8 -40 -26 -40 -60 v-34 z" fill="${C.red}"/>
+        <path d="M282 128 l14 14 26 -30" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`),
+      solar: frame(`
+        <circle cx="96" cy="82" r="30" fill="${C.red}"/>
+        ${[0,45,90,135,180,225,270,315].map(a=>{const r=a*Math.PI/180,x1=96+Math.cos(r)*38,y1=82+Math.sin(r)*38,x2=96+Math.cos(r)*50,y2=82+Math.sin(r)*50;return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${C.red}" stroke-width="4" stroke-linecap="round"/>`}).join('')}
+        <g transform="translate(60,150)"><polygon points="0,44 84,44 72,0 12,0" fill="${C.mid}"/><line x1="30" y1="0" x2="20" y2="44" stroke="${C.bg}" stroke-width="3"/><line x1="52" y1="0" x2="52" y2="44" stroke="${C.bg}" stroke-width="3"/><line x1="6" y1="22" x2="78" y2="22" stroke="${C.bg}" stroke-width="3"/></g>
+        <rect x="250" y="120" width="80" height="96" rx="6" fill="${C.ink}"/><rect x="276" y="108" width="28" height="14" rx="3" fill="${C.ink}"/>
+        <rect x="262" y="150" width="56" height="12" fill="${C.red}"/><rect x="262" y="170" width="56" height="12" fill="${C.red}"/><rect x="262" y="190" width="34" height="12" fill="${C.mid}"/>`),
+      finance: frame(`
+        <line x1="70" y1="200" x2="350" y2="200" stroke="${C.ink}" stroke-width="4"/>
+        <rect x="92" y="150" width="40" height="50" fill="${C.mid}"/>
+        <rect x="150" y="120" width="40" height="80" fill="${C.mid}"/>
+        <rect x="208" y="92" width="40" height="108" fill="${C.ink}"/>
+        <rect x="266" y="64" width="40" height="136" fill="${C.red}"/>
+        <polyline points="112,140 170,112 228,84 286,56" fill="none" stroke="${C.ink}" stroke-width="4"/>
+        <polygon points="286,56 268,60 282,74" fill="${C.ink}"/>
+        <text x="286" y="150" font-family="Georgia, serif" font-size="46" font-weight="700" fill="#fff" text-anchor="middle">$</text>`),
+      datacenter: frame(`
+        ${[70,120,170].map(y=>`<rect x="96" y="${y}" width="150" height="38" rx="4" fill="${C.ink}"/><circle cx="118" cy="${y+19}" r="6" fill="${C.red}"/><rect x="140" y="${y+9}" width="86" height="5" fill="${C.mid}"/><rect x="140" y="${y+22}" width="64" height="5" fill="${C.mid}"/>`).join('')}
+        <g stroke="${C.mid}" stroke-width="3" fill="none"><path d="M270 96 h40 M270 189 h40 M310 96 v93"/></g>
+        <circle cx="310" cy="96" r="9" fill="${C.red}"/><circle cx="310" cy="142" r="9" fill="${C.ink}"/><circle cx="310" cy="189" r="9" fill="${C.red}"/>
+        <path d="M330 142 l24 -20 v40 z" fill="${C.red}"/>`),
+    };
+    const STORY_ART = {118:"heat",117:"schools",116:"ev",115:"gas",114:"wildfire",113:"recovery",112:"solar",111:"finance",110:"datacenter"};
+    const artFor = id => ART[STORY_ART[id]] || ART.finance;
+    const ALT = {heat:"Illustration: extreme-heat disconnection protections",schools:"Illustration: school cooling program",ev:"Illustration: electric-vehicle sales",gas:"Illustration: gas transmission rate increase",wildfire:"Illustration: wildfire and the grid",recovery:"Illustration: wildfire compensation and recovery",solar:"Illustration: rooftop solar and home batteries",finance:"Illustration: utility financial results",datacenter:"Illustration: data-center load growth"};
+    const altFor = id => ALT[STORY_ART[id]] || "";
+
+    // ── Recent Developments ──
     const rdEl = document.getElementById('recent-dev');
     const _rdCard = r => `
-      <div class="rd-card">
+      <div class="rd-card" style="--tc:${r.typeColor};">
         <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
         <div class="rd-title">${r.title}</div>
         <div class="rd-desc">${r.desc}</div>
@@ -491,87 +485,66 @@
         </div>
         ${r.details ? `
         <div class="rd-details-wrap">
-          <button class="rd-details-toggle" onclick="(function(btn){var b=btn.nextElementSibling;var a=btn.querySelector('.rd-details-arr');if(b.style.display==='block'){b.style.display='none';a.style.transform='rotate(0deg)';}else{b.style.display='block';a.style.transform='rotate(90deg)';};})(this)">
+          <button class="rd-details-toggle" onclick="(function(b){var x=b.nextElementSibling,a=b.querySelector('.rd-details-arr');if(x.style.display==='block'){x.style.display='none';a.style.transform='rotate(0deg)';}else{x.style.display='block';a.style.transform='rotate(90deg)';}})(this)">
             <span class="rd-details-arr">&#9658;</span> Analyst Notes
           </button>
           <div class="rd-details-body">${r.details}</div>
         </div>` : ''}
       </div>`;
-
-    RECENT.slice(0, 6).forEach(r => { rdEl.innerHTML += _rdCard(r); });
-
+    RECENT.slice(0,6).forEach(r => rdEl.innerHTML += _rdCard(r));
     if (RECENT.length > 6) {
-      const hiddenRecent = RECENT.slice(6);
-      const nr = hiddenRecent.length;
+      const hid = RECENT.slice(6);
       rdEl.insertAdjacentHTML('afterend', `
-        <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:16px;">${hiddenRecent.map(_rdCard).join('')}</div>
-        <div id="rd-show-btn" style="padding:14px 0 2px;">
-          <button onclick="document.getElementById('rd-more-grid').style.display='grid';this.parentElement.style.display='none';"
-            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
-            ${nr} More Decision${nr > 1 ? 's' : ''} &#8594;
-          </button>
+        <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:1px;">${hid.map(_rdCard).join('')}</div>
+        <div id="rd-show" style="padding:16px 0 2px;">
+          <button class="rd-showbtn" onclick="document.getElementById('rd-more-grid').style.display='grid';this.parentElement.style.display='none';">${hid.length} More Decision${hid.length>1?'s':''} &#8594;</button>
         </div>`);
     }
 
-    // ── Render Featured + Secondary Stories ───────────────────
+    // ── Featured + secondary ──
     const featIdx = Math.floor(Math.random() * STORIES.length);
     const feat = STORIES[featIdx];
     const rest = STORIES.filter((_, i) => i !== featIdx);
-
-    const bylineStr = feat.author
+    const byline = feat.author
       ? `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a> (Author: ${feat.author})`
       : `<strong>${feat.date}</strong> &nbsp;·&nbsp; Adapted from <a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.source}</a>`;
-
-    const relatedStr = feat.relatedCalreg
-      ? `<div class="cn-feat-related">Related CalReg: <a href="calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>`
-      : '';
-
-    const featImgStr = feat.image
-      ? `<figure class="cn-feat-image"><img src="${feat.image}" alt="" loading="lazy">${feat.imageCredit ? `<figcaption>${feat.imageCredit}</figcaption>` : ''}</figure>`
-      : '';
-
+    const featRel = feat.relatedCalreg
+      ? `<div class="cn-related">Related CalReg: <a href="calreg.html#${feat.relatedCalreg.anchor}">${feat.relatedCalreg.label}</a></div>` : '';
     document.getElementById('cn-featured').innerHTML = `
-      <div class="cn-feat-category">${feat.category}</div>
-      <div class="cn-feat-headline"><a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.title}</a></div>
-      <div class="cn-feat-byline">${bylineStr}</div>
-      ${featImgStr}
+      <div class="cn-feat-cat">${feat.category}</div>
+      <div class="cn-feat-head"><a href="${feat.url}" target="_blank" rel="noopener noreferrer">${feat.title}</a></div>
+      <div class="cn-feat-byline">${byline}</div>
+      <figure class="cn-feat-fig"><div class="art" role="img" aria-label="${altFor(feat.id)}">${artFor(feat.id)}</div></figure>
       <div class="cn-feat-summary">${feat.summary}</div>
-      <a href="${feat.url}" target="_blank" rel="noopener noreferrer" class="cn-feat-readmore">Read full story &#8594;</a>
-      ${relatedStr}`;
+      <a href="${feat.url}" target="_blank" rel="noopener noreferrer" class="cn-readmore">Read full story &#8594;</a>
+      ${featRel}`;
 
     const secEl = document.getElementById('cn-secondary');
     const _card = s => {
-      const metaStr = s.author
+      const meta = s.author
         ? `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a> (Author: ${s.author})`
         : `${s.date} &nbsp;·&nbsp; Adapted from <a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.source}</a>`;
-      const relStr = s.relatedCalreg
-        ? `<div class="cn-story-related">Related CalReg: <a href="calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>`
-        : '';
-      const imgStr = s.image
-        ? `<figure class="cn-story-image"><img src="${s.image}" alt="" loading="lazy">${s.imageCredit ? `<figcaption>${s.imageCredit}</figcaption>` : ''}</figure>`
-        : '';
+      const rel = s.relatedCalreg
+        ? `<div class="cn-story-related">Related CalReg: <a href="calreg.html#${s.relatedCalreg.anchor}">${s.relatedCalreg.label}</a></div>` : '';
       return `
-        <div class="cn-story-item">
-          <div class="cn-story-category">${s.category}</div>
-          <div class="cn-story-title"><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a></div>
-          <div class="cn-story-meta">${metaStr}</div>
-          ${imgStr}
-          <div class="cn-story-summary">${s.summary}</div>
-          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="cn-story-readmore">Read full story &#8594;</a>
-          ${relStr}
-        </div>`;
+        <article class="cn-item">
+          <div class="cn-text">
+            <div class="cn-cat">${s.category}</div>
+            <div class="cn-title"><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.title}</a></div>
+            <div class="cn-meta">${meta}</div>
+            <div class="cn-summary">${s.summary}</div>
+            <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="cn-readmore">Read full story &#8594;</a>
+            ${rel}
+          </div>
+          <div class="cn-thumb"><div class="art" role="img" aria-label="${altFor(s.id)}">${artFor(s.id)}</div></div>
+        </article>`;
     };
-    rest.slice(0, 3).forEach(s => { secEl.innerHTML += _card(s); });
+    rest.slice(0,3).forEach(s => secEl.innerHTML += _card(s));
     if (rest.length > 3) {
       const n = rest.length - 3;
       secEl.innerHTML += `
-        <div id="cn-more-stories" style="display:none;">${rest.slice(3).map(_card).join('')}</div>
-        <div id="cn-show-more-wrap" style="padding:20px 0 8px; border-top:1px solid var(--border); margin-top:8px;">
-          <button onclick="document.getElementById('cn-more-stories').style.display='block';this.parentElement.style.display='none';"
-            style="font-size:0.82rem;font-weight:700;color:var(--teal);background:transparent;border:1.5px solid var(--teal);padding:8px 22px;border-radius:20px;cursor:pointer;">
-            ${n} More ${n === 1 ? 'Story' : 'Stories'} &#8594;
-          </button>
-        </div>`;
+        <div id="cn-more" style="display:none;">${rest.slice(3).map(_card).join('')}</div>
+        <div id="cn-morewrap"><button class="cn-showbtn" onclick="document.getElementById('cn-more').style.display='block';this.parentElement.style.display='none';">${n} More ${n===1?'Story':'Stories'} &#8594;</button></div>`;
     }
   </script>
 </body>
