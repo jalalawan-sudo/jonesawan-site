@@ -3083,11 +3083,16 @@
       var info = document.getElementById('cr-search-info');
       var words = (q || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
       if (!words.length){ crSearchReset(); if (info) info.textContent = ''; return; }
+      // whole-word (keyword) match: each term must appear as its own token, not a substring
+      var res = words.map(function(w){
+        var esc = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return new RegExp('(^|[^a-z0-9])' + esc + '([^a-z0-9]|$)', 'i');
+      });
       document.body.classList.add('cr-searching');
       var n = 0;
       document.querySelectorAll('.proc-card').forEach(function(c){
-        var t = c.textContent.toLowerCase();
-        var hit = words.every(function(w){ return t.indexOf(w) >= 0; });
+        var t = c.textContent;
+        var hit = res.every(function(re){ return re.test(t); });
         c.style.display = hit ? '' : 'none';
         if (hit) n++;
       });
