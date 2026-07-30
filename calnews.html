@@ -251,6 +251,7 @@
         author: "Eric Macomber",
         category: "Wildfire \u00b7 Utility Liability",
         summary: "A new preprint and companion essay by <em>Eric Macomber</em> reexamine electric-utility liability for wildfires in California and the role of <strong>inverse condemnation</strong> in how that risk is allocated. The long-form law review article, released as a preprint, is paired with a shorter Substack piece summarizing the argument. <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7119759\" target=\"_blank\" rel=\"noopener noreferrer\">SSRN preprint</a>.",
+        analystNotes: "California&rsquo;s <strong>inverse-condemnation</strong> doctrine holds electric utilities strictly liable for property damage from fires their equipment ignites, even without negligence. Applied to the 2017 North Bay fires and the 2018 <strong>Camp Fire</strong>, it drove <em>PG&amp;E</em> into bankruptcy in 2019. In response, the Legislature passed <strong>AB 1054</strong> (2019), creating a roughly <strong>$21 billion Wildfire Fund</strong> to pay claims for fires caused by the large investor-owned utilities, capitalized about half by ratepayers through a non-bypassable bond charge and half by utility shareholders, alongside a safety-certification regime and a prudency standard that limits cost recovery.<br><br>The January 2025 <strong>Eaton and Palisades</strong> fires put the fund under acute strain: if <em>SCE</em> equipment is found to have caused the Eaton Fire, claims could approach or exceed the fund&rsquo;s remaining balance, leaving little for the next catastrophe. Replenishment is now on the table, with <strong>SB 254</strong> proposing an approximately <strong>$18 billion Continuation Account</strong> (about $9 billion from a 10-year extension of the ratepayer charge and about $9 billion from utility shareholders). Macomber&rsquo;s preprint and essay ask whether inverse condemnation is the right way to allocate that risk at all.",
         relatedCalreg: null
       },
       {
@@ -444,7 +445,7 @@
     const altFor = id => ALT[STORY_ART[id]] || "";
 
     // ── Featured + secondary ──
-    const featIdx = Math.floor(Math.random() * STORIES.length);
+    var _fi = STORIES.findIndex(function(s){ return s.id === 119; }); const featIdx = _fi >= 0 ? _fi : 0;
     const feat = STORIES[featIdx];
     const rest = STORIES.filter((_, i) => i !== featIdx);
     const byline = feat.author
@@ -459,6 +460,7 @@
       <figure class="cn-feat-fig"><div class="art" role="img" aria-label="${altFor(feat.id)}">${artFor(feat.id)}</div></figure>
       <div class="cn-feat-summary">${feat.summary}</div>
       <a href="${feat.url}" target="_blank" rel="noopener noreferrer" class="cn-readmore">Read full story &#8594;</a>
+      ${feat.analystNotes ? `<div class="rd-details-wrap" style="margin-top:16px;"><button class="rd-details-toggle" onclick="(function(b){var x=b.nextElementSibling;var a=b.querySelector('.rd-details-arr');var open=x.style.display===`+"'block'"+`;x.style.display=open?`+"'none'"+`:`+"'block'"+`;a.style.transform=open?`+"'rotate(0)'"+`:`+"'rotate(90deg)'"+`;})(this)"><span class="rd-details-arr">&#9658;</span> Analyst Notes</button><div class="rd-details-body">${feat.analystNotes}</div></div>` : ``}
       ${featRel}`;
 
     const secEl = document.getElementById('cn-secondary');
