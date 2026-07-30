@@ -179,16 +179,6 @@
     </div>
   </header>
 
-  <!-- Recent Developments -->
-  <section class="section band">
-    <div class="container">
-      <div class="kicker">Hot Off The Press</div>
-      <div class="sec-head">Recent Developments at the CPUC</div>
-      <div class="sec-sub">Key CPUC decisions, rulemakings, and news</div>
-      <div class="rd-grid" id="recent-dev"></div>
-    </div>
-  </section>
-
   <!-- Main news -->
   <section class="section">
     <div class="container">
@@ -251,55 +241,18 @@
     document.getElementById('footyear').textContent = '© ' + new Date().getFullYear() + ' Jalal Awan, Ph.D. All rights reserved.';
 
     // ── RECENT: CPUC/CEC items ONLY ── (content unchanged)
-    const RECENT = [
-      {
-        type: "Resolution",
-        typeColor: "#00b4a6",
-        title: "Res. E-5468 Adopted: CPUC Lowers the Extreme-Heat Disconnection Trigger to 90&deg;F Across PG&amp;E, SCE, SDG&amp;E, and SoCalGas",
-        desc: "The July 16 resolution approves, with modifications, Tier-3 advice letters from the four large IOUs implementing <strong>D.25-06-012</strong>. It replaces the prior <strong>100&deg;F</strong> heat trigger for residential disconnections (from D.20-06-003) with a <strong>CalHeatScore Level 2</strong> trigger and an interim <strong>90&deg;F</strong> fallback, and lets the utilities record incremental costs in their Disconnections Memorandum Accounts.",
-        date: "Jul 16, 2026 &middot; Res. E-5468",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M610/K649/610649527.PDF",
-        details: "The four advice letters (SCE 5707-E, PG&amp;E 7783-E, SDG&amp;E 4770-E, SoCalGas 6570-G) were all filed December 17, 2025 under Ordering Paragraph 4 of D.25-06-012. The prior 100&deg;F threshold traces to D.20-06-003. No fixed dollar amount is approved; the resolution authorizes recording &ldquo;minimal&rdquo; incremental costs to the Disconnections Memorandum Accounts and requires PG&amp;E, SCE, and SDG&amp;E to file annual Tier-1 arrearage-impact reports for three years. Item 18 on the July 16 agenda (Agenda ID 24329)."
-      },
-      {
-        type: "Proposed Decision",
-        typeColor: "#0369a1",
-        title: "PG&amp;E Hinkley S-238 Compressor CPCN: Proposed Decision Would Grant Withdrawal of a $93.5M Project Already Under Construction",
-        desc: "A proposed decision by ALJ Zhen Zhang would grant <em>PG&amp;E</em>'s motion to withdraw its Certificate of Public Convenience and Necessity application for the <strong>$93.5 million</strong> Hinkley Station S-238 compressor-replacement project. PG&amp;E began the work in January 2026 under a General Order 177 emergency exemption, then moved to withdraw the CPCN in February. Earliest Commission action: <strong>August 13, 2026</strong>.",
-        date: "Proposed Jul 8, 2026 &middot; A.25-04-004",
-        url: "https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M610/K353/610353817.PDF",
-        details: "PG&amp;E commenced the project January 20, 2026 under the GO 177 Section IV.B.c emergency exemption, completed a Final Initial Study / Mitigated Negative Declaration in January 2026, then filed to withdraw the application February 4, 2026. The proposed decision would close the proceeding. Agenda ID 24368; Assigned Commissioner Matthew Baker. The item is not final and is set no earlier than the August 13, 2026 voting meeting."
-      },
-      {
-        type: "Rulemaking",
-        typeColor: "#0369a1",
-        title: "IRP Net Cost of New Entry (Net CONE) Procurement-Penalty Mechanism: CPUC Staff Workshop Held July 23",
-        desc: "Energy Division staff held a <strong>July 23</strong> workshop in the electric Integrated Resource Planning oversight rulemaking on how to apply the <strong>Net Cost of New Entry (Net CONE)</strong> procurement-penalty mechanism, covering good-faith-effort standards, online-date criteria, capacity-factor calculations, and citations. Net CONE is benchmarked to the cost of new battery storage via the Avoided Cost Calculator.",
-        date: "Jul 23, 2026 &middot; R.25-06-019",
-        url: "https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2506019",
-        details: "The Order Instituting Rulemaking (filed June 26, 2025) continues CPUC oversight of electric IRP and procurement processes. Assigned Commissioner John Reynolds; ALJs Colin Rizzo and Julie Fitch. No decision has issued on the penalty mechanism; the July 23 workshop develops the record for a future proposed decision."
-      },
-      {
-        type: "CEC",
-        typeColor: "#00b4a6",
-        title: "CEC 2026 IEPR: Geothermal Proceeding Weighs State Actions to Expand In-State Development",
-        desc: "The California Energy Commission's <strong>2026 Integrated Energy Policy Report</strong> update opened a dedicated geothermal docket assessing barriers and potential state actions to expand in-state geothermal development. Two Commissioner workshops were held June 19 and July 9; written comments were due <strong>July 23, 2026</strong>.",
-        date: "Comments Jul 23, 2026 &middot; CEC 26-IEPR-04",
-        url: "https://efiling.energy.ca.gov/Lists/DocketLog.aspx?docketnumber=26-IEPR-04",
-        details: "Chair David Hochschild is the lead commissioner and Commissioner Noem&iacute; Gallardo the associate member. More than 15 comment letters were filed July 22-27. The geothermal assessment feeds the broader 2026 IEPR Update on reliability, affordability, and clean-firm resources."
-      },
-      {
-        type: "CEC",
-        typeColor: "#00b4a6",
-        title: "CEC Advances Draft DEBA Solicitation to Fund Clean Distributed Backup Assets for Grid Reliability",
-        desc: "The California Energy Commission advanced a draft grant solicitation for its <strong>Distributed Electricity Backup Assets (DEBA)</strong> program, which funds clean distributed generation and storage that can supply reliability during extreme events and grid emergencies.",
-        date: "Draft Jul 15, 2026 &middot; CEC 22-RENEW-01",
-        url: "https://efiling.energy.ca.gov/Lists/DocketLog.aspx?docketnumber=22-RENEW-01",
-        details: "DEBA supports deployment of cleaner distributed backup resources as an alternative to fossil-fueled backup generation, targeting grid reliability during heat events, wildfires, and other emergencies. The draft solicitation opens a comment window ahead of a final funding notice."
-      }
-    ];
-
     const STORIES = [
+      {
+        id: 119,
+        title: "Rethinking Utility Wildfire Risk in California",
+        url: "https://cepp.substack.com/p/rethinking-utility-wildfire-risk",
+        date: "Jul 30, 2026",
+        source: "Substack",
+        author: "Eric Macomber",
+        category: "Wildfire \u00b7 Utility Liability",
+        summary: "A new preprint and companion essay by <em>Eric Macomber</em> reexamine electric-utility liability for wildfires in California and the role of <strong>inverse condemnation</strong> in how that risk is allocated. The long-form law review article, released as a preprint, is paired with a shorter Substack piece summarizing the argument. <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7119759\" target=\"_blank\" rel=\"noopener noreferrer\">SSRN preprint</a>.",
+        relatedCalreg: null
+      },
       {
         id: 118,
         title: "California moves to restrict utility power shutoffs during extreme heat",
@@ -485,39 +438,10 @@
         <polyline points="330,196 348,168 366,180 384,120" fill="none" stroke="${C.red}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         <polygon points="384,120 366,124 378,138" fill="${C.red}"/>`),
     };
-    const STORY_ART = {118:"heat",117:"schools",116:"ev",115:"gas",114:"wildfire",113:"recovery",112:"solar",111:"finance",110:"datacenter"};
+    const STORY_ART = {119:"wildfire",118:"heat",117:"schools",116:"ev",115:"gas",114:"wildfire",113:"recovery",112:"solar",111:"finance",110:"datacenter"};
     const artFor = id => ART[STORY_ART[id]] || ART.finance;
     const ALT = {heat:"Illustration: extreme-heat disconnection protections",schools:"Illustration: school cooling program",ev:"Illustration: electric-vehicle sales",gas:"Illustration: gas transmission rate increase",wildfire:"Illustration: wildfire and the grid",recovery:"Illustration: wildfire compensation and recovery",solar:"Illustration: rooftop solar and home batteries",finance:"Illustration: utility financial results",datacenter:"Illustration: data-center load growth"};
     const altFor = id => ALT[STORY_ART[id]] || "";
-
-    // ── Recent Developments ──
-    const rdEl = document.getElementById('recent-dev');
-    const _rdCard = r => `
-      <div class="rd-card" style="--tc:${r.typeColor};">
-        <div class="rd-type" style="color:${r.typeColor};">${r.type}</div>
-        <div class="rd-title">${r.title}</div>
-        <div class="rd-desc">${r.desc}</div>
-        <div class="rd-footer">
-          <span class="rd-date">${r.date}</span>
-          <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="rd-more">Read More &#8594;</a>
-        </div>
-        ${r.details ? `
-        <div class="rd-details-wrap">
-          <button class="rd-details-toggle" onclick="(function(b){var x=b.nextElementSibling,a=b.querySelector('.rd-details-arr');if(x.style.display==='block'){x.style.display='none';a.style.transform='rotate(0deg)';}else{x.style.display='block';a.style.transform='rotate(90deg)';}})(this)">
-            <span class="rd-details-arr">&#9658;</span> Analyst Notes
-          </button>
-          <div class="rd-details-body">${r.details}</div>
-        </div>` : ''}
-      </div>`;
-    RECENT.slice(0,6).forEach(r => rdEl.innerHTML += _rdCard(r));
-    if (RECENT.length > 6) {
-      const hid = RECENT.slice(6);
-      rdEl.insertAdjacentHTML('afterend', `
-        <div id="rd-more-grid" class="rd-grid" style="display:none; margin-top:1px;">${hid.map(_rdCard).join('')}</div>
-        <div id="rd-show" style="padding:16px 0 2px;">
-          <button class="rd-showbtn" onclick="document.getElementById('rd-more-grid').style.display='grid';this.parentElement.style.display='none';">${hid.length} More Decision${hid.length>1?'s':''} &#8594;</button>
-        </div>`);
-    }
 
     // ── Featured + secondary ──
     const featIdx = Math.floor(Math.random() * STORIES.length);
