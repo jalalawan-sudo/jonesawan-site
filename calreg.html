@@ -77,19 +77,37 @@
   <div class="wash"></div>
 
   <!-- ── Announcement Banner (auto-dismisses after 30s) ── -->
-  <div id="calreg-banner" style="margin-top:64px; background:#faf8f4; border-bottom:1px solid #e6e3dd; padding:15px 32px; text-align:center; font-size:0.83rem; line-height:1.6; color:#3c4650; letter-spacing:0.01em;">
-    CalReg makes the regulatory proceedings that affect rates
-    <span style="color:#c8102e; font-weight:600;">simpler</span>
-    and
-    <span style="color:#16130f; font-weight:600;">more transparent</span>.
+  <div id="calreg-banner" style="margin-top:64px; background:#faf8f4; border-bottom:1px solid #e6e3dd; padding:15px 32px; text-align:center; font-size:0.86rem; line-height:1.6; color:#3c4650; letter-spacing:0.01em; min-height:52px; display:flex; align-items:center; justify-content:center;">
+    <span><span id="cr-tagline"></span><span id="cr-caret" style="display:inline-block; width:2px; height:1.05em; background:#c8102e; vertical-align:text-bottom; margin-left:2px; animation:crblink 0.85s step-end infinite;"></span></span>
   </div>
+  <style>@keyframes crblink{50%{opacity:0;}}</style>
   <script>
-    setTimeout(function(){
-      var b = document.getElementById('calreg-banner');
-      b.style.transition = 'opacity 1.2s ease';
-      b.style.opacity = '0';
-      setTimeout(function(){ b.style.display = 'none'; }, 1200);
-    }, 30000);
+    (function(){
+      var el = document.getElementById('cr-tagline');
+      if (!el) return;
+      var SEGS = [
+        { t: "CalReg makes the regulatory proceedings that affect rates ", s: "" },
+        { t: "simpler", s: "i" },
+        { t: " and ", s: "" },
+        { t: "more transparent", s: "ib" },
+        { t: ".", s: "" }
+      ];
+      var full = SEGS.reduce(function(a, x){ return a + x.t; }, "");
+      function render(n){
+        var html = "", rem = n;
+        for (var i = 0; i < SEGS.length; i++){
+          if (rem <= 0) break;
+          var seg = SEGS[i], slice = seg.t.slice(0, rem); rem -= seg.t.length;
+          if (seg.s === "i")       html += '<em style="font-style:italic; color:#c8102e; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:2px;">' + slice + '</em>';
+          else if (seg.s === "ib") html += '<strong style="color:#16130f;"><em style="font-style:italic; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:2px;">' + slice + '</em></strong>';
+          else html += slice;
+        }
+        el.innerHTML = html;
+      }
+      var i = 0;
+      function type(){ render(++i); if (i < full.length) setTimeout(type, 26); }
+      setTimeout(type, 450);
+    })();
   </script>
 
   <header class="page-header">
