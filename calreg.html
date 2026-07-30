@@ -59,6 +59,13 @@
   .page-header h1 span{ color:var(--muted); }
   .page-header .mast-sub{ color:var(--text-mid)!important; font-size:1.02rem; line-height:1.6; max-width:660px; margin-top:12px; }
   .page-header .mast-updated{ color:var(--muted)!important; font-size:0.8rem; margin-top:14px; opacity:1; }
+  .cr-search{ position:relative; max-width:580px; margin-top:20px; }
+  .cr-search input{ width:100%; box-sizing:border-box; font-family:var(--font-serif,'Source Serif 4',serif); font-size:0.98rem; color:var(--text-dark); background:#fff; border:1.5px solid var(--line); border-radius:26px; padding:11px 18px 11px 44px; outline:none; transition:border-color .15s; }
+  .cr-search input:focus{ border-color:var(--accent); }
+  .cr-search svg{ position:absolute; left:16px; top:50%; transform:translateY(-50%); width:17px; height:17px; color:var(--muted); pointer-events:none; }
+  .cr-search-info{ font-size:0.82rem; color:var(--text-mid); margin-top:9px; min-height:1em; }
+  .cr-search-info strong{ color:var(--accent); }
+  body.cr-searching .period-hdr, body.cr-searching .cr-arch-rail, body.cr-searching .cr-filters, body.cr-searching .filter-empty, body.cr-searching #rbSection{ display:none !important; }
   .label,.section-eyebrow{ color:var(--accent)!important; font-family:var(--font-serif); text-transform:uppercase; letter-spacing:0.14em; font-weight:700; }
   .divider{ background:var(--accent)!important; }
   h1,h2,h3,h4{ font-family:var(--font-serif); color:var(--text-dark); }
@@ -120,6 +127,11 @@
       <h1>CalReg <span>CPUC Docket Monitor</span></h1>
       <p class="mast-sub">A plain-language monitor of CPUC applications and proposed decisions that affect California utility rates, organized by period.</p>
       <p class="mast-updated">Updated July 30, 2026 &middot; Click any &#9658; on a card to expand details.</p>
+      <div class="cr-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="cr-search-input" oninput="crSearch(this.value)" aria-label="Search CalReg proceedings" placeholder="Search proceedings: e.g. Kincade Fire, Diablo Canyon, AMI, A.24-08-004">
+      </div>
+      <div class="cr-search-info" id="cr-search-info"></div>
     </div>
   </header>
 
@@ -3065,6 +3077,41 @@
         grid.insertBefore(wrap, toHide[0]);
       });
     });
+
+    // ── Smart search: filter every proc-card across all periods (AND of words) ──
+    function crSearch(q){
+      var info = document.getElementById('cr-search-info');
+      var words = (q || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+      if (!words.length){ crSearchReset(); if (info) info.textContent = ''; return; }
+      document.body.classList.add('cr-searching');
+      var n = 0;
+      document.querySelectorAll('.proc-card').forEach(function(c){
+        var t = c.textContent.toLowerCase();
+        var hit = words.every(function(w){ return t.indexOf(w) >= 0; });
+        c.style.display = hit ? '' : 'none';
+        if (hit) n++;
+      });
+      // reveal collapsed month panels that contain a match
+      document.querySelectorAll('.collapsible-period').forEach(function(p){
+        var has = Array.prototype.some.call(p.querySelectorAll('.proc-card'), function(c){ return c.style.display !== 'none'; });
+        p.style.display = has ? 'grid' : 'none';
+      });
+      if (info) info.innerHTML = n
+        ? ('<strong>' + n + '</strong> matching proceeding' + (n === 1 ? '' : 's') + ' across all periods.')
+        : ('No proceedings match your search. Try a docket number, utility, project name, or keyword.');
+    }
+    function crSearchReset(){
+      document.body.classList.remove('cr-searching');
+      document.querySelectorAll('.collapsible-period').forEach(function(p){ p.style.display = 'none'; });
+      document.querySelectorAll('.cr-month-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.proc-card').forEach(function(c){ c.style.display = ''; });
+      ['apps-grid','pd-cards'].forEach(function(cid){
+        var pill = document.querySelector('.cr-pill.active[onclick*="' + cid + '"]');
+        if (!pill) return;
+        var m = (pill.getAttribute('onclick') || '').match(/filterSection\(this,'([^']+)','([^']+)'\)/);
+        if (m) filterSection(pill, m[1], m[2]);
+      });
+    }
   </script>
 </body>
 </html>
