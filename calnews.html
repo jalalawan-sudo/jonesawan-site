@@ -196,14 +196,16 @@
     <div class="container">
       <div class="cn-wrap">
         <main>
-          <div class="cn-dateline">Current period: Jul 16 – 31, 2026 &nbsp;·&nbsp; 83 stories &nbsp;·&nbsp; Updated Jul 30, 2026</div>
+          <div class="cn-dateline">Current period: Aug 16 – 31, 2026 &nbsp;·&nbsp; 91 stories &nbsp;·&nbsp; Updated Aug 23, 2026</div>
           <div id="cn-periods"></div>
         </main>
 
         <aside class="cn-sidebar">
           <div class="cn-sb-block">
             <div class="cn-sb-hd">Periods</div>
-            <a href="#period-jul16312026" class="cn-sb-link active">Jul 16 - 31, 2026</a>
+            <a href="#period-aug16312026" class="cn-sb-link active">Aug 16 - 31, 2026</a>
+            <a href="#period-aug1152026" class="cn-sb-link">Aug 1 - 15, 2026</a>
+            <a href="#period-jul16312026" class="cn-sb-link">Jul 16 - 31, 2026</a>
             <a href="#period-jul1152026" class="cn-sb-link">Jul 1 - 15, 2026</a>
             <a href="#period-jun16302026" class="cn-sb-link">Jun 16 - 30, 2026</a>
             <a href="#period-may1152026" class="cn-sb-link">May 1 - 15, 2026</a>
@@ -246,6 +248,106 @@
 
     // ── RECENT: CPUC/CEC items ONLY ── (content unchanged)
     const STORIES = [
+      {
+        id: 203,
+        title: "Major data-center bills advance in California despite industry pushback",
+        url: "https://www.canarymedia.com/articles/data-centers/major-data-center-bills-advance-california",
+        date: "Aug 18, 2026",
+        source: "Canary Media",
+        author: "Jeff St. John",
+        category: "Data Centers &middot; Legislation",
+        summary: "Two bills cleared a key committee as the Legislature nears its <strong>Aug. 31</strong> adjournment. <strong>SB 886</strong> (Sen. Steve Padilla) would direct the CPUC to write rules ensuring data centers of <strong>25 MW or larger</strong> fully cover the infrastructure costs they impose &mdash; new generation, grid upgrades, wildfire mitigation and environmental programs &mdash; and would require demand-response participation with curtailment during supply emergencies. <strong>SB 887</strong> offers expedited environmental review to projects meeting standards including <strong>100% hourly carbon-free</strong> electricity within five years (<strong>75%</strong> from newly built resources), zero-carbon backup instead of diesel generators, and advance payment for interconnection. Utility worker unions, The Utility Reform Network and Net-Zero California support the package; <strong>PG&amp;E</strong> &mdash; which reports a <strong>10 GW</strong> data-center pipeline &mdash; the Data Center Coalition and business groups oppose it.",
+        isTop: true,
+        analystNotes: "PG&amp;E&rsquo;s disclosed data-center pipeline is about <strong>10 GW</strong>, roughly the draw of <strong>7.5 million homes</strong>. Named projects in the queue include a <strong>250 MW</strong> Google R&amp;D campus in San Jose, a <strong>77 MW</strong> Stack Infrastructure site in Hayward and a <strong>48 MW</strong> Microsoft facility.<br><br>SB 886 would move cost allocation from case-by-case adjudication into a CPUC rulemaking with a statutory floor: load at or above <strong>25 MW</strong> must cover the generation, transmission, wildfire-mitigation and program costs it causes, and must accept curtailment obligations. That is the question now being litigated in PG&amp;E&rsquo;s Rule 30 proceeding (A.24-11-007), where Cal Advocates has proposed an interim <strong>$50 million</strong> (<strong>$667/kW</strong>) advance for network upgrades and the docket was reopened in August for comment on FERC&rsquo;s large-load order in EL26-71.<br><br>SB 887 runs the other direction, trading expedited CEQA review for <strong>100% hourly carbon-free</strong> supply within five years, <strong>75%</strong> newly built. PG&amp;E argues large loads spread fixed costs and projects a <strong>10%</strong> bill reduction; opponents argue that depends on load materializing as forecast. Polling cited in the article puts opposition at <strong>70%</strong>, with <strong>74%</strong> favouring cost-coverage and clean-energy conditions. Both bills must clear both houses by <strong>Aug. 31</strong>; the governor has until the end of September to act.",
+        relatedCalreg: { anchor: "proc-a2411007", label: "A.24-11-007 \u00b7 Rule 30" },
+        period: "Aug 16 - 31, 2026"
+      },
+      {
+        id: 204,
+        title: "California gubernatorial candidate pledges two hours of free power a day",
+        url: "https://www.canarymedia.com/articles/politics/california-becerra-pledges-free-power",
+        date: "Aug 18, 2026",
+        source: "Canary Media",
+        author: "Alison F. Takemura",
+        category: "Affordability &middot; Politics",
+        summary: "Democratic gubernatorial candidate Xavier Becerra unveiled &ldquo;Power Hour,&rdquo; offering up to <strong>two free hours of electricity per day</strong> starting with low-income households, which he estimates could save about <strong>$1,000 per household per year</strong> by absorbing midday solar that currently drives wholesale prices negative. California power prices have risen <strong>46%</strong> in the last decade, the largest increase in the nation. The model is Australia&rsquo;s Solar Sharer scheme, where free power is capped at <strong>24 kWh/day</strong> in a set midday window.",
+        relatedCalreg: null,
+        period: "Aug 16 - 31, 2026"
+      },
+      {
+        id: 205,
+        title: "CEC approves the nation&rsquo;s first replacement-tire efficiency standards",
+        url: "https://www.energy.ca.gov/news/2026-08/cec-approves-nations-first-replacement-tire-efficiency-standards-saving",
+        date: "Aug 17, 2026",
+        source: "California Energy Commission",
+        author: null,
+        category: "Efficiency &middot; Standards",
+        summary: "The California Energy Commission approved the Replacement Tire Efficiency Program, the first US efficiency standards for replacement tires on passenger vehicles and light-duty trucks. The CEC projects savings of nearly <strong>$1 billion per year</strong> in fuel and electricity costs and a cut of <strong>2 million metric tons</strong> of CO&#8322; annually, equivalent to removing about <strong>400,000</strong> gasoline cars from state roads. Incremental consumer cost is <strong>$1.50 per tire</strong> in Phase 1 (2029&ndash;2033) and <strong>$6.50</strong> in Phase 2, against about <strong>$179</strong> in savings over the life of a set of tires.",
+        relatedCalreg: { anchor: "proc-cec-tire-aug2026", label: "CEC \u00b7 Tire Efficiency" },
+        period: "Aug 16 - 31, 2026"
+      },
+      {
+        id: 206,
+        title: "CAISO issues large-load proposal to address FERC show-cause order",
+        url: "https://www.rtoinsider.com/139113-caiso-issues-large-load-proposal-address-show-cause/",
+        date: "Aug 13, 2026",
+        source: "RTO Insider",
+        author: "David Krause",
+        category: "Data Centers &middot; Federal&ndash;State",
+        summary: "CAISO issued its Large Load Considerations straw proposal in response to FERC&rsquo;s <strong>June 18</strong> order to show cause in Docket <strong>EL26-71</strong>, which directed the ISO and its transmission owners to justify why their tariff treatment of large loads is not unjust and unreasonable. The proposal covers interconnection process fixes, a core definition of a large load as a single-site end user with peak demand of <strong>50 MW or greater</strong>, data-transparency improvements and two new flexible interconnection services. Stakeholder comments were due <strong>Sept. 2</strong>, with a draft final proposal <strong>Sept. 21</strong>.",
+        relatedCalreg: { anchor: "proc-caiso-largeloads-aug2026", label: "CAISO \u00b7 Large Loads" },
+        period: "Aug 16 - 31, 2026"
+      },
+      {
+        id: 207,
+        title: "CAISO warns of forecasting challenges from large loads",
+        url: "https://www.rtoinsider.com/139257-caiso-warns-forecasting-challenges-large-loads/",
+        date: "Aug 20, 2026",
+        source: "RTO Insider",
+        author: "David Krause",
+        category: "Data Centers &middot; Load Forecasting",
+        summary: "CAISO detailed the load-forecasting uncertainty created as AI data centers scale onto its system, while stating it has no plans to limit data-center growth. The ISO is pursuing four workstreams: better visibility into <strong>projected new load additions</strong>; typical <strong>operating profiles</strong> such as median daily demand; <strong>schedules and actual metered demand</strong> to improve intraday and day-ahead tracking; and <strong>operating limits and constraints</strong> covering minimum and maximum consumption, ramping and curtailment capability.",
+        relatedCalreg: { anchor: "proc-caiso-largeloads-aug2026", label: "CAISO \u00b7 Large Loads" },
+        period: "Aug 16 - 31, 2026"
+      },
+      {
+        id: 208,
+        title: "Newsom makes last-minute push to help utilities facing wildfire bills",
+        url: "https://calmatters.org/politics/2026/08/newsom-wildfire-utility-liability-package/",
+        date: "Aug 12, 2026",
+        source: "CalMatters",
+        author: "Jeanne Kuang and Levi Sumagaysay",
+        category: "Wildfire &middot; Utility Liability",
+        summary: "With the session ending <strong>Aug. 31</strong>, the governor is pushing a package to reduce how much <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em> pay after wildfires, including a state-administered &ldquo;fast pay&rdquo; claims program whose claimants would likely waive the right to sue, and a roughly <strong>$150,000</strong> damages cap for other victims. The 2019 law created a <strong>$21 billion</strong> wildfire fund, half from shareholders and half from a <strong>$2.50</strong> monthly customer surcharge extended through <strong>2045</strong>. The January 2025 Eaton Fire killed <strong>19</strong> people and destroyed nearly <strong>9,500</strong> structures, with UCLA estimating <strong>$24&ndash;45 billion</strong> in losses.",
+        isTop: true,
+        analystNotes: "The fund&rsquo;s design is the pressure point. It was capitalised at <strong>$21 billion</strong> in 2019, split evenly between utility shareholders and a <strong>$2.50</strong> monthly surcharge on customers that runs through <strong>2045</strong>, and it is expected to be drained by the Eaton Fire alone on UCLA&rsquo;s <strong>$24&ndash;45 billion</strong> loss estimate.<br><br>Two mechanisms are reported to be under discussion. A state-administered &ldquo;fast pay&rdquo; program would settle claims quickly, with claimants likely waiving litigation rights; one cited study finds plaintiffs&rsquo; attorneys currently take <strong>30&ndash;40%</strong> of payouts, so the trade is speed and certainty against both legal fees and the option value of suing. A roughly <strong>$150,000</strong> cap would apply to other victims &ldquo;in harm&rsquo;s way,&rdquo; a category the reporting notes has not been defined.<br><br>Context on influence: the three utilities spent <strong>$5.2 million</strong> on California campaigns, travel and charities over four years and nearly <strong>$7 million</strong> in the first half of 2026 lobbying the administration, Legislature and CPUC. The package remained unspecified in statutory text as of publication, with the deadline <strong>Aug. 31</strong>.",
+        relatedCalreg: null,
+        period: "Aug 1 - 15, 2026"
+      },
+      {
+        id: 209,
+        title: "Three ways to fix California&rsquo;s utility spending problem &mdash; if lawmakers act",
+        url: "https://www.canarymedia.com/articles/utilities/3-ways-fix-california-utility-spending",
+        date: "Aug 11, 2026",
+        source: "Canary Media",
+        author: "Jeff St. John",
+        category: "Rates &middot; Utility Spending",
+        summary: "<strong>SB 905</strong>, by Sen. Josh Becker and sponsored by The Utility Reform Network, would cut utilities&rsquo; return on equity for risk-reducing investments &mdash; chiefly the tens of billions spent burying and hardening lines &mdash; shift costs into utility or state-backed debt, and create performance-based regulation. California rates are now roughly <strong>twice the US average</strong>; <em>PG&amp;E</em> is seeking CPUC permission to spend <strong>$73 billion</strong> through 2030 and <em>SCE</em> has told investors it plans <strong>$38&ndash;41 billion</strong>. The bill faces the same <strong>Aug. 31</strong> deadline.",
+        relatedCalreg: null,
+        period: "Aug 1 - 15, 2026"
+      },
+      {
+        id: 210,
+        title: "CPUC staff say CAISO&rsquo;s load-balancing EDAM math doesn&rsquo;t add up",
+        url: "https://www.utilitydive.com/news/caiso-load-balancing-edam-cpuc-staff-powerex/828142/",
+        date: "Aug 18, 2026",
+        source: "Utility Dive",
+        author: "Diana DiGangi",
+        category: "Wholesale Markets &middot; EDAM",
+        summary: "CPUC Energy Division staff filed comments on <strong>Aug. 12</strong> questioning CAISO&rsquo;s Extended Day-Ahead Market load adjustments, singling out a <strong>592.5 MW</strong> adjustment on June 11 and a <strong>3,590 MW</strong> adjustment on Aug. 4 as larger than expected. The Six Cities reported combined gross EDAM benefits of <strong>$11.38 million</strong> in May&ndash;June with CAISO&rsquo;s share at <strong>$5.96 million</strong>, but roughly <strong>45%</strong> &mdash; <strong>$2.67 million</strong> &mdash; transferred to PacifiCorp as congestion revenue. EDAM launched in May 2026; Portland General Electric joins <strong>Oct. 1</strong>.",
+        relatedCalreg: null,
+        period: "Aug 1 - 15, 2026"
+      },
       {
         id: 119,
         title: "Rethinking Utility Wildfire Risk in California",
@@ -1278,6 +1380,19 @@
     const frame = inner => `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="${C.bg}"/><rect x="0" y="0" width="400" height="250" fill="${C.soft}" opacity="0.45"/>${inner}<rect x="0" y="245" width="400" height="5" fill="${C.red}"/></svg>`;
     const rays = (cx,cy,r1,r2,col,w)=>[...Array(12)].map((_,i)=>{const a=i*30*Math.PI/180,x1=cx+Math.cos(a)*r1,y1=cy+Math.sin(a)*r1,x2=cx+Math.cos(a)*r2,y2=cy+Math.sin(a)*r2;return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${col}" stroke-width="${w}" stroke-linecap="round"/>`}).join('');
     const ART = {
+      // Data-center legislation: capitol dome + server racks joined by an interconnection line
+      datacenterbills: frame(`
+        <path d="M104 64 C 134 64, 152 100, 152 138 L 56 138 C 56 100, 74 64, 104 64 Z" fill="${C.ink}"/>
+        <rect x="100" y="42" width="8" height="20" fill="${C.red}"/>
+        <circle cx="104" cy="40" r="7" fill="${C.red}"/>
+        <rect x="44" y="138" width="120" height="14" rx="3" fill="${C.ink}"/>
+        ${[52,74,96,118,140].map(x=>`<rect x="${x}" y="150" width="11" height="56" rx="2" fill="${C.pale}"/>`).join('')}
+        <rect x="38" y="206" width="132" height="9" rx="2" fill="${C.ink}"/>
+        <rect x="30" y="215" width="148" height="9" rx="2" fill="${C.mid}"/>
+        <line x1="178" y1="129" x2="236" y2="129" stroke="${C.ink}" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 8"/>
+        <circle cx="207" cy="129" r="7" fill="${C.red}"/>
+        ${[72,122,172].map(y=>`<rect x="236" y="${y}" width="126" height="38" rx="5" fill="${C.ink}"/><circle cx="256" cy="${y+19}" r="5.5" fill="${C.red}"/><circle cx="274" cy="${y+19}" r="5.5" fill="${C.mid}"/><rect x="292" y="${y+10}" width="58" height="6" rx="3" fill="${C.mid}"/><rect x="292" y="${y+23}" width="38" height="6" rx="3" fill="${C.mid}"/>`).join('')}
+      `),
       // Extreme-heat disconnection protection: hot sun + thermometer + heat waves
       heat: frame(`
         <circle cx="308" cy="78" r="40" fill="${C.red}"/>${rays(308,78,50,64,C.red,5)}
@@ -1357,13 +1472,13 @@
         <polyline points="330,196 348,168 366,180 384,120" fill="none" stroke="${C.red}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         <polygon points="384,120 366,124 378,138" fill="${C.red}"/>`),
     };
-    const STORY_ART = {119:"wildfire",118:"heat",117:"schools",116:"ev",115:"gas",114:"wildfire",113:"recovery",112:"solar",111:"finance",110:"datacenter"};
+    const STORY_ART = {203:"datacenterbills",204:"solar",205:"ev",206:"datacenter",207:"datacenter",208:"wildfire",209:"finance",210:"finance",119:"wildfire",118:"heat",117:"schools",116:"ev",115:"gas",114:"wildfire",113:"recovery",112:"solar",111:"finance",110:"datacenter"};
     const artFor = id => ART[STORY_ART[id]] || ART.finance;
-    const ALT = {heat:"Illustration: extreme-heat disconnection protections",schools:"Illustration: school cooling program",ev:"Illustration: electric-vehicle sales",gas:"Illustration: gas transmission rate increase",wildfire:"Illustration: wildfire and the grid",recovery:"Illustration: wildfire compensation and recovery",solar:"Illustration: rooftop solar and home batteries",finance:"Illustration: utility financial results",datacenter:"Illustration: data-center load growth"};
+    const ALT = {datacenterbills:"Illustration: data-center legislation and grid cost allocation",heat:"Illustration: extreme-heat disconnection protections",schools:"Illustration: school cooling program",ev:"Illustration: electric-vehicle sales",gas:"Illustration: gas transmission rate increase",wildfire:"Illustration: wildfire and the grid",recovery:"Illustration: wildfire compensation and recovery",solar:"Illustration: rooftop solar and home batteries",finance:"Illustration: utility financial results",datacenter:"Illustration: data-center load growth"};
     const altFor = id => ALT[STORY_ART[id]] || "";
 
     // ── Category art + period render ──
-    function catArt(c){ c=(c||'').toLowerCase();
+    function catArt(c){ c=(c||'').toLowerCase(); if(c.indexOf('data center')>=0&&c.indexOf('legislation')>=0) return ART.datacenterbills;
       if(c.indexOf('wildfire')>=0||c.indexOf('fire')>=0) return ART.wildfire;
       if(c.indexOf('heat')>=0) return ART.heat;
       if(c.indexOf('recovery')>=0||c.indexOf('eaton')>=0) return ART.recovery;
