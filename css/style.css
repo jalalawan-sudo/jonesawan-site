@@ -729,10 +729,20 @@ footer {
 .period-hdr-arr.open { transform: rotate(90deg); }
 
 /* ── Filter empty state ── */
+/* Hidden by default; filterSection() reveals it when an IOU filter matches nothing. */
 .filter-empty {
   display: none; text-align: center; padding: 32px 20px;
   color: #94a3b8; font-size: 0.88rem; font-style: italic;
   border: 1.5px dashed #e2e8f0; border-radius: var(--radius);
+}
+
+/* ── Period with no filings ── */
+/* Always visible, unlike .filter-empty: a period that genuinely had no filings
+   still needs to say so. Kept a separate class so filterSection() never hides it. */
+.period-empty {
+  grid-column: 1 / -1;
+  padding: 14px 4px 24px;
+  color: #64748b; font-size: 0.9rem; font-style: italic;
 }
 
 /* ── Vote note badge ── */

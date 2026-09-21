@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .period-hdr, .filter-empty, .collapsible-period { grid-column: 1 / -1; }
+    .period-hdr, .filter-empty, .period-empty, .collapsible-period { grid-column: 1 / -1; }
     .collapsible-period { grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
     .cr-arch-layout { display:flex; gap:28px; align-items:flex-start; }
     .cr-arch-main { flex:1 1 auto; min-width:0; }
@@ -68,7 +68,7 @@
   .cr-search svg{ position:absolute; left:16px; top:50%; transform:translateY(-50%); width:17px; height:17px; color:var(--muted); pointer-events:none; }
   .cr-search-info{ font-size:0.82rem; color:var(--text-mid); margin-top:9px; min-height:1em; }
   .cr-search-info strong{ color:var(--accent); }
-  body.cr-searching .period-hdr, body.cr-searching .cr-arch-rail, body.cr-searching .cr-filters, body.cr-searching .filter-empty, body.cr-searching #rbSection{ display:none !important; }
+  body.cr-searching .period-hdr, body.cr-searching .cr-arch-rail, body.cr-searching .cr-filters, body.cr-searching .filter-empty, body.cr-searching .period-empty, body.cr-searching #rbSection{ display:none !important; }
   .label,.section-eyebrow{ color:var(--accent)!important; font-family:var(--font-serif); text-transform:uppercase; letter-spacing:0.14em; font-weight:700; }
   .divider{ background:var(--accent)!important; }
   h1,h2,h3,h4{ font-family:var(--font-serif); color:var(--text-dark); }
@@ -499,7 +499,7 @@
           <div class="period-hdr-right">0 filings</div>
         </div>
 
-        <div class="filter-empty" style="padding:14px 4px 6px; color:#64748b; font-size:0.9rem;">No new applications were docketed at the CPUC in this period.</div>
+        <div class="period-empty">No new applications were docketed at the CPUC in this period.</div>
 
         <div class="period-hdr">
           <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
@@ -560,7 +560,7 @@
           <div class="period-hdr-right">0 filings</div>
         </div>
 
-        <div class="filter-empty" style="padding:14px 4px 6px; color:#64748b; font-size:0.9rem;">No new applications were docketed at the CPUC in this period.</div>
+        <div class="period-empty">No new applications were docketed at the CPUC in this period.</div>
 
         <div id="apps-grid-aug2026" class="collapsible-period" style="display:none;">
         <div class="proc-card" data-util="others" id="proc-a2608001">
