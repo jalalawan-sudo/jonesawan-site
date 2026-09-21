@@ -65,6 +65,15 @@
     .hero{min-height:92vh; display:flex; flex-direction:column; justify-content:center; padding-top:120px; padding-bottom:60px}
     .hero h1{font-size:clamp(2.6rem,7vw,4.4rem); font-weight:700; letter-spacing:-0.04em; line-height:1.02; color:var(--ink)}
     .hero .role{margin-top:16px; font-size:1.05rem; color:var(--muted); font-weight:500}
+    .hero .profile-links{margin-top:12px; font-size:0.95rem; color:var(--muted); display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .hero .profile-links .sep{color:var(--faint)}
+    /* The site-wide rule above is a{text-decoration:none}; hero links opt back in
+       so they read as links, matching the underlined links inside .proc-card. */
+    .hero .profile-links a, .hero .intro a{
+      color:var(--ink); font-weight:600;
+      text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:3px;
+    }
+    .hero .profile-links a:hover, .hero .intro a:hover{color:var(--accent)}
     .hero .intro{margin-top:30px; max-width:660px; font-size:1.12rem; color:#33373d; line-height:1.7}
     .hero .intro + .intro{margin-top:18px}
     .cta{margin-top:38px; display:flex; gap:14px; flex-wrap:wrap}
@@ -159,10 +168,16 @@
     <div class="wrap">
       <h1>Jalal Awan</h1>
       <div class="role">Energy &amp; climate policy analyst · Los Angeles, California</div>
+      <div class="profile-links">
+        <a href="https://www.linkedin.com/in/jalal-awan-bb43957/" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+        <span class="sep">·</span>
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=7-pkRdcAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener noreferrer">Google Scholar &#8599;</a>
+      </div>
 
       <p class="intro">I launched Jones-Awan as a volunteer practice to take on projects that are analytically interesting, have real potential for policy change, and deepen my connections in the California regulatory world.</p>
+      <p class="intro">I also contribute to the <a href="https://allianceforpolicyresearch.org/" target="_blank" rel="noopener noreferrer">Alliance for Policy Research</a>, an independent network of researchers &mdash; several of them former RAND colleagues &mdash; producing timely analysis on energy and climate policy.</p>
       <p class="intro">Outside of work, I am a member of the West Los Angeles American Poolplayers Association, and enjoy hiking and biking.</p>
-      <p class="intro">I also serve on the Venice Neighborhood Council&rsquo;s Land Use &amp; Planning Committee, where I work on automated citizen response and increased community participation &mdash; generated agenda summaries and case tracking that let residents see what is coming before the committee ahead of the meeting.</p>
+      <p class="intro">I also serve on the <a href="https://www.venicenc.org/" target="_blank" rel="noopener noreferrer">Venice Neighborhood Council</a>&rsquo;s Land Use &amp; Planning Committee, where I work on automated citizen response and increased community participation &mdash; generated agenda summaries.</p>
 
       <div class="cta">
         <a href="calreg.html" class="btn btn-primary">Explore CalReg &#8594;</a>
@@ -364,7 +379,7 @@
       <div>&copy; <span id="yr"></span> Jalal Awan, Ph.D.</div>
       <div class="soc">
         <a href="https://www.linkedin.com/in/jalal-awan-bb43957/" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
-        <a href="https://scholar.google.com/citations?user=0A3_DZUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar">GS</a>
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=7-pkRdcAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener noreferrer" title="Google Scholar">GS</a>
       </div>
     </div>
   </footer>
