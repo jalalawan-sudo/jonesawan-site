@@ -13,6 +13,7 @@ const NAV_HTML = `
       <li><a href="index.html">About</a></li>
       <li><a href="calreg.html">CalReg</a></li>
       <li><a href="calnews.html">CalNews</a></li>
+      <li><a href="https://forms.gle/UVf4Jzcv7RsYPdUg7" class="nav-cta" data-subscribe target="_blank" rel="noopener noreferrer">Subscribe</a></li>
     </ul>
   </div>
 </nav>`;
@@ -28,7 +29,7 @@ const FOOTER_HTML = `
     </div>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/jalal-awan-bb43957/" target="_blank" class="social-icon" title="LinkedIn">in</a>
-      <a href="https://scholar.google.com/citations?user=0A3_DZUAAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">GS</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=7-pkRdcAAAAJ&view_op=list_works" target="_blank" class="social-icon" title="Google Scholar">GS</a>
     </div>
   </div>
 </footer>`;
