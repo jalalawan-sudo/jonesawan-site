@@ -129,7 +129,7 @@
       <div class="label">California Regulatory Analytics</div>
       <h1>CalReg <span>CPUC Docket Monitor</span></h1>
       <p class="mast-sub">A plain-language monitor of CPUC applications and proposed decisions that affect California utility rates, organized by period.</p>
-      <p class="mast-updated">Updated August 23, 2026 &middot; Click any &#9658; on a card to expand details.</p>
+      <p class="mast-updated">Updated September 21, 2026 &middot; Click any &#9658; on a card to expand details.</p>
       <div class="cr-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
         <input type="search" id="cr-search-input" oninput="crSearch(this.value)" aria-label="Search CalReg proceedings" placeholder="Search proceedings: e.g. Kincade Fire, Diablo Canyon, AMI, A.24-08-004">
@@ -495,7 +495,14 @@
       <div class="cr-arch-main">
       <div class="proc-grid" id="apps-grid">
         <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-right">0 filings</div>
+        </div>
+
+        <div class="filter-empty" style="padding:14px 4px 6px; color:#64748b; font-size:0.9rem;">No new applications were docketed at the CPUC in this period.</div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
           <div class="period-hdr-right">3 filings</div>
         </div>
 
@@ -549,17 +556,13 @@
         </div>
 
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
           <div class="period-hdr-right">0 filings</div>
         </div>
 
         <div class="filter-empty" style="padding:14px 4px 6px; color:#64748b; font-size:0.9rem;">No new applications were docketed at the CPUC in this period.</div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 1 – Aug 15, 2026</div></div>
-          <div class="period-hdr-right">1 filing</div>
-        </div>
-
+        <div id="apps-grid-aug2026" class="collapsible-period" style="display:none;">
         <div class="proc-card" data-util="others" id="proc-a2608001">
           <div class="proc-card-meta">
             <span class="proc-card-header"><span class="docket">A.26-08-001</span> · Filed Aug 3, 2026 · Application · 2027 ECAC / GHG</span>
@@ -574,6 +577,7 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The ECAC provides dollar-for-dollar recovery of net power costs and fuel-stock carrying charges, reconciled annually each August; last year&rsquo;s counterpart was a $1.7 million (1.0%) increase. Class impacts: residential <strong>−$13.8 million (−15.5%)</strong>, commercial/industrial −$10.1 million (−16.9%), irrigation −$3.2 million (−16.7%), lighting −$47,000 (−6.0%). Beyond the rate components, the application discontinues allocations to the SOMAH program after June 2026 and refunds unused 2025&ndash;2026 SOMAH set-asides through the 2027 Climate Credit, consistent with R.25-01-005, and begins State Transmission Accelerator Fund set-asides (deposits from July 1, 2026) in compliance with D.26-04-036. Summary of earnings for the 12 months ended December 31, 2025: California operating revenue $153.6 million, rate base $611.6 million, return on rate base 5.35%. Proposed schedule: prehearing conference September 24, scoping memo October 22, proposed decision November 24, final decision December 18, 2026, rates effective January 1, 2027; PacifiCorp states hearings should not be needed, and no protests were on file as of August 13.</div>
           </div>
+        </div>
         </div>
 
         <div id="apps-grid-jul2026" class="collapsible-period" style="display:none;">
@@ -1291,6 +1295,7 @@
       </div>
             <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('apps-grid-aug2026',this)">August 2026 <span class="cr-month-n">1</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('apps-grid-jul2026',this)">July 2026 <span class="cr-month-n">8</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('apps-grid-jun2026',this)">June 2026 <span class="cr-month-n">5</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('apps-grid-may2026',this)">May 2026 <span class="cr-month-n">6</span></button>
@@ -1323,8 +1328,29 @@
       <div class="cr-arch-main">
       <div class="proc-grid" id="al-grid">
         <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
-          <div class="period-hdr-right">4 filings</div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-right">1 filing</div>
+        </div>
+
+        <div class="proc-card" data-util="scg sdge" id="proc-scg-al6693g">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">AL 6693-G</span> &middot; Filed Sep 16, 2026 &middot; Advice Letter &middot; Biomethane Procurement</span>
+          </div>
+          <h3>SoCalGas Seeks Approval of Biomethane Contracts With United Energy Trading and Rialto Bioenergy &mdash; First Test of the Reduced <strong>36.4 Bcf</strong> RGS Target</h3>
+          <p><em>SoCalGas</em> filed Advice Letter 6693-G asking the CPUC to approve biomethane procurement agreements with <strong>United Energy Trading</strong> and <strong>Rialto Bioenergy Solutions</strong>, negotiated with projects carried over from its <strong>2025 solicitation</strong>. The contracts would help SoCalGas and <em>SDG&amp;E</em> meet combined annual targets of about <strong>9.9 Bcf</strong> of biomethane from diverted organic waste and <strong>21.7 Bcf</strong> under the overall Renewable Gas Standard by <strong>2035</strong>. One selected project would use <strong>pyrolysis</strong> to convert landfill-diverted walnut shells into biomethane. SoCalGas says the agreements pass the program&rsquo;s <strong>3%</strong> annual increase cap and <strong>1%</strong> annual average program cost cap. Protests are due <strong>October 1</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M606/K216/606216379.PDF" target="_blank" rel="noopener noreferrer">D.26-04-044</a>
+            <a href="https://www.socalgas.com/regulatory/cpuc" target="_blank" rel="noopener noreferrer" class="sec">SoCalGas CPUC Filings</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">Prices, volumes, contract terms, project milestones and cost calculations are confidential. SoCalGas proposes recovering net above-market costs from all gas end-use customers through a non-bypassable, equal-cents-per-therm transportation charge, subject to the outcome of the pending biomethane cost-allocation proceeding &mdash; see the competing Houck and Reynolds proposed decisions carded under Proposed Decisions &amp; Rulings.<br><br>The agreements are an early test of the revised Renewable Gas Standard. In <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M606/K216/606216379.PDF" target="_blank" rel="noopener noreferrer">D.26-04-044</a> the CPUC reduced the overall RGS target from <strong>72.8 to 36.4 Bcf</strong> annually, extended the compliance deadline from 2030 to 2035 and added cost-containment limits. SoCalGas states both agreements pass those limits, but confidentiality prevents independent assessment of the prices and calculations.<br><br>The bilateral negotiations illustrate the difficulty of converting eligible projects into completed contracts: both projects qualified during the 2025 solicitation but needed additional time to conclude negotiations. Approval would advance the utilities&rsquo; procurement targets while spreading the resulting above-market costs across all gas customers.</div>
+          </div>
+        </div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
+          <div class="period-hdr-right">5 filings</div>
         </div>
 
         <div class="proc-card" data-util="pge" id="proc-pge-elec7972e">
@@ -1387,8 +1413,25 @@
           </div>
         </div>
 
+        <div class="proc-card" data-util="pge" id="proc-pge-backbone-sep2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">AL 5249-G / 5253-G / 5255-G</span> &middot; Filed Sep 2026 &middot; Advice Letters &middot; Gas System Reliability</span>
+          </div>
+          <h3>PG&amp;E Backbone Capacity Fell Below the <strong>2,538 MMcf/d</strong> Standard on Three September Dates &mdash; <strong>384 MMcf/d</strong> Short by September 15</h3>
+          <p><em>PG&amp;E</em> reported that available backbone gas transmission capacity fell below the CPUC&rsquo;s average-day standard for a 1-in-10 cold and dry year, which requires <strong>2,538 MMcf/d</strong>. In <a href="https://www.pge.com/tariffs/assets/pdf/adviceletter/GAS_5249-G.pdf" target="_blank" rel="noopener noreferrer">AL 5249-G</a> it reported <strong>2,530 MMcf/d</strong> for <strong>September 1</strong>, an 8-MMcf/d shortfall tied to maintenance at Burney, Topock and Kettleman stations and unplanned maintenance at Hinkley. <a href="https://www.pge.com/tariffs/assets/pdf/adviceletter/GAS_5253-G.pdf" target="_blank" rel="noopener noreferrer">AL 5253-G</a> reported <strong>2,484 MMcf/d</strong> on <strong>September 8</strong>, <strong>55 MMcf/d</strong> below the standard. <a href="https://www.pge.com/tariffs/assets/pdf/adviceletter/GAS_5255-G.pdf" target="_blank" rel="noopener noreferrer">AL 5255-G</a> reported <strong>2,154 MMcf/d</strong> on <strong>September 15</strong> &mdash; <strong>384 MMcf/d</strong>, or about <strong>15%</strong>, below the standard.</p>
+          <div class="proc-card-links">
+            <a href="https://www.pge.com/tariffs/assets/pdf/adviceletter/GAS_5249-G.pdf" target="_blank" rel="noopener noreferrer">AL 5249-G</a>
+            <a href="https://www.pge.com/tariffs/assets/pdf/adviceletter/GAS_5253-G.pdf" target="_blank" rel="noopener noreferrer" class="sec">AL 5253-G</a>
+            <a href="https://www.pge.com/tariffs/assets/pdf/adviceletter/GAS_5255-G.pdf" target="_blank" rel="noopener noreferrer" class="sec">AL 5255-G</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The September 8 reduction coincided with maintenance at Shingletown PLS and at Gerber, Topock and Kettleman stations; Shingletown work was scheduled through September 30, while the other work was scheduled to end between September 10 and September 20. By September 15 work continued at Shingletown, Topock and Kettleman and began at Delevan Station and on the L300A and L300B pipelines. The entire <strong>330 MMcf/d</strong> decline from September 8 occurred on the <strong>Redwood Path</strong>, where capacity fell from 1,860 to 1,530 MMcf/d; Baja remained at 600 MMcf/d and scheduled California production at 24 MMcf/d.<br><br>The filings document an increasingly large maintenance-related reduction in PG&amp;E&rsquo;s ability to receive gas, but they do not establish that customer demand exceeded available supply or that service was interrupted. The CPUC standard is a minimum system-design requirement based on an average day in a 1-in-10 cold and dry year, so crossing it requires notice even when actual September demand is considerably lower. The September 15 filing is the most significant of the three &mdash; available capacity roughly 15% below the standard, against less than 1% on September 1 and about 2% on September 8 &mdash; and concurrent maintenance on both paths leaves less flexibility if another facility becomes unavailable before the scheduled work ends.</div>
+          </div>
+        </div>
+
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
           <div class="period-hdr-right">1 filing</div>
         </div>
 
@@ -1510,24 +1553,93 @@
       <div class="cr-arch-main">
       <div class="proc-grid" id="pd-cards">
         <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
-          <div class="period-hdr-right">12 items</div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-right">5 items</div>
         </div>
 
         <div class="proc-card" data-util="pge sce sdge" id="proc-ab825-oir">
           <div class="proc-card-meta">
-            <span class="proc-card-header"><span class="docket">AB 825 OIR</span> &middot; Expected Sep 17, 2026 &middot; New Rulemaking &middot; Regional Markets</span>
+            <span class="proc-card-header"><span class="docket">R.26-09-009</span> &middot; Opened Sep 17, 2026 &middot; Rulemaking &middot; Regional Markets / AB 825</span>
           </div>
-          <h3>CPUC Expected to Open an <strong>AB 825</strong> Rulemaking on IOU Participation in Regional Electricity Markets</h3>
-          <p>The Commission is expected on <strong>September 17</strong> to open a <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694644.PDF" target="_blank" rel="noopener noreferrer">new rulemaking</a> implementing <strong>Assembly Bill 825</strong>, which authorizes CAISO and its participating transmission owners to use voluntary electricity markets governed by an independent regional organization. Before <em>PG&amp;E</em>, <em>SCE</em> or <em>SDG&amp;E</em> may participate, the CPUC must find that the law&rsquo;s requirements for regional governance and CAISO implementation have been satisfied. CAISO may begin operating under the regional organization&rsquo;s rules <strong>on or after January 1, 2028</strong>, following a governing-board resolution and FERC acceptance of the necessary tariff changes.</p>
+          <h3>CPUC Opens the <strong>AB 825</strong> Regional-Market Rulemaking &mdash; Decision Targeted for <strong>Q3 2027</strong>, Markets No Earlier Than <strong>January 2028</strong></h3>
+          <p>The Commission <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694644.PDF" target="_blank" rel="noopener noreferrer">opened R.26-09-009</a> on <strong>September 17</strong> to implement <a href="https://calmatters.digitaldemocracy.org/bills/ca_202520260ab825" target="_blank" rel="noopener noreferrer">Assembly Bill 825</a> and determine whether <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em> may participate in electricity markets governed by an independent regional organization. The statute permits CAISO to operate those markets <strong>no earlier than January 1, 2028</strong>, subject to statutory conditions, and utility participation requires a CPUC decision finding those requirements satisfied. All three utilities are respondents. The preliminary schedule calls for a <strong>decision in the third quarter of 2027</strong>.</p>
           <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694644.PDF" target="_blank" rel="noopener noreferrer">Draft OIR</a>
-            <a href="https://calmatters.digitaldemocracy.org/bills/ca_202520260ab825" target="_blank" rel="noopener noreferrer">AB 825</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694644.PDF" target="_blank" rel="noopener noreferrer">Order Instituting Rulemaking</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2609009" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
           </div>
           <div class="ai-box">
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">The proceeding would determine what evidence the CPUC needs &mdash; including whether draft documents suffice &mdash; and address any timing gap if CAISO is ready before the Commission&rsquo;s review is complete. It would also establish procedures for directing a utility to withdraw. Separate procedures would govern participation in additional regional products or services, including a possible regional resource-adequacy program. Under AB 825, CAISO must maintain the technical capability to enable withdrawal and to provide separate market services to withdrawing entities.<br><br>Finally, the proceeding would consider revisions to CPUC rules or guidance needed to prevent regionalization from expanding the renewable-energy transactions eligible for California&rsquo;s portfolio-content categories. AB 825 separately directs the CPUC and the California Energy Commission to coordinate on those revisions.</div>
+            <div class="ai-body">The proceeding will examine protections for state authority over procurement, resource adequacy, environmental and reliability policies and utility oversight, along with independent market analysis and governance transparency. A threshold question is whether the Commission&rsquo;s determination may rely on draft governance documents and tariffs or must await final CAISO resolutions and FERC-approved tariff changes; the rulemaking also asks whether an interim process is needed if CAISO&rsquo;s transition advances before the Commission completes its review.<br><br>Other issues include procedures for directing utilities to withdraw, CAISO&rsquo;s ability to provide separate market services after withdrawal, and authorization of additional regional-organization products including a potential resource adequacy program. The CPUC will coordinate with the California Energy Commission to prevent the transition from expanding which transactions qualify for RPS content categories, measured against a <strong>December 31, 2025</strong> baseline.<br><br>The order does not resolve whether the Q3 2027 decision will itself authorize participation or instead establish the process for a later determination. Requiring final governance documents and FERC-approved tariffs would compress the interval before the earliest permitted January 2028 launch. The withdrawal questions bear directly on how readily the Commission can exercise retained authority, since utilities are separately required by statute to participate in CAISO.</div>
           </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge others" id="proc-d2609047">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">D.26-09-047</span> &middot; Adopted Sep 17, 2026 &middot; Decision &middot; PCIA / Banked RECs</span>
+          </div>
+          <h3>PCIA Banked RECs &mdash; Pre-2019 Credits Affirmed at <strong>Zero</strong>; CalCCA&rsquo;s Departed-Customer Claim Rejected as Untimely</h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K890/618890414.PDF" target="_blank" rel="noopener noreferrer">decision</a> affirms <strong>zero-dollar</strong> valuation of renewable energy credits generated before <strong>January 1, 2019</strong> and banked for later use in <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em>&rsquo;s Power Charge Indifference Adjustment calculations. It rejects additional compensation for customers who helped fund those credits but left utility generation service before the credits were used for renewable compliance. The Commission found the credits&rsquo; costs and benefits fully allocated under the 2011 methodology adopted in <a href="https://docs.cpuc.ca.gov/PublishedDocs/WORD_PDF/FINAL_DECISION/154792.PDF" target="_blank" rel="noopener noreferrer">D.11-12-018</a>, which recognized renewable resources&rsquo; market value in the year of generation.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K890/618890414.PDF" target="_blank" rel="noopener noreferrer">Decision</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M318/K167/318167258.PDF" target="_blank" rel="noopener noreferrer" class="sec">D.19-10-001</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M318/K167/318167258.PDF" target="_blank" rel="noopener noreferrer">D.19-10-001</a> shifted REC valuation to the time credits are sold or used, but only for credits generated beginning in 2019. Because customer indifference was already satisfied for the older credits, the decision concludes that another payment would violate cost-shifting prohibitions.<br><br>CalCCA sought vintage-specific credits at the current RPS market price benchmark, or allocation of the credits to departed customers&rsquo; providers; Cal Advocates and direct-access representatives also supported non-zero valuation. The decision adopts the utilities&rsquo; position, rejects four staff alternatives and finds CalCCA&rsquo;s challenges to the earlier decisions untimely. The final revision limits its separate laches finding to the failure to challenge the 2019 decision.<br><br>The decision resolves differing treatment across utilities: PG&amp;E&rsquo;s 2023&ndash;2025 ERRA forecast cases used RPS benchmark valuation, while SCE&rsquo;s disputed cases used zero-dollar valuation. Uniform zero-dollar treatment applies <strong>through the October updates in the utilities&rsquo; 2027 ERRA forecast proceedings</strong>, affecting 2026 true-ups and 2027 forecast rates without otherwise reopening earlier outcomes. CalCCA executive director Beth Vaughan called the outcome &ldquo;deeply disappointing,&rdquo; saying the association had urged the Commission for six years to give CCA customers their share of the value of banked credits they helped pay for.<br><br>The reasoning treats the original allocation as complete even where the customers funding a resource and those benefiting from its eventual use differ, which forecloses a further PCIA credit without requiring the Commission to determine the banked credits&rsquo; present compliance value.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge scg" id="proc-d2609072">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">D.26-09-072</span> &middot; Adopted Sep 17, 2026 &middot; Decision &middot; Tribal Land Transfer</span>
+          </div>
+          <h3>Tribal Land Transfer Policy Extended to <strong>Surplus</strong> Utility Property; <strong>60/30/15/90-Day</strong> Negotiation Clock Adopted, R.22-02-002 Closed</h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K895/618895202.PDF" target="_blank" rel="noopener noreferrer">decision</a> expands the CPUC&rsquo;s <a href="https://www.cpuc.ca.gov/about-cpuc/divisions/office-of-the-tribal-advisor/tribal-land-transfer-policy" target="_blank" rel="noopener noreferrer">Tribal Land Transfer Policy</a> to surplus utility property, giving tribes an opportunity to negotiate for ancestral lands before utilities seek other buyers. It covers property removed from rate base because it is no longer necessary or useful for utility service, but <strong>exempts</strong> land removed to benefit utility operations, such as mitigation for capital projects. Transactions outside <strong>Public Utilities Code Section 851</strong> require no new CPUC approval but must comply with the policy. Telecommunications providers remain excluded.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K895/618895202.PDF" target="_blank" rel="noopener noreferrer">Decision</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M619/K170/619170000.PDF" target="_blank" rel="noopener noreferrer" class="sec">Tribal Land Policy 2.0</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M619/K169/619169999.PDF" target="_blank" rel="noopener noreferrer" class="sec">Tribal Consultation Policy</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">For each covered transaction a utility must request the Office of the Tribal Advisor&rsquo;s list of relevant tribes. Tribes receive <strong>60 days</strong> to express interest, with a second notice and another <strong>30 days</strong> for nonrespondents. A utility must establish a virtual data room within <strong>15 business days</strong> after a tribe expresses interest, beginning a <strong>90-day</strong> negotiation period; it may then seek other buyers if no agreement in principle exists and none appears reasonably imminent.<br><br>Data rooms must contain available property records and a current appraisal, with a broker&rsquo;s opinion of value permitted temporarily. Confidential cultural information remains subject to legal disclosure restrictions. Electric and gas utilities must report <strong>quarterly</strong> on dispositions and tribal engagement; water utilities report annually. Competing tribal claims proceed first through discussions among tribes, then through alternative dispute resolution and, if unresolved, to a Commission decision.<br><br>The decision also revises tribal consultation responsibilities, establishes <strong>quarterly Tribal Information Forums</strong> open to all California Native American tribes, and provides for review of the consultation policy every three years. It closes <strong>R.22-02-002</strong> while leaving taxation, jurisdiction and infrastructure delays for further engagement. The Commission acknowledged that the Tribal Advisor position is vacant and said it would coordinate with the governor&rsquo;s office to fill it &mdash; a consideration given that implementation rests heavily on that office.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="sce others" id="proc-d2609048">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">D.26-09-048</span> &middot; Adopted Sep 17, 2026 &middot; Decision &middot; SGIP</span>
+          </div>
+          <h3>SGIP Rulemaking <strong>R.20-05-012 Closed</strong>; SCE Medical-Baseline Waiver Preserves <strong>$1.7M</strong> in Reserved Incentives</h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K891/618891278.PDF" target="_blank" rel="noopener noreferrer">decision</a> closes the Self-Generation Incentive Program rulemaking while implementation and wind-down of the Residential Solar and Storage Equity program continue <strong>through 2028</strong>; funding allocation ended in <strong>June 2026</strong>. The decision also waives demand-response enrollment requirements for certain <em>SCE</em> <strong>Medical Baseline Exemption</strong> customers whose SGIP projects faced expiration because they receive generation service from another provider and could not satisfy the requirement &mdash; protecting approximately <strong>$1.7 million</strong> in reserved incentives. No party opposed the waiver.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K891/618891278.PDF" target="_blank" rel="noopener noreferrer">Decision</a>
+            <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2005012" target="_blank" rel="noopener noreferrer" class="sec">Docket Card</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">Medical Baseline Exemption customers must preserve stored energy for medical equipment and are excluded from qualifying demand-response programs, which is why the enrollment condition could not be met. The waiver removes that barrier while preserving the customers&rsquo; generation-provider choice and MB-E schedule.<br><br>The California Solar &amp; Storage Association opposed closing the proceeding, citing payment delays, project deadlines and the absence of the cost-attestation process from the SGIP Handbook. It warned that administrators could reject baseline-supported incentive claims without an open proceeding to resolve disputes, and sought corrective action regarding LADWP&rsquo;s administration. The decision finds that earlier rulings addressed baseline and payment issues and that existing program mechanisms can handle remaining concerns.<br><br>The proceeding therefore closes with program implementation still underway, and the attestation process is not codified in the Handbook; the decision relies instead on existing rules, working groups and staff coordination to address future disputes.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="sdge" id="proc-sdge-ee-exit-pd">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">EE Portfolio PD</span> &middot; Issued Sep 2026 &middot; Proposed Decision &middot; Energy Efficiency</span>
+          </div>
+          <h3>PD Would <strong>Deny</strong> SDG&amp;E&rsquo;s Exit From Regional Energy-Efficiency Administration &mdash; Claimed <strong>$300M</strong> Saving Reduced to About <strong>$14M</strong></h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M616/K587/616587384.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> would deny <em>SDG&amp;E</em>&rsquo;s request to stop administering regional energy-efficiency programs from <strong>2027 through 2032</strong>, finding the request premature and unsupported by the record. SDG&amp;E estimated that ending the portfolio would avoid <strong>$300 million</strong> in customer collections over six years, or <strong>$1.36 per month</strong> for an average residential gas and electric customer. The PD finds that calculation omits SDG&amp;E&rsquo;s own forecast of at least <strong>$286 million</strong> in foregone Total System Benefits, leaving roughly <strong>$14 million</strong> in net savings before longer-term energy, grid and equity benefits. Earliest CPUC vote: <strong>October 8</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M616/K587/616587384.PDF" target="_blank" rel="noopener noreferrer">Proposed Decision</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">Under the PD, SDG&amp;E would remain responsible for its regional portfolio and codes-and-standards programs but could eliminate underperforming programs and rebalance spending. Public Purpose Program charges, which fund energy efficiency and other programs, represent about <strong>1.4%</strong> of SDG&amp;E bills.<br><br>The PD rejects the argument that regional efficiency has become structurally uneconomic. SDG&amp;E&rsquo;s resource-acquisition segment achieved a <strong>1.19</strong> Total Resource Cost ratio in 2025, or <strong>1.05</strong> excluding statewide programs; six of seven regional programs had ratios at or near 1.0 in 2024, while the Federal Customer Services Program recorded a <strong>0.03</strong> ratio. Reforming or eliminating weak programs could improve performance without ending the portfolio.<br><br>The CPUC has legal authority to select administrators other than utilities, but the PD finds SDG&amp;E did not show that its efficiency targets were infeasible, uneconomic or harmful to public health, nor that the San Diego Regional Energy Network could replace its portfolio &mdash; SDREN was designed to supplement SDG&amp;E&rsquo;s programs, and approximately <strong>8%</strong> of SDG&amp;E&rsquo;s electric customers live outside its coverage. The PD also rejects an SDG&amp;E&ndash;Cal Advocates settlement that would have ended SDG&amp;E&rsquo;s administration of regional programs and codes-and-standards activities.<br><br>SDG&amp;E prevailed on the legal question that utilities need not administer regional programs indefinitely, but the improving cost-effectiveness results undercut the factual case for withdrawal. The PD leaves a path for a future exit conditioned on a willing replacement, an orderly transition and a plan to preserve customer and grid benefits.</div>
+          </div>
+        </div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
+          <div class="period-hdr-right">16 items</div>
         </div>
 
         <div class="proc-card" data-util="pge sce sdge scg swg" id="proc-grcplan-oir">
@@ -1674,27 +1786,27 @@
 
         <div class="proc-card" data-util="others" id="proc-rese5475">
           <div class="proc-card-meta">
-            <span class="proc-card-header"><span class="docket">Draft Res. E-5475</span> &middot; On Sep 17 Agenda &middot; Integrated Resource Planning &middot; Ava Community Energy</span>
+            <span class="proc-card-header"><span class="docket">Res. E-5475</span> &middot; Adopted Sep 17, 2026 &middot; Integrated Resource Planning &middot; Ava Community Energy</span>
           </div>
-          <h3>Draft Res. E-5475 &mdash; Ava&rsquo;s New Sonrisa Project Counts as <strong>Incremental</strong>, Not Baseline; Baseline-Removal Waiver Expanded to Tier 2</h3>
-          <p><a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K706/614706484.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution E-5475</a> confirms that <em>Ava Community Energy</em>&rsquo;s newly contracted Sonrisa project is distinct from a project of the same name included in the resource baseline established under the 2021 Mid-Term Reliability Decision (D.21-06-035). The new project is a <strong>200 MW</strong> solar facility paired with <strong>184 MW / 736 MWh</strong> of storage. The earlier project never advanced because of an infeasible interconnection configuration. On Ava&rsquo;s unprotested showing, the draft resolution finds the new project differs in size, commercial operation date, design, technology, land footprint, interconnection configuration and permitting status &mdash; so it counts as <strong>incremental procurement</strong> rather than an existing baseline resource.</p>
+          <h3>Res. E-5475 <strong>Adopted</strong> &mdash; Ava&rsquo;s New Sonrisa Project Counts as <strong>Incremental</strong>, Not Baseline; Baseline-Removal Waiver Expanded to Tier 2</h3>
+          <p>The Commission <strong>adopted Resolution E-5475 on September 17</strong>. The <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K580/618580832.PDF" target="_blank" rel="noopener noreferrer">resolution</a> confirms that <em>Ava Community Energy</em>&rsquo;s newly contracted Sonrisa project is distinct from a project of the same name included in the resource baseline established under the 2021 Mid-Term Reliability Decision (D.21-06-035). The new project is a <strong>200 MW</strong> solar facility paired with <strong>184 MW / 736 MWh</strong> of storage. The earlier project never advanced because of an infeasible interconnection configuration. On Ava&rsquo;s unprotested showing, the draft resolution finds the new project differs in size, commercial operation date, design, technology, land footprint, interconnection configuration and permitting status &mdash; so it counts as <strong>incremental procurement</strong> rather than an existing baseline resource.</p>
           <div class="proc-card-links">
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K706/614706484.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution E-5475</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K580/618580832.PDF" target="_blank" rel="noopener noreferrer">Resolution E-5475</a>
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M389/K603/389603637.PDF" target="_blank" rel="noopener noreferrer">D.21-06-035</a>
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M502/K956/502956567.PDF" target="_blank" rel="noopener noreferrer">D.23-02-040</a>
           </div>
           <div class="ai-box">
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">The draft resolution would also allow load-serving entities to seek removal of baseline projects that were not developed, are no longer under contract and are no longer advancing. Such requests would be submitted through a <strong>Tier 2 advice letter</strong>, expanding a waiver process that D.23-02-040 previously limited to cases in which one LSE terminated a contract and another contracted with the same resource. Ava&rsquo;s advice letter was not protested, and the draft resolution identifies no associated costs.</div>
+            <div class="ai-body">Ava &mdash; formerly East Bay Community Energy &mdash; requested the determination in <strong>Advice Letter 70-E, filed June 1</strong>. The resolution also allows load-serving entities to seek removal of baseline projects that were not developed, are no longer under contract and are no longer advancing. Such requests would be submitted through a <strong>Tier 2 advice letter</strong>, expanding a waiver process that D.23-02-040 previously limited to cases in which one LSE terminated a contract and another contracted with the same resource. Ava&rsquo;s advice letter was not protested, and the resolution identifies no associated costs. It does not quantify how much of Ava&rsquo;s procurement obligation the project will satisfy.</div>
           </div>
         </div>
 
         <div class="proc-card" data-util="pge sce sdge" id="proc-go95-lrfd-pd">
           <div class="proc-card-meta">
-            <span class="proc-card-header"><span class="docket">GO 95 / LRFD</span> &middot; PD issued Sep 2026 &middot; On Sep 17 Agenda &middot; Effective Jul 1, 2027</span>
+            <span class="proc-card-header"><span class="docket">GO 95 / LRFD</span> &middot; PD issued Sep 2026 &middot; <strong>Held to Oct 8</strong> &middot; Effective Jul 1, 2027</span>
           </div>
           <h3>GO 95 PD Replaces Working Stress Design With <strong>Load and Resistance Factor Design</strong> for Overhead Facilities</h3>
-          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K587/614587059.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> replaces the Working Stress Design methodology in <strong>General Order 95</strong> with <strong>Load and Resistance Factor Design</strong> for overhead electric and communications facilities. The initial load and strength factors would remain <strong>algebraically equivalent</strong> to existing requirements, but the proposal would allow factored loads to be used in certain structural calculations where doing so produces larger load effects. The <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K484/614484355.PDF" target="_blank" rel="noopener noreferrer">revisions</a> would take effect <strong>July 1, 2027</strong>.</p>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K587/614587059.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> replaces the Working Stress Design methodology in <strong>General Order 95</strong> with <strong>Load and Resistance Factor Design</strong> for overhead electric and communications facilities. The initial load and strength factors would remain <strong>algebraically equivalent</strong> to existing requirements, but the proposal would allow factored loads to be used in certain structural calculations where doing so produces larger load effects. The <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K484/614484355.PDF" target="_blank" rel="noopener noreferrer">revisions</a> would take effect <strong>July 1, 2027</strong>. The Commission <strong>held the item at its September 17 meeting</strong>; it is now scheduled for consideration on <strong>October 8</strong>.</p>
           <div class="proc-card-links">
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K587/614587059.PDF" target="_blank" rel="noopener noreferrer">Proposed Decision</a>
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K484/614484355.PDF" target="_blank" rel="noopener noreferrer">GO 95 Revisions</a>
@@ -1705,8 +1817,89 @@
           </div>
         </div>
 
+        <div class="proc-card" data-util="pge sce sdge scg" id="proc-rese5476">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">Res. E-5476</span> &middot; Draft Sep 2026 &middot; Draft Resolution &middot; Avoided Cost Calculator</span>
+          </div>
+          <h3>Draft Res. E-5476 Adopts the <strong>2026 Avoided Cost Calculator</strong> &mdash; Total Avoided Costs Rise in <strong>Every Hour</strong>, Driven by GHG Value</h3>
+          <p><a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694591.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution E-5476</a> would adopt the 2026 Avoided Cost Calculator for evaluating demand-side distributed energy resources, implementing changes approved September 3 in <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K821/617821785.PDF" target="_blank" rel="noopener noreferrer">D.26-09-007</a>: a single electric-sector greenhouse-gas value for electric and gas resources, removal of GHG rebalancing, simplified treatment of hybrid solar-plus-storage resources and use of loss-of-load hours for allocating capacity value. The 2026 calculator produces <strong>higher total avoided costs in every hour</strong> than the 2024 version. Earliest CPUC vote: <strong>October 8</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694591.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K821/617821785.PDF" target="_blank" rel="noopener noreferrer" class="sec">D.26-09-007</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The draft resolution also uses energy prices rather than temperature to identify high-value days, distinguishes weekday and weekend reliability risk, uses the <a href="https://www.energy.ca.gov/data-reports/reports/integrated-energy-policy-report-iepr" target="_blank" rel="noopener noreferrer">Integrated Energy Policy Report</a> forecast in peak capacity allocation factor calculations for transmission avoided costs, and applies the &ldquo;Discounted Total Investment Method&rdquo; across electric utilities.<br><br>Individual components move differently even as the total rises. Increased renewable penetration lowers avoided energy value; generation-capacity value falls in the near term, rises in later years and is distributed across more overnight hours to reflect storage dispatch. The largest increase comes from the GHG component, which rises substantially because the model incorporates expiring federal renewable-energy tax credits and new tariffs on imported solar and storage components.<br><br>The net effect should make DER programs appear more cost-effective where higher GHG benefits outweigh lower energy and near-term capacity values, with measures producing sustained emissions reductions benefiting most and resources relying heavily on near-term capacity value benefiting least. Federal policy enters the results primarily through the GHG component: reduced federal support and tariffs increase the modeled cost of utility-scale solar and storage used to reduce emissions, which increases the calculated value of demand-side resources that avoid those costs.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-rese5483">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">Res. E-5483</span> &middot; Draft Sep 2026 &middot; Draft Resolution &middot; Diablo Canyon True-Up</span>
+          </div>
+          <h3>Draft Res. E-5483 &mdash; PG&amp;E&rsquo;s <strong>$1.224B</strong> Diablo Canyon True-Up Clears the <strong>115%</strong> Threshold; TURN&rsquo;s Category-by-Category Test Denied</h3>
+          <p><a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K566/617566001.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution E-5483</a> would authorize <em>PG&amp;E</em>&rsquo;s true-up of Diablo Canyon extended-operations costs and market revenues for <strong>September 1, 2023 through December 31, 2025</strong>. PG&amp;E recorded approximately <strong>$1.224 billion</strong> in costs, below <strong>115%</strong> of the applicable forecast under both the original and updated Resource Adequacy Market Price Benchmark calculations, so the draft finds that <strong>Public Utilities Code Section 712.8</strong> requires no further reasonableness review. It would also approve allocation of Diablo Canyon&rsquo;s greenhouse-gas-free attributes to <strong>31</strong> eligible load-serving entities for 2025. Costs are recovered from PG&amp;E, SCE and SDG&amp;E customers through non-bypassable charges already in rates; the resolution would authorize <strong>no additional rate increase</strong>. Earliest CPUC vote: <strong>October 8</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K566/617566001.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The draft resolution would deny TURN&rsquo;s protest seeking to apply the 115% threshold separately to each cost category. TURN argued the aggregate calculation obscures approximately <strong>10%</strong> overruns in operations and maintenance and in plant equipment and improvement costs, while a <strong>$132.2 million</strong> reduction in Resource Adequacy substitution capacity costs supplies much of the offset. The draft concludes that the statute calls for comparing total actual and forecast costs, that the same approach is used for other balancing accounts, and that neither disputed category exceeded 115% of its own forecast.<br><br>TURN&rsquo;s proposal would not change the outcome for this record period, since PG&amp;E remains below the statutory trigger under either calculation. The forward-looking effect is the aggregate reading itself: savings or methodology changes in one category can offset overruns elsewhere, including in categories more directly within PG&amp;E&rsquo;s control. TURN&rsquo;s examples show an individual category exceeding its forecast by 30% to 65% without triggering review, but the draft reads Section 712.8(h)(1) as providing no category-specific test.<br><br>The draft appears internally inconsistent about the updated forecast: its discussion identifies an updated Market Price Benchmark forecast of <strong>$1.193 billion</strong>, while Finding 4 associates the <strong>$1.325 billion</strong> original forecast with both calculations. The stated conclusion remains mathematically correct under either figure.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-wildfirefund-2027">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">2027 Wildfire Fund NBC</span> &middot; Ruling Sep 2026 &middot; ALJ Ruling &middot; Non-Bypassable Charge</span>
+          </div>
+          <h3>2027 Wildfire Fund Charge Proposed at <strong>$5.42/MWh</strong> &mdash; Down <strong>8.3%</strong>, but a True-Up Rather Than a Revenue-Requirement Cut</h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M618/K426/618426258.PDF" target="_blank" rel="noopener noreferrer">ruling</a> seeks comment on the Department of Water Resources&rsquo; proposal to set the 2027 Wildfire Fund Non-Bypassable Charge at <strong>$5.42/MWh</strong> ($0.00542/kWh), effective <strong>January 1, 2027</strong> on non-exempt load in the <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em> service territories. That is <strong>$0.49/MWh, or 8.3%, below</strong> the 2026 charge of $5.91/MWh. DWR&rsquo;s 90-day notice projects collections of <strong>$854.6 million</strong> during 2027, <strong>$47.8 million less</strong> than the fixed <strong>$902.4 million</strong> annual revenue requirement, with the difference offsetting the cumulative overcollection projected through the end of 2026. Comments were due <strong>September 21</strong>, replies <strong>September 28</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M618/K426/618426258.PDF" target="_blank" rel="noopener noreferrer">Ruling</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K646/617646955.PDF" target="_blank" rel="noopener noreferrer" class="sec">DWR Memo</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">DWR calculated the rate using actual collections through June 2026, projected collections for the remainder of the year and the utilities&rsquo; 2027 load forecasts. The forecast includes <strong>158.7 million MWh</strong> of non-exempt load &mdash; <strong>67.9 million MWh</strong> bundled and <strong>90.8 million MWh</strong> of direct access, community choice aggregation and other departing load &mdash; and accounts for uncollectible amounts and the roughly 30-day lag between customer billing and remittance. An attached memo projects <strong>$849.1 million</strong> in transfers to the Wildfire Fund and <strong>$6.4 million</strong> in administrative and operating costs during 2027, with no bond debt-service expense.<br><br>The reduction does not lower the Fund&rsquo;s $902.4 million annual revenue requirement; it returns the cumulative overcollection expected through 2026. At 1,000 kWh of monthly usage the charge falls from $5.91 to $5.42. The Commission has limited discretion over the annual revenue requirement: the Wildfire Rate Agreement requires it to maintain collections sufficient to meet the requirement and has the force of an irrevocable financing order. The comment process is therefore more likely to examine DWR&rsquo;s load forecasts, collection assumptions and calculation than the amount dedicated to the program.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-dacsash-pd">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">DAC-SASH PD</span> &middot; Issued Sep 2026 &middot; Proposed Decision &middot; Low-Income Rooftop Solar</span>
+          </div>
+          <h3>DAC-SASH PD &mdash; Accrued Interest Redirected to Administration and Outreach; GRID&rsquo;s <strong>$1,000/kWh</strong> Battery Incentive Rejected</h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K521/617521759.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> would modify the Disadvantaged Communities&ndash;Single-Family Solar Homes program, which has a <strong>$10 million</strong> annual budget and provides no-cost rooftop solar to income-qualified homeowners in disadvantaged communities and California Indian Country. As of December 2024 it had supported <strong>2,886</strong> interconnected systems totalling more than <strong>11.5 MW</strong> with approximately <strong>$53.2 million</strong> in incentives. The PD would let <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em> use accrued interest in their DAC-SASH balancing accounts for utility administration and marketing, education and outreach through 2030 &mdash; <strong>$3.588 million</strong> accrued against <strong>$2.349 million</strong> in forecast remaining costs, leaving about <strong>$1.239 million</strong>. Earliest CPUC vote: <strong>October 8</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K521/617521759.PDF" target="_blank" rel="noopener noreferrer">Proposed Decision</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K521/617521760.PDF" target="_blank" rel="noopener noreferrer" class="sec">Appendix A</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K649/617649824.PDF" target="_blank" rel="noopener noreferrer" class="sec">Appendix B &mdash; Handbook v7</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K646/617646899.PDF" target="_blank" rel="noopener noreferrer" class="sec">Appendix C &mdash; Redlines</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">Public Purpose Program charges became the program&rsquo;s sole funding source on <strong>July 1, 2026</strong>, and the program is scheduled to sunset <strong>December 31, 2030</strong>. Recovery of the accrued interest would be limited to the forecasts absent further authorization and would occur without a rate of return through annual Energy Resource Recovery Account applications. SDG&amp;E would be prohibited from transferring more than its authorized <strong>10.3%</strong> share of annual program funding into its balancing account.<br><br><a href="https://gridalternatives.org/" target="_blank" rel="noopener noreferrer">GRID Alternatives</a> would be required to report external funding used to complete individual projects, tracking DAC-SASH and external costs, total project cost and the external-funding percentage. GRID could use <strong>$50,000</strong> of accrued interest to develop the reporting system and must file an implementation plan through a Tier 2 advice letter, with the new information appearing in its first semiannual report for 2027.<br><br>The PD adopts the revised Version 7 handbook, which retains the <strong>$3/W</strong> incentive and the Expected Performance Based Buydown Calculator, requires GRID to track enrollment in related assistance programs, and prohibits combined incentives from exceeding project costs. It makes qualifying meter socket adapters eligible while removing job-training, trainee-hiring and energy-efficiency-education requirements, and rejects GRID&rsquo;s proposed <strong>$1,000/kWh</strong> battery incentive.<br><br>Rejecting storage and eliminating workforce requirements preserves more of the fixed budget for installations, favouring household count over resilience or employment benefits. The external-funding requirement addresses a gap in the Commission&rsquo;s information: GRID&rsquo;s ability to supplement DAC-SASH with outside funds helped it win the administrator role, but the CPUC has lacked data on how much external support individual projects require. GRID would not have to identify funding sources or allocate external support among cost categories.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge scg" id="proc-heatpump-gwp-ruling">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">BUILD / TECH ACR</span> &middot; Issued Sep 15, 2026 &middot; Assigned Commissioner Ruling &middot; Refrigerant GWP</span>
+          </div>
+          <h3>Houck Ruling Extends High-GWP Heat-Pump Deadlines and <strong>Eliminates</strong> the Installation Cutoff for Other HVAC Systems</h3>
+          <p>Assigned Commissioner Darcie Houck&rsquo;s <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M618/K565/618565377.PDF" target="_blank" rel="noopener noreferrer">September 15 ruling</a> extends several eligibility deadlines and eliminates another for heat-pump equipment using refrigerants with a global warming potential above <strong>750</strong> under the <a href="https://www.energy.ca.gov/programs-and-topics/programs/building-initiative-low-emissions-development-program-build" target="_blank" rel="noopener noreferrer">BUILD Program</a> and the TECH Initiative. Variable refrigerant flow HVAC systems manufactured before <strong>January 1, 2026</strong> and installed before <strong>January 1, 2027</strong> remain eligible &mdash; both deadlines extended by one year to align with California Air Resources Board and U.S. EPA requirements.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M618/K565/618565377.PDF" target="_blank" rel="noopener noreferrer">Assigned Commissioner Ruling</a>
+            <a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180SB1477" target="_blank" rel="noopener noreferrer" class="sec">SB 1477</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">For self-contained heat pump products &mdash; packaged terminal, room and rooftop systems &mdash; the ruling retains the requirement that equipment be manufactured before <strong>January 1, 2025</strong> but extends the installation deadline from January 1, 2026 to <strong>January 1, 2028</strong>. For other heat pump HVAC systems it retains the January 1, 2025 manufacturing cutoff but <strong>eliminates the installation deadline entirely</strong>. It also extends eligibility to high-GWP heat pump water heaters and dryers installed before <strong>January 1, 2028</strong>.<br><br>The refrigerant restriction originated in a 2020 decision implementing <strong>Senate Bill 1477</strong> and was extended through assigned commissioner rulings issued in 2022 and 2025. The new ruling separates HVAC equipment into the categories used by CARB and the EPA, and notes that federal requirements supersede the CPUC&rsquo;s rules by limiting new VRF and self-contained systems to refrigerants below <strong>700 GWP</strong> after the applicable federal deadlines.<br><br>The most consequential change is the elimination of the installation deadline for high-GWP heat pump HVAC systems outside the VRF and self-contained categories: equipment in that category manufactured before 2025 remains eligible for BUILD and TECH incentives without a separate installation cutoff. The ruling otherwise leaves the transition away from high-GWP refrigerants intact while giving manufacturers and installers more time to use qualifying equipment; heat pump water heaters and dryers receive another year because of limited market development.</div>
+          </div>
+        </div>
+
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
           <div class="period-hdr-right">14 items</div>
         </div>
 
@@ -1898,17 +2091,17 @@
 
         <div class="proc-card" data-util="pge others" id="proc-resg3622-3623">
           <div class="proc-card-meta">
-            <span class="proc-card-header"><span class="docket">Res. G-3622 / G-3623</span> &middot; Drafts Aug 2026 &middot; Draft Resolutions &middot; Gas RD&amp;D Oversight</span>
+            <span class="proc-card-header"><span class="docket">Res. G-3622 / G-3623</span> &middot; Sep 17, 2026 &middot; <strong>G-3623 Adopted &middot; G-3622 Held to Oct 8</strong> &middot; Gas RD&amp;D Oversight</span>
           </div>
-          <h3>Gas Research Oversight Tightens &mdash; CEC Told to Spend <strong>$31.1M</strong> of Unspent Funds First; PG&amp;E&rsquo;s <strong>$1.95M</strong> Unapproved 2024 Spend Denied</h3>
-          <p>Two draft resolutions would strengthen CPUC oversight of ratepayer-funded gas research. <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K716/614716938.PDF" target="_blank" rel="noopener noreferrer">Draft Res. G-3622</a> approves in part the CEC&rsquo;s two <strong>$24 million</strong> RD&amp;D plans but requires the agency to draw down <strong>$31.1 million</strong> in previously authorized, unspent funds first &mdash; limiting new ratepayer funding to <strong>$13.5 million</strong> &mdash; and bars hydrogen-related research pending a Commission determination on gas ratepayers&rsquo; role. <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K701/614701971.PDF" target="_blank" rel="noopener noreferrer">Draft Res. G-3623</a> would <strong>deny</strong> PG&amp;E&rsquo;s <strong>$1.95 million</strong> 2024 recovery because the money was spent without prior approval, while approving modified budgets of <strong>$6.13M (2025)</strong> and <strong>$7.87M (2026)</strong>.</p>
+          <h3>Gas Research Oversight Splits &mdash; <strong>G-3623 Adopted</strong> Denying PG&amp;E&rsquo;s <strong>$1.95M</strong> 2024 Spend; <strong>G-3622 Held</strong> on the CEC&rsquo;s <strong>$31.1M</strong> Drawdown</h3>
+          <p>The Commission <strong>adopted Resolution G-3623 on September 17</strong> and <strong>held Draft Resolution G-3622 to October 8</strong>. Both tighten CPUC oversight of ratepayer-funded gas research. <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K716/614716938.PDF" target="_blank" rel="noopener noreferrer">Draft Res. G-3622</a> approves in part the CEC&rsquo;s two <strong>$24 million</strong> RD&amp;D plans but requires the agency to draw down <strong>$31.1 million</strong> in previously authorized, unspent funds first &mdash; limiting new ratepayer funding to <strong>$13.5 million</strong> &mdash; and bars hydrogen-related research pending a Commission determination on gas ratepayers&rsquo; role. <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K895/618895166.PDF" target="_blank" rel="noopener noreferrer">Res. G-3623</a>, as adopted, <strong>denies</strong> PG&amp;E&rsquo;s <strong>$1.95 million</strong> 2024 plan with <strong>no further resubmission authorized</strong> because the money was spent before plan approval, while authorizing <strong>$6.13 million (2025)</strong> and <strong>$7.87 million (2026)</strong> subject to revisions. PG&amp;E may still record <strong>$611,440</strong> in its balancing account for Commission-required planning, reporting and workshop costs.</p>
           <div class="proc-card-links">
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K716/614716938.PDF" target="_blank" rel="noopener noreferrer">Draft G-3622</a>
-            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K701/614701971.PDF" target="_blank" rel="noopener noreferrer" class="sec">Draft G-3623</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K895/618895166.PDF" target="_blank" rel="noopener noreferrer" class="sec">Res. G-3623 (adopted)</a>
           </div>
           <div class="ai-box">
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">G-3622 gives the CEC 90 days to revise both plans to improve financial reporting, demonstrate coordination with other research administrators, and address duplication. G-3623 permits no resubmission of the denied 2024 request and conditions the 2025&ndash;2026 budgets on revised plans within 60 days that distinguish PG&amp;E&rsquo;s work from similar SoCalGas research, quantify expected benefits, and &mdash; for 2026 artificial-intelligence work &mdash; account for energy, cloud-computing, data-storage, and processing costs while retaining human decision-making authority. Together the drafts establish a common oversight framework emphasizing unspent balances, measurable ratepayer benefits, and non-duplication; SoCalGas&rsquo;s four pending 2024&ndash;2027 research plans suggest these standards will soon apply to the remaining major gas RD&amp;D administrator.</div>
+            <div class="ai-body">As adopted, G-3623 preserves <strong>$6.31 million</strong> for integrity-management research, <strong>$3.15 million</strong> for gas decommissioning and electrification planning tools and <strong>$3.15 million</strong> for clean fuels integration across the 2025 and 2026 budgets; it removes proposed evaluation and database funding and reduces administrative allocations to the <strong>10% cap</strong>. PG&amp;E must submit revised plans through Tier 2 advice letters within <strong>60 days</strong>. Implementation of the 2025 plan must await approval of revisions demonstrating additional research value and avoiding duplication, while the 2026 plan may proceed as PG&amp;E clarifies benefit metrics and accounts for AI and machine-learning costs in integrity-management research. Unspent funds return to ratepayers at the funding cycle&rsquo;s close except amounts committed or encumbered for continuing work &mdash; so approval timing affects how much of the 2025 budget PG&amp;E can commit before the balance becomes refundable.<br><br>G-3622, still pending, gives the CEC 90 days to revise both plans to improve financial reporting, demonstrate coordination with other research administrators, and address duplication. G-3623 permits no resubmission of the denied 2024 request and conditions the 2025&ndash;2026 budgets on revised plans within 60 days that distinguish PG&amp;E&rsquo;s work from similar SoCalGas research, quantify expected benefits, and &mdash; for 2026 artificial-intelligence work &mdash; account for energy, cloud-computing, data-storage, and processing costs while retaining human decision-making authority. Together the drafts establish a common oversight framework emphasizing unspent balances, measurable ratepayer benefits, and non-duplication; SoCalGas&rsquo;s four pending 2024&ndash;2027 research plans suggest these standards will soon apply to the remaining major gas RD&amp;D administrator.</div>
           </div>
         </div>
 
@@ -1927,10 +2120,7 @@
           </div>
         </div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 1 – Aug 15, 2026</div></div>
-          <div class="period-hdr-right">14 items</div>
-        </div>
+        <div id="pd-cards-aug2026" class="collapsible-period" style="display:none;">
         <div class="proc-card" data-util="scg" id="proc-resg3620">
           <div class="proc-card-meta">
             <span class="proc-card-header"><span class="docket">Res. G-3620</span> &middot; On Aug 13, 2026 Agenda &middot; Draft Resolution &middot; Gas Rule 41</span>
@@ -1994,10 +2184,10 @@
 
         <div class="proc-card" data-util="pge sce sdge" id="proc-rese5480-draft">
           <div class="proc-card-meta">
-            <span class="proc-card-header"><span class="docket">Res. E-5480</span> &middot; Draft Aug 12, 2026 &middot; Draft Resolution &middot; Distribution Equity Metrics</span>
+            <span class="proc-card-header"><span class="docket">Res. E-5480</span> &middot; Adopted Sep 17, 2026 &middot; Resolution &middot; Distribution Equity Metrics</span>
           </div>
-          <h3>Draft Res. E-5480 Puts Energy Division in Charge of Distribution-Equity Modeling; IOUs Must Report <strong>Five</strong> Customer Populations Separately</h3>
-          <p><a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K609/614609073.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution E-5480</a> would approve with modifications the IOUs&rsquo; proposals for measuring equity in annual distribution planning under D.24-10-030. It finds the utilities complied but that their proposals alone cannot produce consistent, comparable results, and would require <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> to report <strong>five populations separately</strong>: CARE, FERA, Medical Baseline, Tribal community members, and customers in SB 535 disadvantaged communities. Utility data is due <strong>October 16, 2026</strong>, with the first public report in <strong>Q3 2027</strong>.</p>
+          <h3>Res. E-5480 <strong>Adopted</strong> &mdash; Energy Division Keeps Control of Distribution-Equity Modeling; IOUs Must Report <strong>Five</strong> Customer Populations Separately</h3>
+          <p>Adopted <strong>September 17</strong>, <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M619/K318/619318911.PDF" target="_blank" rel="noopener noreferrer">Resolution E-5480</a> approves with modifications the IOUs&rsquo; proposals for measuring equity in annual distribution planning under D.24-10-030. It finds the utilities complied but that their proposals alone cannot produce consistent, comparable results, and would require <em>PG&amp;E</em>, <em>SCE</em>, and <em>SDG&amp;E</em> to report <strong>five populations separately</strong>: CARE, FERA, Medical Baseline, Tribal community members, and customers in SB 535 disadvantaged communities. Utility data is due <strong>October 16, 2026</strong>, with the first public report in <strong>Q3 2027</strong>.</p>
           <div class="proc-card-links">
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K609/614609073.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution</a>
           </div>
@@ -2042,7 +2232,7 @@
 
         <div class="proc-card" data-util="pge" id="proc-rese5455">
           <div class="proc-card-meta">
-            <span class="proc-card-header"><span class="docket">Res. E-5455</span> · Held Aug 13, 2026 · Draft Resolution · Held to Sept 3</span>
+            <span class="proc-card-header"><span class="docket">Res. E-5455</span> · Draft Resolution · <strong>Held Sep 17, 2026 &mdash; now Oct 8</strong></span>
           </div>
           <h3>PG&amp;E&ndash;Google <strong>250 MW</strong> San Jose Data-Center Energization Held a Second Time (Houck, &ldquo;Further Review&rdquo;)</h3>
           <p>Commissioner Houck held the <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M607/K718/607718746.PDF" target="_blank" rel="noopener noreferrer">draft resolution</a> approving, with modifications, <em>PG&amp;E</em>&rsquo;s &ldquo;exceptional case&rdquo; agreement to energize <strong>Google&rsquo;s 250 MW</strong> transmission-level (230 kV) data-center load in San Jose — the first major test of PG&amp;E&rsquo;s large-load energization framework — to the <strong>September 3, 2026</strong> meeting for further review. The draft would limit annual refunds of Google&rsquo;s capital advance to annual net revenues received from the customer plus an income-tax-component adjustment, route broader transmission network-upgrade costs through a Tier 2 advice letter, and require separate refundable and non-refundable cost-cap calculations.</p>
@@ -2051,7 +2241,7 @@
           </div>
           <div class="ai-box">
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body">The resolution disposes of PG&amp;E Advice Letter 7785-E, filed December 18, 2025. It was first held at the July 16 meeting by staff; the August 13 hold is Commissioner Houck&rsquo;s. The refund-limiting mechanism responds to ratepayer-risk concerns aired in the parallel Rule 30 large-load cost-allocation fight in A.24-11-007, and the framework now sits alongside FERC&rsquo;s June 18, 2026 show-cause order questioning whether CAISO tariffs adequately address large and co-located loads — a proceeding that could federalize parts of what Res. E-5455 addresses. Item 4 on the August 13 agenda; a further revised draft may issue before the September 3 vote.</div>
+            <div class="ai-body">The resolution disposes of PG&amp;E Advice Letter 7785-E, filed December 18, 2025. It was first held at the July 16 meeting by staff; the August 13 hold is Commissioner Houck&rsquo;s. The refund-limiting mechanism responds to ratepayer-risk concerns aired in the parallel Rule 30 large-load cost-allocation fight in A.24-11-007, and the framework now sits alongside FERC&rsquo;s June 18, 2026 show-cause order questioning whether CAISO tariffs adequately address large and co-located loads — a proceeding that could federalize parts of what Res. E-5455 addresses. Item 4 on the August 13 agenda. The resolution was held again on <strong>September 3</strong> and <strong>September 17</strong>, and is now scheduled for <strong>October 8</strong>. The current draft requires Google to provide an additional refundable capital advance of <strong>$600,000/MW</strong> &mdash; as much as <strong>$150 million</strong> at 250 MW.</div>
           </div>
         </div>
 
@@ -2105,8 +2295,8 @@
           <div class="proc-card-meta">
             <span class="proc-card-header"><span class="docket">R.15-05-006</span> · PD Issued Jul 31, 2026 · Proposed Decision · Earliest Vote Sept 3</span>
           </div>
-          <h3>SCE — Fire-Map PD Adds <strong>47 Areas</strong> to the High Fire-Threat District, Denies All 61 Proposed Removals</h3>
-          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M613/K135/613135536.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> would partially grant <em>SCE</em>&rsquo;s petition to modify D.17-12-024: it approves adding <strong>47 areas</strong> in SCE territory to the High Fire-Threat District map but <strong>denies the removal of all 61 areas</strong> SCE proposed to de-designate. It also directs the Safety Policy Division to hold a 2027 workshop on future map-modification processes and would close R.15-05-006, the original 2015 fire-map rulemaking.</p>
+          <h3>SCE — Fire-Map PD Adds <strong>47 Areas</strong> (~208 sq mi) to the High Fire-Threat District, Denies All 61 Proposed Removals &mdash; <strong>Held to Oct 8</strong></h3>
+          <p>A <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M613/K135/613135536.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> would partially grant <em>SCE</em>&rsquo;s petition to modify D.17-12-024: it approves adding <strong>47 areas</strong> in SCE territory to the High Fire-Threat District map but <strong>denies the removal of all 61 areas</strong> SCE proposed to de-designate. It also directs the Safety Policy Division to hold a 2027 workshop on future map-modification processes and would close R.15-05-006, the original 2015 fire-map rulemaking. The added areas total about <strong>208 square miles</strong>. Held from September 3, the item was <strong>held again on September 17</strong> and is now scheduled for <strong>October 8</strong>.</p>
           <div class="proc-card-links">
             <a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R1505006" target="_blank" rel="noopener noreferrer">Docket Card</a>
             <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M613/K135/613135536.PDF" target="_blank" rel="noopener noreferrer" class="sec">Proposed Decision</a>
@@ -2145,6 +2335,7 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The ACC is the common yardstick for cost-effectiveness across DER programs — energy efficiency, demand response, self-generation, and electrification incentives — so revised avoided-cost values propagate into every program evaluation that relies on them. Trade coverage in the comment window flagged that the updated values could reduce the calculated benefits of some electrification programs, which is likely to be a focus of the August 20 opening comments. Earliest vote is the September 3, 2026 business meeting.</div>
           </div>
+        </div>
         </div>
 
         <div id="pd-cards-jul2026" class="collapsible-period" style="display:none;">
@@ -3408,6 +3599,7 @@
       </div>
             <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('pd-cards-aug2026',this)">August 2026 <span class="cr-month-n">14</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('pd-cards-jul2026',this)">July 2026 <span class="cr-month-n">27</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('pd-cards-jun2026',this)">June 2026 <span class="cr-month-n">14</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('pd-cards-may2026',this)">May 2026 <span class="cr-month-n">4</span></button>
@@ -3430,8 +3622,28 @@
       <div class="cr-arch-main">
       <div class="proc-grid" id="misc-grid">
         <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
           <div class="period-hdr-right">1 item</div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge scg" id="proc-vote-sep17-2026-results">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">Voting Meeting</span> &middot; Held Sep 17, 2026 &middot; Results &middot; San Marcos, Agenda 3587</span>
+          </div>
+          <h3>September 17 Voting Meeting Results &mdash; PCIA Banked RECs Affirmed at Zero, AB 825 Rulemaking Opened, <strong>Four</strong> Marquee Items Pushed to October 8</h3>
+          <p>At its <strong>September 17</strong> voting meeting the Commission affirmed <strong>zero-dollar</strong> treatment of pre-2019 banked renewable energy credits in the PCIA (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K890/618890414.PDF" target="_blank" rel="noopener noreferrer">D.26-09-047</a>) and opened the <strong>AB 825</strong> regional-markets rulemaking (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M617/K694/617694644.PDF" target="_blank" rel="noopener noreferrer">R.26-09-009</a>). It also adopted distribution-planning equity metrics (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M619/K318/619318911.PDF" target="_blank" rel="noopener noreferrer">Res. E-5480</a>), the revised tribal land-transfer and consultation policies (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K895/618895202.PDF" target="_blank" rel="noopener noreferrer">D.26-09-072</a>), Ava&rsquo;s Sonrisa incremental-resource determination (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K580/618580832.PDF" target="_blank" rel="noopener noreferrer">Res. E-5475</a>), PG&amp;E&rsquo;s gas RD&amp;D budgets (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K895/618895166.PDF" target="_blank" rel="noopener noreferrer">Res. G-3623</a>) and closure of the SGIP rulemaking (<a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M618/K891/618891278.PDF" target="_blank" rel="noopener noreferrer">D.26-09-048</a>). <strong>Four items were held to October 8.</strong></p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings" target="_blank" rel="noopener noreferrer">2026 Voting Meetings</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><strong>Held to October 8:</strong> <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M607/K718/607718746.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution E-5455</a>, approving PG&amp;E&rsquo;s agreement to energize a <strong>250-MW</strong> Google data center in San Jose while requiring an additional refundable capital advance of <strong>$600,000/MW</strong>; the <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M613/K135/613135536.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> approving SCE&rsquo;s request to add <strong>47 areas</strong> totalling about <strong>208 square miles</strong> to the High Fire-Threat District; the <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M614/K587/614587059.PDF" target="_blank" rel="noopener noreferrer">proposed decision</a> replacing Working Stress Design in General Order 95 with Load and Resistance Factor Design for overhead electric and communications facilities; and <a href="https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M614/K716/614716938.PDF" target="_blank" rel="noopener noreferrer">Draft Resolution G-3622</a>, approving in part the California Energy Commission&rsquo;s research plans for fiscal years 2024&ndash;2025 and 2025&ndash;2026.<br><br>The Google resolution has now been held at four consecutive meetings &mdash; July 2, July 16, August 13 and September 3 &mdash; and the SCE fire-map item was held from September 3. Each adopted item has its own card in Proposed Decisions &amp; Rulings. The meeting was held at the San Marcos City Council Chambers under agenda 3587.</div>
+          </div>
+        </div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
+          <div class="period-hdr-right">2 items</div>
         </div>
 
         <div class="proc-card" data-util="pge sce sdge scg" id="proc-vote-sep17-2026">
@@ -3446,12 +3658,29 @@
           </div>
           <div class="ai-box">
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
-            <div class="ai-body"><strong>Correction carried from the September 3 meeting:</strong> the CPUC did <em>not</em> approve changes to SCE&rsquo;s Fire-Threat Map on September 3. Commissioner Darcie Houck held that item until <strong>September 17</strong> to allow further review. See the Fire-Map PD card in Proposed Decisions &amp; Rulings for the substance of the item.<br><br>Also on the agenda: Draft Resolution E-5475 (Ava Community Energy&rsquo;s Sonrisa project and the IRP baseline), Draft Resolution E-5480 (distribution-planning equity metrics), the GO 95 Load and Resistance Factor Design proposed decision, the tribal consultation and land-transfer policy proposed decision, and Draft Resolutions G-3622 and G-3623 on gas research, development and demonstration spending &mdash; including whether gas ratepayers should fund hydrogen research.</div>
+            <div class="ai-body"><strong>Outcome:</strong> see the <a href="#proc-vote-sep17-2026-results">September 17 results card</a> in this section for what the Commission actually adopted and what it held to October 8.<br><br><strong>Correction carried from the September 3 meeting:</strong> the CPUC did <em>not</em> approve changes to SCE&rsquo;s Fire-Threat Map on September 3. Commissioner Darcie Houck held that item until <strong>September 17</strong> to allow further review. See the Fire-Map PD card in Proposed Decisions &amp; Rulings for the substance of the item.<br><br>Also on the agenda: Draft Resolution E-5475 (Ava Community Energy&rsquo;s Sonrisa project and the IRP baseline), Draft Resolution E-5480 (distribution-planning equity metrics), the GO 95 Load and Resistance Factor Design proposed decision, the tribal consultation and land-transfer policy proposed decision, and Draft Resolutions G-3622 and G-3623 on gas research, development and demonstration spending &mdash; including whether gas ratepayers should fund hydrogen research.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-ipe-dpep-2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">DPEP 2026-2027</span> &middot; Filed Sep 2026 &middot; Compliance Reports &middot; Independent Engineer</span>
+          </div>
+          <h3>Independent Engineer&rsquo;s Preliminary Data-Adequacy Reports &mdash; SCE Ahead on Demonstrations, PG&amp;E and SDG&amp;E Still Owe Materials</h3>
+          <p><em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em> filed preliminary data-adequacy reports prepared by independent professional engineer <strong>Resource Innovations</strong> for the CPUC&rsquo;s 2026&ndash;2027 Distribution Planning and Execution Process cycle. The reviews cover the utilities&rsquo; 2025&ndash;2026 Grid Needs Assessments and Distribution Upgrade Project Reports, including load and DER forecasts, pending loads, project selection and execution. Distribution Planning Advisory Group reports presenting verification and validation findings are due <strong>November 6</strong>, followed by a cross-utility report on <strong>March 15, 2027</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K646/617646888.PDF" target="_blank" rel="noopener noreferrer">PG&amp;E Report</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K539/617539652.PDF" target="_blank" rel="noopener noreferrer" class="sec">SCE Report</a>
+            <a href="https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M617/K649/617649820.PDF" target="_blank" rel="noopener noreferrer" class="sec">SDG&amp;E Report</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><strong>PG&amp;E</strong> provided adequate data for circuit loads, system and circuit-level forecasts, known and pending loads, and extreme-weather adjustments; materials covering no-cost solutions, GNA tables, recommended investments and the continued need for earlier projects were expected in early September, with load-tracking, project-prioritization and execution information due later.<br><br><strong>SCE</strong> completed most of its scheduled early forecasting demonstrations, including base, high and low scenarios, hot spots and extreme-weather adjustments. Additional GNA demonstrations were scheduled for <strong>September 25</strong>, followed by project-planning demonstrations <strong>October 9</strong> and prioritization and execution information <strong>October 13</strong>.<br><br><strong>SDG&amp;E</strong> provided adequate data for most forecasting, pending-load, GNA and planned-investment steps, but the engineer requested additional information because data on 2025 circuit loading and extreme-weather adjustments were incomplete. Load-tracking data were due September 15, with other project information expected through early October.<br><br>These reports assess whether the independent engineer has enough information to conduct its review; they do not validate the utilities&rsquo; forecasts or investment plans, and because the verification approaches differ the statuses are not a direct ranking of data or planning practices. The engineer cautioned that it received more detailed information than parties received through the service list, so its adequacy findings do not establish that stakeholders can evaluate the same forecasts and projects. The November DPAG reports will provide the first substantive verification findings.</div>
           </div>
         </div>
 
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 16 &ndash; Aug 31, 2026</div></div>
           <div class="period-hdr-right">2 items</div>
         </div>
 
@@ -3485,10 +3714,7 @@
           </div>
         </div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Aug 1 – Aug 15, 2026</div></div>
-          <div class="period-hdr-right">10 items</div>
-        </div>
+        <div id="misc-grid-aug2026" class="collapsible-period" style="display:none;">
         <div class="proc-card" data-util="pge sce sdge scg" id="proc-vote-aug13-preview">
           <div class="proc-card-meta">
             <span class="proc-card-header"><span class="docket">Agenda &middot; Aug 13</span> &middot; Preview Aug 4, 2026 &middot; Voting Meeting &middot; PG&amp;E-Heavy Agenda</span>
@@ -3642,6 +3868,7 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The removal reverses amounts collected under the timing of the utility&rsquo;s delayed 2024 GRC decision. Trade coverage in the same week noted SoCalGas&rsquo;s capital spending is running roughly 25% above an imputed CPUC benchmark — a datapoint intervenors are expected to press in the consolidated 2028 GRC, where protests focus on year-to-year spending growth, sub-1.0 benefit-cost pipeline programs, and how much long-lived gas infrastructure customers should finance as gas demand declines.</div>
           </div>
+        </div>
         </div>
 
         <div id="misc-grid-jul2026" class="collapsible-period" style="display:none;">
@@ -3938,6 +4165,7 @@
       </div>
       <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('misc-grid-aug2026',this)">August 2026 <span class="cr-month-n">10</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('misc-grid-jul2026',this)">July 2026 <span class="cr-month-n">7</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('misc-grid-jun2026',this)">June 2026 <span class="cr-month-n">6</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('misc-grid-may2026',this)">May 2026 <span class="cr-month-n">2</span></button>
@@ -3959,7 +4187,7 @@
         <a href="https://docs.cpuc.ca.gov" target="_blank" rel="noopener noreferrer">Document Portal</a> ·
         <a href="https://www.calregulatory.com" target="_blank" rel="noopener noreferrer">CalRegulatory</a> ·
         <a href="https://www.utilitydive.com" target="_blank" rel="noopener noreferrer">Utility Dive</a>
-        <span style="margin-left:auto;">Updated September 12, 2026</span>
+        <span style="margin-left:auto;">Updated September 21, 2026</span>
       </div>
 
       <!--
