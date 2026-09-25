@@ -218,14 +218,15 @@
     <div class="container">
       <div class="cn-wrap">
         <main>
-          <div class="cn-dateline">Current period: Sep 1 &ndash; 15, 2026 &nbsp;·&nbsp; 97 stories &nbsp;·&nbsp; Updated Sep 15, 2026</div>
+          <div class="cn-dateline">Current period: Sep 16 &ndash; 30, 2026 &nbsp;·&nbsp; 98 stories &nbsp;·&nbsp; Updated Sep 25, 2026</div>
           <div id="cn-periods"></div>
         </main>
 
         <aside class="cn-sidebar">
           <div class="cn-sb-block">
             <div class="cn-sb-hd">Periods</div>
-            <a href="#period-sep1152026" class="cn-sb-link active">Sep 1 - 15, 2026</a>
+            <a href="#period-sep16302026" class="cn-sb-link active">Sep 16 - 30, 2026</a>
+            <a href="#period-sep1152026" class="cn-sb-link">Sep 1 - 15, 2026</a>
             <a href="#period-aug16312026" class="cn-sb-link">Aug 16 - 31, 2026</a>
             <a href="#period-aug1152026" class="cn-sb-link">Aug 1 - 15, 2026</a>
             <a href="#period-jul16312026" class="cn-sb-link">Jul 16 - 31, 2026</a>
@@ -271,6 +272,20 @@
 
     // ── RECENT: CPUC/CEC items ONLY ── (content unchanged)
     const STORIES = [
+{
+        id: 218,
+        title: "New York audits utility AI use, cites risk in &lsquo;growing dependency&rsquo;",
+        url: "https://www.utilitydive.com/news/new-york-audits-utility-ai-use-cites-risk-in-growing-dependency/831242/",
+        date: "Sep 24, 2026",
+        source: "Utility Dive",
+        author: "Robert Walton",
+        category: "Artificial Intelligence &middot; Utility Oversight",
+        summary: "The <em>New York Public Service Commission</em> voted unanimously on <strong>September 17</strong> to open <strong>Case 26-M-0552</strong>, an inquiry into how the state&rsquo;s regulated electric, gas and water utilities deploy artificial intelligence. <strong>Nine</strong> utilities &mdash; among them <em>Consolidated Edison</em>, <em>National Grid</em>, <em>Central Hudson</em>, <em>NYSEG</em>, <em>Rochester Gas and Electric</em> and <em>Orange and Rockland</em> &mdash; have <strong>60 days</strong> to file a written inventory describing every AI use case in their operations, together with the internal policies, procedures and safeguards governing them. The order cites susceptibility to <strong>hallucinations, algorithmic bias, transparency and data-privacy problems, misconfiguration, cybersecurity attack and functional brittleness</strong>, warning these &ldquo;may have negative consequences for the safety and reliability of New York&rsquo;s critical infrastructure.&rdquo; Uses already disclosed include Con Edison&rsquo;s customer service, equipment-issue identification and inspection mapping; National Grid&rsquo;s use of GridCARE to increase interconnection capacity; and the New York Power Authority&rsquo;s analysis of drone footage for vegetation management. PSC Chair <em>Rory Christian</em> called AI &ldquo;a double-edged sword for utilities.&rdquo; The CPUC has opened no equivalent proceeding.",
+        isTop: true,
+        analystNotes: "Case 26-M-0552 gives nine New York utilities <strong>60 days</strong> to inventory every AI system they run and name the governance under which they run it. California has no counterpart. Utility AI here surfaces only where it happens to intersect an existing docket &mdash; most recently <strong>Res. G-3623</strong>, adopted the same day, which requires <em>PG&amp;E</em> to account for AI and machine-learning costs inside its integrity-management research budget.<br><br>The structural point is the funding mechanism on each side of a California proceeding. A utility&rsquo;s analytical tooling is an operating or capital cost, recovered in rates and tested for reasonableness after deployment. Intervenor work is funded in the opposite direction: <strong>Public Utilities Code &sect;&sect; 1801&ndash;1812</strong>, in force since <strong>1985</strong>, reimburses a participant only after a decision finds it made a substantial contribution, at hourly rates that may not exceed market rates for comparable training and experience and that are reset by the Commission&rsquo;s periodic market-rate study (most recently <strong>Resolution ALJ-393</strong>). The statute compensates hours worked. It carries no category for the fixed cost of software licences or model access, and payment arrives after the proceeding it was meant to inform has closed.<br><br>What neither jurisdiction has is a record. That is what New York&rsquo;s inventory is for, and until the CPUC asks the same question it cannot say which of its regulated utilities use AI, for what, or under whose governance.",
+        relatedCalreg: { anchor: "proc-resg3622-3623", label: "Res. G-3622 / G-3623" },
+        period: "Sep 16 - 30, 2026"
+      },
       {
         id: 217,
         title: "EPA scraps Biden power plant GHG rules, moves to eliminate other standards",
@@ -1484,6 +1499,20 @@
     const frame = inner => `<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="${C.bg}"/><rect x="0" y="0" width="400" height="250" fill="${C.soft}" opacity="0.45"/>${inner}<rect x="0" y="245" width="400" height="5" fill="${C.red}"/></svg>`;
     const rays = (cx,cy,r1,r2,col,w)=>[...Array(12)].map((_,i)=>{const a=i*30*Math.PI/180,x1=cx+Math.cos(a)*r1,y1=cy+Math.sin(a)*r1,x2=cx+Math.cos(a)*r2,y2=cy+Math.sin(a)*r2;return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${col}" stroke-width="${w}" stroke-linecap="round"/>`}).join('');
     const ART = {
+      // AI oversight: a regulator's magnifier over a chip and its node graph
+      ai: frame(`
+        <rect x="52" y="62" width="150" height="126" rx="12" fill="${C.ink}"/>
+        ${[78,108,138,168].map(y=>`<rect x="36" y="${y}" width="16" height="7" rx="3" fill="${C.mid}"/><rect x="202" y="${y}" width="16" height="7" rx="3" fill="${C.mid}"/>`).join('')}
+        ${[82,112,142,172].map(x=>`<rect x="${x}" y="46" width="7" height="16" rx="3" fill="${C.mid}"/><rect x="${x}" y="188" width="7" height="16" rx="3" fill="${C.mid}"/>`).join('')}
+        <path d="M88 96 L128 78 M88 96 L128 125 M88 152 L128 125 M88 152 L128 172 M128 78 L166 125 M128 125 L166 125 M128 172 L166 125" stroke="${C.mid}" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        <circle cx="88" cy="96" r="7" fill="${C.pale}"/><circle cx="88" cy="152" r="7" fill="${C.pale}"/>
+        <circle cx="128" cy="78" r="7" fill="${C.pale}"/><circle cx="128" cy="125" r="8" fill="${C.red}"/><circle cx="128" cy="172" r="7" fill="${C.pale}"/>
+        <circle cx="166" cy="125" r="7" fill="${C.pale}"/>
+        <circle cx="258" cy="112" r="54" fill="${C.bg}" opacity="0.92"/>
+        <circle cx="258" cy="112" r="54" fill="none" stroke="${C.ink}" stroke-width="9"/>
+        <line x1="296" y1="150" x2="344" y2="198" stroke="${C.ink}" stroke-width="13" stroke-linecap="round"/>
+        <path d="M232 112 L250 130 L286 92" fill="none" stroke="${C.red}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      `),
       // Data-center legislation: capitol dome + server racks joined by an interconnection line
       datacenterbills: frame(`
         <path d="M104 64 C 134 64, 152 100, 152 138 L 56 138 C 56 100, 74 64, 104 64 Z" fill="${C.ink}"/>
@@ -1594,7 +1623,8 @@
     const altFor = id => ALT[STORY_ART[id]] || "";
 
     // ── Category art + period render ──
-    function catArt(c){ c=(c||'').toLowerCase(); if(c.indexOf('data center')>=0&&c.indexOf('legislation')>=0) return ART.datacenterbills;
+    function catArt(c){ c=(c||'').toLowerCase(); if(c.indexOf('artificial intelligence')>=0) return ART.ai;
+      if(c.indexOf('data center')>=0&&c.indexOf('legislation')>=0) return ART.datacenterbills;
       if(c.indexOf('wildfire')>=0||c.indexOf('fire')>=0) return ART.wildfire;
       if(c.indexOf('heat')>=0) return ART.heat;
       if(c.indexOf('recovery')>=0||c.indexOf('eaton')>=0) return ART.recovery;
