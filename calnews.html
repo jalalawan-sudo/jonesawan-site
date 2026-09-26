@@ -125,6 +125,7 @@
     .cn-period-toggle .cn-period-date{ font-size:1.12rem; }
     .cn-period-toggle:hover .cn-period-date{ color:var(--red); }
     .cn-period-count{ font-size:.72rem; color:var(--muted); margin-left:auto; font-family:var(--sans); }
+    .cn-period-eyebrow-prior{ font-size:.66rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
     .cn-period-arr{ display:inline-block; transition:transform .2s; color:var(--muted); font-size:.7rem; }
     .cn-period-arr.open{ transform:rotate(90deg); }
     .cn-period-body{ padding-top:6px; }
@@ -1670,14 +1671,17 @@
         var others=list.filter(function(s){return s!==top;});
         if(idx===0){
           html+='<div class="cn-period" id="'+pid(p)+'">'
-            +'<div class="cn-period-hd cn-period-hd-current"><span class="cn-period-eyebrow">Current Period</span><span class="cn-period-date">'+p+'</span></div>'
+            +'<div class="cn-period-hd cn-period-hd-current"><span class="cn-period-eyebrow">Current Period</span><span class="cn-period-date">'+p+'</span><span class="cn-period-count">'+list.length+' '+(list.length===1?'story':'stories')+'</span></div>'
             +'<div class="cn-featured">'+topHTML(top)+'</div>'
             +(others.length?('<div class="cn-seclabel">More this period</div>'+others.map(cardHTML).join('')):'')
             +'</div>';
         } else {
+          // The prior period stays expanded so the newest stories are visible without a
+          // click; everything older is collapsed to keep the page navigable.
+          var openByDefault = idx===1;
           html+='<div class="cn-period" id="'+pid(p)+'">'
-            +'<button class="cn-period-hd cn-period-toggle" onclick="togglePeriod(this)"><span class="cn-period-date">'+p+'</span><span class="cn-period-count">'+list.length+' '+(list.length===1?'story':'stories')+'</span><span class="cn-period-arr">&#9656;</span></button>'
-            +'<div class="cn-period-body" style="display:none;"><div class="cn-featured">'+topHTML(top)+'</div>'+others.map(cardHTML).join('')+'</div>'
+            +'<button class="cn-period-hd cn-period-toggle" onclick="togglePeriod(this)">'+(openByDefault?'<span class="cn-period-eyebrow-prior">Prior Period</span>':'')+'<span class="cn-period-date">'+p+'</span><span class="cn-period-count">'+list.length+' '+(list.length===1?'story':'stories')+'</span><span class="cn-period-arr'+(openByDefault?' open':'')+'">&#9656;</span></button>'
+            +'<div class="cn-period-body" style="display:'+(openByDefault?'block':'none')+';"><div class="cn-featured">'+topHTML(top)+'</div>'+others.map(cardHTML).join('')+'</div>'
             +'</div>';
         }
       });
