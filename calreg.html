@@ -151,7 +151,7 @@
       <div class="label">California Regulatory Analytics</div>
       <h1>CalReg <span>CPUC Docket Monitor</span></h1>
       <p class="mast-sub">A plain-language monitor of CPUC applications and proposed decisions that affect California utility rates, organized by period.</p>
-      <p class="mast-updated">Updated October 13, 2026 &middot; Click any &#9658; on a card to expand details.</p>
+      <p class="mast-updated">Updated October 27, 2026 &middot; Click any &#9658; on a card to expand details.</p>
       <div class="cr-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
         <input type="search" id="cr-search-input" oninput="crSearch(this.value)" aria-label="Search CalReg proceedings" placeholder="Search proceedings: e.g. Kincade Fire, Diablo Canyon, AMI, A.24-08-004">
@@ -515,25 +515,37 @@
       </div>
       <div class="cr-arch-layout">
       <div class="cr-arch-main">
-      <div class="proc-grid" id="apps-grid">
-        <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
+      <div class="proc-grid" id="apps-grid"><div class="period-hdr current">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 16 &ndash; Oct 31, 2026</div></div>
+          <div class="period-hdr-right">1 filing</div>
+        </div>
+
+        <div class="proc-card" data-util="others" id="proc-a2610016">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">A.26-10-016</span> &middot; Filed Oct 21, 2026 &middot; Application &middot; Liberty Utilities (CalPeco Electric) &middot; Short-Term Debt</span>
+          </div>
+          <h3>Liberty Utilities (CalPeco Electric) Seeks Authority to Issue Short-Term Indebtedness</h3>
+          <p><em>Liberty Utilities (CalPeco Electric) LLC</em> (U 933-E) filed an application on <strong>October 21, 2026</strong> for authorization to issue evidence of short-term indebtedness, together with related relief. A financing application of this type sets the authorized ceiling on short-term borrowing and does not itself change rates; the cost of the resulting debt reaches customers later, through the cost of capital adopted in a general rate proceeding.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/new-filings-week-of-october-19-2026" target="_blank" rel="noopener noreferrer">New Filings &mdash; Week of Oct 19</a>
+          </div>
+        </div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
           <div class="period-hdr-right">0 filings</div>
         </div>
 
         <div class="period-empty">No new energy applications were docketed at the CPUC in this period.</div>
 
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
           <div class="period-hdr-right">0 filings</div>
         </div>
 
         <div class="period-empty">No new energy applications were docketed at the CPUC in this period. The Commission&rsquo;s <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/new-filings---week-of-september-14-18-2026" target="_blank" rel="noopener noreferrer">new-filings list for the week of September 14&ndash;18</a> shows one application, A.26-09-005 &mdash; a telephone-corporation registration filed September 14, outside both this period and CalReg&rsquo;s scope.</div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
-          <div class="period-hdr-right">3 filings</div>
-        </div>
+        <div id="apps-grid-sep2026" class="collapsible-period" style="display:none;">
 
         <div class="proc-card" data-util="pge sce sdge others" id="proc-epic5-plans">
           <div class="proc-card-meta">
@@ -582,6 +594,8 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">On the O&amp;M side, high-pressure-system spending ran <strong>$38.4 million above</strong> the imputed level while medium-pressure was <strong>$45.8 million below</strong>; cybersecurity and physical security were 60% and 128% above imputed levels respectively, though both are small in absolute dollars. The largest capital overruns were storage-system work (<strong>$65 million</strong>) and medium-pressure-system work (<strong>$46.6 million</strong>); employee-safety capital ran 139% above imputed.<br><br>The report also carries SoCalGas&rsquo;s 20 applicable CPUC safety metrics for 2025: <strong>2.01</strong> third-party dig-ins per 1,000 USA tickets, average emergency response of <strong>23.38 minutes</strong> (19-minute median), 100% of scheduled storage baseline inspections completed, and <strong>2,344 miles</strong> (about 70%) of transmission pipeline capable of internal inspection. SoCalGas reported nine serious public injuries and no fatalities, no missed in-line inspections, no overdue gas-operation corrective-action work orders, and one distribution and one transmission overpressure event.<br><br>The comparison has an important limitation: the 2024 GRC did not separately identify RAMP funding, so SoCalGas had to impute authorized amounts for some mitigation activities, and its accounting systems do not track costs by individual RAMP risk. The figures are a directional comparison, not a clean authorized-versus-recorded test.</div>
           </div>
+        </div>
+
         </div>
 
         <div id="apps-grid-aug2026" class="collapsible-period" style="display:none;">
@@ -1318,6 +1332,7 @@
       </div>
             <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('apps-grid-sep2026',this)">September 2026 <span class="cr-month-n">3</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('apps-grid-aug2026',this)">August 2026 <span class="cr-month-n">1</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('apps-grid-jul2026',this)">July 2026 <span class="cr-month-n">8</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('apps-grid-jun2026',this)">June 2026 <span class="cr-month-n">5</span></button>
@@ -1349,9 +1364,15 @@
       </div>
       <div class="cr-arch-layout">
       <div class="cr-arch-main">
-      <div class="proc-grid" id="al-grid">
-        <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
+      <div class="proc-grid" id="al-grid"><div class="period-hdr current">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 16 &ndash; Oct 31, 2026</div></div>
+          <div class="period-hdr-right">0 filings</div>
+        </div>
+
+        <div class="period-empty">No energy advice letters were identified in CalReg&rsquo;s scope for this period as of October 27, 2026. This period is still open &mdash; advice-letter activity through October 31 will be added at the next update.</div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
           <div class="period-hdr-right">8 filings</div>
         </div>
 
@@ -1477,7 +1498,7 @@
         </div>
 
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
           <div class="period-hdr-right">1 filing</div>
         </div>
 
@@ -1497,10 +1518,7 @@
           </div>
         </div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
-          <div class="period-hdr-right">5 filings</div>
-        </div>
+        <div id="al-grid-sep2026" class="collapsible-period" style="display:none;">
 
         <div class="proc-card" data-util="pge" id="proc-pge-elec7972e">
           <div class="proc-card-meta">
@@ -1577,6 +1595,8 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">The September 8 reduction coincided with maintenance at Shingletown PLS and at Gerber, Topock and Kettleman stations; Shingletown work was scheduled through September 30, while the other work was scheduled to end between September 10 and September 20. By September 15 work continued at Shingletown, Topock and Kettleman and began at Delevan Station and on the L300A and L300B pipelines. The entire <strong>330 MMcf/d</strong> decline from September 8 occurred on the <strong>Redwood Path</strong>, where capacity fell from 1,860 to 1,530 MMcf/d; Baja remained at 600 MMcf/d and scheduled California production at 24 MMcf/d.<br><br>The filings document an increasingly large maintenance-related reduction in PG&amp;E&rsquo;s ability to receive gas, but they do not establish that customer demand exceeded available supply or that service was interrupted. The CPUC standard is a minimum system-design requirement based on an average day in a 1-in-10 cold and dry year, so crossing it requires notice even when actual September demand is considerably lower. The September 15 filing is the most significant of the three &mdash; available capacity roughly 15% below the standard, against less than 1% on September 1 and about 2% on September 8 &mdash; and concurrent maintenance on both paths leaves less flexibility if another facility becomes unavailable before the scheduled work ends.</div>
           </div>
+        </div>
+
         </div>
 
         <div id="al-grid-aug2026" class="collapsible-period" style="display:none;">
@@ -1670,6 +1690,7 @@
       </div>
             <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('al-grid-sep2026',this)">September 2026 <span class="cr-month-n">5</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('al-grid-aug2026',this)">August 2026 <span class="cr-month-n">2</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('al-grid-jul2026',this)">July 2026 <span class="cr-month-n">1</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('al-grid-jun2026',this)">June 2026 <span class="cr-month-n">1</span></button>
@@ -1694,9 +1715,65 @@
       </div>
       <div class="cr-arch-layout">
       <div class="cr-arch-main">
-      <div class="proc-grid" id="pd-cards">
-        <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
+      <div class="proc-grid" id="pd-cards"><div class="period-hdr current">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 16 &ndash; Oct 31, 2026</div></div>
+          <div class="period-hdr-right">4 items</div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-r2106017-track3pd">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">R.21-06-017 &middot; Track 3</span> &middot; PD Oct 20, 2026 &middot; Proposed Decision &middot; Flexible Service Connections</span>
+          </div>
+          <h3>High-DER Track 3 Proposed Decision Would Direct the Large IOUs to Support Affordability Through Flexible Service Connections</h3>
+          <p>A proposed decision from Commissioner <strong>Darcie Houck</strong>, filed <strong>October 20, 2026</strong>, addresses <strong>Track 3</strong> of the High-DER grid modernization rulemaking &mdash; the medium- and longer-term mechanisms for implementing non-firm flexible grid connections. The PD would direct <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em> to support affordability by enabling and scaling flexible service connections to the distribution grid, prioritising greater utilisation of existing distribution capacity so that distributed energy resources can unlock headroom and provide nearer-term energization options, rather than treating a constrained circuit as an automatic trigger for a distribution upgrade.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/new-filings-week-of-october-19-2026" target="_blank" rel="noopener noreferrer">New Filings &mdash; Week of Oct 19</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">This is the Track 3 successor to Commissioner Houck&rsquo;s July 2026 assigned-commissioner proposal, carded separately in an earlier period. Flexible service connections are the principal non-firm pathway for connecting large new loads, so the mechanism adopted here bears directly on data-center and other large-load energization timelines. A companion item on the <strong>October 29</strong> agenda in the same docket would direct the three utilities to retain consultants to develop a distributed-energy-resource orchestration framework.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge scg" id="proc-r1807005-disconnectpd">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">R.18-07-005 &middot; Phase 2</span> &middot; PD Oct 16, 2026 &middot; Proposed Decision &middot; Disconnections</span>
+          </div>
+          <h3>Disconnections Proposed Decision Would Conditionally Lift the SoCalGas Cap and Reset the Caps for PG&amp;E, SCE and SDG&amp;E</h3>
+          <p>A proposed decision filed <strong>October 16, 2026</strong> addresses Phase 2 issues on <strong>residential disconnection caps</strong> and disconnection pilots, and identifies the remaining issue in the proceeding. The PD would <strong>conditionally lift</strong> the disconnection cap established for <em>SoCalGas</em> in <strong>D.20-06-003</strong> and <strong>update</strong> the caps applicable to <em>PG&amp;E</em>, <em>SCE</em> and <em>SDG&amp;E</em>.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/new-filings---week-of-october-12-16-2026" target="_blank" rel="noopener noreferrer">New Filings &mdash; Week of Oct 12&ndash;16</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body">The caps limit the share of residential customers an energy utility may disconnect for non-payment in a given period. Lifting a cap &mdash; even conditionally &mdash; changes the operative constraint on collections practice rather than the underlying arrearage, so the conditions attached are the substantive part of the PD.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-r2303007-wfnbc2027">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">R.23-03-007</span> &middot; PD Oct 19, 2026 &middot; Proposed Decision &middot; Wildfire Fund Charge</span>
+          </div>
+          <h3>Proposed Decision Would Adopt the Timing and Amount of the 2027 Wildfire Fund Non-Bypassable Charge</h3>
+          <p>A proposed decision filed <strong>October 19, 2026</strong> would adopt the timing and amount of the <strong>2027 Wildfire Fund Non-Bypassable Charge</strong>. The charge supports the statewide Wildfire Fund established under <strong>AB 1054</strong> and is collected on a non-bypassable basis, meaning it applies regardless of who supplies a customer&rsquo;s generation.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/new-filings-week-of-october-19-2026" target="_blank" rel="noopener noreferrer">New Filings &mdash; Week of Oct 19</a>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge" id="proc-a2602005-sb884rules">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">A.26-02-005</span> &middot; PD Oct 16, 2026 &middot; Proposed Decision &middot; SB 884 Undergrounding</span>
+          </div>
+          <h3>Proposed Decision Would Adopt Additional Rules for the SB 884 Expedited Undergrounding Program</h3>
+          <p>A proposed decision filed <strong>October 16, 2026</strong> would adopt additional rules for the <strong>Senate Bill 884</strong> Expedited Utility Distribution Infrastructure Undergrounding Program. SB 884 allows a large electrical corporation to seek approval of a long-term undergrounding plan on an expedited review schedule, with the Office of Energy Infrastructure Safety reviewing the plan and the Commission addressing cost recovery.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/new-filings---week-of-october-12-16-2026" target="_blank" rel="noopener noreferrer">New Filings &mdash; Week of Oct 12&ndash;16</a>
+          </div>
+        </div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
           <div class="period-hdr-right">21 items</div>
         </div>
 
@@ -2039,7 +2116,7 @@
         </div>
 
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
           <div class="period-hdr-right">6 items</div>
         </div>
 
@@ -2139,10 +2216,7 @@
           </div>
         </div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
-          <div class="period-hdr-right">16 items</div>
-        </div>
+        <div id="pd-cards-sep2026" class="collapsible-period" style="display:none;">
 
         <div class="proc-card" data-util="pge sce sdge scg swg" id="proc-grcplan-oir">
           <div class="proc-card-meta">
@@ -2398,6 +2472,8 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body">For self-contained heat pump products &mdash; packaged terminal, room and rooftop systems &mdash; the ruling retains the requirement that equipment be manufactured before <strong>January 1, 2025</strong> but extends the installation deadline from January 1, 2026 to <strong>January 1, 2028</strong>. For other heat pump HVAC systems it retains the January 1, 2025 manufacturing cutoff but <strong>eliminates the installation deadline entirely</strong>. It also extends eligibility to high-GWP heat pump water heaters and dryers installed before <strong>January 1, 2028</strong>.<br><br>The refrigerant restriction originated in a 2020 decision implementing <strong>Senate Bill 1477</strong> and was extended through assigned commissioner rulings issued in 2022 and 2025. The new ruling separates HVAC equipment into the categories used by CARB and the EPA, and notes that federal requirements supersede the CPUC&rsquo;s rules by limiting new VRF and self-contained systems to refrigerants below <strong>700 GWP</strong> after the applicable federal deadlines.<br><br>The most consequential change is the elimination of the installation deadline for high-GWP heat pump HVAC systems outside the VRF and self-contained categories: equipment in that category manufactured before 2025 remains eligible for BUILD and TECH incentives without a separate installation cutoff. The ruling otherwise leaves the transition away from high-GWP refrigerants intact while giving manufacturers and installers more time to use qualifying equipment; heat pump water heaters and dryers receive another year because of limited market development.</div>
           </div>
+        </div>
+
         </div>
 
         <div id="pd-cards-aug2026" class="collapsible-period" style="display:none;">
@@ -4080,6 +4156,7 @@
       </div>
             <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('pd-cards-sep2026',this)">September 2026 <span class="cr-month-n">16</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('pd-cards-aug2026',this)">August 2026 <span class="cr-month-n">28</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('pd-cards-jul2026',this)">July 2026 <span class="cr-month-n">27</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('pd-cards-jun2026',this)">June 2026 <span class="cr-month-n">13</span></button>
@@ -4101,9 +4178,74 @@
       <p class="mast-sub" style="margin-bottom:16px;">Voting-meeting results, agenda previews, advice letters, CAISO and FERC filings, litigation, and other items that are not a formal Application or Rulemaking/Decision.</p>
       <div class="cr-arch-layout">
       <div class="cr-arch-main">
-      <div class="proc-grid" id="misc-grid">
-        <div class="period-hdr current">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
+      <div class="proc-grid" id="misc-grid"><div class="period-hdr current">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Current Period</div><div class="period-hdr-date">Oct 16 &ndash; Oct 31, 2026</div></div>
+          <div class="period-hdr-right">5 items</div>
+        </div>
+
+        <div class="proc-card" data-util="pge sce sdge scg others" id="proc-vote-oct29-2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">Voting Meeting &middot; Agenda 3589</span> &middot; Scheduled Oct 29, 2026 &middot; Agenda &middot; 25 Energy Items</span>
+          </div>
+          <h3>October 29 Agenda &mdash; PG&amp;E&ndash;Google Data-Center Resolution Returns, Plus PG&amp;E Interim Rates and DER Orchestration</h3>
+          <p>The Commission&rsquo;s <strong>October 29</strong> voting meeting (Agenda 3589, San Francisco) carries <strong>25</strong> energy items. <strong>Draft Res. E-5455</strong>, approving <em>PG&amp;E</em>&rsquo;s agreement to energize a new <strong>250 MW</strong> transmission-level retail electric load for <strong>Google</strong> at 230 kV in San Jose, returns after being held at five consecutive meetings; as drafted it would require Google to provide up to <strong>$150 million</strong> in additional refundable capital advances for network upgrades. Item 23, in <strong>R.21-06-017</strong>, would direct PG&amp;E, <em>SCE</em> and <em>SDG&amp;E</em> to retain consultants to develop a distributed-energy-resource orchestration framework. Item 49, in <strong>A.25-05-009</strong>, would authorize PG&amp;E to recover up to <strong>$456 million</strong> in interim rates beginning January 1, 2027. The competing biomethane cost-allocation proposed decisions (<strong>R.22-12-011</strong>) and <em>SoCalGas</em>&rsquo;s Transmission Integrity Management Program cost recovery (<strong>A.25-04-020</strong>, a proposed <strong>$81.3 million</strong> approval of a <strong>$173.8 million</strong> request) also return after being held October 8.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/about-cpuc/transparency-and-reporting/cpuc-voting-meetings/2026-voting-meetings" target="_blank" rel="noopener noreferrer">2026 Voting Meetings</a>
+            <a href="https://www.calregulatory.com/google-data-center-biomethane-pds/" target="_blank" rel="noopener noreferrer">CRI Agenda Preview</a>
+            <a href="https://www.stoel.com/insights/reports/energy-regulatory-updates/october-21-2026" target="_blank" rel="noopener noreferrer">Stoel Regulatory Update</a>
+          </div>
+          <div class="ai-box">
+            <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
+            <div class="ai-body"><strong>This meeting had not been held as of this update (October 27, 2026).</strong> Every item above is an agenda item or draft, not an adopted decision, and the Commission has held several of them repeatedly &mdash; Res. E-5455 has now been deferred across July, August, September and October. Results will be carded separately once the meeting occurs.<br><br>Also listed: <strong>Draft Res. G-3622</strong>, approving California Energy Commission gas research, development and demonstration plans with budgets of <strong>$24 million</strong> each for fiscal years 2024&ndash;25 and 2025&ndash;26; a proposed decision authorizing two years of <strong>bridge funding</strong> for utility demand-response programs in 2028&ndash;2029; and a proposed decision approving a settlement resolving <em>SDG&amp;E</em>&rsquo;s remaining Track 3 wildfire-mitigation costs.</div>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="others" id="proc-caiso-order1920-oct2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">CAISO</span> &middot; Meeting Oct 26, 2026 &middot; Transmission Planning &middot; FERC Order No. 1920</span>
+          </div>
+          <h3>CAISO Proposes Pushing the Start of Long-Term Regional Transmission Planning From 2027 to 2029</h3>
+          <p><em>CAISO</em> held a stakeholder meeting on <strong>October 26</strong> on its compliance with <strong>FERC Order No. 1920</strong>, including a proposal to extend the start of Long-Term Regional Transmission Planning from <strong>February 1, 2027</strong> to <strong>February 1, 2029</strong>. Separately, CAISO and the <strong>Southwest Power Pool</strong> held a joint market seams workshop on October 22, alongside Day-Ahead Market Enhancements training.</p>
+          <div class="proc-card-links">
+            <a href="https://www.stoel.com/insights/reports/energy-regulatory-updates/october-21-2026" target="_blank" rel="noopener noreferrer">Stoel Regulatory Update</a>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="others" id="proc-ride-oct2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">Clean Miles Standard</span> &middot; Announced Oct 19, 2026 &middot; Program Launch &middot; Rideshare ZEVs</span>
+          </div>
+          <h3>CPUC to Launch RIDE Incentives for Rideshare Drivers; Applications Open November 2</h3>
+          <p>The CPUC announced the <strong>Rideshare Incentives for Driving Electric (RIDE)</strong> program, offering up to <strong>$20,300</strong> toward a new zero-emission vehicle, up to <strong>$14,200</strong> toward a used one, and up to <strong>$1,170</strong> a year in charging support for up to four years. Eligibility is limited to low- and moderate-income high-volume drivers at or below <strong>400%</strong> of the federal poverty level with at least <strong>4,500</strong> passenger trips in the prior twelve months. The program is funded by per-trip regulatory fees collected from transportation network companies under the <strong>Clean Miles Standard</strong> and administered by the Center for Sustainable Energy. Applications open <strong>November 2, 2026</strong>.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-to-launch-ride-incentives-to-help-rideshare-drivers-go-electric" target="_blank" rel="noopener noreferrer">CPUC Announcement</a>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="pge" id="proc-pge-erra-overcollection-oct2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">PG&amp;E &middot; ERRA</span> &middot; Oct 2026 &middot; Procurement &middot; $306M Overcollection</span>
+          </div>
+          <h3>PG&amp;E Projects a $306 Million ERRA Overcollection and Asks to Return It Through 2027 Rates</h3>
+          <p><em>PG&amp;E</em> projects a <strong>$306 million</strong> overcollection in its <strong>Energy Resource Recovery Account</strong> and has asked the Commission to return it through <strong>2027 rates</strong> rather than by an immediate rate adjustment. The timing choice determines whether customers see the credit as a discrete adjustment or absorbed into the consolidated January 2027 rate change, and it affects the balancing account&rsquo;s carrying cost in the interim.</p>
+          <div class="proc-card-links">
+            <a href="https://www.calregulatory.com/erra-overcollection-rate-design/" target="_blank" rel="noopener noreferrer">CRI Coverage</a>
+          </div>
+        </div>
+
+        <div class="proc-card" data-util="others" id="proc-cpuc-workshops-oct22-2026">
+          <div class="proc-card-meta">
+            <span class="proc-card-header"><span class="docket">CPUC Workshops</span> &middot; Held Oct 22, 2026 &middot; Workshops &middot; EPIC 5 &middot; RES-BCT</span>
+          </div>
+          <h3>CPUC Holds EPIC 5 Investment Plan and RES-BCT Program Workshops</h3>
+          <p>The Commission held two energy workshops on <strong>October 22</strong>: one on the <strong>EPIC 5</strong> investment plan under the Electric Program Investment Charge, and one on the <strong>Renewable Energy Self-Generation Bill Credit Transfer (RES-BCT)</strong> program, which allows a local government or other eligible customer to transfer bill credits from an onsite renewable generator to its other accounts.</p>
+          <div class="proc-card-links">
+            <a href="https://www.cpuc.ca.gov/events-and-meetings" target="_blank" rel="noopener noreferrer">CPUC Events &amp; Meetings</a>
+          </div>
+        </div>
+
+        <div class="period-hdr">
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Oct 1 &ndash; Oct 15, 2026</div></div>
           <div class="period-hdr-right">9 items</div>
         </div>
 
@@ -4246,7 +4388,7 @@
         </div>
 
         <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Prior Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
+          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 16 &ndash; Sep 30, 2026</div></div>
           <div class="period-hdr-right">1 item</div>
         </div>
 
@@ -4265,10 +4407,7 @@
           </div>
         </div>
 
-        <div class="period-hdr">
-          <div class="period-hdr-left"><div class="period-hdr-eyebrow">Earlier Period</div><div class="period-hdr-date">Sep 1 &ndash; Sep 15, 2026</div></div>
-          <div class="period-hdr-right">2 items</div>
-        </div>
+        <div id="misc-grid-sep2026" class="collapsible-period" style="display:none;">
 
         <div class="proc-card" data-util="pge sce sdge scg" id="proc-vote-sep17-2026">
           <div class="proc-card-meta">
@@ -4301,6 +4440,8 @@
             <div class="ai-hdr" onclick="toggleAI(this)"><span class="ai-arr">&#9658;</span> Details</div>
             <div class="ai-body"><strong>PG&amp;E</strong> provided adequate data for circuit loads, system and circuit-level forecasts, known and pending loads, and extreme-weather adjustments; materials covering no-cost solutions, GNA tables, recommended investments and the continued need for earlier projects were expected in early September, with load-tracking, project-prioritization and execution information due later.<br><br><strong>SCE</strong> completed most of its scheduled early forecasting demonstrations, including base, high and low scenarios, hot spots and extreme-weather adjustments. Additional GNA demonstrations were scheduled for <strong>September 25</strong>, followed by project-planning demonstrations <strong>October 9</strong> and prioritization and execution information <strong>October 13</strong>.<br><br><strong>SDG&amp;E</strong> provided adequate data for most forecasting, pending-load, GNA and planned-investment steps, but the engineer requested additional information because data on 2025 circuit loading and extreme-weather adjustments were incomplete. Load-tracking data were due September 15, with other project information expected through early October.<br><br>These reports assess whether the independent engineer has enough information to conduct its review; they do not validate the utilities&rsquo; forecasts or investment plans, and because the verification approaches differ the statuses are not a direct ranking of data or planning practices. The engineer cautioned that it received more detailed information than parties received through the service list, so its adequacy findings do not establish that stakeholders can evaluate the same forecasts and projects. The November DPAG reports will provide the first substantive verification findings.</div>
           </div>
+        </div>
+
         </div>
 
         <div id="misc-grid-aug2026" class="collapsible-period" style="display:none;">
@@ -4783,6 +4924,7 @@
       </div>
       <aside class="cr-arch-rail">
         <div class="cr-arch-rail-hdg">Archive</div>
+          <button class="cr-month-btn" onclick="openArchMonth('misc-grid-sep2026',this)">September 2026 <span class="cr-month-n">2</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('misc-grid-aug2026',this)">August 2026 <span class="cr-month-n">12</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('misc-grid-jul2026',this)">July 2026 <span class="cr-month-n">7</span></button>
           <button class="cr-month-btn" onclick="openArchMonth('misc-grid-jun2026',this)">June 2026 <span class="cr-month-n">6</span></button>
