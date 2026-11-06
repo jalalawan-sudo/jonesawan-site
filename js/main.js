@@ -14,6 +14,7 @@ const NAV_HTML = `
       <li><a href="calreg.html">CalReg</a></li>
       <li><a href="calnews.html">CalNews</a></li>
       <li><a href="firstprinciples.html">FirstPrinciples</a></li>
+      <li><a href="breadth.html">Breadth</a></li>
       <li><a href="https://forms.gle/UVf4Jzcv7RsYPdUg7" class="nav-cta" data-subscribe target="_blank" rel="noopener noreferrer">Subscribe</a></li>
     </ul>
   </div>
@@ -28,6 +29,7 @@ const FOOTER_HTML = `
       <a href="calreg.html">CalReg</a>
       <a href="calnews.html">CalNews</a>
       <a href="firstprinciples.html">FirstPrinciples</a>
+      <a href="breadth.html">Breadth</a>
     </div>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/jalal-awan-bb43957/" target="_blank" class="social-icon" title="LinkedIn">in</a>

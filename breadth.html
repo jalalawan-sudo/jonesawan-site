@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breadth &middot; Jones-Awan &middot; 2026-11-05</title>
+  <meta name="description" content="S&amp;P 500 cap-weighted versus equal-weighted breadth, the 11 GICS sector SPDRs, and the energy complex. Daily.">
+  <link rel="canonical" href="https://www.jonesawan.com/breadth.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jones-Awan">
+  <meta property="og:title" content="Breadth | Cap-weighted vs equal-weighted S&amp;P">
+  <meta property="og:description" content="Is the index being carried by a handful of names, or is the advance broad? Daily breadth, sector tape and energy complex.">
+  <meta property="og:url" content="https://www.jonesawan.com/breadth.html">
+  <meta property="og:image" content="https://www.jonesawan.com/images/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#16130f; --body:#3c4650; --muted:#8b95a0; --faint:#aeb6bf;
+      --hair:#e6e3dd; --hair2:#efece6; --paper:#fff; --panel:#faf8f4;
+      --red:#c8102e; --up:#0b7a3b; --dn:#c0392b;
+      --serif:'Source Serif 4',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--sans);color:var(--body);background:var(--paper);
+      line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .container{max-width:1080px;margin:0 auto;padding:0 32px}
+    @media(max-width:640px){.container{padding:0 18px}}
+
+    .masthead{padding:46px 0 24px;border-bottom:2px solid var(--ink)}
+    .masthead .rule{width:54px;height:3px;background:var(--red);margin-bottom:16px}
+    .masthead .eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.16em;
+      text-transform:uppercase;color:var(--red);margin-bottom:10px}
+    .masthead h1{font-family:var(--serif);font-weight:700;
+      font-size:clamp(2.3rem,5.5vw,3.4rem);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+    .masthead .dateline{margin-top:12px;font-size:.88rem;color:var(--muted)}
+
+    .verdict{margin:26px 0 8px;padding:20px 22px;background:var(--panel);
+      border-left:4px solid var(--red);border-radius:0 4px 4px 0}
+    .verdict .lab{font-size:.68rem;font-weight:700;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--red);margin-bottom:7px}
+    .verdict p{font-family:var(--serif);font-size:1.12rem;line-height:1.5;color:var(--ink)}
+    .verdict p+p{margin-top:9px;font-size:.98rem;color:var(--body)}
+
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);
+      border:1px solid var(--hair);margin:22px 0 6px}
+    @media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}}
+    .kpi{background:#fff;padding:15px 16px}
+    .kpi .k{font-size:.64rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:5px}
+    .kpi .v{font-family:var(--serif);font-size:1.7rem;font-weight:700;line-height:1;
+      font-variant-numeric:tabular-nums}
+    .kpi .s{font-size:.74rem;color:var(--muted);margin-top:4px}
+
+    h2.sec{font-family:var(--serif);font-size:1.28rem;font-weight:700;color:var(--ink);
+      margin:34px 0 3px}
+    p.sub{font-size:.84rem;color:var(--muted);margin-bottom:12px}
+
+    table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+    thead th{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--muted);text-align:right;padding:7px 9px;border-bottom:1.5px solid var(--ink)}
+    thead th:first-child,thead th:nth-child(2){text-align:left}
+    tbody td{padding:8px 9px;border-bottom:1px solid var(--hair2);text-align:right;
+      font-size:.9rem}
+    tbody td:first-child{text-align:left;font-weight:700;font-size:.82rem;letter-spacing:.02em}
+    tbody td:nth-child(2){text-align:left;color:var(--body)}
+    tbody tr:hover{background:var(--panel)}
+    .up{color:var(--up);font-weight:600}
+    .dn{color:var(--dn);font-weight:600}
+    .flat{color:var(--muted)}
+    .pill{display:inline-block;padding:1px 7px;border-radius:3px;font-size:.78rem;
+      font-weight:600}
+    .pill.up{background:rgba(11,122,59,.1)}
+    .pill.dn{background:rgba(192,57,43,.1)}
+    .hi{background:#fffbe9}
+    .tw{overflow-x:auto}
+
+    /* ---- nav (self-contained, matching calnews.html) ---- */
+    nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--hair)}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:14px 32px;display:flex;
+      align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.05rem;
+      color:var(--ink);letter-spacing:-.02em;text-decoration:none}
+    .brand-mark{width:26px;height:26px;flex:none;display:block}
+    .nav-links{list-style:none;display:flex;gap:26px}
+    .nav-links a{font-size:.82rem;font-weight:500;color:var(--body);padding-bottom:2px;
+      border-bottom:2px solid transparent;text-decoration:none;transition:color .15s}
+    .nav-links a:hover{color:var(--ink)}
+    .nav-links a.active{color:var(--ink);border-color:var(--red)}
+    .nav-links a.nav-cta{color:#fff;background:var(--red);border-radius:20px;
+      padding:5px 14px;font-weight:600;border-bottom-color:transparent}
+    @media(max-width:760px){.nav-links{gap:14px;font-size:.76rem}
+      .nav-inner{padding:11px 18px}.nav-logo span{display:none}}
+
+    .note{margin:34px 0 10px;padding:16px 18px;background:var(--panel);
+      border:1px solid var(--hair);border-radius:4px;font-size:.82rem;line-height:1.65}
+    .note b{color:var(--ink)}
+    footer.pg{margin-top:40px;padding:24px 0 40px;border-top:1px solid var(--hair);
+      font-size:.78rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="9" fill="#16130f"/><path d="M14 11 v13 a4.5 4.5 0 0 1 -8 0" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M20 27 l6.5 -16 6.5 16 M22.4 21.5 h8.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="31.4" width="16" height="2.4" rx="1.2" fill="#c8102e"/></svg><span>Jones-Awan</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="calreg.html">CalReg</a></li>
+        <li><a href="calnews.html">CalNews</a></li>
+        <li><a href="firstprinciples.html">FirstPrinciples</a></li>
+        <li><a href="breadth.html" class="active">Breadth</a></li>
+        <li><a href="https://forms.gle/UVf4Jzcv7RsYPdUg7" class="nav-cta" data-subscribe target="_blank" rel="noopener noreferrer">Subscribe</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="container">
+    <div class="masthead">
+      <div class="rule"></div>
+      <div class="eyebrow">Market Breadth</div>
+      <h1>Is the index being carried?</h1>
+      <p class="dateline">Cap-weighted against equal-weighted S&amp;P 500, the 11 GICS
+        sector SPDRs and the energy complex &nbsp;·&nbsp; data as of
+        <strong>2026-11-05</strong> &nbsp;·&nbsp; refreshed 2026-11-06T05:48:58Z</p>
+    </div>
+
+    <div class="verdict">
+      <div class="lab">Narrow decline</div>
+      <p>Narrow decline. The index fell 4.41% while equal weight fell 1.52 points less — the damage was concentrated in the largest names rather than spread across the market.</p>
+      <p>Not a rotation into defensives — utilities, staples and health care all closed red alongside the broad tape.</p>
+    </div>
+
+    <div class="kpis"><div class="kpi"><div class="k">S&amp;P 500 (SPY)</div><div class="v" class="dn">-4.41%</div><div class="s">733.00</div></div><div class="kpi"><div class="k">Equal weight (RSP)</div><div class="v" class="dn">-2.89%</div><div class="s">216.87</div></div><div class="kpi"><div class="k">Spread</div><div class="v" class="dn">-1.52</div><div class="s">points, SPY minus RSP</div></div><div class="kpi"><div class="k">Sectors red</div><div class="v" class="dn">11/11</div><div class="s">GICS sector SPDRs</div></div></div>
+
+    <h2 class="sec">Cap-weighted vs equal-weighted</h2>
+    <p class="sub">SPY holds the S&amp;P 500 by market value; RSP holds the same 500
+      companies at roughly equal weight. The spread is the whole point: a positive
+      number means the largest companies outperformed the typical one.</p>
+    <div class="tw"><table><thead><tr><th>Ticker</th><th>Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr class="hi"><td>SPY</td><td>S&P 500</td><td>733.00</td><td class="dn">-4.41%</td><td class="dn">-4.73%</td><td class="dn">-5.69%</td><td class="dn">-5.21%</td><td class="dn">-0.11%</td></tr>
+<tr class="hi"><td>RSP</td><td>S&P 500 Equal Weight</td><td>216.87</td><td class="dn">-2.89%</td><td class="dn">-1.44%</td><td class="up">+2.98%</td><td class="dn">-1.46%</td><td class="up">+5.87%</td></tr></tbody></table></div>
+
+    <h2 class="sec">Sector tape</h2>
+    <p class="sub">All eleven GICS sectors. If a down day is a rotation, defensives
+      (utilities, staples, health care) hold up while cyclicals fall. If everything is
+      red, it is not a rotation.</p>
+    <div class="tw"><table><thead><tr><th>Ticker</th><th>Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr><td>XLK</td><td>Technology</td><td>162.38</td><td class="dn">-8.00%</td><td class="dn">-13.97%</td><td class="dn">-19.37%</td><td class="dn">-13.61%</td><td class="dn">-4.50%</td></tr>
+<tr><td>XLC</td><td>Communication Services</td><td>104.34</td><td class="dn">-0.59%</td><td class="up">+3.09%</td><td class="dn">-6.22%</td><td class="dn">-6.21%</td><td class="dn">-11.09%</td></tr>
+<tr><td>XLY</td><td>Consumer Discretionary</td><td>117.64</td><td class="dn">-3.83%</td><td class="up">+1.24%</td><td class="up">+5.64%</td><td class="dn">-1.85%</td><td class="dn">-1.86%</td></tr>
+<tr><td>XLP</td><td>Consumer Staples</td><td>91.25</td><td class="dn">-0.75%</td><td class="up">+3.48%</td><td class="up">+11.69%</td><td class="up">+7.20%</td><td class="up">+8.32%</td></tr>
+<tr><td>XLV</td><td>Health Care</td><td>184.91</td><td class="dn">-2.50%</td><td class="up">+0.47%</td><td class="up">+9.54%</td><td class="up">+11.61%</td><td class="up">+27.17%</td></tr>
+<tr><td>XLF</td><td>Financials</td><td>57.50</td><td class="dn">-2.87%</td><td class="up">+0.98%</td><td class="up">+6.98%</td><td class="dn">-0.17%</td><td class="up">+10.92%</td></tr>
+<tr><td>XLI</td><td>Industrials</td><td>162.47</td><td class="dn">-4.12%</td><td class="dn">-4.50%</td><td class="dn">-3.20%</td><td class="dn">-12.26%</td><td class="dn">-8.14%</td></tr>
+<tr><td>XLE</td><td>Energy</td><td>61.63</td><td class="dn">-2.98%</td><td class="dn">-10.30%</td><td class="dn">-2.73%</td><td class="up">+7.18%</td><td class="up">+8.12%</td></tr>
+<tr><td>XLU</td><td>Utilities</td><td>43.30</td><td class="dn">-0.71%</td><td class="up">+0.37%</td><td class="up">+5.22%</td><td class="dn">-0.71%</td><td class="dn">-5.27%</td></tr>
+<tr><td>XLB</td><td>Materials</td><td>52.33</td><td class="dn">-2.91%</td><td class="dn">-0.38%</td><td class="up">+6.84%</td><td class="dn">-1.00%</td><td class="dn">-0.15%</td></tr>
+<tr><td>XLRE</td><td>Real Estate</td><td>44.30</td><td class="dn">-1.82%</td><td class="up">+2.88%</td><td class="up">+9.19%</td><td class="dn">-1.51%</td><td class="dn">-0.98%</td></tr></tbody></table></div>
+
+    <h2 class="sec">Energy complex</h2>
+    <p class="sub">The sub-industry ETFs this desk follows, from upstream through grid
+      infrastructure.</p>
+    <div class="tw"><table><thead><tr><th>Ticker</th><th>Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr><td>VDE</td><td>Energy (broad)</td><td>171.07</td><td class="dn">-3.03%</td><td class="dn">-10.91%</td><td class="dn">-3.66%</td><td class="up">+5.36%</td><td class="up">+5.32%</td></tr>
+<tr><td>XOP</td><td>Oil & Gas E&P</td><td>174.10</td><td class="dn">-2.89%</td><td class="dn">-12.74%</td><td class="dn">-7.51%</td><td class="up">+4.63%</td><td class="up">+2.82%</td></tr>
+<tr><td>OIH</td><td>Oil Services</td><td>347.65</td><td class="dn">-5.03%</td><td class="dn">-14.77%</td><td class="dn">-8.88%</td><td class="dn">-10.46%</td><td class="dn">-19.64%</td></tr>
+<tr><td>AMLP</td><td>Midstream MLPs</td><td>50.03</td><td class="dn">-2.21%</td><td class="dn">-7.13%</td><td class="dn">-4.45%</td><td class="dn">-7.97%</td><td class="dn">-5.23%</td></tr>
+<tr><td>GRID</td><td>Grid Infrastructure</td><td>152.01</td><td class="dn">-6.31%</td><td class="dn">-10.76%</td><td class="dn">-15.45%</td><td class="dn">-18.46%</td><td class="dn">-23.12%</td></tr>
+<tr><td>ICLN</td><td>Clean Energy</td><td>16.14</td><td class="dn">-2.77%</td><td class="up">+2.87%</td><td class="dn">-6.76%</td><td class="dn">-11.80%</td><td class="dn">-24.30%</td></tr>
+<tr><td>TAN</td><td>Solar</td><td>44.09</td><td class="dn">-3.71%</td><td class="up">+7.07%</td><td class="up">+1.29%</td><td class="dn">-16.42%</td><td class="dn">-27.09%</td></tr>
+<tr><td>URA</td><td>Uranium</td><td>30.98</td><td class="dn">-5.26%</td><td class="dn">-13.27%</td><td class="dn">-22.41%</td><td class="dn">-31.02%</td><td class="dn">-46.82%</td></tr>
+<tr><td>NLR</td><td>Nuclear</td><td>84.71</td><td class="dn">-4.03%</td><td class="dn">-11.23%</td><td class="dn">-19.53%</td><td class="dn">-28.10%</td><td class="dn">-43.24%</td></tr>
+<tr><td>UNG</td><td>Natural Gas</td><td>9.27</td><td class="flat">+0.00%</td><td class="up">+0.98%</td><td class="dn">-15.96%</td><td class="dn">-4.83%</td><td class="dn">-11.29%</td></tr>
+<tr><td>USO</td><td>Crude Oil</td><td>148.21</td><td class="up">+1.93%</td><td class="dn">-11.88%</td><td class="up">+2.99%</td><td class="up">+25.62%</td><td class="up">+10.65%</td></tr></tbody></table></div>
+
+    <h2 class="sec">Concentration check</h2>
+    <p class="sub">When the spread above is wide, it is usually these names. Semis plus
+      the megacaps that move the cap-weighted index on their own.</p>
+    <div class="tw"><table><thead><tr><th>Ticker</th><th>Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr><td>SMH</td><td>Semiconductors</td><td>447.73</td><td class="dn">-11.21%</td><td class="dn">-20.29%</td><td class="dn">-28.37%</td><td class="dn">-23.16%</td><td class="dn">-18.56%</td></tr>
+<tr><td>NVDA</td><td>NVIDIA</td><td>181.60</td><td class="dn">-9.26%</td><td class="dn">-15.01%</td><td class="dn">-23.53%</td><td class="dn">-18.91%</td><td class="dn">-12.62%</td></tr>
+<tr><td>AVGO</td><td>Broadcom</td><td>291.53</td><td class="dn">-10.43%</td><td class="dn">-15.50%</td><td class="dn">-22.57%</td><td class="dn">-31.85%</td><td class="dn">-31.48%</td></tr>
+<tr><td>AMD</td><td>AMD</td><td>404.40</td><td class="dn">-17.26%</td><td class="dn">-28.60%</td><td class="dn">-37.39%</td><td class="dn">-16.34%</td><td class="dn">-4.03%</td></tr>
+<tr><td>MSFT</td><td>Microsoft</td><td>535.93</td><td class="dn">-3.58%</td><td class="up">+1.09%</td><td class="up">+1.16%</td><td class="up">+7.19%</td><td class="up">+29.46%</td></tr>
+<tr><td>META</td><td>Meta</td><td>605.08</td><td class="dn">-3.96%</td><td class="dn">-3.11%</td><td class="dn">-16.11%</td><td class="up">+2.19%</td><td class="dn">-1.27%</td></tr></tbody></table></div>
+
+    <div class="note">
+      <b>How this is built.</b> Daily closes from Yahoo Finance via the
+      <code>yfinance</code> library, pulled by <code>breadth_refresh.py</code> and
+      inlined into this page at build time. Percentages are simple close-to-close
+      changes over 1, 5, 21 and 63 trading days plus year-to-date from the first close
+      of the year. Prices are not dividend-adjusted, so total return on the longer
+      horizons will differ.<br><br>
+      <b>On “live”.</b> This page is static. It shows the data it was built with, which
+      is why the timestamp is in the dateline rather than a flashing indicator. A
+      browser cannot run <code>yfinance</code>, and the free quote endpoints that would
+      allow a client-side refresh either send no CORS headers or rate-limit immediately.
+      Re-running the refresh script takes a few seconds; during market hours the last
+      bar is the live intraday print, so the numbers do move intraday.<br><br>
+      <b>Not investment advice.</b> Built from publicly available data for research and
+      discussion only. Nothing here is a recommendation to buy or sell any security.
+      Views are my own and not those of any employer or client.
+    </div>
+
+    <footer class="pg">
+      &copy; 2026 Jalal Awan, Ph.D. &nbsp;·&nbsp;
+      <a href="index.html">About</a> &nbsp;·&nbsp;
+      <a href="calreg.html">CalReg</a> &nbsp;·&nbsp;
+      <a href="calnews.html">CalNews</a> &nbsp;·&nbsp;
+      <a href="firstprinciples.html">FirstPrinciples</a>
+    </footer>
+  </main>
+</body>
+</html>
