@@ -144,12 +144,19 @@ small { font-size: 0.78rem; color: var(--text-light); font-family: var(--font-mo
   padding: 0 24px;
 }
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-family: var(--font-serif);
   font-size: 1rem;
   font-weight: 700;
   color: var(--black);
   letter-spacing: -0.02em;
 }
+/* Unsized inline SVG falls back to the browser's 300x150 default box, which
+   blew out #nav's fixed 64px height and pushed the brand text down into the
+   page-header band below it -- visible on every page using this shared nav. */
+.nav-logo .brand-mark { width: 28px; height: 28px; flex: none; display: block; }
 .nav-logo span { color: var(--black); background: var(--accent); padding: 0 4px; }
 .nav-links {
   display: flex;

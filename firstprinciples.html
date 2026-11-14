@@ -151,19 +151,22 @@ tr.sub td { font-size: 12px; background: var(--page); }
 </style>
 
 <style id="ja-site-css">
-/* ---------- Jones-Awan site strip ---------- */
+/* ---------- Jones-Awan site strip (always light, matches every other page) ---------- */
 .ja-bar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:18px;
-  padding:9px 20px;background:#16130f;color:#fff;font:500 13.5px/1.2 system-ui,-apple-system,
-  "Segoe UI",Roboto,Helvetica,Arial,sans-serif;border-bottom:1px solid rgba(255,255,255,.1)}
-.ja-bar a{color:#fff;text-decoration:none;opacity:.82}
-.ja-bar a:hover{opacity:1;text-decoration:underline}
+  padding:9px 20px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(160%) blur(14px);
+  backdrop-filter:saturate(160%) blur(14px);color:#16130f;font:500 13.5px/1.2 system-ui,-apple-system,
+  "Segoe UI",Roboto,Helvetica,Arial,sans-serif;border-bottom:1px solid rgba(0,0,0,.09)}
+.ja-bar a{color:#16130f;text-decoration:none;opacity:.7}
+.ja-bar a:hover{opacity:1}
 .ja-bar .ja-brand{display:flex;align-items:center;gap:9px;font-weight:700;opacity:1;
-  letter-spacing:.2px;margin-right:auto}
+  color:#16130f;letter-spacing:.2px;margin-right:auto}
 .ja-bar .ja-brand svg{display:block;width:24px;height:24px;flex:0 0 24px}
 .ja-bar nav{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.ja-bar .ja-cta{background:#c8102e;opacity:1;padding:5px 13px;border-radius:999px;
+.ja-bar [aria-current="page"]{opacity:1;font-weight:600;border-bottom:2px solid #c8102e;
+  padding-bottom:2px}
+.ja-bar .ja-cta{background:#16130f;color:#fff;opacity:1;padding:5px 13px;border-radius:999px;
   font-weight:600}
-.ja-bar .ja-cta:hover{background:#e01435;text-decoration:none}
+.ja-bar .ja-cta:hover{background:#c8102e;color:#fff}
 @media(max-width:620px){.ja-bar{gap:10px;padding:8px 13px;font-size:12.5px}
   .ja-bar nav{gap:11px}}
 
@@ -175,6 +178,13 @@ tr.sub td { font-size: 12px; background: var(--page); }
 .ja-disc p{margin:0;max-width:1150px}
 .ja-disc p+p{margin-top:4px}
 @media(max-width:620px){.ja-disc{padding:10px 13px;font-size:11.8px}}
+
+/* ---------- hover-only prose: (i) icon replacing standing .lead text ---------- */
+.ico-help{display:inline-block;color:var(--muted);cursor:help;font-size:.92em;
+  margin-left:3px;vertical-align:1px;line-height:1}
+.ico-help:hover,.ico-help:focus{color:var(--c1);outline:none}
+p.lead[id]{opacity:.55}
+p.lead[id]:hover{opacity:1}
 
 /* ---------- Picks tab: transparent + locked ---------- */
 #tabs button[data-k="picks"]{opacity:.42;position:relative}
@@ -205,8 +215,8 @@ tr.sub td { font-size: 12px; background: var(--page); }
     <a href="index.html#about">About</a>
     <a href="calreg.html">CalReg</a>
     <a href="calnews.html">CalNews</a>
-    <a href="firstprinciples.html" aria-current="page"
-       style="opacity:1;text-decoration:underline">FirstPrinciples</a>
+    <a href="data-center-explorer.html">Data Centers</a>
+    <a href="firstprinciples.html" aria-current="page">FirstPrinciples</a>
     <a class="ja-cta" href="https://forms.gle/UVf4Jzcv7RsYPdUg7" target="_blank" rel="noopener"
        data-subscribe>Subscribe</a>
   </nav>
@@ -291,7 +301,37 @@ tr.sub td { font-size: 12px; background: var(--page); }
   </section>
   
   <!-- FUNDAMENTALS -->
-  <section class="tab" id="tab-fund">
+  
+  <section class="tab" id="tab-breadth">
+<div class="kpis"><div class="kpi" title="Narrow decline. The index fell 0.36% while equal weight fell 0.56 points less — the damage was concentrated in the largest names rather than spread across the market. Defensive rotation — utilities, staples and health care all closed green."><div class="l">Read</div><div class="v">Narrow decline</div></div><div class="kpi" title="last 754.37"><div class="l">S&amp;P 500 (SPY)</div><div class="v neg">-0.36%</div></div><div class="kpi" title="last 221.16"><div class="l">Equal weight (RSP)</div><div class="v pos">+0.20%</div></div><div class="kpi" title="Points, SPY minus RSP. Positive = megacaps led; negative = broad participation."><div class="l">Spread</div><div class="v neg">-0.56</div></div><div class="kpi" title="Of the 11 GICS sector SPDRs."><div class="l">Sectors red</div><div class="v pos">4/11</div></div></div><div class="card"><div class="ch"><h2>Cap-weighted vs equal-weighted <span class="ico-help" title="SPY holds the S&P 500 by market value; RSP holds the same 500 companies at roughly equal weight. A positive spread means the largest companies outperformed the typical one." tabindex="0">&#9432;</span></h2><span class="vint">as of 2026-11-13</span></div><div class="tw"><table><thead><tr><th class="l">Ticker</th><th class="l">Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr style="background:var(--wash)"><td class="l">SPY</td><td class="l muted">S&P 500</td><td>754.37</td><td class="neg">-0.36%</td><td class="pos">+2.59%</td><td class="neg">-2.26%</td><td class="neg">-2.37%</td><td class="pos">+0.83%</td></tr>
+<tr style="background:var(--wash)"><td class="l">RSP</td><td class="l muted">S&P 500 Equal Weight</td><td>221.16</td><td class="pos">+0.20%</td><td class="pos">+2.37%</td><td class="pos">+2.87%</td><td class="pos">+0.17%</td><td class="pos">+8.59%</td></tr></tbody></table></div></div><div class="card"><div class="ch"><h2>Sector tape <span class="ico-help" title="All eleven GICS sectors. If a red day is a rotation, defensives (utilities, staples, health care) hold up while cyclicals fall. If everything is red, it isn't a rotation." tabindex="0">&#9432;</span></h2><span class="vint">as of 2026-11-13</span></div><div class="tw"><table><thead><tr><th class="l">Ticker</th><th class="l">Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr><td class="l">XLK</td><td class="l muted">Technology</td><td>170.28</td><td class="neg">-2.01%</td><td class="pos">+3.36%</td><td class="neg">-10.00%</td><td class="neg">-10.53%</td><td class="neg">-5.14%</td></tr>
+<tr><td class="l">XLC</td><td class="l muted">Communication Services</td><td>108.69</td><td class="pos">+1.05%</td><td class="pos">+3.72%</td><td class="neg">-3.34%</td><td class="neg">-1.92%</td><td class="neg">-7.19%</td></tr>
+<tr><td class="l">XLY</td><td class="l muted">Consumer Discretionary</td><td>119.98</td><td class="neg">-0.40%</td><td class="pos">+2.04%</td><td class="pos">+5.79%</td><td class="pos">+2.77%</td><td class="pos">+1.10%</td></tr>
+<tr><td class="l">XLP</td><td class="l muted">Consumer Staples</td><td>92.35</td><td class="pos">+1.42%</td><td class="pos">+2.52%</td><td class="pos">+6.54%</td><td class="pos">+9.06%</td><td class="pos">+8.67%</td></tr>
+<tr><td class="l">XLV</td><td class="l muted">Health Care</td><td>188.85</td><td class="pos">+0.54%</td><td class="pos">+2.19%</td><td class="pos">+6.58%</td><td class="pos">+13.05%</td><td class="pos">+28.79%</td></tr>
+<tr><td class="l">XLF</td><td class="l muted">Financials</td><td>58.68</td><td class="pos">+0.81%</td><td class="pos">+2.66%</td><td class="pos">+6.17%</td><td class="pos">+1.91%</td><td class="pos">+14.41%</td></tr>
+<tr><td class="l">XLI</td><td class="l muted">Industrials</td><td>168.78</td><td class="neg">-0.39%</td><td class="pos">+3.76%</td><td class="pos">+0.53%</td><td class="neg">-9.41%</td><td class="neg">-3.28%</td></tr>
+<tr><td class="l">XLE</td><td class="l muted">Energy</td><td>64.96</td><td class="pos">+0.98%</td><td class="pos">+5.42%</td><td class="neg">-2.40%</td><td class="pos">+3.80%</td><td class="pos">+11.86%</td></tr>
+<tr><td class="l">XLU</td><td class="l muted">Utilities</td><td>44.04</td><td class="pos">+0.52%</td><td class="pos">+2.11%</td><td class="pos">+5.74%</td><td class="neg">-0.32%</td><td class="neg">-1.92%</td></tr>
+<tr><td class="l">XLB</td><td class="l muted">Materials</td><td>52.23</td><td class="neg">-0.21%</td><td class="pos">+0.54%</td><td class="pos">+3.30%</td><td class="neg">-0.02%</td><td class="pos">+1.08%</td></tr>
+<tr><td class="l">XLRE</td><td class="l muted">Real Estate</td><td>44.37</td><td class="pos">+0.02%</td><td class="pos">+0.84%</td><td class="pos">+5.67%</td><td class="neg">-1.03%</td><td class="pos">+1.05%</td></tr></tbody></table></div></div><div class="card"><div class="ch"><h2>Energy complex <span class="ico-help" title="The sub-industry ETFs this desk follows, upstream through grid infrastructure." tabindex="0">&#9432;</span></h2><span class="vint">as of 2026-11-13</span></div><div class="tw"><table><thead><tr><th class="l">Ticker</th><th class="l">Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr><td class="l">VDE</td><td class="l muted">Energy (broad)</td><td>180.61</td><td class="pos">+0.89%</td><td class="pos">+5.45%</td><td class="neg">-2.63%</td><td class="pos">+2.26%</td><td class="pos">+9.59%</td></tr>
+<tr><td class="l">XOP</td><td class="l muted">Oil & Gas E&P</td><td>184.80</td><td class="pos">+0.92%</td><td class="pos">+6.35%</td><td class="neg">-5.18%</td><td class="pos">+0.79%</td><td class="pos">+9.21%</td></tr>
+<tr><td class="l">OIH</td><td class="l muted">Oil Services</td><td>375.55</td><td class="pos">+1.74%</td><td class="pos">+5.45%</td><td class="neg">-0.28%</td><td class="neg">-11.97%</td><td class="neg">-14.92%</td></tr>
+<tr><td class="l">AMLP</td><td class="l muted">Midstream MLPs</td><td>50.70</td><td class="pos">+0.80%</td><td class="pos">+0.92%</td><td class="neg">-2.33%</td><td class="neg">-7.30%</td><td class="neg">-5.88%</td></tr>
+<tr><td class="l">GRID</td><td class="l muted">Grid Infrastructure</td><td>160.29</td><td class="neg">-0.68%</td><td class="pos">+3.94%</td><td class="neg">-6.87%</td><td class="neg">-15.28%</td><td class="neg">-18.77%</td></tr>
+<tr><td class="l">ICLN</td><td class="l muted">Clean Energy</td><td>15.81</td><td class="neg">-0.57%</td><td class="neg">-3.89%</td><td class="neg">-4.47%</td><td class="neg">-12.70%</td><td class="neg">-28.56%</td></tr>
+<tr><td class="l">TAN</td><td class="l muted">Solar</td><td>41.65</td><td class="neg">-1.61%</td><td class="neg">-8.62%</td><td class="neg">-2.57%</td><td class="neg">-18.21%</td><td class="neg">-35.87%</td></tr>
+<tr><td class="l">URA</td><td class="l muted">Uranium</td><td>31.84</td><td class="neg">-1.61%</td><td class="neg">-1.55%</td><td class="neg">-11.85%</td><td class="neg">-29.64%</td><td class="neg">-39.35%</td></tr>
+<tr><td class="l">NLR</td><td class="l muted">Nuclear</td><td>88.39</td><td class="neg">-1.19%</td><td class="neg">-0.06%</td><td class="neg">-8.37%</td><td class="neg">-25.31%</td><td class="neg">-34.33%</td></tr>
+<tr><td class="l">UNG</td><td class="l muted">Natural Gas</td><td>10.15</td><td class="neg">-2.96%</td><td class="pos">+8.56%</td><td class="neg">-8.48%</td><td class="pos">+3.26%</td><td class="neg">-9.05%</td></tr>
+<tr><td class="l">USO</td><td class="l muted">Crude Oil</td><td>145.58</td><td class="neg">-0.34%</td><td class="neg">-1.91%</td><td class="neg">-7.46%</td><td class="pos">+11.74%</td><td class="pos">+1.80%</td></tr></tbody></table></div></div><div class="card"><div class="ch"><h2>Concentration check <span class="ico-help" title="When the spread above is wide, it's usually these names -- semis plus the megacaps that move the cap-weighted index alone." tabindex="0">&#9432;</span></h2><span class="vint">as of 2026-11-13</span></div><div class="tw"><table><thead><tr><th class="l">Ticker</th><th class="l">Name</th><th>Last</th><th>1D</th><th>1W</th><th>1M</th><th>3M</th><th>YTD</th></tr></thead><tbody><tr><td class="l">SMH</td><td class="l muted">Semiconductors</td><td>486.75</td><td class="neg">-2.99%</td><td class="pos">+4.91%</td><td class="neg">-12.90%</td><td class="neg">-18.07%</td><td class="neg">-15.84%</td></tr>
+<tr><td class="l">NVDA</td><td class="l muted">NVIDIA</td><td>162.85</td><td class="neg">-2.01%</td><td class="neg">-12.75%</td><td class="neg">-25.03%</td><td class="neg">-27.63%</td><td class="neg">-30.92%</td></tr>
+<tr><td class="l">AVGO</td><td class="l muted">Broadcom</td><td>347.01</td><td class="neg">-4.76%</td><td class="pos">+18.16%</td><td class="pos">+0.78%</td><td class="neg">-11.57%</td><td class="neg">-21.10%</td></tr>
+<tr><td class="l">AMD</td><td class="l muted">AMD</td><td>534.06</td><td class="neg">-8.75%</td><td class="pos">+18.93%</td><td class="neg">-5.01%</td><td class="pos">+5.55%</td><td class="pos">+18.76%</td></tr>
+<tr><td class="l">MSFT</td><td class="l muted">Microsoft</td><td>523.88</td><td class="pos">+0.17%</td><td class="neg">-1.27%</td><td class="neg">-2.88%</td><td class="pos">+9.06%</td><td class="pos">+27.95%</td></tr>
+<tr><td class="l">META</td><td class="l muted">Meta</td><td>641.69</td><td class="pos">+2.90%</td><td class="pos">+5.17%</td><td class="neg">-12.90%</td><td class="pos">+12.78%</td><td class="pos">+3.76%</td></tr></tbody></table></div></div><p class="note">Daily closes via yfinance, as of 2026-11-13 (refreshed 2026-11-14T03:12:09Z). <span class="ico-help" title="Static page, not a live feed -- a browser can't run yfinance and the free quote endpoints block CORS or rate-limit. During market hours the last bar is the live intraday print. Not investment advice: public data and expert judgment only, for research and discussion." tabindex="0">&#9432;</span></p>
+  </section>
+<section class="tab" id="tab-fund">
     <div class="side">
       <div class="card ctlbar sticky">
         <div class="ch"><h2>Profile weights</h2></div>
@@ -694,7 +734,7 @@ function focusTicker(sym) {
 }
 
 // ---------------- tabs, segmented buttons, auto-apply
-const TABS = [["overview", "Overview"], ["explorer", "Explorer"], ["fund", "Fundamentals"], ["corr", "Correlation"], ["heat", "Heatmap"], ["analysts", "Analysts"], ["sent", "Sentiment"], ["picks", "Picks"], ["method", "Method"]];
+const TABS = [["overview", "Overview"], ["explorer", "Explorer"], ["breadth", "Breadth"], ["fund", "Fundamentals"], ["corr", "Correlation"], ["heat", "Heatmap"], ["analysts", "Analysts"], ["sent", "Sentiment"], ["picks", "Picks"], ["method", "Method"]];
 let current = "overview";
 function setupTabs() { for (const [k, l] of TABS) { const b = el("button", { "data-k": k, type: "button" }, l); b.onclick = () => showTab(k); $("tabs").appendChild(b); } }
 function showTab(k) {
@@ -1536,7 +1576,7 @@ function renderMethod() {
 const PART = { ovseg: renderOvSeg, anacc: renderAnAcc, ansay: renderAnSay, pkmap: () => renderMap(scored().sort((a, b) => b.score - a.score)) };
 function render() {
   renderChips(); perfCache.size > 5000 && perfCache.clear();
-  ({ overview: renderOverview, explorer: renderExplorer, fund: renderFund, corr: renderCorr, heat: renderHeat, analysts: renderAnalysts, sent: renderSent, picks: renderPicks, method: renderMethod })[current]();
+  ({ overview: renderOverview, breadth: () => {}, explorer: renderExplorer, fund: renderFund, corr: renderCorr, heat: renderHeat, analysts: renderAnalysts, sent: renderSent, picks: renderPicks, method: renderMethod })[current]();
 }
 function init() {
   if (typeof echarts === "undefined") { document.body.prepend(el("p", { class: "card" }, "Could not load the chart library (needs internet for cdnjs.cloudflare.com).")); return; }
@@ -1595,6 +1635,24 @@ init();
 
   // Deep link: /firstprinciples.html#picks lands on the gate, not the tab.
   if (location.hash === "#picks") showGate();
+  // Deep link from the old standalone breadth.html (now a redirect stub).
+  else if (location.hash === "#breadth") window.showTab("breadth");
+})();
+</script>
+
+<script id="ja-lead-ico-js">
+(function () {
+  document.querySelectorAll("p.lead, div.lead").forEach(function (p) {
+    if (p.id) return;
+    var txt = p.textContent.trim();
+    if (!txt) return;
+    var icon = document.createElement("span");
+    icon.className = "ico-help";
+    icon.title = txt;
+    icon.tabIndex = 0;
+    icon.textContent = "\u24D8";
+    p.replaceWith(icon);
+  });
 })();
 </script>
 </body>
