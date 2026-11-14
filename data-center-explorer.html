@@ -67,12 +67,20 @@
   .dce-maptip{position:fixed;z-index:80;background:var(--black);color:#fff;padding:8px 11px;
     border-radius:4px;font-size:.78rem;line-height:1.45;max-width:240px;pointer-events:none;display:none}
   .dce-maptip b{display:block;font-size:.84rem;margin-bottom:2px}
-  .dce-statepick{display:flex;flex-direction:column;gap:2px;max-height:520px;overflow:auto;
-    border:1px solid var(--line);font-size:.82rem}
-  .dce-statepick .row{display:flex;justify-content:space-between;padding:6px 10px;border-bottom:1px solid var(--hair,#eee);cursor:pointer}
+  .dce-statepick{display:flex;flex-direction:column;max-height:560px;overflow:auto;
+    border:1px solid var(--line);font-size:.8rem}
+  .dce-statepick .row{display:grid;grid-template-columns:34px 1fr 54px;gap:6px;align-items:center;
+    padding:5px 10px;border-bottom:1px solid var(--hair,#eee);cursor:pointer}
   .dce-statepick .row:hover{background:var(--off-white)}
   .dce-statepick .row.sel{background:var(--accent)}
-  .dce-statepick .n{color:var(--muted);font-variant-numeric:tabular-nums}
+  .dce-statepick .row.total{cursor:default;font-weight:700;border-top:2px solid var(--black);
+    border-bottom:none;background:var(--off-white);position:sticky;bottom:0}
+  .dce-statepick .n{color:var(--text-mid);font-variant-numeric:tabular-nums;text-align:right}
+  .dce-st-counts{display:flex;gap:7px;font-variant-numeric:tabular-nums;color:var(--text-mid)}
+  .dce-st-counts i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px;vertical-align:1px}
+  .dce-st-head{display:grid;grid-template-columns:34px 1fr 54px;gap:6px;padding:5px 10px;
+    font:600 .64rem var(--font-mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+    background:var(--off-white);border-bottom:1px solid var(--line);position:sticky;top:0}
 
   /* global top-5 */
   .dce-globe{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:10px}
@@ -93,6 +101,8 @@
   .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.72rem;font-weight:700}
   .pill.enacted{background:#dff3e3;color:#0b7a3b}
   .pill.pending{background:#fff3cf;color:#8a6d00}
+  .pill.failed{background:#f3dede;color:#8a2a2a}
+  .pill.order{background:#e3e8f5;color:#1a3a7a}
   .ico-help{display:inline-block;color:var(--muted);cursor:help;font-size:.9em;margin-left:3px}
   .ico-help:hover{color:var(--accent-red)}
 
@@ -120,6 +130,9 @@
   .dce-fcite a{color:inherit}
   .dce-box2{border:1px solid var(--line);padding:14px 16px;margin-top:22px;background:var(--off-white)}
   .dce-box2 ul{margin:8px 0 0 18px;font-size:.82rem;line-height:1.6;color:var(--text-mid)}
+  .dce-guide{margin:14px 0 0 20px;font-size:.88rem;line-height:1.7;color:var(--text-mid)}
+  .dce-guide li{margin-bottom:10px}
+  .dce-guide b{color:var(--black)}
 
   .dce-src{font-weight:700;color:var(--black)}
   .dce-foot{font-size:.76rem;color:var(--muted);margin-top:26px;line-height:1.6}
@@ -140,8 +153,8 @@
   <div class="dce-wrap">
     <nav class="dce-tabs" id="dceTabs">
       <button data-k="map" aria-selected="true" type="button">Explorer</button>
-      <button data-k="bills" aria-selected="false" type="button">Rate Impact &amp; Bill Tracker</button>
       <button data-k="lit" aria-selected="false" type="button">Literature Review</button>
+      <button data-k="bills" aria-selected="false" type="button">Rate Impact &amp; Bill Tracker</button>
     </nav>
 
     <!-- ══════════════════════════ EXPLORER ══════════════════════════ -->
@@ -152,9 +165,7 @@
 
       <div class="dce-card">
         <h2>The US buildout</h2>
-        <p class="dce-lede">1,506 tracked facilities, bubble-sized by capacity (MW), colored by status.
-        Hover a point for detail, click it to isolate its state, click a status below (or a KPI tile above) to
-        filter by status &mdash; filters combine, and either can be toggled off again by clicking it a second time.
+        <p class="dce-lede">Bubble size = MW, color = status. Click a bubble, status, or KPI tile to filter &mdash; click again to clear.
         <span class="ico-help" title="Source: FracTracker-based facility panel, Jan 2026 snapshot (the same backbone behind the research corpus at Data Centers/). MW and status are self-reported/compiled from public filings and news coverage and are a lower bound — many proposed sites have no disclosed capacity.">&#9432;</span></p>
         <div class="dce-mapgrid">
           <div>
@@ -170,16 +181,17 @@
           </div>
           <div>
             <h3 style="font-size:.84rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)">By state</h3>
-            <div class="dce-statepick" id="dceStateList"></div>
+            <div class="dce-statepick">
+              <div class="dce-st-head" id="dceStateHead"></div>
+              <div id="dceStateList"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="dce-card">
         <h2>Top 5 global facts</h2>
-        <p class="dce-lede">The US dominates the global hyperscale footprint, so most "top 5" lists are
-        effectively a list of US markets &mdash; stated plainly below rather than dressed up as five different
-        countries.</p>
+        <p class="dce-lede">Mostly a list of US markets &mdash; the US dominates the global hyperscale footprint.</p>
         <div class="dce-globe">
           <div class="dce-gcard"><div class="rank">1</div><div class="name">Northern Virginia, US</div><div class="v">largest single hyperscale cluster worldwide &middot; <a href="https://www.srgresearch.com/articles/us-rises-again-as-synergy-updates-its-ranking-of-hyperscale-data-center-locations" target="_blank" rel="noopener">Synergy Research, Aug 2026 &#8599;</a></div></div>
           <div class="dce-gcard"><div class="rank">2</div><div class="name">Greater Beijing, China</div><div class="v">#2 globally; combined with N. Virginia, ~17% of world hyperscale capacity &middot; Synergy, Aug 2026</div></div>
@@ -191,75 +203,11 @@
     </section>
 
     <!-- ══════════════════════════ BILLS ══════════════════════════ -->
-    <section class="dce-panel" id="dce-bills">
-
-      <div class="dce-verdict">
-        <b>Does data center growth raise your electricity bill?</b>
-        It depends &mdash; mainly on the tariff terms the data center signs: the minimum demand charge, the
-        contract term and ramp schedule, the exit fee, and whether the utility requires contributions in aid
-        of construction (CIAC) for new infrastructure. A data center on a weak tariff (low minimum demand,
-        short term, no exit fee) can leave other customers holding stranded costs if it leaves or underuses
-        capacity; a data center on a strong tariff (high minimum demand, 10&ndash;15 year term, real exit
-        fees) pays its own way and can even subsidize the system by covering fixed costs other customers
-        would otherwise carry. Anyone who tells you the answer is universally yes or universally no is
-        selling a conclusion, not reporting a finding &mdash; see the Literature Review tab for what the actual
-        studies show.
-      </div>
-
-      <div class="dce-card">
-        <h3>The customer-protection terms that decide the answer</h3>
-        <p class="dce-lede">Three tariff elements, scored 0&ndash;5, determine whether the large load or the
-        general ratepayer base bears the cost if demand forecasts are wrong
-        <span class="ico-help" title="Customer Protection Score = ContractPts(term) + MinBillPts(%) + CIACPts(yes/no). Across the SEPA/NCCETC DELTa universe (n=77 tariffs through Mar 2026): mean 1.94/5, median 1. 51% of all tariffs score 0 or 1; only 27% score 4-5. PJM utilities average 2.26 (the national benchmark); CAISO averages 0.64, the weakest ISO.">&#9432;</span>.</p>
-        <div class="dce-scroll"><table class="dce-t">
-          <thead><tr><th>Term</th><th>Why it matters</th><th>Strong standard observed</th></tr></thead>
-          <tbody>
-            <tr><td><b>Minimum billing demand</b></td><td>Sets the floor the data center pays even if it uses less &mdash; protects against under-recovery on reserved capacity.</td><td>85% of contract capacity, ratcheted to the greater of that or 80% of the highest billing demand in the prior 11 months (Indiana Michigan Power)</td></tr>
-            <tr><td><b>Contract term &amp; ramp</b></td><td>Protects against stranded assets if the load leaves early.</td><td>12&ndash;15 years, ramp &le;4 years with stepwise floors (AEP Ohio, Dominion VA GS-5)</td></tr>
-            <tr><td><b>Exit fee</b></td><td>Decides who pays for capacity built for a customer that then leaves.</td><td>3 years of minimum charges plus net book value of incremental utility-funded facilities (AEP Ohio + Xcel MN combined standard)</td></tr>
-            <tr><td><b>CIAC (contributions in aid of construction)</b></td><td>Decides who advances the capital for new infrastructure.</td><td>Required upfront, customer funds planning and interconnection studies</td></tr>
-          </tbody>
-        </table></div>
-      </div>
-
-      <div class="dce-card">
-        <h3>State rate-bill tracker &mdash; data center / hyperscaler large loads</h3>
-        <p class="dce-lede">Enacted and pending state statutes specifically addressing data center or
-        large-load cost allocation, 2024&ndash;2026. Not a list of every data center bill introduced &mdash;
-        only ones that reached a floor vote, were signed, or are actively pending as of this page's last
-        update.</p>
-        <div class="dce-scroll"><table class="dce-t">
-          <thead><tr><th>State</th><th>Bill</th><th>Status</th><th>What it does</th></tr></thead>
-          <tbody>
-            <tr><td>MN</td><td>HF 16 (2025 1st Special Session)</td><td><span class="pill enacted">Enacted</span></td><td>Statutory "very large customer" class; PUC sets terms per utility by Dec 2026; 75% min demand, 15-yr contracts, collateral + exit fee; stranded costs barred from other ratepayers; $2&ndash;5M/yr/data center to weatherization; sales-tax exemption eliminated.</td></tr>
-            <tr><td>OR</td><td>HB 3546 &mdash; POWER Act</td><td><span class="pill enacted">Enacted</span></td><td>&gt;20 MW class for data centers and crypto; OPUC writes tariff rules; 10-yr minimum with minimum payment; utilities must identify costs large users add.</td></tr>
-            <tr><td>TX</td><td>SB 6</td><td><span class="pill enacted">Enacted</span></td><td>&ge;75 MW threshold; backup-generation disclosure to ERCOT; remote-disconnection equipment required for loads connecting after Dec 31, 2025; ERCOT firm-curtailment authority in emergencies; $100k minimum transmission-study fee paid by the load.</td></tr>
-            <tr><td>VA</td><td>HB 2084</td><td><span class="pill enacted">Enacted</span></td><td>Directs the SCC to evaluate rate classifications; operationalized as Dominion's GS-5 tariff. JLARC projected $14&ndash;37/month ratepayer cost increase from meeting VA data center demand.</td></tr>
-            <tr><td>MD</td><td>HB 900</td><td><span class="pill enacted">Enacted</span></td><td>Statutory finding that residential customers "should not bear the financial risks"; each utility must file a data center rate schedule with minimum durations, financial responsibilities and fees.</td></tr>
-            <tr><td>WA</td><td>SB 5036</td><td><span class="pill enacted">Enacted</span></td><td>Establishes a Governor's Data Center Workgroup (PNW load projected +2,200&ndash;4,800 aMW by 2030). The actual cost-shift tariff rule (companion HB 2515) was punted to 2026 &mdash; this bill alone does not yet do tariff work.</td></tr>
-            <tr><td>PA</td><td>House-passed, 2026</td><td><span class="pill pending">Pending</span></td><td>Data centers pay for grid upgrades and stranded-cost deposits; load projections must be validated by state regulators before submission to PJM (the "ghost data center" queue problem); from 2027, &ge;10% clean power or pay into a clean-energy fund.</td></tr>
-            <tr><td>NJ</td><td>A 5586</td><td><span class="pill pending">Pending</span> (Assembly-passed)</td><td>&ge;100 MW loads responsible for &ge;85% of service costs; waste-heat reuse incentive.</td></tr>
-            <tr><td>IL</td><td>SB 4016 / HB 5513 &mdash; POWER Act</td><td><span class="pill pending">Pending</span></td><td>In Senate AI &amp; Social Media subcommittee as of Feb 2026; combines economic, water, and transparency requirements in one statute.</td></tr>
-            <tr><td>MD</td><td>SB 596 / HB 940</td><td><span class="pill pending">Pending</span></td><td>&ge;25 MW demand-response and on-site storage incentives.</td></tr>
-            <tr><td>CA</td><td>R.26-04-009 (CPUC rulemaking, not a bill)</td><td><span class="pill pending">Pending</span></td><td>Advanced Electric Rate Design OIR; issue (j) asks directly whether new data-center/large-load tariffs are needed to prevent stranded costs and cost-shifting. SB 57 requires the Commission to assess data-center cost impacts, including stranded-cost and cost-shift risk, by Jan 1, 2027.</td></tr>
-          </tbody>
-        </table></div>
-        <p class="dce-foot">Sources: state legislature bill-tracking pages and signed-bill text; CPUC docket card
-        for R.26-04-009 (see <a href="calreg.html">CalReg</a> for the live California trail). Compiled from
-        the author's state ratepayer-protection statute inventory, 2024&ndash;2026. Status reflects the most
-        recent update to this page, not real-time legislative tracking &mdash; check the originating
-        legislature for a bill's current status before relying on it.</p>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════ LITERATURE REVIEW ══════════════════════════ -->
     <section class="dce-panel" id="dce-lit">
 
       <div class="dce-card">
         <h2>Rate impacts of large loads: a decision tree</h2>
-        <p class="dce-lede">Adapted from ESIG's conceptual framework (Figure 2 below), with the two end
-        states annotated against what the literature review on this page actually found when researchers
-        went and checked &mdash; hover an outcome box for the citations.
+        <p class="dce-lede">Adapted from ESIG's framework. Hover an outcome box for real-world citations.
         <span class="ico-help" title="Source: The Brattle Group for the Energy Systems Integration Group (ESIG), &quot;Rate Impacts of Large Loads: A Primer,&quot; May 2026. ESIG is a nonprofit, trade-neutral technical research group; Brattle is an economic consultancy. Reproduced as an interactive decision tree rather than the original static flowchart graphic.">&#9432;</span></p>
 
         <div class="dce-flow">
@@ -306,22 +254,17 @@
 
       <div class="dce-card">
         <h2>The underlying research behind this page</h2>
-        <p class="dce-lede">A county-level re-examination of whether data centers shift costs onto ordinary
-        ratepayers &mdash; the same facility panel behind the map on the Explorer tab, and the question this
-        whole page is organized around.</p>
-        <p style="font-size:.9rem"><a class="dce-src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">The Causal Bar E3 Did Not Clear: A County-Level Re-Examination of Data Centers and Rates &#8599;</a><br>
-        <span style="color:var(--text-mid);font-size:.86rem">SSRN preprint, May 2026. 1,506 US facilities and the full 77-tariff SEPA/NCCETC database. Host counties carry higher PM2.5 (+9%), greenhouse gases (2.3&times;), water withdrawals (3.5&times;) and Black population share (4.3&times;) than non-host counties, and most large-load tariffs score poorly on customer protection (mean 1.94/5 across 77 tariffs; 51% score 0&ndash;1). These are descriptive comparisons &mdash; host counties self-select on transmission access, fiber, water and land, so this is evidence they chose certain counties, not evidence they caused the disparities. Not a causal claim.</span></p>
+        <p style="font-size:.9rem"><a class="dce-src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">The Causal Bar E3 Did Not Clear: A County-Level Re-Examination of Data Centers and Rates &#8599;</a>
+        <span class="ico-help" title="SSRN preprint, May 2026. 1,506 US facilities and the full 77-tariff SEPA/NCCETC database. Host counties carry higher PM2.5 (+9%), greenhouse gases (2.3x), water withdrawals (3.5x) and Black population share (4.3x) than non-host counties, and most large-load tariffs score poorly on customer protection (mean 1.94/5; 51% score 0-1). Descriptive comparisons, not a causal claim -- host counties self-select on transmission access, fiber, water and land.">&#9432;</span><br>
+        <span class="dce-orgtype">Same facility panel behind the Explorer map; the question this page is organized around.</span></p>
       </div>
 
       <div class="dce-card">
         <h2>What the literature actually finds</h2>
-        <p class="dce-lede">Ten sources, fetched and read directly &mdash; not summarized secondhand. Sources
-        that could not be independently verified (paywalled or bot-blocked on every attempt) were left out
-        rather than described secondhand. Every source's own stated limitations are carried through, not
-        smoothed over.
-        Direction is the source's own finding on whether data centers push rates up (<span class="dce-dir up">&#9650;</span>),
-        down (<span class="dce-dir down">&#9660;</span>), or the relationship is mixed/contingent
-        (<span class="dce-dir mixed">&#9679;</span>) &mdash; hover a row's info icon for the method and a direct quote.</p>
+        <p class="dce-lede">Ten sources, read directly, each in its own words &mdash;
+        up (<span class="dce-dir up">&#9650;</span>), down (<span class="dce-dir down">&#9660;</span>), or
+        mixed (<span class="dce-dir mixed">&#9679;</span>). Hover a row's icon for method and quote.
+        <span class="ico-help" title="Sources that could not be independently verified (paywalled or bot-blocked on every attempt) were left out rather than described secondhand.">&#9432;</span></p>
 
         <div class="dce-scroll"><table class="dce-t">
           <thead><tr><th>Source</th><th>Date</th><th>Type &amp; publisher</th><th>Funding</th><th>Direction / magnitude</th><th>Finding</th><th>Limitations</th></tr></thead>
@@ -332,60 +275,79 @@
       </div>
 
       <div class="dce-card">
-        <h2>A data center policymaker's guide (draft)</h2>
-        <p class="dce-lede">What the table above actually implies for someone who has to write or vote on a
-        tariff, rate case, or siting rule &mdash; not a recommendation on any specific docket, a synthesis of
-        where the evidence is solid, where it is thin, and what that argues for procedurally.</p>
+        <h2>A data center policymaker's guide <span class="dce-orgtype" style="font-weight:400">(draft)</span></h2>
+        <p class="dce-lede">What the table above implies procedurally &mdash; not a position on any docket.
+        <span class="ico-help" title="Draft synthesis for discussion, not a filed position in any proceeding. See the Rate Impact & Bill Tracker tab for what is actually enacted or pending today.">&#9432;</span></p>
+        <ol class="dce-guide">
+          <li><b>Reject both absolute claims on sight.</b> Two causal designs in the table above reach opposite signs using comparably serious methods &mdash; that is the honest state of the evidence, not a contradiction to resolve.
+            <span class="ico-help" title="Watten/Bistline/Blanford (causal IV, prices fall) vs. Meeks/Pless/Qi/Wang (staggered DiD, prices rise). Anyone asserting data centers universally raise or lower rates is overstating what any single study here can support.">&#9432;</span></li>
+          <li><b>The deciding variable is institutional, not technological.</b> Effects concentrate in investor-owned utilities and deregulated markets; cooperatives and regulated utilities show little effect.
+            <span class="ico-help" title="Plausibly because regulated/cooperative utilities can absorb load through owned generation, integrated planning, and utilization gains. First question: what kind of utility and market is this -- not whether data centers raise rates in the abstract.">&#9432;</span></li>
+          <li><b>Match the unit of analysis to the question.</b> State-level comparisons cannot detect a cost shift that happens at the utility-feeder level.
+            <span class="ico-help" title="A Dominion feeder in Loudoun County shares no capital recovery with a Dominion feeder in Roanoke. Any rulemaking relying on a state-level finding to clear or convict data centers on cost-shifting is using the wrong resolution.">&#9432;</span></li>
+          <li><b>Tariff terms are the actual, measurable lever.</b> National mean customer-protection score: 1.94/5; 51% score 0&ndash;1.
+            <span class="ico-help" title="Minimum billing demand, contract term/ramp, exit fees, and CIAC requirements are not abstractions -- see the Rate Impact & Bill Tracker tab. A weak tariff (low minimum, short term, no exit fee) is a predictable cost-shifting mechanism regardless of which study you believe; a strong one (85% minimum, 12-15yr term, real exit fees) predictably prevents it. This is what policymakers directly control.">&#9432;</span></li>
+          <li><b>Demand flexibility is a genuine hedge &mdash; only if contractual.</b> Voluntary courtesy offers do not move large operators.
+            <span class="ico-help" title="Interruptible-load tariffs and demand-response commitments can turn load growth from a cost driver into a cost offset by improving system utilization, but only when bound into the tariff.">&#9432;</span></li>
+          <li><b>Demand a forward-looking study before relying on a backward-looking one.</b> Most literature above measures 2010&ndash;2025, not the next wave at current costs.
+            <span class="ico-help" title="Current equipment costs, current interest rates, current interconnection queue lengths. A rate case resting on 2015-vintage cost assumptions is resting on stale evidence by construction, regardless of which side it favors.">&#9432;</span></li>
+        </ol>
+      </div>
+    </section>
 
-        <h3 style="font-size:.95rem;margin-top:18px">1. Reject both absolute claims on sight</h3>
-        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Two causal, quasi-experimental designs
-        in the table above (Watten/Bistline/Blanford and Meeks/Pless/Qi/Wang) reach opposite signs using
-        comparably serious methods. That is not a contradiction to resolve &mdash; it is the honest state of the
-        evidence. Anyone asserting data centers universally raise or lower rates is overstating what any single
-        study, including the best ones here, can support.</p>
+    <!-- ══════════════════════════ LITERATURE REVIEW ══════════════════════════ -->
+    <section class="dce-panel" id="dce-bills">
 
-        <h3 style="font-size:.95rem;margin-top:14px">2. The deciding variable is institutional, not technological</h3>
-        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">The one point of convergence across
-        the rigorous studies: ownership structure and regulatory environment explain more variation than the
-        presence of a data center itself. Effects concentrate in investor-owned utilities and deregulated
-        markets; cooperatives and vertically integrated regulated utilities show little to no measurable effect,
-        plausibly because they can absorb load through owned generation, integrated planning, and
-        utilization gains. A policymaker's first question should be "what kind of utility and market is this,"
-        not "do data centers raise rates."</p>
+      <div class="dce-verdict">
+        <b>Does data center growth raise your electricity bill?</b>
+        It depends on the tariff it signs &mdash; weak terms shift stranded costs to you, strong terms make the
+        data center pay its own way.
+        <span class="ico-help" title="Tariff terms that decide it: minimum demand charge, contract term/ramp, exit fee, and whether the utility requires contributions in aid of construction (CIAC). A weak tariff (low minimum demand, short term, no exit fee) can leave other customers holding stranded costs; a strong one (high minimum demand, 10-15yr term, real exit fees) pays its own way and can even subsidize the system. Anyone claiming a universal yes or no is selling a conclusion, not reporting a finding -- see the Literature Review tab for what the actual studies show.">&#9432;</span>
+      </div>
 
-        <h3 style="font-size:.95rem;margin-top:14px">3. Match the unit of analysis to the question</h3>
-        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">State-level comparisons (IER, the E3
-        report this corpus critiques) cannot detect a cost shift that happens at the utility-service-territory
-        or feeder level &mdash; a Dominion feeder in Loudoun County shares no capital recovery with a Dominion
-        feeder in Roanoke. Any rulemaking that relies on a state-level finding to clear or convict data centers
-        on cost-shifting is using the wrong resolution for the question being asked.</p>
+      <div class="dce-card">
+        <h3>The customer-protection terms that decide the answer</h3>
+        <p class="dce-lede">Three tariff elements, scored 0&ndash;5, determine whether the large load or the
+        general ratepayer base bears the cost if demand forecasts are wrong
+        <span class="ico-help" title="Customer Protection Score = ContractPts(term) + MinBillPts(%) + CIACPts(yes/no). Across the SEPA/NCCETC DELTa universe (n=77 tariffs through Mar 2026): mean 1.94/5, median 1. 51% of all tariffs score 0 or 1; only 27% score 4-5. PJM utilities average 2.26 (the national benchmark); CAISO averages 0.64, the weakest ISO.">&#9432;</span>.</p>
+        <div class="dce-scroll"><table class="dce-t">
+          <thead><tr><th>Term</th><th>Why it matters</th><th>Strong standard observed</th></tr></thead>
+          <tbody>
+            <tr><td><b>Minimum billing demand</b></td><td>Sets the floor the data center pays even if it uses less &mdash; protects against under-recovery on reserved capacity.</td><td>85% of contract capacity, ratcheted to the greater of that or 80% of the highest billing demand in the prior 11 months (Indiana Michigan Power)</td></tr>
+            <tr><td><b>Contract term &amp; ramp</b></td><td>Protects against stranded assets if the load leaves early.</td><td>12&ndash;15 years, ramp &le;4 years with stepwise floors (AEP Ohio, Dominion VA GS-5)</td></tr>
+            <tr><td><b>Exit fee</b></td><td>Decides who pays for capacity built for a customer that then leaves.</td><td>3 years of minimum charges plus net book value of incremental utility-funded facilities (AEP Ohio + Xcel MN combined standard)</td></tr>
+            <tr><td><b>CIAC (contributions in aid of construction)</b></td><td>Decides who advances the capital for new infrastructure.</td><td>Required upfront, customer funds planning and interconnection studies</td></tr>
+          </tbody>
+        </table></div>
+      </div>
 
-        <h3 style="font-size:.95rem;margin-top:14px">4. Tariff terms are the actual lever, and they are measurable</h3>
-        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Minimum billing demand, contract
-        term and ramp, exit fees, and CIAC requirements are not abstractions &mdash; the Rate Impact &amp; Bill
-        Tracker tab shows real tariffs scoring from 0 to 5 on exactly these terms, with a national mean of 1.94
-        and 51% scoring 0&ndash;1. A weak tariff is a predictable mechanism for cost-shifting regardless of
-        which academic study you believe; a strong one (85% minimum demand, 12&ndash;15 year term, real exit
-        fees) is a predictable mechanism against it. This is the part of the system policymakers directly
-        control, independent of which causal estimate turns out to be right.</p>
-
-        <h3 style="font-size:.95rem;margin-top:14px">5. Demand flexibility is a genuine hedge, but only if it is contractual</h3>
-        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Interruptible-load tariffs and
-        demand-response commitments can turn load growth from a cost driver into a cost offset by improving
-        system utilization &mdash; but only when bound into the tariff, not offered as a voluntary courtesy.
-        Large operators are not meaningfully moved by small voluntary price signals.</p>
-
-        <h3 style="font-size:.95rem;margin-top:14px">6. Demand an independent, forward-looking study before relying on a backward-looking one</h3>
-        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Most of the literature above,
-        including the most favorable-to-industry pieces, is backward-looking: it measures what happened
-        2010&ndash;2025, not what the next wave of hyperscale/AI-driven demand will do at current equipment
-        costs, current interest rates, and current interconnection queue lengths. A rate case or rulemaking
-        resting on 2015-vintage cost assumptions is resting on stale evidence by construction, regardless of
-        which side it favors.</p>
-
-        <p class="dce-foot" style="margin-top:18px">This is a draft synthesis for discussion, not a filed
-        position in any proceeding. See the Rate Impact &amp; Bill Tracker tab for what is actually enacted or
-        pending today.</p>
+      <div class="dce-card">
+        <h3>State rate-bill tracker &mdash; data center / hyperscaler large loads</h3>
+        <p class="dce-lede">Enacted and pending state statutes on data center/large-load cost allocation, 2024&ndash;2026.
+        <span class="ico-help" title="Not a list of every data center bill introduced -- only ones that reached a floor vote, were signed, or are actively pending as of this page's last update.">&#9432;</span></p>
+        <div class="dce-scroll"><table class="dce-t">
+          <thead><tr><th>State</th><th>Bill</th><th>Status</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>MN</td><td><a href="https://www.revisor.mn.gov/bills/94/2025/1/HF/16/versions/latest/" target="_blank" rel="noopener">HF 16 &#8599;</a><br><span class="dce-orgtype">2025 1st Special Session</span></td><td><span class="pill enacted">Enacted</span></td><td>Statutory "very large customer" class; PUC sets terms per utility by Dec 2026; 75% min demand, 15-yr contracts, collateral + exit fee; stranded costs barred from other ratepayers; $2&ndash;5M/yr/data center to weatherization; sales-tax exemption eliminated.</td></tr>
+            <tr><td>OR</td><td><a href="https://olis.oregonlegislature.gov/liz/2025R1/Downloads/MeasureDocument/HB3546" target="_blank" rel="noopener">HB 3546 &#8599;</a><br><span class="dce-orgtype">POWER Act</span></td><td><span class="pill enacted">Enacted</span></td><td>&gt;20 MW class for data centers and crypto; OPUC writes tariff rules; 10-yr minimum with minimum payment; utilities must identify costs large users add.</td></tr>
+            <tr><td>TX</td><td><a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&amp;Bill=SB6" target="_blank" rel="noopener">SB 6 &#8599;</a></td><td><span class="pill enacted">Enacted</span></td><td>&ge;75 MW threshold; backup-generation disclosure to ERCOT; remote-disconnection equipment required for loads connecting after Dec 31, 2025; ERCOT firm-curtailment authority in emergencies; $100k minimum transmission-study fee paid by the load.</td></tr>
+            <tr><td>VA</td><td><a href="https://lis.virginia.gov/bill-details/20251/HB2084" target="_blank" rel="noopener">HB 2084 &#8599;</a></td><td><span class="pill enacted">Enacted</span></td><td>Directs the SCC to evaluate rate classifications; operationalized as Dominion's GS-5 tariff. JLARC projected $14&ndash;37/month ratepayer cost increase from meeting VA data center demand.</td></tr>
+            <tr><td>MD</td><td><a href="https://mgaleg.maryland.gov/mgawebsite/legislation/details/hb0900?ys=2025RS" target="_blank" rel="noopener">HB 900 &#8599;</a><br><span class="dce-orgtype">died in committee</span></td><td><span class="pill failed">Failed</span></td><td>Would have required data center rate schedules with minimum durations and financial responsibilities &mdash; died in committee, April 2025. The actual enacted vehicle is Maryland's <b>Next Generation Energy Act</b> (Ch. 625/626, 2025), which separately requires utilities to file large-load rate schedules.</td></tr>
+            <tr><td>WA</td><td><a href="https://governor.wa.gov/news/2025/governor-bob-ferguson-signs-executive-order-establishing-data-center-workgroup" target="_blank" rel="noopener">Exec. Order 25-05 &#8599;</a><br><span class="dce-orgtype">not a bill &mdash; a governor's order</span></td><td><span class="pill order">Executive order</span></td><td>Establishes a Data Center Workgroup (PNW load projected +2,200&ndash;4,800 aMW by 2030). SB 5036, sometimes cited alongside this, is a separate statewide emissions-reporting bill and does not itself address data center tariffs. The actual cost-shift tariff rule (HB 2515) was punted to 2026.</td></tr>
+            <tr><td>PA</td><td><a href="https://legiscan.com/PA/bill/HB1834/2025" target="_blank" rel="noopener">HB 1834 &#8599;</a><br><span class="dce-orgtype">"Data Center Act"; via LegiScan, official PA legislature link unconfirmed</span></td><td><span class="pill pending">Pending</span></td><td>Passed House 104&ndash;95, Mar 2026; now in Senate Consumer Protection &amp; Professional Licensure Committee. PUC authority over data center load; stranded-cost deposits. Companion HB 1924 (PJM load-forecast validation &mdash; the "ghost data center" queue problem) was folded into the 2026&ndash;27 budget.</td></tr>
+            <tr><td>NJ</td><td><a href="https://pub.njleg.gov/Bills/2026/S1000/731_R1.HTM" target="_blank" rel="noopener">S 731 &#8599;</a><br><span class="dce-orgtype">substituted by A 796</span></td><td><span class="pill pending">Pending</span></td><td>&ge;50 MW loads subject to an 85% take-or-pay minimum; introduced Jan 2026, passed, substituted by A796.</td></tr>
+            <tr><td>IL</td><td><a href="https://www.ilga.gov/Legislation/BillStatus?DocNum=4016&amp;GAID=18&amp;DocTypeID=SB&amp;SessionID=114&amp;GA=104" target="_blank" rel="noopener">SB 4016 &#8599;</a> / HB 5513<br><span class="dce-orgtype">POWER Act</span></td><td><span class="pill pending">Pending</span></td><td>Re-referred to Assignments, May 2026; combines economic, water, and transparency requirements for hyperscale data centers in one statute.</td></tr>
+            <tr><td>MD</td><td><a href="https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0596?ys=2026RS" target="_blank" rel="noopener">SB 596 &#8599;</a> / HB 940</td><td><span class="pill pending">Pending</span></td><td>"Large Load Customers &mdash; Electric System Interconnection and Demand Response Program"; exempts certain large loads from certificate requirements and sets a PSC interconnection/contracting process. Effective Oct 1, 2026 if enacted.</td></tr>
+            <tr><td>CA</td><td><a href="https://apps.cpuc.ca.gov/apex/f?p=401:56:0::NO:RP,57,RIR:P5_PROCEEDING_SELECT:R2604009" target="_blank" rel="noopener">R.26-04-009 &#8599;</a><br><span class="dce-orgtype">CPUC rulemaking, not a bill</span></td><td><span class="pill pending">Pending</span></td><td>Advanced Electric Rate Design OIR; issue (j) asks directly whether new data-center/large-load tariffs are needed to prevent stranded costs and cost-shifting. SB 57 requires the Commission to assess data-center cost impacts, including stranded-cost and cost-shift risk, by Jan 1, 2027.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="dce-foot">Sources: state legislature bill-tracking pages and signed-bill text; CPUC docket card
+        for R.26-04-009 (see <a href="calreg.html">CalReg</a> for the live California trail). Compiled from
+        the author's state ratepayer-protection statute inventory, 2024&ndash;2026, corrected against a direct
+        bill-status check in Nov 2026 (MD HB 900 actually died in committee; WA's data center workgroup comes
+        from an executive order, not SB 5036; NJ's tariff bill is S 731, not A 5586). Status reflects the most
+        recent update to this page, not real-time legislative tracking &mdash; check the originating
+        legislature for a bill's current status before relying on it.</p>
       </div>
     </section>
   </div>
@@ -537,11 +499,25 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
     `Source: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">${t.source} &#8599;</a>`;
 
   const states = Object.entries(data.by_state).sort((a, b) => b[1].mw_total - a[1].mw_total);
+  const countsHtml = s => `<span class="dce-st-counts">
+      <i style="background:${STATUS_COLOR.operating}"></i>${s.n_operating || 0}
+      <i style="background:${STATUS_COLOR.approved}"></i>${s.n_approved || 0}
+      <i style="background:${STATUS_COLOR.proposed}"></i>${s.n_proposed || 0}
+      <i style="background:${STATUS_COLOR.dead}"></i>${s.n_dead || 0}
+    </span>`;
+  document.getElementById('dceStateHead').innerHTML =
+    `<span>State</span><span>${countsHtml({n_operating:'O',n_approved:'A',n_proposed:'P',n_dead:'C'})}</span><span style="text-align:right">GW</span>`;
   document.getElementById('dceStateList').innerHTML = states.map(([abbr, s]) => `
     <div class="row" data-state="${abbr}">
-      <span>${abbr} <span style="color:var(--muted)">(${s.n_facilities})</span></span>
-      <span class="n">${(s.mw_total/1000).toFixed(1)} GW</span>
-    </div>`).join('');
+      <span>${abbr}</span>
+      ${countsHtml(s)}
+      <span class="n">${(s.mw_total/1000).toFixed(1)}</span>
+    </div>`).join('')
+    + `<div class="row total">
+      <span>Total</span>
+      ${countsHtml(t)}
+      <span class="n">${(t.mw_total/1000).toFixed(1)}</span>
+    </div>`;
 
   const svg = d3.select('#dceMap');
   const width = 975, height = 610;
