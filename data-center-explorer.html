@@ -45,6 +45,10 @@
   .dce-kpi .v{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;margin-top:4px;letter-spacing:-.01em}
   .dce-kpi .s{font-size:.76rem;color:var(--muted);margin-top:3px;line-height:1.4}
   .dce-kpi .s a{color:var(--muted);text-decoration-thickness:1px}
+  .dce-kpi-filter{cursor:pointer;transition:background .12s}
+  .dce-kpi-filter:hover{background:var(--off-white)}
+  .dce-kpi-filter.active{background:var(--accent)}
+  .dce-kpi-filter.active .l,.dce-kpi-filter.active .s{color:var(--black)}
 
   /* map */
   .dce-mapgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,1fr);gap:18px;align-items:start}
@@ -52,8 +56,14 @@
   #dceMap{width:100%;height:auto;background:var(--paper);border:1px solid var(--line)}
   #dceMap circle{cursor:pointer;transition:opacity .1s}
   #dceMap circle:hover{stroke:var(--black);stroke-width:1.2}
-  .dce-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.78rem;color:var(--text-mid);margin:10px 0 0}
+  .dce-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:.78rem;color:var(--text-mid);margin:10px 0 0}
   .dce-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .dce-legend [data-grp]{cursor:pointer;padding:2px 7px;border-radius:999px;border:1px solid transparent}
+  .dce-legend [data-grp]:hover{border-color:var(--line)}
+  .dce-legend [data-grp].active{background:var(--black);color:#fff;font-weight:600}
+  .dce-clear{font:600 .72rem var(--font-mono);text-transform:uppercase;letter-spacing:.04em;
+    background:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer;color:var(--muted)}
+  .dce-clear:hover{color:var(--black);border-color:var(--black)}
   .dce-maptip{position:fixed;z-index:80;background:var(--black);color:#fff;padding:8px 11px;
     border-radius:4px;font-size:.78rem;line-height:1.45;max-width:240px;pointer-events:none;display:none}
   .dce-maptip b{display:block;font-size:.84rem;margin-bottom:2px}
@@ -91,7 +101,6 @@
   .dce-dir.up{color:#b42f2f} .dce-dir.down{color:#0b7a3b} .dce-dir.mixed{color:#8a6d00}
   .dce-orgtype{font-size:.72rem;color:var(--muted);display:block;margin-top:1px}
   .dce-na{color:var(--muted);font-style:italic}
-  .dce-flagrow td{background:#faf4f2;color:var(--muted);font-style:italic}
 
   /* flowchart */
   .dce-flow{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px}
@@ -139,21 +148,25 @@
     <section class="dce-panel on" id="dce-map">
 
       <div class="dce-kpis" id="dceKpis"><!-- filled by JS from data/dc_facilities.json --></div>
+      <p class="dce-foot" id="dceSrcLine" style="margin:-14px 0 20px"></p>
 
       <div class="dce-card">
         <h2>The US buildout</h2>
         <p class="dce-lede">1,506 tracked facilities, bubble-sized by capacity (MW), colored by status.
-        Hover a point for the facility; click a state in the list to zoom the legend counts.
+        Hover a point for detail, click it to isolate its state, click a status below (or a KPI tile above) to
+        filter by status &mdash; filters combine, and either can be toggled off again by clicking it a second time.
         <span class="ico-help" title="Source: FracTracker-based facility panel, Jan 2026 snapshot (the same backbone behind the research corpus at Data Centers/). MW and status are self-reported/compiled from public filings and news coverage and are a lower bound — many proposed sites have no disclosed capacity.">&#9432;</span></p>
         <div class="dce-mapgrid">
           <div>
             <svg id="dceMap" viewBox="0 0 975 610" preserveAspectRatio="xMidYMid meet"></svg>
             <div class="dce-legend">
-              <span><i style="background:#1f5cab"></i>Operating / Expanding</span>
-              <span><i style="background:#eda100"></i>Approved / Permitted / UC</span>
-              <span><i style="background:#8b95a0"></i>Proposed</span>
-              <span><i style="background:#c0392b"></i>Cancelled / Suspended</span>
+              <span data-grp="operating"><i style="background:#1f5cab"></i>Operating / Expanding</span>
+              <span data-grp="approved"><i style="background:#eda100"></i>Approved / Permitted / UC</span>
+              <span data-grp="proposed"><i style="background:#8b95a0"></i>Proposed</span>
+              <span data-grp="dead"><i style="background:#c0392b"></i>Cancelled / Suspended</span>
+              <button type="button" id="dceClearFilters" class="dce-clear">Clear filters</button>
             </div>
+            <p class="dce-foot" id="dceFilterNote" style="min-height:1.2em"></p>
           </div>
           <div>
             <h3 style="font-size:.84rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)">By state</h3>
@@ -168,22 +181,12 @@
         effectively a list of US markets &mdash; stated plainly below rather than dressed up as five different
         countries.</p>
         <div class="dce-globe">
-          <div class="dce-gcard"><div class="rank">55%</div><div class="name">of world hyperscale data center capacity is in the US</div><div class="v">up from 52% three years earlier &middot; <a href="https://www.srgresearch.com/articles/us-rises-again-as-synergy-updates-its-ranking-of-hyperscale-data-center-locations" target="_blank" rel="noopener">Synergy Research, Aug 2026 &#8599;</a></div></div>
-          <div class="dce-gcard"><div class="rank">#1&ndash;2</div><div class="name">Northern Virginia (US) &amp; Greater Beijing (China)</div><div class="v">combined ~17% of world capacity, the two largest hyperscale clusters &middot; Synergy, Aug 2026</div></div>
-          <div class="dce-gcard"><div class="rank">#3&ndash;5</div><div class="name">Oregon, Iowa, Ohio (US)</div><div class="v">round out the top 5 hyperscale markets by capacity; exact shares undisclosed by the source &middot; Synergy, Aug 2026</div></div>
-          <div class="dce-gcard"><div class="rank">57%</div><div class="name">of world hyperscale capacity: Amazon + Microsoft + Google combined</div><div class="v">three companies &middot; Synergy Research, Aug 2026</div></div>
+          <div class="dce-gcard"><div class="rank">1</div><div class="name">Northern Virginia, US</div><div class="v">largest single hyperscale cluster worldwide &middot; <a href="https://www.srgresearch.com/articles/us-rises-again-as-synergy-updates-its-ranking-of-hyperscale-data-center-locations" target="_blank" rel="noopener">Synergy Research, Aug 2026 &#8599;</a></div></div>
+          <div class="dce-gcard"><div class="rank">2</div><div class="name">Greater Beijing, China</div><div class="v">#2 globally; combined with N. Virginia, ~17% of world hyperscale capacity &middot; Synergy, Aug 2026</div></div>
+          <div class="dce-gcard"><div class="rank">3&ndash;5</div><div class="name">Oregon, Iowa, Ohio (US)</div><div class="v">round out the top 5 hyperscale markets by capacity; exact shares undisclosed by the source &middot; Synergy, Aug 2026</div></div>
+          <div class="dce-gcard"><div class="rank">55%</div><div class="name">of world hyperscale capacity is in the US</div><div class="v">up from 52% three years earlier; Amazon+Microsoft+Google alone hold 57% of world capacity &middot; Synergy, Aug 2026</div></div>
           <div class="dce-gcard"><div class="rank">~$7T</div><div class="name">projected global data center spend by 2030</div><div class="v">$5.2T AI / $1.5T traditional IT, central case &middot; <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers" target="_blank" rel="noopener">McKinsey &#8599;</a></div></div>
-          <div class="dce-gcard"><div class="rank">915</div><div class="name">hyperscale facilities in development worldwide</div><div class="v">roughly half in the US &middot; Synergy Research, Aug 2026</div></div>
         </div>
-      </div>
-
-      <div class="dce-card">
-        <h2>The underlying research</h2>
-        <p class="dce-lede">This map draws on the same facility panel behind a county-level re-examination of
-        whether data centers shift costs onto ordinary ratepayers &mdash; the question the rest of this page is
-        built around.</p>
-        <p style="font-size:.9rem"><a class="dce-src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">The Causal Bar E3 Did Not Clear: A County-Level Re-Examination of Data Centers and Rates &#8599;</a><br>
-        <span style="color:var(--text-mid);font-size:.86rem">SSRN preprint, May 2026. 1,506 US facilities and the full 77-tariff SEPA/NCCETC database; host counties carry higher PM2.5, greenhouse gases, water withdrawals and minority population share, and most large-load tariffs score poorly on customer protection &mdash; descriptive findings, not a causal claim.</span></p>
       </div>
     </section>
 
@@ -302,20 +305,87 @@
       </div>
 
       <div class="dce-card">
+        <h2>The underlying research behind this page</h2>
+        <p class="dce-lede">A county-level re-examination of whether data centers shift costs onto ordinary
+        ratepayers &mdash; the same facility panel behind the map on the Explorer tab, and the question this
+        whole page is organized around.</p>
+        <p style="font-size:.9rem"><a class="dce-src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">The Causal Bar E3 Did Not Clear: A County-Level Re-Examination of Data Centers and Rates &#8599;</a><br>
+        <span style="color:var(--text-mid);font-size:.86rem">SSRN preprint, May 2026. 1,506 US facilities and the full 77-tariff SEPA/NCCETC database. Host counties carry higher PM2.5 (+9%), greenhouse gases (2.3&times;), water withdrawals (3.5&times;) and Black population share (4.3&times;) than non-host counties, and most large-load tariffs score poorly on customer protection (mean 1.94/5 across 77 tariffs; 51% score 0&ndash;1). These are descriptive comparisons &mdash; host counties self-select on transmission access, fiber, water and land, so this is evidence they chose certain counties, not evidence they caused the disparities. Not a causal claim.</span></p>
+      </div>
+
+      <div class="dce-card">
         <h2>What the literature actually finds</h2>
-        <p class="dce-lede">Fourteen sources, fetched and read directly &mdash; not summarized secondhand.
-        Four could not be retrieved (paywalled or bot-blocked) and are marked as such rather than guessed at.
+        <p class="dce-lede">Ten sources, fetched and read directly &mdash; not summarized secondhand. Sources
+        that could not be independently verified (paywalled or bot-blocked on every attempt) were left out
+        rather than described secondhand. Every source's own stated limitations are carried through, not
+        smoothed over.
         Direction is the source's own finding on whether data centers push rates up (<span class="dce-dir up">&#9650;</span>),
         down (<span class="dce-dir down">&#9660;</span>), or the relationship is mixed/contingent
         (<span class="dce-dir mixed">&#9679;</span>) &mdash; hover a row's info icon for the method and a direct quote.</p>
 
         <div class="dce-scroll"><table class="dce-t">
-          <thead><tr><th>Source</th><th>Date</th><th>Type &amp; publisher</th><th>Funding</th><th>Direction / magnitude</th><th>Finding</th></tr></thead>
+          <thead><tr><th>Source</th><th>Date</th><th>Type &amp; publisher</th><th>Funding</th><th>Direction / magnitude</th><th>Finding</th><th>Limitations</th></tr></thead>
           <tbody id="dceLitBody"><!-- filled by JS from LIT_DATA below, so long quotes live in title= tooltips not table cells --></tbody>
         </table></div>
         <p class="dce-foot">Compiled Nov 2026. "Not disclosed" means the source states no funding/sponsor
-        information at the point accessed, not that none exists. Inaccessible sources are listed with their
-        original link so you can retrieve them directly.</p>
+        information at the point accessed, not that none exists.</p>
+      </div>
+
+      <div class="dce-card">
+        <h2>A data center policymaker's guide (draft)</h2>
+        <p class="dce-lede">What the table above actually implies for someone who has to write or vote on a
+        tariff, rate case, or siting rule &mdash; not a recommendation on any specific docket, a synthesis of
+        where the evidence is solid, where it is thin, and what that argues for procedurally.</p>
+
+        <h3 style="font-size:.95rem;margin-top:18px">1. Reject both absolute claims on sight</h3>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Two causal, quasi-experimental designs
+        in the table above (Watten/Bistline/Blanford and Meeks/Pless/Qi/Wang) reach opposite signs using
+        comparably serious methods. That is not a contradiction to resolve &mdash; it is the honest state of the
+        evidence. Anyone asserting data centers universally raise or lower rates is overstating what any single
+        study, including the best ones here, can support.</p>
+
+        <h3 style="font-size:.95rem;margin-top:14px">2. The deciding variable is institutional, not technological</h3>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">The one point of convergence across
+        the rigorous studies: ownership structure and regulatory environment explain more variation than the
+        presence of a data center itself. Effects concentrate in investor-owned utilities and deregulated
+        markets; cooperatives and vertically integrated regulated utilities show little to no measurable effect,
+        plausibly because they can absorb load through owned generation, integrated planning, and
+        utilization gains. A policymaker's first question should be "what kind of utility and market is this,"
+        not "do data centers raise rates."</p>
+
+        <h3 style="font-size:.95rem;margin-top:14px">3. Match the unit of analysis to the question</h3>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">State-level comparisons (IER, the E3
+        report this corpus critiques) cannot detect a cost shift that happens at the utility-service-territory
+        or feeder level &mdash; a Dominion feeder in Loudoun County shares no capital recovery with a Dominion
+        feeder in Roanoke. Any rulemaking that relies on a state-level finding to clear or convict data centers
+        on cost-shifting is using the wrong resolution for the question being asked.</p>
+
+        <h3 style="font-size:.95rem;margin-top:14px">4. Tariff terms are the actual lever, and they are measurable</h3>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Minimum billing demand, contract
+        term and ramp, exit fees, and CIAC requirements are not abstractions &mdash; the Rate Impact &amp; Bill
+        Tracker tab shows real tariffs scoring from 0 to 5 on exactly these terms, with a national mean of 1.94
+        and 51% scoring 0&ndash;1. A weak tariff is a predictable mechanism for cost-shifting regardless of
+        which academic study you believe; a strong one (85% minimum demand, 12&ndash;15 year term, real exit
+        fees) is a predictable mechanism against it. This is the part of the system policymakers directly
+        control, independent of which causal estimate turns out to be right.</p>
+
+        <h3 style="font-size:.95rem;margin-top:14px">5. Demand flexibility is a genuine hedge, but only if it is contractual</h3>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Interruptible-load tariffs and
+        demand-response commitments can turn load growth from a cost driver into a cost offset by improving
+        system utilization &mdash; but only when bound into the tariff, not offered as a voluntary courtesy.
+        Large operators are not meaningfully moved by small voluntary price signals.</p>
+
+        <h3 style="font-size:.95rem;margin-top:14px">6. Demand an independent, forward-looking study before relying on a backward-looking one</h3>
+        <p style="font-size:.88rem;color:var(--text-mid);line-height:1.6">Most of the literature above,
+        including the most favorable-to-industry pieces, is backward-looking: it measures what happened
+        2010&ndash;2025, not what the next wave of hyperscale/AI-driven demand will do at current equipment
+        costs, current interest rates, and current interconnection queue lengths. A rate case or rulemaking
+        resting on 2015-vintage cost assumptions is resting on stale evidence by construction, regardless of
+        which side it favors.</p>
+
+        <p class="dce-foot" style="margin-top:18px">This is a draft synthesis for discussion, not a filed
+        position in any proceeding. See the Rate Impact &amp; Bill Tracker tab for what is actually enacted or
+        pending today.</p>
       </div>
     </section>
   </div>
@@ -341,7 +411,8 @@ const LIT_DATA = [
     funding: "Not disclosed", dir: "down", mag: "&minus;3.5% to &minus;6%",
     method: "Instrumental-variable design using 1947 Interstate Highway mileage as an instrument for data-center siting, 2015&ndash;2024 state data.",
     finding: "A doubling of data-center capacity caused residential prices to fall ~3.5% (fixed demand level); ~6% average effect 2019&ndash;2024.",
-    quote: "We find that data centers caused average retail electricity rates to fall modestly rather than rise between 2015 and 2024." },
+    quote: "We find that data centers caused average retail electricity rates to fall modestly rather than rise between 2015 and 2024.",
+    limits: "State-level panel, not utility-feeder level. The instrument (1947 highway mileage) requires that it affects prices today only through data-center siting &mdash; a strong, untestable assumption. 2015&ndash;2024 window predates the current hyperscale/AI buildout wave and may not extrapolate to it." },
   { src: "Electricity Rate Designs for Large Loads: Evolving Practices and Opportunities (2026 Update)",
     url: "https://www.publicpower.org/periodical/article/new-analysis-examines-evolving-electricity-rate-designs-large-loads",
     date: "Aug 31, 2026", type: "Trade-press summary of a technical report", org: "LBNL &amp; The Brattle Group / reported via American Public Power Association",
@@ -349,7 +420,8 @@ const LIT_DATA = [
     funding: "Not disclosed", dir: "mixed", mag: "n/a &mdash; tariff design, not a rate-direction study",
     method: "Survey of 55 large-load tariffs/frameworks for established, emerging and declining provisions.",
     finding: "Rate designs are getting more protective: median minimum contract term for tariffs proposed since 2025 is 12 years, vs. 5 years for earlier tariffs.",
-    quote: "How should the costs and risks associated with serving these customers be allocated" },
+    quote: "How should the costs and risks associated with serving these customers be allocated",
+    limits: "Describes tariff terms as written, not price outcomes &mdash; it cannot say whether these provisions actually protect ratepayers in practice, only that stronger terms are appearing on paper." },
   { src: "The Cost of Intelligence: Impacts of AI Data Centers on US Electricity Prices",
     url: "https://www.library.hbs.edu/working-knowledge/blaming-data-centers-for-higher-electric-bills-its-not-that-simple",
     date: "Oct 2026", type: "Academic research (reported via HBS Working Knowledge)", org: "Kaps (HBS), Rana (Wharton), Netessine (Wharton)",
@@ -357,7 +429,8 @@ const LIT_DATA = [
     dir: "up", mag: "+$1.70/MWh residential, +$5.40/MWh industrial (~4% of the 2020&ndash;2025 price increase)",
     method: "Analysis of 385 US data centers (2020&ndash;2025) cross-referenced against cost/customer data from 42 serving utilities.",
     finding: "Data centers accounted for only ~4% of residential electricity price increases 2020&ndash;2025; impact is small and driven by how expansion is managed, not by the data centers' existence.",
-    quote: "It's how you manage the data center in respect to the utility and other grid providers." },
+    quote: "It's how you manage the data center in respect to the utility and other grid providers.",
+    limits: "385-facility, 42-utility sample is specific, not necessarily representative of the full US fleet; the summary article does not publish the full identification strategy, so the causal attribution cannot be independently checked without the underlying working paper." },
   { src: "Revisiting the Relationship Between Demand Growth and Electricity Prices",
     url: "https://eta-publications.lbl.gov/publications/revisiting-relationship-between", also: "also published in Joule (Elsevier/Cell Press)",
     alsoUrl: "https://www.sciencedirect.com/science/article/abs/pii/S2542435126002126",
@@ -366,7 +439,8 @@ const LIT_DATA = [
     dir: "mixed", mag: "no fixed magnitude &mdash; historically negative, could reverse",
     method: "Historical analysis across system capacity utilization, expansion costs, and cost-allocation/rate design.",
     finding: "Demand growth has historically correlated with falling prices via scale economies, but future data-center-driven demand could push prices up if it strains capacity.",
-    quote: "demand growth can reduce prices under certain conditions, a relationship that continues to be supported by empirical evidence." },
+    quote: "demand growth can reduce prices under certain conditions, a relationship that continues to be supported by empirical evidence.",
+    limits: "Primarily a historical/correlational synthesis across prior demand-growth episodes rather than one new causal estimate for data centers specifically; the authors themselves flag that the historical pattern may not hold for the current AI-driven buildout." },
   { src: "Rate Impacts of Large Loads: A Primer",
     url: "https://www.esig.energy/reports-briefs/rate-impacts-of-large-loads-primer/",
     date: "May 2026", type: "Technical primer/report", org: "The Brattle Group, for the Energy Systems Integration Group (ESIG)",
@@ -374,7 +448,8 @@ const LIT_DATA = [
     dir: "mixed", mag: "contingent &mdash; no universal direction",
     method: "Five-factor conceptual framework: system capacity, infrastructure vs. embedded cost, market price exposure, forecast accuracy, tariff design.",
     finding: "Rate impact depends on whether incremental revenue from the new load exceeds the incremental cost of serving it &mdash; the source of the decision tree above.",
-    quote: "if the incremental revenue collected from a new large customer exceeds the incremental cost to serve that customer, rates for existing customers tend to decrease, and vice versa." },
+    quote: "if the incremental revenue collected from a new large customer exceeds the incremental cost to serve that customer, rates for existing customers tend to decrease, and vice versa.",
+    limits: "A conceptual framework, not an empirical estimate &mdash; tells you which direction to expect given local conditions, not what actually happened in any specific utility." },
   { src: "The Potential Impacts of Large Loads on Electricity Prices: Analysis for Alliant Energy Utilities",
     url: "https://www.brattle.com/insights-events/publications/brattle-experts-examine-the-potential-impacts-of-large-loads-on-electricity-prices-in-iowa-and-wisconsin/",
     date: "Jun 10, 2026", type: "Consulting report (client-commissioned)", org: "The Brattle Group",
@@ -382,7 +457,8 @@ const LIT_DATA = [
     dir: "mixed", mag: "net neutral-to-protective for IA/WI, contingent on contract terms",
     method: "System analysis of transmission investment needs, ratemaking, contract protections and historical price drivers in Iowa/Wisconsin.",
     finding: "2010&ndash;2025 price growth in IA/WI stayed at or below inflation; large-load risk judged manageable through existing contract protections and owned generation.",
-    quote: "Alliant Energy's ratemaking framework is designed to ensure that large load customers pay at least the incremental cost of serving them." },
+    quote: "Alliant Energy's ratemaking framework is designed to ensure that large load customers pay at least the incremental cost of serving them.",
+    limits: "Client-commissioned for one utility holding company in two states; findings reflect Alliant's own contract protections and generation mix and may not generalize to utilities with weaker tariffs or tighter capacity margins." },
   { src: "Electricity Rate Drivers &amp; the Role of Data Centers",
     url: "https://www.ethree.com/electricity-rate-drivers-data-center-role-2026/",
     date: "May 2026", type: "Industry-commissioned report", org: "E3 (Energy and Environmental Economics)",
@@ -390,7 +466,8 @@ const LIT_DATA = [
     dir: "mixed", mag: "~50% of PJM capacity-price increases attributed to load growth generally (not data centers specifically)",
     method: "Literature synthesis (n=11 studies, no stated inclusion/exclusion criteria) plus state-level EIA price comparisons.",
     finding: "High-load-growth states (TX, VA) saw smaller relative rate increases than declining-load states (CA, NY) &mdash; the report calls the relationship unclear. See this page's research corpus for a detailed methodology critique (wrong unit of analysis, asymmetric treatment of the one credible causal study).",
-    quote: "The relationship between load growth and rising electric rates is unclear." },
+    quote: "The relationship between load growth and rising electric rates is unclear.",
+    limits: "No stated inclusion/exclusion criteria for its 11-study literature base (8 of 11 backward-looking); state-level unit of analysis, which this page's own research corpus argues is too coarse to detect a real within-state cost shift; industry-funded." },
   { src: "Confronting and Addressing Rising Energy Bills Linked to Data Centers",
     url: "https://www.brookings.edu/articles/confronting-and-addressing-rising-energy-bills-linked-to-data-centers/",
     date: "Mar 13, 2026", type: "Think-tank policy article", org: "Brookings Institution (Lane &amp; Kane)",
@@ -398,7 +475,8 @@ const LIT_DATA = [
     dir: "up", mag: "context: +42% electricity cost since 2019 (vs. 29% CPI); Dominion-territory disconnections +1.1pp alongside +31% DC load growth since 2022",
     method: "Review of utility contracts, rate filings and disconnection data; correlational, not a formal econometric causal design.",
     finding: "Infrastructure costs are being passed to residential ratepayers while deferred from data-center operators via special contracts; calls for disaggregated large-load reporting and stronger siting leverage.",
-    quote: "Electricity costs have outpaced inflation, increasing by 42% since 2019." },
+    quote: "Electricity costs have outpaced inflation, increasing by 42% since 2019.",
+    limits: "Correlational, not a causal design; the 42% cost figure and the Dominion disconnection trend are cited as context alongside data center growth, not statistically attributed to it." },
   { src: "Have Data Centers Driven Up Electricity Prices?",
     url: "https://www.instituteforenergyresearch.org/the-grid/policy-brief-have-data-centers-driven-up-electricity-prices/",
     date: "Apr 17, 2026", type: "Policy brief", org: "Institute for Energy Research (Pyle &amp; Simmons)",
@@ -406,15 +484,18 @@ const LIT_DATA = [
     dir: "down", mag: "no significant relationship found; real driver identified as declining consumption",
     method: "State-level EIA price and data-center-concentration comparison, 2021&ndash;2025.",
     finding: "Top-10 data-center states averaged 14.46&cent;/kWh vs. 14.39&cent;/kWh elsewhere &mdash; no meaningful difference. States with the largest consumption declines saw prices rise 58% on average vs. 13% in states with the largest demand gains.",
-    quote: "State-level data do not support the claim that data centers are responsible for rising electricity prices." },
-  { src: "SSRN Working Paper 7361819", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7361819",
-    inaccessible: true, note: "Blocked (HTTP 403) on repeated fetch attempts &mdash; likely requires a logged-in SSRN session. Not independently verified; follow the link to read it directly." },
-  { src: "How Data Centres Affect Electricity Prices, and Whom", url: "https://cepr.org/voxeu/columns/how-data-centres-affect-electricity-prices-and-whom",
-    inaccessible: true, note: "Blocked (HTTP 403) on repeated fetch attempts. Not independently verified; follow the link to read it directly." },
-  { src: "AI Should Pull Its Own Electric Weight (and a Little Bit of Yours)", url: "https://www.nrdc.org/media/ai-should-pull-its-own-electric-weight-and-little-bit-yours",
-    inaccessible: true, note: "Blocked (HTTP 403) on repeated fetch attempts. Per the author's own framing elsewhere: allocation of fixed/non-marginal costs is a policy decision, not an exact economic science &mdash; the more interesting question is whether data centers should pay based on price elasticity, location and other characteristics. This characterization is paraphrased from notes, not confirmed against the live article &mdash; follow the link to read it directly." },
-  { src: "MIT CEEPR Working Paper 2026-13", url: "https://ceepr.mit.edu/wp-content/uploads/2026/06/MIT-CEEPR-WP-2026-13.pdf",
-    inaccessible: true, note: "PDF downloaded successfully but could not be text-extracted in this environment (missing PDF-rendering tooling). Not fabricated or guessed at &mdash; follow the link to read it directly." },
+    quote: "State-level data do not support the claim that data centers are responsible for rising electricity prices.",
+    limits: "State-level comparison only &mdash; cannot see within-state cost shifts to the specific utility service territories or feeders that actually host the facilities, which is exactly the resolution this page's own research corpus argues matters most." },
+  { src: "Who Pays for Growth? Evidence from Data Centers and the Grid",
+    url: "https://ceepr.mit.edu/wp-content/uploads/2026/06/MIT-CEEPR-WP-2026-13.pdf",
+    date: "Jun 19, 2026", type: "Working paper (not peer-reviewed)", org: "Meeks (Duke), Pless (MIT Sloan), Qi &amp; Wang (NC State) / MIT CEEPR",
+    orgType: "Academic researchers; MIT CEEPR states it posts working papers without a selection process or peer review",
+    funding: "&quot;Zhenxuan Wang gratefully acknowledges funding support from the Institute for Humane Studies (grant no. IHS020420) for data purchase&quot; (disclosed)",
+    dir: "up", mag: "+2.7% average retail price (residential +2.1%, commercial +2.8%, industrial +4.2%); +5.6% among investor-owned utilities (residential +5.2%); +3.8% in deregulated states vs. a statistically insignificant +1.5% in regulated states; ~$3&ndash;7/month for the average residential customer",
+    method: "Staggered difference-in-differences (Callaway &amp; Sant'Anna 2021) linking facility-level data center entry (2010&ndash;2024) to utility-level retail prices, infrastructure investment and rate-case outcomes; robustness checks include entropy-balanced matched DID, utility/region-specific trends, and alternative clustering.",
+    finding: "Data center entry raises retail electricity prices, concentrated among investor-owned utilities and deregulated states; cooperatives and public utilities show little to no effect. Mechanism: IOUs in deregulated states show earlier construction spending and more rate-case/rider activity; IOUs in regulated states show generation investment and improved load-factor utilization, muting the price effect.",
+    quote: "The results show that the incidence of infrastructure-intensive technological change depends not only on the technology itself, but also on the institutions governing complementary infrastructure investment and cost recovery.",
+    limits: "Identification relies on parallel trends and on pair/year fixed effects adequately controlling for non-random siting; like any difference-in-differences design, it cannot rule out unobserved utility-specific shocks correlated with both siting and prices. Utility-state level, not feeder-level &mdash; cannot see cost allocation across different service territories of the same multi-state utility." },
 ];
 
 function dirSymbol(d) {
@@ -424,11 +505,6 @@ function dirSymbol(d) {
 }
 
 document.getElementById('dceLitBody').innerHTML = LIT_DATA.map(r => {
-  if (r.inaccessible) {
-    return `<tr class="dce-flagrow"><td class="dce-src"><a href="${r.url}" target="_blank" rel="noopener">${r.src} &#8599;</a></td>
-      <td class="dce-na">&mdash;</td><td class="dce-na">source inaccessible</td><td class="dce-na">&mdash;</td>
-      <td class="dce-na">&mdash;</td><td>${r.note}</td></tr>`;
-  }
   const tip = `${r.method} Quote: "${r.quote.replace(/"/g, '&quot;')}"`;
   const alsoLine = r.also ? ` &middot; <a href="${r.alsoUrl}" target="_blank" rel="noopener">${r.also} &#8599;</a>` : '';
   return `<tr>
@@ -438,22 +514,27 @@ document.getElementById('dceLitBody').innerHTML = LIT_DATA.map(r => {
     <td>${r.funding}</td>
     <td>${dirSymbol(r.dir)}<br><span style="font-weight:400;font-size:.78rem;color:var(--text-mid)">${r.mag}</span></td>
     <td>${r.finding} <span class="ico-help" title="${tip.replace(/"/g, '&quot;')}">&#9432;</span></td>
+    <td>${r.limits}</td>
   </tr>`;
 }).join('');
 
 // ── map ───────────────────────────────────────────────────────────────────
 const STATUS_COLOR = { operating: '#1f5cab', approved: '#eda100', proposed: '#8b95a0', dead: '#c0392b', other: '#8b95a0' };
 
+let dceSelState = null, dceSelGrp = null;
+
 fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
   const t = data.totals;
   document.getElementById('dceKpis').innerHTML = `
     <div class="dce-kpi"><div class="l">Tracked facilities</div><div class="v">${t.n_facilities.toLocaleString()}</div><div class="s">${t.n_states} states</div></div>
     <div class="dce-kpi"><div class="l">Total capacity</div><div class="v">${(t.mw_total/1000).toFixed(1)} GW</div><div class="s">at least &mdash; many proposed sites report no MW</div></div>
-    <div class="dce-kpi"><div class="l">Operating / expanding</div><div class="v">${t.n_operating.toLocaleString()}</div><div class="s">${(100*t.n_operating/t.n_facilities).toFixed(0)}% of tracked sites</div></div>
-    <div class="dce-kpi"><div class="l">Proposed</div><div class="v">${t.n_proposed.toLocaleString()}</div><div class="s">still ahead of us, still negotiable</div></div>
-    <div class="dce-kpi"><div class="l">Approved / under construction</div><div class="v">${t.n_approved.toLocaleString()}</div><div class="s">&nbsp;</div></div>
-    <div class="dce-kpi"><div class="l">Cancelled / suspended</div><div class="v">${t.n_dead.toLocaleString()}</div><div class="s"><a href="${'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739'}" target="_blank" rel="noopener">${t.source} &#8599;</a></div></div>
+    <div class="dce-kpi dce-kpi-filter" data-grp="operating"><div class="l">Operating / expanding</div><div class="v">${t.n_operating.toLocaleString()}</div><div class="s">${(100*t.n_operating/t.n_facilities).toFixed(0)}% of tracked sites &middot; click to filter the map</div></div>
+    <div class="dce-kpi dce-kpi-filter" data-grp="proposed"><div class="l">Proposed</div><div class="v">${t.n_proposed.toLocaleString()}</div><div class="s">still ahead of us, still negotiable &middot; click to filter the map</div></div>
+    <div class="dce-kpi dce-kpi-filter" data-grp="approved"><div class="l">Approved / under construction</div><div class="v">${t.n_approved.toLocaleString()}</div><div class="s">click to filter the map</div></div>
+    <div class="dce-kpi dce-kpi-filter" data-grp="dead"><div class="l">Cancelled / suspended</div><div class="v">${t.n_dead.toLocaleString()}</div><div class="s">click to filter the map</div></div>
   `;
+  document.getElementById('dceSrcLine').innerHTML =
+    `Source: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">${t.source} &#8599;</a>`;
 
   const states = Object.entries(data.by_state).sort((a, b) => b[1].mw_total - a[1].mw_total);
   document.getElementById('dceStateList').innerHTML = states.map(([abbr, s]) => `
@@ -466,6 +547,22 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
   const width = 975, height = 610;
   const projection = d3.geoAlbersUsa().scale(1250).translate([width / 2, height / 2]);
 
+  function applyFilters() {
+    d3.selectAll('#dceMap circle').attr('fill-opacity', f => {
+      const stateOk = !dceSelState || f.st === dceSelState;
+      const grpOk = !dceSelGrp || f.grp === dceSelGrp;
+      return stateOk && grpOk ? 0.85 : 0.07;
+    });
+    document.querySelectorAll('.dce-kpi-filter').forEach(k =>
+      k.classList.toggle('active', k.dataset.grp === dceSelGrp));
+    document.querySelectorAll('.dce-legend [data-grp]').forEach(k =>
+      k.classList.toggle('active', k.dataset.grp === dceSelGrp));
+    document.getElementById('dceFilterNote').textContent =
+      (dceSelState || dceSelGrp)
+        ? `Showing ${dceSelGrp ? dceSelGrp : 'all statuses'}${dceSelState ? ' in ' + dceSelState : ''} — click again, or Clear, to reset.`
+        : '';
+  }
+
   d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
     const states_geo = topojson.feature(us, us.objects.states);
     svg.append('g').selectAll('path')
@@ -474,7 +571,7 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
       .attr('fill', '#f4f3ef').attr('stroke', '#c9c7bd').attr('stroke-width', 0.7);
 
     const tip = document.getElementById('dceMapTip');
-    const pts = svg.append('g').selectAll('circle')
+    svg.append('g').selectAll('circle')
       .data(data.facilities.filter(f => f.mw > 0 || f.grp !== 'other')).join('circle')
       .attr('cx', f => { const p = projection([f.lon, f.lat]); return p ? p[0] : -100; })
       .attr('cy', f => { const p = projection([f.lon, f.lat]); return p ? p[1] : -100; })
@@ -489,17 +586,42 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
         tip.innerHTML = `<b>${f.n}</b>${f.op} &middot; ${f.c ? f.c + ', ' : ''}${f.st}<br>
           ${f.status}${f.mw ? ' &middot; ' + f.mw.toLocaleString() + ' MW' : ' &middot; MW not disclosed'}${f.hyper ? '<br>Hyperscaler-owned' : ''}`;
       })
-      .on('mouseleave', () => { tip.style.display = 'none'; });
+      .on('mouseleave', () => { tip.style.display = 'none'; })
+      .on('click', (event, f) => {
+        dceSelState = dceSelState === f.st ? null : f.st;
+        document.querySelectorAll('.dce-statepick .row').forEach(r =>
+          r.classList.toggle('sel', r.dataset.state === dceSelState));
+        applyFilters();
+      });
   }).catch(() => {
     svg.insertAdjacentHTML('afterend', '<p class="dce-na">Map base layer failed to load (needs internet access to cdn.jsdelivr.net). State list and stats above are unaffected.</p>');
   });
 
   document.getElementById('dceStateList').addEventListener('click', e => {
     const row = e.target.closest('.row'); if (!row) return;
-    document.querySelectorAll('.dce-statepick .row').forEach(r => r.classList.remove('sel'));
-    row.classList.add('sel');
     const abbr = row.dataset.state;
-    d3.selectAll('#dceMap circle').attr('fill-opacity', f => f.st === abbr ? 0.95 : 0.12);
+    dceSelState = dceSelState === abbr ? null : abbr;
+    document.querySelectorAll('.dce-statepick .row').forEach(r =>
+      r.classList.toggle('sel', r.dataset.state === dceSelState));
+    applyFilters();
+  });
+
+  document.getElementById('dceKpis').addEventListener('click', e => {
+    const k = e.target.closest('.dce-kpi-filter'); if (!k) return;
+    dceSelGrp = dceSelGrp === k.dataset.grp ? null : k.dataset.grp;
+    applyFilters();
+  });
+
+  document.querySelector('.dce-legend').addEventListener('click', e => {
+    const k = e.target.closest('[data-grp]'); if (!k) return;
+    dceSelGrp = dceSelGrp === k.dataset.grp ? null : k.dataset.grp;
+    applyFilters();
+  });
+
+  document.getElementById('dceClearFilters').addEventListener('click', () => {
+    dceSelState = null; dceSelGrp = null;
+    document.querySelectorAll('.dce-statepick .row').forEach(r => r.classList.remove('sel'));
+    applyFilters();
   });
 }).catch(() => {
   document.getElementById('dceKpis').innerHTML = '<p class="dce-na">Facility data failed to load (data/dc_facilities.json). Run Website/tools/build_dc_explorer_data.py.</p>';
