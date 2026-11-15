@@ -80,6 +80,19 @@
   .dce-legend [data-grp]:hover{border-color:var(--line)}
   .dce-legend [data-grp].active{background:var(--black);color:#fff;font-weight:600}
   .dce-legend .dce-all{font-weight:700;border-color:var(--line)}
+  .dce-tglrow{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-mid);margin-top:10px;cursor:pointer}
+  .dce-tglrow input{accent-color:var(--accent)}
+
+  /* tariff weighting card */
+  .dce-tariffw{display:flex;flex-direction:column;gap:10px;margin:16px 0 20px;max-width:520px}
+  .dce-wrow{display:grid;grid-template-columns:170px 1fr 44px;gap:10px;align-items:center;font-size:.84rem}
+  .dce-wrow input[type=range]{accent-color:var(--accent);width:100%}
+  .dce-wrow span{text-align:right;font-variant-numeric:tabular-nums;color:var(--text-mid)}
+  .dce-tariffrank{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);max-height:420px;overflow:auto}
+  .dce-trow{background:#fff;padding:7px 10px;display:grid;grid-template-columns:30px 1fr 34px;gap:8px;align-items:center;font-size:.8rem}
+  .dce-trow .bar-track{display:block;height:7px;background:var(--off-white);border-radius:4px;overflow:hidden}
+  .dce-trow .bar-fill{display:block;height:100%;background:var(--accent);border-radius:4px}
+  .dce-trow .score{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
   .dce-maptip{position:fixed;z-index:80;background:var(--black);color:#fff;padding:8px 11px;
     border-radius:4px;font-size:.78rem;line-height:1.45;max-width:240px;pointer-events:none;display:none}
   .dce-maptip b{display:block;font-size:.84rem;margin-bottom:2px}
@@ -144,8 +157,6 @@
   .dce-fend.bad{background:#fde3df}
   .dce-fcite{font-size:.74rem;font-weight:500;color:var(--text-mid);margin-top:5px;line-height:1.4}
   .dce-fcite a{color:inherit}
-  .dce-box2{border:1px solid var(--line);padding:14px 16px;margin-top:22px;background:var(--off-white)}
-  .dce-box2 ul{margin:8px 0 0 18px;font-size:.82rem;line-height:1.6;color:var(--text-mid)}
   .dce-guide{margin:14px 0 0 20px;font-size:.88rem;line-height:1.7;color:var(--text-mid)}
   .dce-guide li{margin-bottom:10px}
   .dce-guide b{color:var(--black)}
@@ -194,6 +205,8 @@
               <span data-grp="dead"><i style="background:#c0392b"></i>Cancelled / Suspended</span>
             </div>
             <p class="dce-foot" id="dceFilterNote" style="min-height:1.2em"></p>
+            <label class="dce-tglrow"><input type="checkbox" id="dceTariffToggle"> Shade states by tariff protection score
+              <span class="ico-help" title="Colors each state by its weighted Customer Protection Score instead of facility status -- set the weights on the Literature Review tab (Interactive tariff protection score card). Darker = stronger tariff terms (more protective of existing ratepayers). States with no tracked tariff stay uncolored.">&#9432;</span></label>
           </div>
           <div>
             <h3 style="font-size:.84rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)">By state</h3>
@@ -222,68 +235,48 @@
     <section class="dce-panel" id="dce-lit">
 
       <div class="dce-card">
-        <h2>Rate impacts of large loads: a decision tree</h2>
-        <p class="dce-lede">Adapted from ESIG's framework. Hover an outcome box for real-world citations.
-        <span class="ico-help" title="Source: The Brattle Group for the Energy Systems Integration Group (ESIG), &quot;Rate Impacts of Large Loads: A Primer,&quot; May 2026. ESIG is a nonprofit, trade-neutral technical research group; Brattle is an economic consultancy. Reproduced as an interactive decision tree rather than the original static flowchart graphic.">&#9432;</span></p>
+        <h2>Rate impacts of large loads, by market structure*</h2>
+        <p class="dce-lede">Real policy levers at each step, not abstract questions. Hover a node or outcome box for detail and citations.</p>
 
         <div class="dce-flow">
           <div class="dce-fcol">
-            <span class="dce-fstep">Step 1 &middot; Generation needs</span>
-            <div class="dce-fnode" title="A PJM utility buying power on wholesale markets faces this question; a vertically integrated utility generating its own power generally does not.">Is the utility exposed to wholesale capacity/energy market prices?</div>
-            <div class="dce-farrow">&#8595; yes</div>
-            <div class="dce-fnode" title="If adding the new load doesn't move market prices (e.g. the grid has ample reserve margin), existing customers see no generation-cost impact.">Do market prices stay flat or fall with the new load added?</div>
-            <div class="dce-farrow">&#8595; no</div>
-            <div class="dce-fnode" title="If the utility's existing load is already hedged against near-term price volatility, the new load's effect on spot prices doesn't reach existing customers' bills.">Is existing load fully hedged against near-term price volatility?</div>
-            <div class="dce-farrow">&#8595; no</div>
-            <div class="dce-fend bad" title="HBS (Kaps, Rana, Netessine, Oct 2026): data centers added about +$1.70/MWh to residential prices on average across 385 facilities studied -- real, but only ~4% of the 2020-2025 residential price increase. Brookings (Lane & Kane, Mar 2026): Dominion-territory disconnections rose 1.1 percentage points alongside 31% data-center load growth since 2022 -- correlational, not a causal estimate of the data-center effect alone.">Rates increase for existing customers
-              <div class="dce-fcite">Real-world instance: HBS/Kaps et al. 2026 (+$1.70/MWh residential, ~4% of the price increase); Brookings 2026 (correlational, Dominion disconnections)</div>
+            <span class="dce-fstep">Regulated &middot; vertically integrated</span>
+            <div class="dce-fnode" title="~30 states allocate cost by embedded (average historical) cost; ~20 use marginal cost, which prices new load closer to what it actually costs to serve. The allocation method is a policy choice, not a law of economics.">Cost allocation method: embedded vs. marginal cost</div>
+            <div class="dce-farrow">&#8595;</div>
+            <div class="dce-fnode" title="The utility plans generation to serve new load directly and can smooth costs via owned generation and long-term procurement, rather than relying on a volatile spot market.">Integrated resource planning absorbs the load</div>
+            <div class="dce-farrow">&#8595;</div>
+            <div class="dce-fnode" title="Georgia Power (Jan 2025 PSC order, extended by a Dec 2025 stipulation): contract term lengthened from 5 to 15 years; cost allocation designed to deliver $8.50/month of downward pressure on typical residential bills, 2029-2031. Dominion Virginia's GS-5 tariff (operational Jan 2027): 85% minimum billing demand, 14-year term. Indiana Michigan Power: minimum ratchets to the greater of 80% of contract capacity or 80% of the highest billing demand in the prior 11 months -- closes the obvious under-forecasting loophole.">Binding minimum-term / minimum-demand tariff terms</div>
+            <div class="dce-farrow">&#8595;</div>
+            <div class="dce-fend good" title="Watten, Bistline & Blanford (arXiv preprint + EPRI/ESCA brief, Jun 2026): instrumental-variables design finds a doubling of data-center capacity caused residential prices to fall about 3.5% for a fixed demand level, and about 6% on average 2019-2024 -- economies of scale spreading fixed costs over more sales. Brattle for Alliant Energy (Jun 2026): Iowa/Wisconsin price growth stayed at or below inflation 2010-2025, with large-load risk managed through existing contract protections and owned generation. MIT CEEPR (Meeks/Pless/Qi/Wang, Jun 2026): among regulated-state IOUs, price effects were statistically insignificant (+1.5%, not significant) vs. +3.8% in deregulated states.">When levers hold: rates muted or fall
+              <div class="dce-fcite">Watten/Bistline/Blanford 2026 (&minus;3.5% to &minus;6%); Brattle/Alliant 2026 (IA/WI, neutral-to-protective); MIT CEEPR 2026 (regulated-state effect not significant)</div>
             </div>
           </div>
           <div class="dce-fcol">
-            <span class="dce-fstep">Step 2 &middot; Network capacity needs</span>
-            <div class="dce-fnode" title="If the grid already has spare transmission/distribution capacity where the load connects, no new network spending is triggered.">Is system headroom available?</div>
-            <div class="dce-farrow">&#8595; yes, or can be added cost-effectively</div>
-            <div class="dce-fnode" title="If building new capacity costs less per unit than the system's existing average (embedded) cost, adding the load can actually lower average costs for everyone.">Are marginal expansion costs less than embedded (average) costs?</div>
-            <div class="dce-farrow">&#8595; yes</div>
-            <div class="dce-fnode" title="Even if marginal costs exceed embedded costs, a tariff that recovers the full incremental cost from the new customer over the asset's life keeps other customers whole.">Can incremental cost be recovered from the new customer/class over the asset lifetime?</div>
-            <div class="dce-farrow">&#8595; yes</div>
-            <div class="dce-fend good" title="Watten, Bistline & Blanford (arXiv preprint + EPRI/ESCA brief, Jun 2026): instrumental-variables design finds a doubling of data-center capacity caused residential prices to fall about 3.5% for a fixed demand level, and about 6% on average 2019-2024 -- economies of scale spreading fixed costs over more sales. Brattle for Alliant Energy (Jun 2026): Iowa/Wisconsin price growth stayed at or below inflation 2010-2025, with large-load risk managed through existing contract protections.">Rates are not affected or decrease
-              <div class="dce-fcite">Real-world instance: Watten/Bistline/Blanford 2026 (causal IV design, -3.5% to -6%); Brattle/Alliant 2026 (IA/WI, net neutral-to-protective)</div>
+            <span class="dce-fstep">Deregulated &middot; restructured markets</span>
+            <div class="dce-fnode" title="FERC approved a $325/MW-day price cap and $175/MW-day floor for PJM's 2026/27 and 2027/28 capacity auctions (Apr 21, 2025), extended to 2028/29-2029/30 (Apr 28, 2026) -- a direct policy lever on how much a data-center-driven capacity shortfall can raise auction-clearing prices, though it doesn't eliminate the underlying scarcity cost.">Capacity auction price cap/floor (PJM: $325/$175 per MW-day, FERC Apr 2025)</div>
+            <div class="dce-farrow">&#8595;</div>
+            <div class="dce-fnode" title="In restructured markets, default/wholesale procurement costs flow more directly into retail rates than in a cost-of-service rate case, so capacity and energy price spikes reach customers faster.">Wholesale costs pass through to retail faster</div>
+            <div class="dce-farrow">&#8595;</div>
+            <div class="dce-fnode" title="AEP Ohio (effective Jul 23 2025): 85% minimum demand, 12-year term with a 4-year ramp (floors at 50/65/80/90%), 3 years of minimum charges as an exit fee. RMI's review of 11 national tariffs: industry-average 80% minimum demand, 4-year ramp -- without a binding term like this, a load can arrive, use capacity, and leave before the utility recovers its investment.">Minimum contract length for stranded-load protection (AEP Ohio: 12yr, 85%)</div>
+            <div class="dce-farrow">&#8595;</div>
+            <div class="dce-fend bad" title="HBS (Kaps, Rana, Netessine, Oct 2026): data centers added about +$1.70/MWh to residential prices on average across 385 facilities studied -- real, but only ~4% of the 2020-2025 residential price increase. Brookings (Lane & Kane, Mar 2026): Dominion-territory disconnections rose 1.1 percentage points alongside 31% data-center load growth since 2022 -- correlational. MIT CEEPR: deregulated-state IOUs saw +3.8% average retail prices, more than double the regulated-state effect, with more active rate-case and rider filing alongside it.">When levers are weak or absent: rates rise
+              <div class="dce-fcite">HBS/Kaps et al. 2026 (+$1.70/MWh, ~4% of the increase); Brookings 2026 (correlational, Dominion disconnections); MIT CEEPR 2026 (+3.8% in deregulated states)</div>
             </div>
           </div>
         </div>
 
-        <div class="dce-box2">
-          <b style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Additional factors that widen or narrow the impact (ESIG, Box 2)</b>
-          <ul>
-            <li><b>Load forecast accuracy</b> &mdash; how well the timing of the new load lines up with planned system upgrades.</li>
-            <li><b>Large-load tariff design</b> &mdash; cost-allocation practices and tariff terms shape how costs or savings reach existing customers.</li>
-            <li><b>Customer load profile</b> &mdash; how much the load coincides with system peak drives how much capacity must be reserved for it.</li>
-            <li><b>Distribution system impacts</b> &mdash; loads connecting at distribution voltage may need dedicated substation/feeder upgrades.</li>
-            <li><b>Economic development rates</b> &mdash; incentive rates can create a gap between the cost of serving a load and the revenue it pays.</li>
-            <li><b>Frequency of rate cases</b> &mdash; costs added between rate cases aren't reflected in rates until the next proceeding.</li>
-            <li><b>Multi-year rate plans</b> &mdash; regulatory lag can delay when a large load's rate impact actually shows up.</li>
-            <li><b>Other load growth</b> &mdash; growth from other customers dilutes the per-unit impact of any single large-load class.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="dce-card">
-        <h2>The underlying research behind this page</h2>
-        <p style="font-size:.9rem"><a class="dce-src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">The Causal Bar E3 Did Not Clear: A County-Level Re-Examination of Data Centers and Rates &#8599;</a>
-        <span class="ico-help" title="SSRN preprint, May 2026. 1,506 US facilities and the full 77-tariff SEPA/NCCETC database. Host counties carry higher PM2.5 (+9%), greenhouse gases (2.3x), water withdrawals (3.5x) and Black population share (4.3x) than non-host counties, and most large-load tariffs score poorly on customer protection (mean 1.94/5; 51% score 0-1). Descriptive comparisons, not a causal claim -- host counties self-select on transmission access, fiber, water and land.">&#9432;</span><br>
-        <span class="dce-orgtype">Same facility panel behind the Explorer map; the question this page is organized around.</span></p>
+        <p class="dce-foot" style="margin-top:14px">* Two-track structure adapted from The Brattle Group for the Energy Systems Integration Group (ESIG), "Rate Impacts of Large Loads: A Primer," May 2026 &mdash; a nonprofit, trade-neutral technical research group. Policy-lever examples and citations above are independently sourced, not from that primer.</p>
       </div>
 
       <div class="dce-card">
         <h2>What the literature actually finds</h2>
-        <p class="dce-lede">Ten sources, read directly, each in its own words &mdash;
+        <p class="dce-lede">Thirteen sources, read directly, each in its own words &mdash;
         up (<span class="dce-dir up">&#9650;</span>), down (<span class="dce-dir down">&#9660;</span>), or
-        mixed (<span class="dce-dir mixed">&#9679;</span>). Hover a row's icon for method and quote.
-        <span class="ico-help" title="Sources that could not be independently verified (paywalled or bot-blocked on every attempt) were left out rather than described secondhand.">&#9432;</span></p>
+        mixed (<span class="dce-dir mixed">&#9679;</span>). Hover a row's icon for quote and finding detail.
+        <span class="ico-help" title="Sources that could not be independently verified (paywalled or bot-blocked on every attempt) were left out rather than described secondhand. Includes the author's own paper, flagged as such rather than treated as an independent third-party source.">&#9432;</span></p>
 
         <div class="dce-scroll"><table class="dce-t">
-          <thead><tr><th>Source</th><th>Date</th><th>Type &amp; publisher</th><th>Funding</th><th>Direction / magnitude</th><th>Finding</th><th>Limitations</th></tr></thead>
+          <thead><tr><th>Source</th><th>Date</th><th>Type &amp; publisher</th><th>Funding</th><th>Data / Methods</th><th>Direction / magnitude</th><th>Finding</th><th>Limitations</th></tr></thead>
           <tbody id="dceLitBody"><!-- filled by JS from LIT_DATA below, so long quotes live in title= tooltips not table cells --></tbody>
         </table></div>
         <p class="dce-foot">Compiled Nov 2026. "Not disclosed" means the source states no funding/sponsor
@@ -291,20 +284,35 @@
       </div>
 
       <div class="dce-card">
+        <h2>Interactive tariff protection score</h2>
+        <p class="dce-lede">The same 77 tariffs behind the research in the table above, re-weighted live &mdash; drag a slider to see which states' tariffs score better or worse under different priorities. Also shades the map on the Explorer tab.
+        <span class="ico-help" title="Each tariff already carries three rubric sub-scores from the original paper's Customer Protection Score: Contract term (0-2 pts, >=10yr=2, 5-9yr=1, else 0), Minimum billing demand (0-2 pts, >=80%=2, 50-79%=1, else 0), and CIAC/contribution-in-aid-of-construction required (0-1 pt). The sliders set how much each sub-score counts toward a 0-5 weighted score, averaged across every tariff on file for that state. Source: Large_Load_Tariffs_Scoring_v2.xlsx (TURN DELTA Full Analysis), SEPA/NCCETC DELTa database through Mar 2026, 77 tariffs across 36 states.">&#9432;</span></p>
+        <div class="dce-tariffw">
+          <div class="dce-wrow"><label for="wContract">Contract term weight</label><input type="range" id="wContract" min="0" max="10" value="4"><span id="wContractV">40%</span></div>
+          <div class="dce-wrow"><label for="wBill">Minimum billing demand weight</label><input type="range" id="wBill" min="0" max="10" value="4"><span id="wBillV">40%</span></div>
+          <div class="dce-wrow"><label for="wCiac">CIAC-required weight</label><input type="range" id="wCiac" min="0" max="10" value="2"><span id="wCiacV">20%</span></div>
+        </div>
+        <div id="dceTariffRank" class="dce-tariffrank"></div>
+        <p class="dce-foot">States with only one or two tracked tariffs are more volatile to re-weighting than states with many &mdash; hover a row for the tariff count.</p>
+      </div>
+
+      <div class="dce-card">
         <h2>A data center policymaker's guide <span class="dce-orgtype" style="font-weight:400">(draft)</span></h2>
         <p class="dce-lede">What the table above implies procedurally &mdash; not a position on any docket.
         <span class="ico-help" title="Draft synthesis for discussion, not a filed position in any proceeding. See the Rate Impact & Bill Tracker tab for what is actually enacted or pending today.">&#9432;</span></p>
         <ol class="dce-guide">
-          <li><b>Reject both absolute claims on sight.</b> Two causal designs in the table above reach opposite signs using comparably serious methods &mdash; that is the honest state of the evidence, not a contradiction to resolve.
-            <span class="ico-help" title="Watten/Bistline/Blanford (causal IV, prices fall) vs. Meeks/Pless/Qi/Wang (staggered DiD, prices rise). Anyone asserting data centers universally raise or lower rates is overstating what any single study here can support.">&#9432;</span></li>
-          <li><b>The deciding variable is institutional, not technological.</b> Effects concentrate in investor-owned utilities and deregulated markets; cooperatives and regulated utilities show little effect.
+          <li><b>Check the denominator, not just the numerator.</b> Rates = costs &divide; sales (kWh). Some utilities are adding data-center infrastructure costs to the numerator while holding the sales forecast frozen near pre-data-center levels &mdash; a mismatch that inflates rates in the opposite direction data centers should be pushing them.
+            <span class="ico-help" title="Edward Burgess (Current Energy Group), Utility Dive, Nov 12 2026, &quot;Data centers could lower your electricity bill. Will utilities let them?&quot; Coins this &quot;reverse regulatory lag.&quot; Examples: Duke Energy NC -- 54% of a requested 15% rate increase (~$1B/yr) would vanish if the kWh sales forecast were corrected; Evergy Missouri Metro included data-center generation costs without the matching sales increase; Entergy Louisiana proposed deferring Meta-driven customer benefits over 20 years instead of reflecting them now. Fix: regulators should mandate updated sales forecasts in rate cases, limit accelerated cost-recovery riders, and consider revenue decoupling.">&#9432;</span></li>
+          <li><b>Binding ratepayer protection is not optional.</b> Without an enforceable floor, cost-shifting is the default outcome, not an edge case.
+            <span class="ico-help" title="Enacted examples already on the books: Minnesota HF16 statutorily bars stranded data-center costs from other ratepayers; Dominion Virginia's GS-5 tariff requires 85% minimum billing demand and a 14-year term; Indiana Michigan Power ratchets the minimum to the greater of 80% of contract or 80% of the highest billing demand in the prior 11 months, closing the obvious gaming loophole. See the Rate Impact & Bill Tracker tab for the full list -- the national mean customer-protection score is still only 1.94/5, with 51% of tariffs scoring 0-1.">&#9432;</span></li>
+          <li><b>The deciding variable is institutional, not technological.</b> Effects concentrate in investor-owned utilities and deregulated markets; cooperatives and vertically integrated regulated utilities show little measurable effect.
             <span class="ico-help" title="Plausibly because regulated/cooperative utilities can absorb load through owned generation, integrated planning, and utilization gains. First question: what kind of utility and market is this -- not whether data centers raise rates in the abstract.">&#9432;</span></li>
           <li><b>Match the unit of analysis to the question.</b> State-level comparisons cannot detect a cost shift that happens at the utility-feeder level.
             <span class="ico-help" title="A Dominion feeder in Loudoun County shares no capital recovery with a Dominion feeder in Roanoke. Any rulemaking relying on a state-level finding to clear or convict data centers on cost-shifting is using the wrong resolution.">&#9432;</span></li>
-          <li><b>Tariff terms are the actual, measurable lever.</b> National mean customer-protection score: 1.94/5; 51% score 0&ndash;1.
-            <span class="ico-help" title="Minimum billing demand, contract term/ramp, exit fees, and CIAC requirements are not abstractions -- see the Rate Impact & Bill Tracker tab. A weak tariff (low minimum, short term, no exit fee) is a predictable cost-shifting mechanism regardless of which study you believe; a strong one (85% minimum, 12-15yr term, real exit fees) predictably prevents it. This is what policymakers directly control.">&#9432;</span></li>
-          <li><b>Demand flexibility is a genuine hedge &mdash; only if contractual.</b> Voluntary courtesy offers do not move large operators.
-            <span class="ico-help" title="Interruptible-load tariffs and demand-response commitments can turn load growth from a cost driver into a cost offset by improving system utilization, but only when bound into the tariff.">&#9432;</span></li>
+          <li><b>Price is not the only cost.</b> Environmental burden, water stress, and other externalities need their own accounting, not folding silently into the rate debate.
+            <span class="ico-help" title="From this page's own research corpus: host counties carry +9% higher PM2.5, 2.3x the greenhouse gas totals, and 3.5x the freshwater withdrawals of non-host counties -- descriptive, not causal, since hosts self-select on infrastructure access, but real and currently uncompensated through the rate conversation alone. Noise and land-use impacts are similarly real and similarly absent from most rate-case records.">&#9432;</span></li>
+          <li><b>The honest answer across this literature is "it depends."</b> On the state, the tariff, and the cost-allocation method &mdash; which only becomes checkable with transparent, public intervenor processes.
+            <span class="ico-help" title="Confidential special contracts and opaque tariff filings make state-to-state comparison impossible for anyone outside the proceeding. Public dockets with standard disclosure (the CPUC model, imperfect as it is) are what let researchers, regulators in other states, and ratepayer advocates actually check each other's work instead of taking a utility's framing on faith.">&#9432;</span></li>
           <li><b>Demand a forward-looking study before relying on a backward-looking one.</b> Most literature above measures 2010&ndash;2025, not the next wave at current costs.
             <span class="ico-help" title="Current equipment costs, current interest rates, current interconnection queue lengths. A rate case resting on 2015-vintage cost assumptions is resting on stale evidence by construction, regardless of which side it favors.">&#9432;</span></li>
         </ol>
@@ -381,13 +389,24 @@ document.getElementById('dceTabs').addEventListener('click', e => {
 
 // ── literature review table ──────────────────────────────────────────────
 const LIT_DATA = [
+  { src: "Processing Power: The Effect of Data Centers on Wholesale Electricity Markets",
+    url: "https://www.dallasfed.org/research/papers/2026/wp2606",
+    date: "Mar 20, 2026 (rev. Oct 2026)", type: "Working paper (not peer-reviewed)", org: "Kay, Reaser &amp; Taylor / Federal Reserve Bank of Dallas",
+    orgType: "Central bank research department", funding: "Not disclosed (internal Fed research)",
+    dir: "up", mag: "+6.9% national wholesale prices by 2025; +15.0% Northern Virginia; projected +12.3% national by 2028",
+    data: "Hourly, unit-level electricity dispatch simulation across 23 US regional wholesale markets trading over capacity-constrained interfaces.",
+    method: "Structural engineering/dispatch simulation model, not a reduced-form historical regression.",
+    finding: "Data centers are measurably raising wholesale electricity prices nationally, concentrated and far larger in high-density markets like Northern Virginia, with effects projected to grow through 2028.",
+    quote: "(No verbatim quote available &mdash; the full PDF could not be text-extracted in this environment; summary drawn from the paper's own abstract, not the complete text.)",
+    limits: "A wholesale-market effect, not a retail pass-through estimate &mdash; does not by itself establish what reaches residential bills. A forward-looking simulation, not an observed-outcome causal design, so the 2028 figure depends on the model's buildout and dispatch assumptions." },
   { src: "Have Data Centers Raised Your Electric Bill? Causal Evidence from the United States",
     url: "https://arxiv.org/abs/2606.19777", also: "EPRI/ESCA brief summarizing the same study",
     alsoUrl: "https://esca.epri.com/_astro/2026-06-have-data-centers-raised-your-electric-bill.CVr2j5ls.pdf",
     date: "Jun 2026", type: "Preprint (not peer-reviewed)", org: "Watten, Bistline &amp; Blanford / EPRI",
     orgType: "Independent researchers; summarized by EPRI, a nonprofit R&amp;D consortium",
     funding: "Not disclosed", dir: "down", mag: "&minus;3.5% to &minus;6%",
-    method: "Instrumental-variable design using 1947 Interstate Highway mileage as an instrument for data-center siting, 2015&ndash;2024 state data.",
+    data: "State-level EIA retail price and sales data, 2015&ndash;2024; S&amp;P Global-compiled data-center capacity additions by state; 1947 Eisenhower Interstate Highway mileage (instrument).",
+    method: "Instrumental-variable design using highway mileage as an instrument for data-center siting.",
     finding: "A doubling of data-center capacity caused residential prices to fall ~3.5% (fixed demand level); ~6% average effect 2019&ndash;2024.",
     quote: "We find that data centers caused average retail electricity rates to fall modestly rather than rise between 2015 and 2024.",
     limits: "State-level panel, not utility-feeder level. The instrument (1947 highway mileage) requires that it affects prices today only through data-center siting &mdash; a strong, untestable assumption. 2015&ndash;2024 window predates the current hyperscale/AI buildout wave and may not extrapolate to it." },
@@ -396,7 +415,8 @@ const LIT_DATA = [
     date: "Aug 31, 2026", type: "Trade-press summary of a technical report", org: "LBNL &amp; The Brattle Group / reported via American Public Power Association",
     orgType: "National lab + consultancy; trade association of public-power utilities",
     funding: "Not disclosed", dir: "mixed", mag: "n/a &mdash; tariff design, not a rate-direction study",
-    method: "Survey of 55 large-load tariffs/frameworks for established, emerging and declining provisions.",
+    data: "55 large-load utility tariff filings compiled by LBNL/Brattle, expanding on the SEPA/NCCETC DELTa tracker.",
+    method: "Descriptive survey of tariff provisions for established, emerging and declining terms.",
     finding: "Rate designs are getting more protective: median minimum contract term for tariffs proposed since 2025 is 12 years, vs. 5 years for earlier tariffs.",
     quote: "How should the costs and risks associated with serving these customers be allocated",
     limits: "Describes tariff terms as written, not price outcomes &mdash; it cannot say whether these provisions actually protect ratepayers in practice, only that stronger terms are appearing on paper." },
@@ -405,7 +425,8 @@ const LIT_DATA = [
     date: "Oct 2026", type: "Academic research (reported via HBS Working Knowledge)", org: "Kaps (HBS), Rana (Wharton), Netessine (Wharton)",
     orgType: "Academic institutions", funding: "“Received no research funding from the companies mentioned… Netessine served as an Amazon Scholar until April 2026” (disclosed)",
     dir: "up", mag: "+$1.70/MWh residential, +$5.40/MWh industrial (~4% of the 2020&ndash;2025 price increase)",
-    method: "Analysis of 385 US data centers (2020&ndash;2025) cross-referenced against cost/customer data from 42 serving utilities.",
+    data: "385 US data centers (2020&ndash;2025) from an energy-research-company compilation; cost and billing data from 42 serving utilities.",
+    method: "Cross-sectional analysis of facility-level data against utility cost/customer data.",
     finding: "Data centers accounted for only ~4% of residential electricity price increases 2020&ndash;2025; impact is small and driven by how expansion is managed, not by the data centers' existence.",
     quote: "It's how you manage the data center in respect to the utility and other grid providers.",
     limits: "385-facility, 42-utility sample is specific, not necessarily representative of the full US fleet; the summary article does not publish the full identification strategy, so the causal attribution cannot be independently checked without the underlying working paper." },
@@ -415,7 +436,8 @@ const LIT_DATA = [
     date: "Jun 2026", type: "Peer-reviewed journal article", org: "O'Shaughnessy, Wiser, Cappers, Deason, Mims Frick, Hledik (LBNL/consultants)",
     orgType: "National lab researchers, academic journal (Joule)", funding: "Not disclosed in the accessible portion",
     dir: "mixed", mag: "no fixed magnitude &mdash; historically negative, could reverse",
-    method: "Historical analysis across system capacity utilization, expansion costs, and cost-allocation/rate design.",
+    data: "Historical US utility system capacity, price and demand-growth data across prior expansion episodes; literature synthesis, no single new dataset constructed.",
+    method: "Narrative/historical synthesis across system capacity utilization, expansion costs, and cost-allocation design.",
     finding: "Demand growth has historically correlated with falling prices via scale economies, but future data-center-driven demand could push prices up if it strains capacity.",
     quote: "demand growth can reduce prices under certain conditions, a relationship that continues to be supported by empirical evidence.",
     limits: "Primarily a historical/correlational synthesis across prior demand-growth episodes rather than one new causal estimate for data centers specifically; the authors themselves flag that the historical pattern may not hold for the current AI-driven buildout." },
@@ -424,7 +446,8 @@ const LIT_DATA = [
     date: "May 2026", type: "Technical primer/report", org: "The Brattle Group, for the Energy Systems Integration Group (ESIG)",
     orgType: "Consultancy, published by a nonprofit trade-neutral research group", funding: "Not disclosed",
     dir: "mixed", mag: "contingent &mdash; no universal direction",
-    method: "Five-factor conceptual framework: system capacity, infrastructure vs. embedded cost, market price exposure, forecast accuracy, tariff design.",
+    data: "Conceptual framework with illustrative utility examples; no new empirical dataset constructed.",
+    method: "Five-factor framework: system capacity, infrastructure vs. embedded cost, market price exposure, forecast accuracy, tariff design.",
     finding: "Rate impact depends on whether incremental revenue from the new load exceeds the incremental cost of serving it &mdash; the source of the decision tree above.",
     quote: "if the incremental revenue collected from a new large customer exceeds the incremental cost to serve that customer, rates for existing customers tend to decrease, and vice versa.",
     limits: "A conceptual framework, not an empirical estimate &mdash; tells you which direction to expect given local conditions, not what actually happened in any specific utility." },
@@ -433,7 +456,8 @@ const LIT_DATA = [
     date: "Jun 10, 2026", type: "Consulting report (client-commissioned)", org: "The Brattle Group",
     orgType: "Economic/regulatory consultancy", funding: "Commissioned and paid for by Alliant Energy (disclosed)",
     dir: "mixed", mag: "net neutral-to-protective for IA/WI, contingent on contract terms",
-    method: "System analysis of transmission investment needs, ratemaking, contract protections and historical price drivers in Iowa/Wisconsin.",
+    data: "Alliant Energy (Interstate Power &amp; Light / Wisconsin Power &amp; Light) internal system planning, rate case and contract data, 2010&ndash;2025.",
+    method: "System analysis of transmission investment needs, ratemaking, and contract protections.",
     finding: "2010&ndash;2025 price growth in IA/WI stayed at or below inflation; large-load risk judged manageable through existing contract protections and owned generation.",
     quote: "Alliant Energy's ratemaking framework is designed to ensure that large load customers pay at least the incremental cost of serving them.",
     limits: "Client-commissioned for one utility holding company in two states; findings reflect Alliant's own contract protections and generation mix and may not generalize to utilities with weaker tariffs or tighter capacity margins." },
@@ -442,7 +466,8 @@ const LIT_DATA = [
     date: "May 2026", type: "Industry-commissioned report", org: "E3 (Energy and Environmental Economics)",
     orgType: "Consultancy", funding: "Funded by the Data Center Coalition, an industry trade group (disclosed)",
     dir: "mixed", mag: "~50% of PJM capacity-price increases attributed to load growth generally (not data centers specifically)",
-    method: "Literature synthesis (n=11 studies, no stated inclusion/exclusion criteria) plus state-level EIA price comparisons.",
+    data: "11-study literature base (criteria not stated); state-level EIA average retail price series.",
+    method: "Literature synthesis plus state-level EIA price comparisons.",
     finding: "High-load-growth states (TX, VA) saw smaller relative rate increases than declining-load states (CA, NY) &mdash; the report calls the relationship unclear. See this page's research corpus for a detailed methodology critique (wrong unit of analysis, asymmetric treatment of the one credible causal study).",
     quote: "The relationship between load growth and rising electric rates is unclear.",
     limits: "No stated inclusion/exclusion criteria for its 11-study literature base (8 of 11 backward-looking); state-level unit of analysis, which this page's own research corpus argues is too coarse to detect a real within-state cost shift; industry-funded." },
@@ -451,6 +476,7 @@ const LIT_DATA = [
     date: "Mar 13, 2026", type: "Think-tank policy article", org: "Brookings Institution (Lane &amp; Kane)",
     orgType: "Nonprofit think tank", funding: "Not disclosed",
     dir: "up", mag: "context: +42% electricity cost since 2019 (vs. 29% CPI); Dominion-territory disconnections +1.1pp alongside +31% DC load growth since 2022",
+    data: "Utility contract filings, Virginia SCC rate case dockets, and EIA-861 disconnection data for Dominion Virginia territory.",
     method: "Review of utility contracts, rate filings and disconnection data; correlational, not a formal econometric causal design.",
     finding: "Infrastructure costs are being passed to residential ratepayers while deferred from data-center operators via special contracts; calls for disaggregated large-load reporting and stronger siting leverage.",
     quote: "Electricity costs have outpaced inflation, increasing by 42% since 2019.",
@@ -460,7 +486,8 @@ const LIT_DATA = [
     date: "Apr 17, 2026", type: "Policy brief", org: "Institute for Energy Research (Pyle &amp; Simmons)",
     orgType: "Free-market energy policy think tank", funding: "Not disclosed in the brief",
     dir: "down", mag: "no significant relationship found; real driver identified as declining consumption",
-    method: "State-level EIA price and data-center-concentration comparison, 2021&ndash;2025.",
+    data: "State-level EIA retail electricity price series and data-center-concentration counts, 2021&ndash;2025.",
+    method: "State-level price/concentration comparison.",
     finding: "Top-10 data-center states averaged 14.46&cent;/kWh vs. 14.39&cent;/kWh elsewhere &mdash; no meaningful difference. States with the largest consumption declines saw prices rise 58% on average vs. 13% in states with the largest demand gains.",
     quote: "State-level data do not support the claim that data centers are responsible for rising electricity prices.",
     limits: "State-level comparison only &mdash; cannot see within-state cost shifts to the specific utility service territories or feeders that actually host the facilities, which is exactly the resolution this page's own research corpus argues matters most." },
@@ -470,10 +497,31 @@ const LIT_DATA = [
     orgType: "Academic researchers; MIT CEEPR states it posts working papers without a selection process or peer review",
     funding: "&quot;Zhenxuan Wang gratefully acknowledges funding support from the Institute for Humane Studies (grant no. IHS020420) for data purchase&quot; (disclosed)",
     dir: "up", mag: "+2.7% average retail price (residential +2.1%, commercial +2.8%, industrial +4.2%); +5.6% among investor-owned utilities (residential +5.2%); +3.8% in deregulated states vs. a statistically insignificant +1.5% in regulated states; ~$3&ndash;7/month for the average residential customer",
-    method: "Staggered difference-in-differences (Callaway &amp; Sant'Anna 2021) linking facility-level data center entry (2010&ndash;2024) to utility-level retail prices, infrastructure investment and rate-case outcomes; robustness checks include entropy-balanced matched DID, utility/region-specific trends, and alternative clustering.",
+    data: "Aterio facility-level data center location/capacity data; EIA-861 utility retail prices by customer class; S&amp;P Capital IQ Pro (FERC Form 1) infrastructure investment; S&amp;P Capital IQ Pro/RRA rate-case database; Halcyon large-load tariff tracker; EIA-923/860 generation mix; EIA-411 reserve margins; BEA/Census regional economic data.",
+    method: "Staggered difference-in-differences (Callaway &amp; Sant'Anna 2021), 2010&ndash;2024; robustness checks include entropy-balanced matched DID, utility/region-specific trends, and alternative clustering.",
     finding: "Data center entry raises retail electricity prices, concentrated among investor-owned utilities and deregulated states; cooperatives and public utilities show little to no effect. Mechanism: IOUs in deregulated states show earlier construction spending and more rate-case/rider activity; IOUs in regulated states show generation investment and improved load-factor utilization, muting the price effect.",
     quote: "The results show that the incidence of infrastructure-intensive technological change depends not only on the technology itself, but also on the institutions governing complementary infrastructure investment and cost recovery.",
     limits: "Identification relies on parallel trends and on pair/year fixed effects adequately controlling for non-random siting; like any difference-in-differences design, it cannot rule out unobserved utility-specific shocks correlated with both siting and prices. Utility-state level, not feeder-level &mdash; cannot see cost allocation across different service territories of the same multi-state utility." },
+  { src: "The Causal Bar E3 Did Not Clear: A County-Level Re-Examination of Data Centers and Rates",
+    url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739",
+    date: "May 2026", type: "Preprint (not peer-reviewed)", org: "Jalal Awan",
+    orgType: "Independent researcher", funding: "Not disclosed",
+    dir: "mixed", mag: "n/a &mdash; examines siting/tariff risk factors, not a measured price effect",
+    data: "FracTracker facility panel (1,506 facilities); SEPA/NCCETC DELTa tariff database (77 tariffs); EPA AQS PM2.5; USGS water withdrawals; ACS demographics; CDC SVI.",
+    method: "County-level descriptive comparison (Welch's t-tests, host vs. non-host counties) plus a negative-binomial regression of facility siting on county covariates; not a causal price design.",
+    finding: "Host counties carry measurably higher PM2.5 (+9%), greenhouse gas totals (2.3&times;), water withdrawals (3.5&times;) and Black population share (4.3&times;) than non-host counties, and most large-load tariffs score poorly on customer protection (mean 1.94/5 across 77 tariffs; 51% score 0&ndash;1).",
+    quote: "These are descriptive comparisons &mdash; host counties self-select on transmission access, fiber, water and land, so this is evidence they chose certain counties, not evidence they caused the disparities.",
+    limits: "Explicitly descriptive, not causal &mdash; the host/non-host comparison is selection on observables, not a randomized or quasi-experimental design. County-level, not feeder-level. Author note: this is the research behind the rest of this page, not an independent third-party source &mdash; read it with that in mind." },
+  { src: "A Data-Driven Look at Rising US Electricity Costs and Policy Solutions",
+    url: "https://www.catf.us/2026/03/data-driven-look-rising-us-electricity-costs-policy-solutions/",
+    date: "Mar 3, 2026", type: "Think-tank analysis", org: "Pavia &amp; Spokas / Clean Air Task Force",
+    orgType: "Nonprofit climate/clean-energy advocacy group", funding: "Not disclosed",
+    dir: "up", mag: "qualitative only &mdash; no data-center-specific magnitude given",
+    data: "LBNL research synthesis; EIA Electric Power Monthly; BLS CPI; DOE National Transmission Needs Study; a Nature transmission study; CPUC revenue reports.",
+    method: "Literature synthesis plus comparative state-level analysis of electricity cost drivers broadly, not a data-center-specific study.",
+    finding: "Rising electricity prices (+5%+ YoY nationally) are driven primarily by transmission underinvestment, extreme-weather/wildfire costs, capacity-market dynamics and gas price volatility &mdash; explicitly not clean energy deployment. Data centers are one contributing factor: PJM residential customers are described as subsidizing transmission costs for data-center development, but no data-center-specific price magnitude is quantified.",
+    quote: "No one factor alone is responsible for electricity price changes; key drivers may be different across jurisdictions.",
+    limits: "Explicitly declines to attribute price changes to any single factor; gives no quantified, data-center-specific estimate &mdash; data centers are a secondary point within a broader piece about electricity costs generally." },
 ];
 
 function dirSymbol(d) {
@@ -483,18 +531,77 @@ function dirSymbol(d) {
 }
 
 document.getElementById('dceLitBody').innerHTML = LIT_DATA.map(r => {
-  const tip = `${r.method} Quote: "${r.quote.replace(/"/g, '&quot;')}"`;
+  const tip = `Quote: "${r.quote.replace(/"/g, '&quot;')}"`;
   const alsoLine = r.also ? ` &middot; <a href="${r.alsoUrl}" target="_blank" rel="noopener">${r.also} &#8599;</a>` : '';
   return `<tr>
     <td><a class="dce-src" href="${r.url}" target="_blank" rel="noopener">${r.src} &#8599;</a>${alsoLine}</td>
     <td>${r.date}</td>
     <td>${r.type}<span class="dce-orgtype">${r.org} &middot; ${r.orgType}</span></td>
     <td>${r.funding}</td>
+    <td>${r.data}<span class="dce-orgtype">${r.method}</span></td>
     <td>${dirSymbol(r.dir)}<br><span style="font-weight:400;font-size:.78rem;color:var(--text-mid)">${r.mag}</span></td>
     <td>${r.finding} <span class="ico-help" title="${tip.replace(/"/g, '&quot;')}">&#9432;</span></td>
     <td>${r.limits}</td>
   </tr>`;
 }).join('');
+
+// ── interactive tariff protection score ─────────────────────────────────────
+const NAME_TO_ABBR = {
+  Alabama:'AL',Alaska:'AK',Arizona:'AZ',Arkansas:'AR',California:'CA',Colorado:'CO',
+  Connecticut:'CT',Delaware:'DE','District of Columbia':'DC',Florida:'FL',Georgia:'GA',
+  Hawaii:'HI',Idaho:'ID',Illinois:'IL',Indiana:'IN',Iowa:'IA',Kansas:'KS',Kentucky:'KY',
+  Louisiana:'LA',Maine:'ME',Maryland:'MD',Massachusetts:'MA',Michigan:'MI',Minnesota:'MN',
+  Mississippi:'MS',Missouri:'MO',Montana:'MT',Nebraska:'NE',Nevada:'NV','New Hampshire':'NH',
+  'New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND',
+  Ohio:'OH',Oklahoma:'OK',Oregon:'OR',Pennsylvania:'PA','Rhode Island':'RI','South Carolina':'SC',
+  'South Dakota':'SD',Tennessee:'TN',Texas:'TX',Utah:'UT',Vermont:'VT',Virginia:'VA',
+  Washington:'WA','West Virginia':'WV',Wisconsin:'WI',Wyoming:'WY',
+};
+
+let TARIFF_DATA = null;
+const TARIFF_SCALE = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
+
+function renderTariffRank() {
+  if (!TARIFF_DATA) return;
+  const wc = +document.getElementById('wContract').value;
+  const wb = +document.getElementById('wBill').value;
+  const wi = +document.getElementById('wCiac').value;
+  const total = (wc + wb + wi) || 1;
+  const pc = wc / total, pb = wb / total, pi = wi / total;
+  document.getElementById('wContractV').textContent = Math.round(pc * 100) + '%';
+  document.getElementById('wBillV').textContent = Math.round(pb * 100) + '%';
+  document.getElementById('wCiacV').textContent = Math.round(pi * 100) + '%';
+
+  const byState = {};
+  TARIFF_DATA.tariffs.forEach(t => {
+    const s = pc * (t.contract_pts / 2) + pb * (t.bill_pts / 2) + pi * (t.ciac_pts / 1); // 0-1
+    (byState[t.abbr] = byState[t.abbr] || []).push(s);
+  });
+  const scored = Object.entries(byState)
+    .map(([abbr, arr]) => [abbr, arr.reduce((a, b) => a + b, 0) / arr.length, arr.length])
+    .sort((a, b) => b[1] - a[1]);
+
+  window.dceTariffScoreByState = Object.fromEntries(scored.map(([abbr, score]) => [abbr, score]));
+
+  document.getElementById('dceTariffRank').innerHTML = scored.map(([abbr, score, n]) => `
+    <div class="dce-trow" title="${n} tariff${n > 1 ? 's' : ''} tracked for ${abbr}">
+      <span>${abbr}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${(score * 100).toFixed(0)}%"></span></span>
+      <span class="score">${(score * 5).toFixed(1)}</span>
+    </div>`).join('');
+
+  if (typeof updateTariffMapColors === 'function') updateTariffMapColors();
+}
+
+fetch('data/tariff_scores.json').then(r => r.json()).then(td => {
+  TARIFF_DATA = td;
+  renderTariffRank();
+  ['wContract', 'wBill', 'wCiac'].forEach(id =>
+    document.getElementById(id).addEventListener('input', renderTariffRank));
+}).catch(() => {
+  document.getElementById('dceTariffRank').innerHTML =
+    '<p class="dce-na">Tariff data failed to load (data/tariff_scores.json). Run Website/tools/build_tariff_data.py.</p>';
+});
 
 // ── map ───────────────────────────────────────────────────────────────────
 const STATUS_COLOR = { operating: '#1f5cab', approved: '#eda100', proposed: '#8b95a0', dead: '#c0392b', other: '#8b95a0' };
@@ -584,10 +691,23 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
 
   d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
     const states_geo = topojson.feature(us, us.objects.states);
-    svg.append('g').selectAll('path')
+    const statePaths = svg.append('g').selectAll('path')
       .data(states_geo.features).join('path')
+      .attr('class', 'dce-statepath')
+      .attr('data-abbr', d => NAME_TO_ABBR[d.properties.name] || '')
       .attr('d', d3.geoPath(projection))
       .attr('fill', '#f4f3ef').attr('stroke', '#c9c7bd').attr('stroke-width', 0.7);
+
+    window.updateTariffMapColors = function () {
+      const on = document.getElementById('dceTariffToggle').checked;
+      statePaths.attr('fill', function () {
+        const abbr = this.getAttribute('data-abbr');
+        const score = window.dceTariffScoreByState && window.dceTariffScoreByState[abbr];
+        return (on && score !== undefined) ? TARIFF_SCALE(score) : '#f4f3ef';
+      });
+    };
+    document.getElementById('dceTariffToggle').addEventListener('change', updateTariffMapColors);
+    updateTariffMapColors();
 
     const tip = document.getElementById('dceMapTip');
     svg.append('g').selectAll('circle')
