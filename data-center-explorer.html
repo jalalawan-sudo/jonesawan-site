@@ -498,26 +498,52 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
   document.getElementById('dceSrcLine').innerHTML =
     `Source: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811739" target="_blank" rel="noopener">${t.source} &#8599;</a>`;
 
-  const states = Object.entries(data.by_state).sort((a, b) => b[1].mw_total - a[1].mw_total);
+  const GRP_LABEL = { operating: 'Operating', approved: 'Approved', proposed: 'Proposed', dead: 'Cancelled' };
   const countsHtml = s => `<span class="dce-st-counts">
       <i style="background:${STATUS_COLOR.operating}"></i>${s.n_operating || 0}
       <i style="background:${STATUS_COLOR.approved}"></i>${s.n_approved || 0}
       <i style="background:${STATUS_COLOR.proposed}"></i>${s.n_proposed || 0}
       <i style="background:${STATUS_COLOR.dead}"></i>${s.n_dead || 0}
     </span>`;
-  document.getElementById('dceStateHead').innerHTML =
-    `<span>State</span><span>${countsHtml({n_operating:'O',n_approved:'A',n_proposed:'P',n_dead:'C'})}</span><span style="text-align:right">GW</span>`;
-  document.getElementById('dceStateList').innerHTML = states.map(([abbr, s]) => `
-    <div class="row" data-state="${abbr}">
-      <span>${abbr}</span>
-      ${countsHtml(s)}
-      <span class="n">${(s.mw_total/1000).toFixed(1)}</span>
-    </div>`).join('')
-    + `<div class="row total">
-      <span>Total</span>
-      ${countsHtml(t)}
-      <span class="n">${(t.mw_total/1000).toFixed(1)}</span>
-    </div>`;
+
+  function renderStateList() {
+    if (dceSelGrp) {
+      const states = Object.entries(data.by_state)
+        .filter(([, s]) => (s['n_' + dceSelGrp] || 0) > 0)
+        .sort((a, b) => b[1]['mw_' + dceSelGrp] - a[1]['mw_' + dceSelGrp]);
+      document.getElementById('dceStateHead').innerHTML =
+        `<span>State</span><span><i style="background:${STATUS_COLOR[dceSelGrp]}"></i>${GRP_LABEL[dceSelGrp]}</span><span style="text-align:right">GW</span>`;
+      document.getElementById('dceStateList').innerHTML = states.map(([abbr, s]) => `
+        <div class="row" data-state="${abbr}">
+          <span>${abbr}</span>
+          <span class="dce-st-counts"><i style="background:${STATUS_COLOR[dceSelGrp]}"></i>${s['n_' + dceSelGrp]}</span>
+          <span class="n">${(s['mw_' + dceSelGrp] / 1000).toFixed(1)}</span>
+        </div>`).join('')
+        + `<div class="row total">
+          <span>Total</span>
+          <span class="dce-st-counts"><i style="background:${STATUS_COLOR[dceSelGrp]}"></i>${t['n_' + dceSelGrp]}</span>
+          <span class="n">${(t['mw_' + dceSelGrp] / 1000).toFixed(1)}</span>
+        </div>`;
+    } else {
+      const states = Object.entries(data.by_state).sort((a, b) => b[1].mw_total - a[1].mw_total);
+      document.getElementById('dceStateHead').innerHTML =
+        `<span>State</span><span>${countsHtml({n_operating:'O',n_approved:'A',n_proposed:'P',n_dead:'C'})}</span><span style="text-align:right">GW</span>`;
+      document.getElementById('dceStateList').innerHTML = states.map(([abbr, s]) => `
+        <div class="row" data-state="${abbr}">
+          <span>${abbr}</span>
+          ${countsHtml(s)}
+          <span class="n">${(s.mw_total/1000).toFixed(1)}</span>
+        </div>`).join('')
+        + `<div class="row total">
+          <span>Total</span>
+          ${countsHtml(t)}
+          <span class="n">${(t.mw_total/1000).toFixed(1)}</span>
+        </div>`;
+    }
+    document.querySelectorAll('.dce-statepick .row').forEach(r =>
+      r.classList.toggle('sel', r.dataset.state === dceSelState));
+  }
+  renderStateList();
 
   const svg = d3.select('#dceMap');
   const width = 975, height = 610;
@@ -535,8 +561,9 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
       k.classList.toggle('active', k.dataset.grp === dceSelGrp));
     document.getElementById('dceFilterNote').textContent =
       (dceSelState || dceSelGrp)
-        ? `Showing ${dceSelGrp ? dceSelGrp : 'all statuses'}${dceSelState ? ' in ' + dceSelState : ''} — click again, or Clear, to reset.`
+        ? `Showing ${dceSelGrp ? GRP_LABEL[dceSelGrp] : 'all statuses'}${dceSelState ? ' in ' + dceSelState : ''} — click again, or Clear, to reset.`
         : '';
+    renderStateList();
   }
 
   d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
@@ -565,8 +592,6 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
       .on('mouseleave', () => { tip.style.display = 'none'; })
       .on('click', (event, f) => {
         dceSelState = dceSelState === f.st ? null : f.st;
-        document.querySelectorAll('.dce-statepick .row').forEach(r =>
-          r.classList.toggle('sel', r.dataset.state === dceSelState));
         applyFilters();
       });
   }).catch(() => {
@@ -575,10 +600,8 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
 
   document.getElementById('dceStateList').addEventListener('click', e => {
     const row = e.target.closest('.row'); if (!row) return;
-    const abbr = row.dataset.state;
+    const abbr = row.dataset.state; if (!abbr) return;
     dceSelState = dceSelState === abbr ? null : abbr;
-    document.querySelectorAll('.dce-statepick .row').forEach(r =>
-      r.classList.toggle('sel', r.dataset.state === dceSelState));
     applyFilters();
   });
 
