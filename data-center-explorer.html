@@ -59,7 +59,7 @@
   .dce-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
     background:var(--black);border:var(--bw) solid var(--black);margin:18px 0 26px}
   .dce-kpi{background:var(--white);padding:16px 16px}
-  .dce-kpi .l{font:600 .68rem/1.3 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .dce-kpi .l{font:600 .68rem/1.3 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);min-height:1.8rem}
   .dce-kpi .v{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;margin-top:4px;letter-spacing:-.01em}
   .dce-kpi .s{font-size:.76rem;color:var(--muted);margin-top:3px;line-height:1.4}
   .dce-kpi .s a{color:var(--muted);text-decoration-thickness:1px}
@@ -79,9 +79,7 @@
   .dce-legend [data-grp]{cursor:pointer;padding:2px 7px;border-radius:999px;border:1px solid transparent}
   .dce-legend [data-grp]:hover{border-color:var(--line)}
   .dce-legend [data-grp].active{background:var(--black);color:#fff;font-weight:600}
-  .dce-clear{font:600 .72rem var(--font-mono);text-transform:uppercase;letter-spacing:.04em;
-    background:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer;color:var(--muted)}
-  .dce-clear:hover{color:var(--black);border-color:var(--black)}
+  .dce-legend .dce-all{font-weight:700;border-color:var(--line)}
   .dce-maptip{position:fixed;z-index:80;background:var(--black);color:#fff;padding:8px 11px;
     border-radius:4px;font-size:.78rem;line-height:1.45;max-width:240px;pointer-events:none;display:none}
   .dce-maptip b{display:block;font-size:.84rem;margin-bottom:2px}
@@ -189,11 +187,11 @@
           <div>
             <svg id="dceMap" viewBox="0 0 975 610" preserveAspectRatio="xMidYMid meet"></svg>
             <div class="dce-legend">
+              <span data-grp="all" class="dce-all">All</span>
               <span data-grp="operating"><i style="background:#1f5cab"></i>Operating / Expanding</span>
               <span data-grp="approved"><i style="background:#eda100"></i>Approved / Permitted / UC</span>
               <span data-grp="proposed"><i style="background:#8b95a0"></i>Proposed</span>
               <span data-grp="dead"><i style="background:#c0392b"></i>Cancelled / Suspended</span>
-              <button type="button" id="dceClearFilters" class="dce-clear">Clear filters</button>
             </div>
             <p class="dce-foot" id="dceFilterNote" style="min-height:1.2em"></p>
           </div>
@@ -501,7 +499,7 @@ document.getElementById('dceLitBody').innerHTML = LIT_DATA.map(r => {
 // ── map ───────────────────────────────────────────────────────────────────
 const STATUS_COLOR = { operating: '#1f5cab', approved: '#eda100', proposed: '#8b95a0', dead: '#c0392b', other: '#8b95a0' };
 
-let dceSelState = null, dceSelGrp = null;
+let dceSelState = null, dceSelGrp = 'operating';
 
 fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
   const t = data.totals;
@@ -576,10 +574,10 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
     document.querySelectorAll('.dce-kpi-filter').forEach(k =>
       k.classList.toggle('active', k.dataset.grp === dceSelGrp));
     document.querySelectorAll('.dce-legend [data-grp]').forEach(k =>
-      k.classList.toggle('active', k.dataset.grp === dceSelGrp));
+      k.classList.toggle('active', k.dataset.grp === 'all' ? !dceSelGrp : k.dataset.grp === dceSelGrp));
     document.getElementById('dceFilterNote').textContent =
       (dceSelState || dceSelGrp)
-        ? `Showing ${dceSelGrp ? GRP_LABEL[dceSelGrp] : 'all statuses'}${dceSelState ? ' in ' + dceSelState : ''} — click again, or Clear, to reset.`
+        ? `Showing ${dceSelGrp ? GRP_LABEL[dceSelGrp] : 'all statuses'}${dceSelState ? ' in ' + dceSelState : ''}.`
         : '';
     renderStateList();
   }
@@ -612,8 +610,10 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
         dceSelState = dceSelState === f.st ? null : f.st;
         applyFilters();
       });
+    applyFilters(); // apply the default Operating-only filter as soon as the map exists
   }).catch(() => {
     svg.insertAdjacentHTML('afterend', '<p class="dce-na">Map base layer failed to load (needs internet access to cdn.jsdelivr.net). State list and stats above are unaffected.</p>');
+    applyFilters(); // still filter the sidebar/KPIs even if the map base layer failed
   });
 
   document.getElementById('dceStateList').addEventListener('click', e => {
@@ -631,13 +631,7 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
 
   document.querySelector('.dce-legend').addEventListener('click', e => {
     const k = e.target.closest('[data-grp]'); if (!k) return;
-    dceSelGrp = dceSelGrp === k.dataset.grp ? null : k.dataset.grp;
-    applyFilters();
-  });
-
-  document.getElementById('dceClearFilters').addEventListener('click', () => {
-    dceSelState = null; dceSelGrp = null;
-    document.querySelectorAll('.dce-statepick .row').forEach(r => r.classList.remove('sel'));
+    dceSelGrp = k.dataset.grp === 'all' ? null : (dceSelGrp === k.dataset.grp ? null : k.dataset.grp);
     applyFilters();
   });
 }).catch(() => {
