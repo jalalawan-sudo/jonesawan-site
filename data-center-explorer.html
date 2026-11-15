@@ -20,6 +20,24 @@
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 <style>
+  /* ===== Editorial re-skin: harmonize with calreg.html / calnews.html / index.html =====
+     Without this, the page falls back to css/style.css's raw neo-brutalist nav (uppercase
+     mono links, solid yellow highlight block, dark page-header) instead of the light,
+     frosted, serif-link nav every other page on the site uses -- the same override block
+     calreg.html carries, verbatim where the token names match. */
+  :root{ --accent:#c8102e; --border:#e6e3dd; }
+  #nav{ background:rgba(255,255,255,0.82)!important; -webkit-backdrop-filter:saturate(160%) blur(16px); backdrop-filter:saturate(160%) blur(16px); border-bottom:1px solid var(--border)!important; }
+  .nav-links a.active{ color:var(--black)!important; border-bottom:2px solid var(--accent)!important; padding-bottom:2px; background:transparent!important; }
+  .nav-links a{ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif!important; text-transform:none!important; letter-spacing:0!important; font-size:0.9rem!important; font-weight:500!important; color:var(--muted)!important; border:none!important; padding:6px 12px!important; background:transparent!important; }
+  .nav-links a:hover{ color:var(--black)!important; background:transparent!important; }
+  .nav-cta{ background:var(--black)!important; color:#fff!important; padding:7px 16px!important; font-weight:700!important; }
+  .nav-cta:hover{ background:var(--accent)!important; color:#fff!important; }
+  .page-header{ background:#fff!important; padding:96px 0 38px!important; border-bottom:1px solid var(--border)!important; }
+  .page-header::before{ display:none; }
+  .page-header .eyebrow{ color:var(--accent); border-color:var(--accent); background:transparent; }
+  .page-header h1{ color:var(--black)!important; }
+  .page-header .intro{ color:var(--text-mid)!important; }
+
   /* ---------- local page chrome ---------- */
   .dce-wrap{max-width:1180px;margin:0 auto;padding:0 40px}
   @media(max-width:700px){.dce-wrap{padding:0 20px}}
