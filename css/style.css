@@ -1019,3 +1019,10 @@ footer, .footer {
   border-radius: 0 !important;
   font-weight: 800;
 }
+
+/* TEMPORARY (added 2026-11-16): FirstPrinciples nav tab hidden site-wide, pending
+   the author's instruction to restore it. Catches every nav/footer instance
+   (main.js NAV_HTML/FOOTER_HTML injection, index.html, calnews.html, and
+   firstprinciples.html's own nav) via a single attribute-selector rule, so no
+   per-page edits are needed to undo this -- just delete this rule. */
+a[href="firstprinciples.html"] { display: none !important; }

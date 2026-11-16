@@ -206,7 +206,7 @@
             </div>
             <p class="dce-foot" id="dceFilterNote" style="min-height:1.2em"></p>
             <label class="dce-tglrow"><input type="checkbox" id="dceTariffToggle"> Shade states by tariff protection score
-              <span class="ico-help" title="Colors each state by its weighted Customer Protection Score instead of facility status -- set the weights on the Literature Review tab (Interactive tariff protection score card). Darker = stronger tariff terms (more protective of existing ratepayers). States with no tracked tariff stay uncolored.">&#9432;</span></label>
+              <span class="ico-help" title="Colors each state by its weighted Customer Protection Score instead of facility status -- set the weights on the Rate Impact & Bill Tracker tab (Interactive tariff protection score card). Darker = stronger tariff terms (more protective of existing ratepayers). States with no tracked tariff stay uncolored.">&#9432;</span></label>
           </div>
           <div>
             <h3 style="font-size:.84rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)">By state</h3>
@@ -231,7 +231,7 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════ BILLS ══════════════════════════ -->
+    <!-- ══════════════════════════ LITERATURE REVIEW ══════════════════════════ -->
     <section class="dce-panel" id="dce-lit">
 
       <div class="dce-card">
@@ -284,19 +284,6 @@
       </div>
 
       <div class="dce-card">
-        <h2>Interactive tariff protection score</h2>
-        <p class="dce-lede">The same 77 tariffs behind the research in the table above, re-weighted live &mdash; drag a slider to see which states' tariffs score better or worse under different priorities. Also shades the map on the Explorer tab.
-        <span class="ico-help" title="Each tariff already carries three rubric sub-scores from the original paper's Customer Protection Score: Contract term (0-2 pts, >=10yr=2, 5-9yr=1, else 0), Minimum billing demand (0-2 pts, >=80%=2, 50-79%=1, else 0), and CIAC/contribution-in-aid-of-construction required (0-1 pt). The sliders set how much each sub-score counts toward a 0-5 weighted score, averaged across every tariff on file for that state. Source: Large_Load_Tariffs_Scoring_v2.xlsx (TURN DELTA Full Analysis), SEPA/NCCETC DELTa database through Mar 2026, 77 tariffs across 36 states.">&#9432;</span></p>
-        <div class="dce-tariffw">
-          <div class="dce-wrow"><label for="wContract">Contract term weight</label><input type="range" id="wContract" min="0" max="10" value="4"><span id="wContractV">40%</span></div>
-          <div class="dce-wrow"><label for="wBill">Minimum billing demand weight</label><input type="range" id="wBill" min="0" max="10" value="4"><span id="wBillV">40%</span></div>
-          <div class="dce-wrow"><label for="wCiac">CIAC-required weight</label><input type="range" id="wCiac" min="0" max="10" value="2"><span id="wCiacV">20%</span></div>
-        </div>
-        <div id="dceTariffRank" class="dce-tariffrank"></div>
-        <p class="dce-foot">States with only one or two tracked tariffs are more volatile to re-weighting than states with many &mdash; hover a row for the tariff count.</p>
-      </div>
-
-      <div class="dce-card">
         <h2>A data center policymaker's guide <span class="dce-orgtype" style="font-weight:400">(draft)</span></h2>
         <p class="dce-lede">What the table above implies procedurally &mdash; not a position on any docket.
         <span class="ico-help" title="Draft synthesis for discussion, not a filed position in any proceeding. See the Rate Impact & Bill Tracker tab for what is actually enacted or pending today.">&#9432;</span></p>
@@ -319,7 +306,7 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════ LITERATURE REVIEW ══════════════════════════ -->
+    <!-- ══════════════════════════ RATE IMPACT & BILL TRACKER ══════════════════════════ -->
     <section class="dce-panel" id="dce-bills">
 
       <div class="dce-verdict">
@@ -343,6 +330,19 @@
             <tr><td><b>CIAC (contributions in aid of construction)</b></td><td>Decides who advances the capital for new infrastructure.</td><td>Required upfront, customer funds planning and interconnection studies</td></tr>
           </tbody>
         </table></div>
+      </div>
+
+      <div class="dce-card">
+        <h2>Interactive tariff protection score</h2>
+        <p class="dce-lede">The same 77 tariffs behind the research on the Literature Review tab, re-weighted live &mdash; drag a slider to see which states' tariffs score better or worse under different priorities. Also shades the map on the Explorer tab.
+        <span class="ico-help" title="Each tariff already carries three rubric sub-scores from the original paper's Customer Protection Score: Contract term (0-2 pts, >=10yr=2, 5-9yr=1, else 0), Minimum billing demand (0-2 pts, >=80%=2, 50-79%=1, else 0), and CIAC/contribution-in-aid-of-construction required (0-1 pt). The sliders set how much each sub-score counts toward a 0-5 weighted score, averaged across every tariff on file for that state. Source: Large_Load_Tariffs_Scoring_v2.xlsx (TURN DELTA Full Analysis), SEPA/NCCETC DELTa database through Mar 2026, 77 tariffs across 36 states.">&#9432;</span></p>
+        <div class="dce-tariffw">
+          <div class="dce-wrow"><label for="wContract">Contract term weight</label><input type="range" id="wContract" min="0" max="10" value="4"><span id="wContractV">40%</span></div>
+          <div class="dce-wrow"><label for="wBill">Minimum billing demand weight</label><input type="range" id="wBill" min="0" max="10" value="4"><span id="wBillV">40%</span></div>
+          <div class="dce-wrow"><label for="wCiac">CIAC-required weight</label><input type="range" id="wCiac" min="0" max="10" value="2"><span id="wCiacV">20%</span></div>
+        </div>
+        <div id="dceTariffRank" class="dce-tariffrank"></div>
+        <p class="dce-foot">States with only one or two tracked tariffs are more volatile to re-weighting than states with many &mdash; hover a row for the tariff count.</p>
       </div>
 
       <div class="dce-card">
