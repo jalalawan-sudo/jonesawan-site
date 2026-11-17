@@ -37,13 +37,6 @@
   .page-header .eyebrow{ color:var(--accent); border-color:var(--accent); background:transparent; }
   .page-header h1{ color:var(--black)!important; }
   .page-header .intro{ color:var(--text-mid)!important; }
-  .page-header{
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='210' viewBox='0 0 420 210'%3E%3Cg fill='none' stroke='%23c8102e' stroke-opacity='0.09' stroke-width='2'%3E%3Crect x='40' y='20' width='70' height='160' rx='4'/%3E%3Crect x='130' y='40' width='70' height='140' rx='4'/%3E%3Crect x='220' y='10' width='70' height='170' rx='4'/%3E%3Crect x='310' y='50' width='60' height='130' rx='4'/%3E%3C/g%3E%3Cg stroke='%2316130f' stroke-opacity='0.06' stroke-width='1'%3E%3Cline x1='40' y1='40' x2='110' y2='40'/%3E%3Cline x1='40' y1='60' x2='110' y2='60'/%3E%3Cline x1='40' y1='80' x2='110' y2='80'/%3E%3Cline x1='40' y1='100' x2='110' y2='100'/%3E%3Cline x1='40' y1='120' x2='110' y2='120'/%3E%3Cline x1='40' y1='140' x2='110' y2='140'/%3E%3Cline x1='40' y1='160' x2='110' y2='160'/%3E%3Cline x1='130' y1='60' x2='200' y2='60'/%3E%3Cline x1='130' y1='80' x2='200' y2='80'/%3E%3Cline x1='130' y1='100' x2='200' y2='100'/%3E%3Cline x1='130' y1='120' x2='200' y2='120'/%3E%3Cline x1='130' y1='140' x2='200' y2='140'/%3E%3Cline x1='130' y1='160' x2='200' y2='160'/%3E%3Cline x1='220' y1='30' x2='290' y2='30'/%3E%3Cline x1='220' y1='50' x2='290' y2='50'/%3E%3Cline x1='220' y1='70' x2='290' y2='70'/%3E%3Cline x1='220' y1='90' x2='290' y2='90'/%3E%3Cline x1='220' y1='110' x2='290' y2='110'/%3E%3Cline x1='220' y1='130' x2='290' y2='130'/%3E%3Cline x1='220' y1='150' x2='290' y2='150'/%3E%3Cline x1='220' y1='170' x2='290' y2='170'/%3E%3Cline x1='310' y1='70' x2='370' y2='70'/%3E%3Cline x1='310' y1='90' x2='370' y2='90'/%3E%3Cline x1='310' y1='110' x2='370' y2='110'/%3E%3Cline x1='310' y1='130' x2='370' y2='130'/%3E%3Cline x1='310' y1='150' x2='370' y2='150'/%3E%3Cline x1='310' y1='170' x2='370' y2='170'/%3E%3C/g%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right -20px top !important;
-    background-size: 380px auto !important;
-  }
-  @media(max-width:860px){ .page-header{ background-image:none!important; } }
 
   /* ---------- local page chrome ---------- */
   .dce-wrap{max-width:1180px;margin:0 auto;padding:0 40px}
@@ -89,12 +82,18 @@
   .dce-legend .dce-all{font-weight:700;border-color:var(--line)}
   .dce-tglrow{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-mid);margin-top:10px;cursor:pointer}
   .dce-tglrow input{accent-color:var(--accent)}
+  .dce-tariffscale{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--muted);margin:7px 0 0 22px;font-variant-numeric:tabular-nums}
+  .dce-tariffscale .bar{display:inline-block;width:120px;height:9px;border-radius:3px;border:1px solid var(--line);
+    background:linear-gradient(to right,#f7fbff,#c6dbef,#6baed6,#2171b5,#08306b)}
+  .dce-tariffscale em{font-style:normal;margin-left:4px}
 
   /* tariff weighting card */
   .dce-tariffw{display:flex;flex-direction:column;gap:10px;margin:16px 0 20px;max-width:520px}
   .dce-wrow{display:grid;grid-template-columns:170px 1fr 44px;gap:10px;align-items:center;font-size:.84rem}
   .dce-wrow input[type=range]{accent-color:var(--accent);width:100%}
   .dce-wrow span{text-align:right;font-variant-numeric:tabular-nums;color:var(--text-mid)}
+  .dce-wrow label a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+  .dce-wrow label a:hover{color:var(--accent);text-decoration-color:var(--accent)}
   .dce-tariffrank{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);max-height:420px;overflow:auto}
   .dce-trow{background:#fff;padding:7px 10px;display:grid;grid-template-columns:30px 1fr 34px;gap:8px;align-items:center;font-size:.8rem}
   .dce-trow .bar-track{display:block;height:7px;background:var(--off-white);border-radius:4px;overflow:hidden}
@@ -214,6 +213,10 @@
             <p class="dce-foot" id="dceFilterNote" style="min-height:1.2em"></p>
             <label class="dce-tglrow"><input type="checkbox" id="dceTariffToggle"> Shade states by tariff protection score
               <span class="ico-help" title="Colors each state by its weighted Customer Protection Score instead of facility status -- set the weights on the Rate Impact & Bill Tracker tab (Interactive tariff protection score card). Darker = stronger tariff terms (more protective of existing ratepayers). States with no tracked tariff stay uncolored.">&#9432;</span></label>
+            <div class="dce-tariffscale" id="dceTariffScale" style="display:none">
+              <span>0</span><span class="bar"></span><span>5</span>
+              <em>Tariff protection score &middot; default weights 40% / 40% / 20%</em>
+            </div>
           </div>
           <div>
             <h3 style="font-size:.84rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)">By state</h3>
@@ -242,14 +245,13 @@
     <section class="dce-panel" id="dce-lit">
 
       <div class="dce-card">
-        <h2>What the literature actually finds</h2>
-        <p class="dce-lede">Thirteen sources, read directly, each in its own words &mdash;
-        up (<span class="dce-dir up">&#9650;</span>), down (<span class="dce-dir down">&#9660;</span>), or
-        mixed (<span class="dce-dir mixed">&#9679;</span>). Few of these are causal designs, and the field is
-        moving fast. Bottom line: it depends &mdash; largely on market structure. Deregulated states, where
-        wholesale costs pass through to retail quickly, see the clearest increases; regulated, vertically
-        integrated utilities tend to stay flat.
-        <span class="ico-help" title="Sources that could not be independently verified (paywalled or bot-blocked on every attempt) were left out rather than described secondhand. Includes the author's own paper, flagged as such rather than treated as an independent third-party source.">&#9432;</span></p>
+        <h2>Review of Published Literature</h2>
+        <p class="dce-lede">Up (<span class="dce-dir up">&#9650;</span>), down (<span class="dce-dir down">&#9660;</span>),
+        or mixed (<span class="dce-dir mixed">&#9679;</span>) indicates the directional change to retail
+        electricity rates from data-center load found in each study, drawn from a review of literature
+        published in 2026. <b>Bottom line:</b> whether data centers raise or lower rates depends on multiple
+        factors &mdash; chiefly where they're sited and the tariff terms in place, breaking largely along
+        regulated vs. deregulated lines.</p>
 
         <div class="dce-scroll"><table class="dce-t">
           <thead><tr><th>Source</th><th>Date</th><th>Type &amp; publisher</th><th>Funding</th><th>Data / Methods</th><th>Direction / magnitude</th><th>Finding</th><th>Limitations</th></tr></thead>
@@ -305,7 +307,7 @@
       </div>
 
       <div class="dce-card">
-        <h2>Policymaker's must-dos for data centers</h2>
+        <h2 id="dce-musthaves">Policymaker's must-dos for data centers</h2>
         <p class="dce-lede">Five tariff elements determine whether the large load or the general
         ratepayer base bears the cost if demand forecasts are wrong
         <span class="ico-help" title="Customer Protection Score = ContractPts(term) + MinBillPts(%) + CIACPts(yes/no). Across the SEPA/NCCETC DELTa universe (n=77 tariffs through Mar 2026): mean 1.94/5, median 1. 51% of all tariffs score 0 or 1; only 27% score 4-5. PJM utilities average 2.26 (the national benchmark); CAISO averages 0.64, the weakest ISO.">&#9432;</span>.</p>
@@ -323,13 +325,14 @@
 
       <div class="dce-card">
         <h2>Interactive tariff protection score</h2>
-        <p class="dce-lede">The same 77 tariffs behind the research on the Literature Review tab, re-weighted live &mdash; drag a slider to see which states' tariffs score better or worse under different priorities. Also shades the map on the Explorer tab.
+        <p class="dce-lede">The author's review of 77 tariffs, scored on three customer-protection terms (as of Oct 2026). Adjust the weights below, then check the Explorer map to see which states' tariffs hold up better or worse.
         <span class="ico-help" title="Each tariff already carries three rubric sub-scores from the original paper's Customer Protection Score: Contract term (0-2 pts, >=10yr=2, 5-9yr=1, else 0), Minimum billing demand (0-2 pts, >=80%=2, 50-79%=1, else 0), and CIAC/contribution-in-aid-of-construction required (0-1 pt). The sliders set how much each sub-score counts toward a 0-5 weighted score, averaged across every tariff on file for that state. Source: Large_Load_Tariffs_Scoring_v2.xlsx (TURN DELTA Full Analysis), SEPA/NCCETC DELTa database through Mar 2026, 77 tariffs across 36 states.">&#9432;</span></p>
         <div class="dce-tariffw">
-          <div class="dce-wrow"><label for="wContract">Contract term weight</label><input type="range" id="wContract" min="0" max="10" value="4"><span id="wContractV">40%</span></div>
-          <div class="dce-wrow"><label for="wBill">Minimum billing demand weight</label><input type="range" id="wBill" min="0" max="10" value="4"><span id="wBillV">40%</span></div>
-          <div class="dce-wrow"><label for="wCiac">CIAC-required weight</label><input type="range" id="wCiac" min="0" max="10" value="2"><span id="wCiacV">20%</span></div>
+          <div class="dce-wrow"><label for="wContract"><a href="#dce-musthaves">Contract term weight</a></label><input type="range" id="wContract" min="0" max="10" value="4"><span id="wContractV">40%</span></div>
+          <div class="dce-wrow"><label for="wBill"><a href="#dce-musthaves">Minimum billing demand weight</a></label><input type="range" id="wBill" min="0" max="10" value="4"><span id="wBillV">40%</span></div>
+          <div class="dce-wrow"><label for="wCiac"><a href="#dce-musthaves">CIAC-required weight</a></label><input type="range" id="wCiac" min="0" max="10" value="2"><span id="wCiacV">20%</span></div>
         </div>
+        <p class="dce-foot" style="margin:-4px 0 10px">Defaults to 40% / 40% / 20%.</p>
         <div id="dceTariffRank" class="dce-tariffrank"></div>
         <p class="dce-foot">States with only one or two tracked tariffs are more volatile to re-weighting than states with many &mdash; hover a row for the tariff count.</p>
       </div>
@@ -691,6 +694,7 @@ fetch('data/dc_facilities.json').then(r => r.json()).then(data => {
         const score = window.dceTariffScoreByState && window.dceTariffScoreByState[abbr];
         return (on && score !== undefined) ? TARIFF_SCALE(score) : '#f4f3ef';
       });
+      document.getElementById('dceTariffScale').style.display = on ? 'flex' : 'none';
     };
     document.getElementById('dceTariffToggle').addEventListener('change', updateTariffMapColors);
     updateTariffMapColors();
